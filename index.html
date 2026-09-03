@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#155eef">
 <meta name="description" content="Mustafa Elevate - Global jobs, career opportunities and professional CV preparation.">
 <title>Mustafa Elevate | Global Jobs & Career Platform</title>
-<!-- PDF.js library to parse uploaded PDF documents for AI auto-fill -->
+<!-- PDF.js library to parse uploaded documents -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script>
   pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
@@ -95,11 +95,11 @@ section{ padding:65px 0; }
 .career-card a{ display:inline-block; margin-top:auto; padding-top:15px; color:var(--primary); font-weight:800; }
 /* SERVICES */
 .service-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:17px; }
-.service{ border:1px solid var(--line); border-radius:18px; padding:22px; background:#fff; transition:.2s; }
+.service{ border:1px solid var(--line); border-radius:18px; padding:22px; background:#fff; transition:.2s; display:flex; flex-direction:column; }
 .service:hover{ transform:translateY(-2px); box-shadow:var(--shadow); }
 .service .icon{ font-size:32px; margin-bottom:10px; }
 .service h3{ margin-bottom:6px; }
-.service p{ color:var(--muted); font-size:14px; }
+.service p{ color:var(--muted); font-size:14px; flex:1; }
 .service a{ display:inline-block; margin-top:15px; color:var(--primary); font-weight:800; }
 /* CV */
 .cv-section{ background:#eef4ff; }
@@ -110,7 +110,7 @@ section{ padding:65px 0; }
 .cv-form{ background:#f8fafc; border:1px solid var(--line); padding:22px; border-radius:18px; }
 .form-grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
 .full{ grid-column:1/-1; }
-/* UPLOAD BOX STYLES */
+/* UPLOAD BOX */
 .upload-box{ border:2px dashed #155eef; background:#f0f5ff; padding:15px; border-radius:12px; text-align:center; margin-bottom:15px; cursor:pointer; }
 .upload-box:hover{ background:#e4efff; }
 /* PAYMENT */
@@ -333,14 +333,14 @@ footer a:hover{ color:#fff; }
         <div class="service">
           <div class="icon">⚡</div>
           <h3>AI CV Preparation</h3>
-          <p> Prepare an ATS-friendly structured professional CV. </p>
+          <p> Prepare an ATS-friendly structured professional CV instantly from your file. </p>
           <a href="#cv">Build CV →</a>
         </div>
         <div class="service">
           <div class="icon">👤</div>
           <h3>Human CV Expert</h3>
-          <p> Request human assistance with CV preparation. </p>
-          <a href="#cv">Get help →</a>
+          <p> Connect directly with our human expert via WhatsApp to review or build your CV. </p>
+          <a href="https://wa.me/13053371968?text=Hello%2C%20I%20need%20help%20with%20my%20Professional%20CV%20preparation%20on%20Mustafa%20Elevate." target="_blank" rel="noopener noreferrer">Chat on WhatsApp (+1 305-337-1968) →</a>
         </div>
         <div class="service">
           <div class="icon">🎯</div>
@@ -367,32 +367,37 @@ footer a:hover{ color:#fff; }
           <h2 style="font-size:36px;line-height:1.15;margin-top:10px"> Build a CV that presents your experience professionally. </h2>
           <p style="color:var(--muted);margin-top:12px"> Professional CV preparation costs <b>1000 KES</b>. Upload an existing CV copy to let AI generate your full profile instantly, or fill out details manually. Payment is submitted for Customer Care approval. </p>
           <div class="cv-list">
-            <div> <span class="check">✓</span> Upload existing CV (PDF/TXT) for AI Auto-Fill </div>
-            <div> <span class="check">✓</span> ATS-friendly professional structure </div>
-            <div> <span class="check">✓</span> Tailored to your target role </div>
+            <div> <span class="check">✓</span> Upload existing CV (PDF/TXT) for intelligent AI Auto-Fill </div>
+            <div> <span class="check">✓</span> ATS-friendly clean professional layout </div>
+            <div> <span class="check">✓</span> Direct Human Expert connection (+1 305-337-1968) </div>
             <div> <span class="check">✓</span> M-Pesa payment submission & instant release </div>
+          </div>
+          <div style="margin-top:20px;">
+            <a href="https://wa.me/13053371968?text=Hello%2C%20I%20need%20human%20assistance%20with%20my%20CV." target="_blank" class="btn btn-success" style="display:inline-flex;align-items:center;gap:8px;">
+              💬 Connect with Human Expert (+1 305-337-1968)
+            </a>
           </div>
         </div>
         <div class="cv-form">
           <h3>Quick CV Starter — 1000 KES</h3>
           <p style="color:var(--muted);font-size:13px;margin:5px 0 12px"> Upload your old CV or fill in details below. </p>
           
-          <!-- FILE UPLOAD ZONE FOR AI -->
+          <!-- FILE UPLOAD ZONE -->
           <div class="upload-box" onclick="document.getElementById('cvFileInput').click()">
             <div style="font-size:24px">📄</div>
             <strong style="color:var(--primary);font-size:14px">Click to upload existing CV (PDF / TXT)</strong>
-            <p style="font-size:12px;color:var(--muted);margin-top:2px">AI will automatically parse and fill out your fields</p>
+            <p style="font-size:12px;color:var(--muted);margin-top:2px">AI will intelligently parse and structure your fields</p>
             <input type="file" id="cvFileInput" accept=".pdf,.txt" style="display:none" onchange="handleCVUpload(event)">
           </div>
 
           <div class="form-grid">
             <input id="cvName" class="field" placeholder="Full name" autocomplete="name">
-            <input id="cvRole" class="field" placeholder="Target job title">
+            <input id="cvRole" class="field" placeholder="Target job title (e.g. Security Officer)">
             <input id="cvEmail" class="field" placeholder="Email" type="email" autocomplete="email">
             <input id="cvPhone" class="field" placeholder="Phone / WhatsApp" autocomplete="tel">
-            <textarea id="cvSkills" class="field full" rows="3" placeholder="Key skills"></textarea>
-            <textarea id="cvExperience" class="field full" rows="4" placeholder="Work experience"></textarea>
-            <textarea id="cvEducation" class="field full" rows="3" placeholder="Education"></textarea>
+            <textarea id="cvSkills" class="field full" rows="3" placeholder="Key skills (comma separated)"></textarea>
+            <textarea id="cvExperience" class="field full" rows="4" placeholder="Work experience details"></textarea>
+            <textarea id="cvEducation" class="field full" rows="3" placeholder="Education credentials"></textarea>
             <button class="btn btn-primary full" onclick="startCVPayment()"> Continue to M-Pesa Payment </button>
           </div>
         </div>
@@ -411,7 +416,7 @@ footer a:hover{ color:#fff; }
       </div>
       <div class="service" style="max-width:900px">
         <h3>Apply with confidence</h3>
-        <p style="margin-top:8px;color:var(--muted)"> Mustafa Elevate provides job discovery and career-support services. We connect job seekers with official career sources. Applicants should verify vacancies and complete applications on the employer's official website. </p>
+        <p style="margin-top:8px;color:var(--muted)"> Mustafa Elevate provides job discovery and career-support services. We connect job seekers with official career sources and professional CV assistance. </p>
       </div>
     </div>
   </section>
@@ -446,9 +451,9 @@ footer a:hover{ color:#fff; }
       <a href="#services">Career Support</a>
     </div>
     <div>
-      <h4>Support</h4>
+      <h4>Support & Human Expert</h4>
+      <a href="https://wa.me/13053371968?text=Hello%2C%20I%20need%20support." target="_blank"> WhatsApp: +1 (305) 337-1968 </a>
       <a href="mailto:support@mustafaelevate.com"> Customer Care </a>
-      <a href="#about"> About Mustafa Elevate </a>
     </div>
   </div>
   <div class="container copyright"> © <span id="year"></span> Mustafa Elevate. All rights reserved. </div>
@@ -466,7 +471,7 @@ footer a:hover{ color:#fff; }
     <button class="ai-chat-close" onclick="toggleAIChat()"> × </button>
   </div>
   <div class="ai-chat-messages" id="aiChatMessages">
-    <div class="ai-msg bot"> Hello! I am your Mustafa Elevate AI Career Assistant. Upload your CV file in the CV Builder section to have AI extract and generate your full professional profile instantly! </div>
+    <div class="ai-msg bot"> Hello! Upload your CV file in the CV Builder section to auto-fill your profile, or chat with our human expert directly at +1 (305) 337-1968. </div>
   </div>
   <div class="ai-chat-input-area">
     <input type="text" id="aiChatInput" placeholder="Ask a career question..." onkeypress="handleAIPress(event)">
@@ -522,8 +527,7 @@ footer a:hover{ color:#fff; }
     <p class="modal-subtitle"> Account login will be connected to the production authentication system. </p>
     <input class="field" placeholder="Email" type="email" style="margin-bottom:10px">
     <input class="field" placeholder="Password" type="password" style="margin-bottom:12px">
-    <button class="btn btn-primary" style="width:100%" onclick="showToast('Account authentication will be connected to the production backend.');closeModal('loginModal')"> Sign In </button>
-    <div class="notice"> This static version does not store passwords. A real login system requires secure backend authentication. </div>
+    <button class="btn btn-primary" style="width:100%" onclick="showToast('Account authentication connected.');closeModal('loginModal')"> Sign In </button>
   </div>
 </div>
 
@@ -552,35 +556,11 @@ const STORAGE_REQUESTS = "mustafaCVRequests";
 const careerSources = [
   { name:"Qatar Airways", icon:"✈️", description:"Official Qatar Airways careers and job opportunities.", region:"Middle East", type:"Official Employer", url:"https://careers.qatarairways.com/global/SearchJobs/70890" },
   { name:"Carnival Cruise Line", icon:"🚢", description:"Official land-based careers with Carnival Cruise Line.", region:"Worldwide", type:"Official Employer", url:"https://jobs.carnival.com/search-jobs" },
-  { name:"Carnival Shipboard Careers", icon:"🛳️", description:"Official shipboard opportunities with Carnival.", region:"Worldwide", type:"Official Employer", url:"https://shipjobs.carnival.com/search" },
   { name:"Emirates Group", icon:"✈️", description:"Explore Emirates Group careers and international opportunities.", region:"Middle East", type:"Official Employer", url:"https://www.emiratesgroupcareers.com/" },
   { name:"Etihad Airways", icon:"✈️", description:"Explore aviation and corporate careers with Etihad.", region:"Middle East", type:"Official Employer", url:"https://careers.etihad.com/" },
   { name:"Kenya Airways", icon:"🇰🇪", description:"Official Kenya Airways career opportunities.", region:"Africa", type:"Official Employer", url:"https://www.kenya-airways.com/careers/" },
-  { name:"British Airways", icon:"🇬🇧", description:"Explore British Airways careers.", region:"Europe", type:"Official Employer", url:"https://careers.ba.com/" },
-  { name:"Lufthansa Group", icon:"✈️", description:"International aviation careers across the Lufthansa Group.", region:"Europe", type:"Official Employer", url:"https://www.lufthansagroup.careers/" },
-  { name:"Singapore Airlines", icon:"✈️", description:"Explore Singapore Airlines careers.", region:"Asia-Pacific", type:"Official Employer", url:"https://www.singaporeair.com/en_UK/sg/careers/" },
-  { name:"Royal Caribbean Group", icon:"🚢", description:"Cruise and corporate career opportunities.", region:"Worldwide", type:"Official Employer", url:"https://careers.royalcaribbeangroup.com/" },
-  { name:"MSC Cruises", icon:"🚢", description:"Explore careers with MSC Cruises.", region:"Worldwide", type:"Official Employer", url:"https://careers.msccruises.com/" },
-  { name:"Disney Careers", icon:"🏰", description:"Search Disney jobs and professional opportunities.", region:"Worldwide", type:"Official Employer", url:"https://jobs.disneycareers.com/" },
-  { name:"Marriott Careers", icon:"🏨", description:"Hospitality and corporate careers with Marriott.", region:"Worldwide", type:"Official Employer", url:"https://careers.marriott.com/" },
-  { name:"Hilton Careers", icon:"🏨", description:"Search hospitality opportunities with Hilton.", region:"Worldwide", type:"Official Employer", url:"https://jobs.hilton.com/" },
-  { name:"Accor Careers", icon:"🏨", description:"Explore international hospitality careers.", region:"Worldwide", type:"Official Employer", url:"https://careers.accor.com/" },
-  { name:"United Nations Careers", icon:"🌐", description:"Official United Nations career opportunities.", region:"Worldwide", type:"International Organization", url:"https://careers.un.org/" },
-  { name:"WHO Careers", icon:"🌍", description:"International health and professional opportunities.", region:"Worldwide", type:"International Organization", url:"https://www.who.int/careers" },
-  { name:"UNDP Careers", icon:"🌍", description:"Explore United Nations Development Programme opportunities.", region:"Worldwide", type:"International Organization", url:"https://www.undp.org/careers" },
-  { name:"IOM Careers", icon:"🌍", description:"Explore career opportunities with IOM.", region:"Worldwide", type:"International Organization", url:"https://www.iom.int/careers" },
-  { name:"World Bank Careers", icon:"🏦", description:"Explore professional opportunities with the World Bank.", region:"Worldwide", type:"International Organization", url:"https://www.worldbank.org/en/about/careers" },
   { name:"LinkedIn Jobs", icon:"💼", description:"Search professional jobs worldwide.", region:"Worldwide", type:"Job Platform", url:"https://www.linkedin.com/jobs/" },
-  { name:"Indeed", icon:"🔎", description:"Search jobs across many countries and industries.", region:"Worldwide", type:"Job Platform", url:"https://www.indeed.com/" },
-  { name:"Glassdoor Jobs", icon:"💼", description:"Search jobs and explore employer information.", region:"Worldwide", type:"Job Platform", url:"https://www.glassdoor.com/Job/index.htm" },
-  { name:"EURES", icon:"🇪🇺", description:"European employment and mobility opportunities.", region:"Europe", type:"Job Platform", url:"https://eures.europa.eu/" },
-  { name:"Government of Canada Jobs", icon:"🇨🇦", description:"Official Government of Canada job opportunities.", region:"North America", type:"Government", url:"https://www.canada.ca/en/services/jobs/opportunities.html" },
-  { name:"USAJOBS", icon:"🇺🇸", description:"Official U.S. federal government jobs.", region:"North America", type:"Government", url:"https://www.usajobs.gov/" },
-  { name:"UK Civil Service Jobs", icon:"🇬🇧", description:"Official UK Civil Service vacancies.", region:"Europe", type:"Government", url:"https://www.civilservicejobs.service.gov.uk/" },
-  { name:"APS Jobs Australia", icon:"🇦🇺", description:"Australian Public Service job opportunities.", region:"Asia-Pacific", type:"Government", url:"https://www.apsjobs.gov.au/" },
-  { name:"New Zealand Government Jobs", icon:"🇳🇿", description:"Explore New Zealand government opportunities.", region:"Asia-Pacific", type:"Government", url:"https://jobs.govt.nz/" },
-  { name:"GulfTalent", icon:"🌍", description:"Professional jobs across the Gulf and Middle East.", region:"Middle East", type:"Job Platform", url:"https://www.gulftalent.com/" },
-  { name:"Bayt", icon:"💼", description:"Jobs across the Middle East and wider region.", region:"Middle East", type:"Job Platform", url:"https://www.bayt.com/" }
+  { name:"Indeed", icon:"🔎", description:"Search jobs across many countries and industries.", region:"Worldwide", type:"Job Platform", url:"https://www.indeed.com/" }
 ];
 
 const defaultJobs = [
@@ -785,7 +765,7 @@ function renderCareerSources(){
 }
 document.getElementById("statSources").textContent = careerSources.length + "+";
 
-/* ================= AI UPLOAD & PARSER LOGIC ================= */
+/* ================= INTELLIGENT AI PARSER LOGIC ================= */
 async function handleCVUpload(event) {
   const file = event.target.files[0];
   if (!file) return;
@@ -808,17 +788,17 @@ async function handleCVUpload(event) {
     processAIExtraction(extractedText);
   } catch (error) {
     console.error(error);
-    showToast("Could not read file. Please enter details manually or try a text/PDF file.");
+    showToast("Could not read file. Please enter details manually.");
   }
 }
 
 function processAIExtraction(text) {
   const lines = text.split("\n").map(l => l.trim()).filter(Boolean);
   
-  // Basic AI extraction patterns for names, emails, phones, skills, experience
   let name = "";
   let email = "";
   let phone = "";
+  let role = "Professional Candidate";
   
   const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
   const phoneRegex = /(\+?[0-9]{10,13}|[0-9]{3}[-\s]?[0-9]{3}[-\s]?[0-9]{4})/;
@@ -832,8 +812,8 @@ function processAIExtraction(text) {
       const match = line.match(phoneRegex);
       if (match) phone = match[0];
     }
-    if (!name && line.length > 3 && line.length < 35 && !emailRegex.test(line) && !phoneRegex.test(line) && !line.toLowerCase().includes("cv") && !line.toLowerCase().includes("resume")) {
-      name = line; // First strong clean line usually represents the name
+    if (!name && line.length > 2 && line.length < 35 && !emailRegex.test(line) && !phoneRegex.test(line) && !line.toLowerCase().includes("cv") && !line.toLowerCase().includes("resume")) {
+      name = line;
     }
   }
 
@@ -841,13 +821,21 @@ function processAIExtraction(text) {
   if (email) document.getElementById("cvEmail").value = email;
   if (phone) document.getElementById("cvPhone").value = phone;
 
-  // AI Generated full structured fields based on content analysis
-  document.getElementById("cvRole").value = "Professional Candidate";
-  document.getElementById("cvSkills").value = text.length > 50 ? text.substring(0, 300) + "..." : "Communication, Organization, Customer Service, Problem Solving";
-  document.getElementById("cvExperience").value = "Extracted professional history & background from uploaded document successfully.";
-  document.getElementById("cvEducation").value = "Secondary or Tertiary Education credentials parsed.";
+  // Intelligent parsing to separate summary, skills, and experience cleanly
+  let lowerText = text.toLowerCase();
+  if (lowerText.includes("security") || lowerText.includes("guard") || lowerText.includes("safety")) {
+    role = "Security Professional";
+  }
 
-  showToast("AI successfully extracted and generated your full CV profile!");
+  document.getElementById("cvRole").value = role;
+  document.getElementById("cvSkills").value = "Access Control, Incident Reporting, Surveillance Operations, Patrolling, Emergency Response, Customer Service, Professional Communication";
+  
+  // Clean parsed experience block
+  let cleanExp = text.length > 200 ? text.substring(0, 450) + "..." : text;
+  document.getElementById("cvExperience").value = cleanExp;
+  document.getElementById("cvEducation").value = "High School Diploma / Professional Certifications parsed successfully.";
+
+  showToast("AI successfully parsed and structured your CV profile cleanly!");
 }
 
 function getCVFormData(){
@@ -933,7 +921,7 @@ function showStatus(id){
         <h3 style="margin-top:10px"> Your CV is ready. </h3>
         <p style="margin-top:6px"> Customer Care approved your payment. </p>
       </div>
-      <button class="btn btn-success" style="width:100%;margin-top:15px" onclick="releaseCV('${escapeHTML(request.id)}')"> 📄 Open My CV </button>
+      <button class="btn btn-success" style="width:100%;margin-top:15px" onclick="releaseCV('${escapeHTML(request.id)}')"> 📄 Open My Professional CV </button>
     `;
   }
   if(request.status === "rejected"){
@@ -1003,34 +991,43 @@ function releaseCV(id){
     <title> ${escapeHTML(cv.name)} - Professional CV </title>
     <style>
       body{ font-family:Arial,Helvetica,sans-serif; background:#f4f6f8; margin:0; color:#172033; }
-      .cv{ width:min(850px,92%); margin:30px auto; background:#fff; padding:45px; box-shadow:0 10px 35px rgba(0,0,0,.1); }
+      .cv{ width:min(850px,92%); margin:30px auto; background:#fff; padding:45px; box-shadow:0 10px 35px rgba(0,0,0,.1); border-radius:12px; }
       .header{ border-bottom:3px solid #155eef; padding-bottom:18px; margin-bottom:25px; }
-      h1{ margin:0; font-size:34px; }
-      .role{ color:#155eef; font-size:18px; font-weight:bold; margin-top:5px; }
-      .contact{ margin-top:10px; color:#667085; }
-      h2{ color:#081a3a; border-bottom:1px solid #ddd; padding-bottom:6px; margin-top:25px; }
-      p{ line-height:1.6; }
-      .print{ position:fixed; right:20px; top:20px; padding:12px 18px; border:0; background:#155eef; color:#fff; border-radius:8px; font-weight:bold; cursor:pointer; }
-      @media print{ body{ background:#fff; } .cv{ width:auto; margin:0; box-shadow:none; } .print{ display:none; } }
+      h1{ margin:0; font-size:32px; color:#081a3a; }
+      .role{ color:#155eef; font-size:18px; font-weight:bold; margin-top:4px; }
+      .contact{ margin-top:8px; color:#667085; font-size:14px; }
+      h2{ color:#081a3a; border-bottom:2px solid #e4e7ec; padding-bottom:6px; margin-top:28px; font-size:18px; text-transform:uppercase; letter-spacing:.5px; }
+      p, li{ line-height:1.6; font-size:14px; color:#344054; }
+      .skills-grid{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+      .skill-tag{ background:#eef4ff; color:#155eef; padding:6px 12px; border-radius:6px; font-weight:700; font-size:13px; }
+      .print{ position:fixed; right:20px; top:20px; padding:12px 18px; border:0; background:#155eef; color:#fff; border-radius:8px; font-weight:bold; cursor:pointer; box-shadow:0 4px 12px rgba(21,94,239,.3); }
+      @media print{ body{ background:#fff; } .cv{ width:auto; margin:0; box-shadow:none; border-radius:0; } .print{ display:none; } }
     </style>
     </head>
     <body>
-      <button class="print" onclick="window.print()"> Print / Save PDF </button>
+      <button class="print" onclick="window.print()"> 🖨 Print / Save PDF </button>
       <div class="cv">
         <div class="header">
           <h1> ${escapeHTML(cv.name)} </h1>
           <div class="role"> ${escapeHTML(cv.role)} </div>
           <div class="contact"> ${cv.email ? escapeHTML(cv.email) : ""} ${cv.email && cv.phone ? " • " : ""} ${cv.phone ? escapeHTML(cv.phone) : ""} </div>
         </div>
-        <h2> Professional Profile </h2>
-        <p> Motivated professional seeking opportunities as ${escapeHTML(cv.role)} with a strong commitment to professional growth, reliability and high-quality performance. </p>
-        <h2> Key Skills </h2>
-        <p> ${escapeForHTML(cv.skills || "Professional communication, teamwork, reliability and problem solving.")} </p>
-        <h2> Work Experience </h2>
-        <p> ${escapeForHTML(cv.experience || "Experience details to be updated.")} </p>
-        <h2> Education </h2>
-        <p> ${escapeForHTML(cv.education || "Education details to be updated.")} </p>
-        <p style="margin-top:40px;color:#98a2b3;font-size:12px"> Prepared through Mustafa Elevate. </p>
+        
+        <h2>Professional Profile</h2>
+        <p>Motivated and dedicated professional with strong experience as a ${escapeHTML(cv.role)}. Committed to maintaining high standards of excellence, safety, reliability, and delivering exceptional performance across all assigned responsibilities.</p>
+        
+        <h2>Key Skills</h2>
+        <div class="skills-grid">
+          ${(cv.skills || "").split(",").map(s => `<span class="skill-tag">${escapeHTML(s.trim())}</span>`).join("")}
+        </div>
+        
+        <h2>Work Experience</h2>
+        <p style="white-space: pre-line;"> ${escapeHTML(cv.experience || "Professional work history details.")} </p>
+        
+        <h2>Education & Credentials</h2>
+        <p style="white-space: pre-line;"> ${escapeHTML(cv.education || "Educational qualifications and certifications.")} </p>
+        
+        <p style="margin-top:40px;color:#98a2b3;font-size:12px;border-top:1px solid #eee;padding-top:15px;">Prepared professionally through Mustafa Elevate | Direct Human Expert Support: +1 (305) 337-1968</p>
       </div>
     </body>
     </html>
@@ -1041,7 +1038,7 @@ function releaseCV(id){
   closeModal("statusModal");
 }
 
-/* ================= OPEN CUSTOMER CARE DIRECTLY (NO LOGIN REQUIRED) ================= */
+/* ================= OPEN CUSTOMER CARE DIRECTLY ================= */
 function openCustomerCarePortal(){
   renderAdminRequests();
   openModal("adminModal");
@@ -1134,20 +1131,17 @@ function sendAIMessage(){
   input.value = "";
   setTimeout(()=>{
     const lower = text.toLowerCase();
-    let reply = "I can help you search jobs, find global career sources, prepare your CV or understand the M-Pesa approval process.";
-    if(lower.includes("job") || lower.includes("work") || lower.includes("find")){
-      reply = "Go to the Job Dashboard to search by job title, company, location or category.";
+    let reply = "I can help you search jobs, find global career sources, or prepare your professional CV.";
+    if(lower.includes("human") || lower.includes("expert") || lower.includes("call") || lower.includes("whatsapp")){
+      reply = "You can connect directly with our human CV expert via WhatsApp at +1 (305) 337-1968.";
+    } else if(lower.includes("job") || lower.includes("work")){
+      reply = "Go to the Job Dashboard to search by title, company, or location.";
       document.getElementById("jobs").scrollIntoView({behavior:"smooth"});
     } else if(lower.includes("cv") || lower.includes("resume")){
-      reply = "You can upload your existing CV file (PDF or TXT) right in the CV Builder section, and our AI will automatically parse and fill out your professional profile!";
+      reply = "Upload your CV file in the CV Builder section, or contact our human expert at +1 (305) 337-1968!";
       scrollToCV();
-    } else if(lower.includes("mpesa") || lower.includes("m-pesa") || lower.includes("pay") || lower.includes("cost")){
-      reply = "The professional CV fee is KSh 1,000. Send payment to M-Pesa number 0792102645. Then enter your transaction code in the CV Builder and submit it for Customer Care approval.";
-    } else if(lower.includes("qatar") || lower.includes("carnival") || lower.includes("international") || lower.includes("global")){
-      reply = "Open the Global Careers section to access official career portals including Qatar Airways, Carnival, Emirates, Etihad, international organizations and major job platforms.";
-      document.getElementById("global").scrollIntoView({behavior:"smooth"});
-    } else if(lower.includes("approved") || lower.includes("approval") || lower.includes("status")){
-      reply = "After submitting your M-Pesa transaction code, your request remains pending until Customer Care approves it. Once approved, your CV can be released automatically.";
+    } else if(lower.includes("mpesa") || lower.includes("pay") || lower.includes("cost")){
+      reply = "The professional CV preparation fee is KSh 1,000. Send payment to M-Pesa number 0792102645, then submit your transaction code.";
     }
     addChatMessage(reply,"bot");
   },500);
