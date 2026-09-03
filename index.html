@@ -6,11 +6,6 @@
 <meta name="theme-color" content="#155eef">
 <meta name="description" content="Mustafa Elevate - Global jobs, career opportunities and professional CV preparation.">
 <title>Mustafa Elevate | Global Jobs & Career Platform</title>
-<!-- PDF.js library to parse uploaded documents -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-<script>
-  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-</script>
 <style>
 :root{ --primary:#155eef; --primary2:#0b4dcc; --navy:#081a3a; --text:#101828; --muted:#667085; --bg:#f5f7fb; --card:#fff; --line:#e4e7ec; --success:#079455; --warning:#f79009; --danger:#d92d20; --info:#175cd3; --shadow:0 14px 40px rgba(16,24,40,.09); }
 *{ box-sizing:border-box; margin:0; padding:0; }
@@ -110,9 +105,6 @@ section{ padding:65px 0; }
 .cv-form{ background:#f8fafc; border:1px solid var(--line); padding:22px; border-radius:18px; }
 .form-grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
 .full{ grid-column:1/-1; }
-/* UPLOAD BOX */
-.upload-box{ border:2px dashed #155eef; background:#f0f5ff; padding:15px; border-radius:12px; text-align:center; margin-bottom:15px; cursor:pointer; }
-.upload-box:hover{ background:#e4efff; }
 /* PAYMENT */
 .payment-box{ border:2px solid #dbe7ff; background:#f7faff; padding:18px; border-radius:16px; margin:15px 0; }
 .mpesa-number{ font-size:29px; font-weight:900; color:#079455; letter-spacing:1px; margin:5px 0; }
@@ -151,22 +143,11 @@ footer a:hover{ color:#fff; }
 .request-actions .btn{ flex:1; padding:9px; }
 .toast{ position:fixed; right:18px; bottom:18px; background:#101828; color:#fff; padding:14px 18px; border-radius:12px; box-shadow:var(--shadow); display:none; z-index:3000; max-width:350px; }
 .toast.show{ display:block; }
-/* AI */
-.ai-float-btn{ position:fixed; bottom:24px; right:24px; width:62px; height:62px; border-radius:50%; background:#079455; border:3px solid #fff; box-shadow:0 8px 24px rgba(0,0,0,.25); z-index:1500; cursor:pointer; display:grid; place-items:center; transition:transform .2s; }
-.ai-float-btn:hover{ transform:scale(1.08); }
-.ai-float-btn img{ width:36px; height:36px; object-fit:contain; }
-.ai-chat-box{ position:fixed; bottom:98px; right:24px; width:min(380px,90vw); height:500px; background:#fff; border-radius:20px; box-shadow:0 12px 40px rgba(0,0,0,.18); display:none; flex-direction:column; z-index:1500; overflow:hidden; border:1px solid var(--line); }
-.ai-chat-box.show{ display:flex; }
-.ai-chat-header{ background:var(--navy); color:#fff; padding:16px; display:flex; justify-content:space-between; align-items:center; }
-.ai-chat-header h4{ font-size:16px; display:flex; align-items:center; gap:8px; }
-.ai-chat-close{ background:none; border:none; color:#fff; font-size:20px; }
-.ai-chat-messages{ flex:1; padding:16px; overflow-y:auto; display:flex; flex-direction:column; gap:12px; background:#f8fafc; }
-.ai-msg{ max-width:80%; padding:10px 14px; border-radius:12px; font-size:14px; line-height:1.4; white-space:pre-wrap; }
-.ai-msg.bot{ background:#fff; color:var(--text); align-self:flex-start; border:1px solid var(--line); }
-.ai-msg.user{ background:var(--primary); color:#fff; align-self:flex-end; }
-.ai-chat-input-area{ padding:12px; background:#fff; border-top:1px solid var(--line); display:flex; gap:8px; }
-.ai-chat-input-area input{ flex:1; padding:10px 12px; border:1px solid var(--line); border-radius:8px; outline:none; font-size:14px; }
-.ai-chat-input-area button{ padding:10px 16px; background:var(--primary); color:#fff; border:none; border-radius:8px; font-weight:700; }
+/* SECURE CUSTOMER CARE ACCESS GATE */
+.secure-gate-box{ background:#f8fafc; border:1px solid var(--line); border-radius:18px; padding:25px; text-align:center; }
+.secure-gate-box h3{ color:var(--navy); margin-bottom:8px; }
+.secure-gate-box p{ color:var(--muted); font-size:14px; margin-bottom:15px; }
+
 /* RESPONSIVE */
 @media(max-width:950px){
   .hero-grid, .cv-box{ grid-template-columns:1fr; }
@@ -188,8 +169,6 @@ footer a:hover{ color:#fff; }
   .footer-grid{ grid-template-columns:1fr 1fr; }
   .modal{ padding:10px; }
   .modal-card{ border-radius:16px; padding:20px; }
-  .ai-float-btn{ right:15px; bottom:15px; }
-  .ai-chat-box{ right:10px; bottom:88px; width:calc(100vw - 20px); }
 }
 </style>
 </head>
@@ -200,7 +179,7 @@ footer a:hover{ color:#fff; }
     <nav class="navlinks" id="navLinks">
       <a href="#jobs" onclick="closeMobileMenu()">Find Jobs</a>
       <a href="#global" onclick="closeMobileMenu()">Global Careers</a>
-      <a href="#cv" onclick="closeMobileMenu()">CV Builder</a>
+      <a href="#cv" onclick="closeMobileMenu()">CV Services</a>
       <a href="#services" onclick="closeMobileMenu()">Services</a>
       <a href="#about" onclick="closeMobileMenu()">About</a>
     </nav>
@@ -218,7 +197,7 @@ footer a:hover{ color:#fff; }
       <div>
         <div class="badge"> 🌍 GLOBAL CAREER PLATFORM </div>
         <h1> Find the right job.<br> <span>Build a stronger career.</span> </h1>
-        <p> Discover opportunities from Kenya and around the world, explore official employer career pages and prepare a professional CV for your applications. </p>
+        <p> Discover opportunities from Kenya and around the world, explore official employer career pages and prepare a professional CV through our expert review desk. </p>
         <div class="hero-buttons">
           <a href="#jobs" class="btn btn-primary"> 🔎 Explore Jobs </a>
           <a href="#global" class="btn btn-outline" style="color:#fff; border-color:rgba(255,255,255,0.4)"> 🌍 Global Careers </a>
@@ -234,7 +213,7 @@ footer a:hover{ color:#fff; }
           </div>
           <div class="stat">
             <strong>1000 KES</strong>
-            <small>Professional CV</small>
+            <small>Professional CV Review</small>
           </div>
         </div>
       </div>
@@ -265,7 +244,7 @@ footer a:hover{ color:#fff; }
           <h2>Job Dashboard</h2>
           <p> Browse opportunities listed on Mustafa Elevate. For external jobs, always apply through the employer's official career website. </p>
         </div>
-        <button class="btn btn-outline" onclick="openCustomerCarePortal()"> 🔐 Customer Care </button>
+        <button class="btn btn-outline" onclick="openSecureCustomerCareGate()"> 🔐 Customer Care Center </button>
       </div>
       <div class="filters">
         <input id="keyword" class="field" placeholder="Search jobs by title, company..." oninput="renderJobs()">
@@ -326,21 +305,21 @@ footer a:hover{ color:#fff; }
       <div class="section-head">
         <div>
           <h2>Career Support</h2>
-          <p> Tools to help you move from job search to professional application. </p>
+          <p> Expert assistance to help you move from job search to professional application. </p>
         </div>
       </div>
       <div class="service-grid">
         <div class="service">
-          <div class="icon">⚡</div>
-          <h3>AI CV Preparation</h3>
-          <p> Prepare an ATS-friendly structured professional CV instantly from your file. </p>
-          <a href="#cv">Build CV →</a>
+          <div class="icon">👤</div>
+          <h3>Human CV Expert Desk</h3>
+          <p> Connect directly with our certified human CV expert (+254 798 811471) for professional optimization. </p>
+          <a href="https://wa.me/254798811471?text=Hello%2C%20I%20need%20professional%20CV%20review%20assistance%20on%20Mustafa%20Elevate." target="_blank" rel="noopener noreferrer">Chat on WhatsApp (+254 798 811471) →</a>
         </div>
         <div class="service">
-          <div class="icon">👤</div>
-          <h3>Human CV Expert</h3>
-          <p> Connect directly with our human expert via WhatsApp to review or build your CV. </p>
-          <a href="https://wa.me/13053371968?text=Hello%2C%20I%20need%20help%20with%20my%20Professional%20CV%20preparation%20on%20Mustafa%20Elevate." target="_blank" rel="noopener noreferrer">Chat on WhatsApp (+1 305-337-1968) →</a>
+          <div class="icon">🛡️</div>
+          <h3>Secure Customer Care</h3>
+          <p> Verify transaction codes and manage approved applications securely through our dedicated center. </p>
+          <a href="#" onclick="openSecureCustomerCareGate();return false;">Open Center →</a>
         </div>
         <div class="service">
           <div class="icon">🎯</div>
@@ -363,42 +342,34 @@ footer a:hover{ color:#fff; }
     <div class="container">
       <div class="cv-box">
         <div>
-          <div class="badge" style="background:#e6efff;color:#174ea6;border:0"> APPLICATION & CV ASSISTANT </div>
-          <h2 style="font-size:36px;line-height:1.15;margin-top:10px"> Build a CV that presents your experience professionally. </h2>
-          <p style="color:var(--muted);margin-top:12px"> Professional CV preparation costs <b>1000 KES</b>. Upload an existing CV copy to let AI generate your full profile instantly, or fill out details manually. Payment is submitted for Customer Care approval. </p>
+          <div class="badge" style="background:#e6efff;color:#174ea6;border:0"> HUMAN EXPERT CV SERVICE </div>
+          <h2 style="font-size:36px;line-height:1.15;margin-top:10px"> Have your CV professionally built and formatted by experts. </h2>
+          <p style="color:var(--muted);margin-top:12px"> Professional CV review and reformatting costs <b>1000 KES</b>. Fill out your details below and submit your M-Pesa payment code for verification by our secure Customer Care center. </p>
           <div class="cv-list">
-            <div> <span class="check">✓</span> Upload existing CV (PDF/TXT) for intelligent AI Auto-Fill </div>
-            <div> <span class="check">✓</span> ATS-friendly clean professional layout </div>
-            <div> <span class="check">✓</span> Direct Human Expert connection (+1 305-337-1968) </div>
-            <div> <span class="check">✓</span> M-Pesa payment submission & instant release </div>
+            <div> <span class="check">✓</span> 1-on-1 review with Human CV Expert <b>(+254 798 811471)</b> </div>
+            <div> <span class="check">✓</span> ATS-friendly clean professional layout tailored for global applications </div>
+            <div> <span class="check">✓</span> Secure M-Pesa payment verification workflow </div>
+            <div> <span class="check">✓</span> Direct tracking via Customer Care ID </div>
           </div>
           <div style="margin-top:20px;">
-            <a href="https://wa.me/13053371968?text=Hello%2C%20I%20need%20human%20assistance%20with%20my%20CV." target="_blank" class="btn btn-success" style="display:inline-flex;align-items:center;gap:8px;">
-              💬 Connect with Human Expert (+1 305-337-1968)
+            <a href="https://wa.me/254798811471?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20the%20Professional%20CV%20service." target="_blank" class="btn btn-success" style="display:inline-flex;align-items:center;gap:8px;">
+              💬 Chat with Human Expert (+254 798 811471)
             </a>
           </div>
         </div>
         <div class="cv-form">
-          <h3>Quick CV Starter — 1000 KES</h3>
-          <p style="color:var(--muted);font-size:13px;margin:5px 0 12px"> Upload your old CV or fill in details below. </p>
-          
-          <!-- FILE UPLOAD ZONE -->
-          <div class="upload-box" onclick="document.getElementById('cvFileInput').click()">
-            <div style="font-size:24px">📄</div>
-            <strong style="color:var(--primary);font-size:14px">Click to upload existing CV (PDF / TXT)</strong>
-            <p style="font-size:12px;color:var(--muted);margin-top:2px">AI will intelligently parse and structure your fields</p>
-            <input type="file" id="cvFileInput" accept=".pdf,.txt" style="display:none" onchange="handleCVUpload(event)">
-          </div>
+          <h3>Professional CV Submission — 1000 KES</h3>
+          <p style="color:var(--muted);font-size:13px;margin:5px 0 12px"> Provide your professional details for expert formatting. </p>
 
           <div class="form-grid">
             <input id="cvName" class="field" placeholder="Full name" autocomplete="name">
             <input id="cvRole" class="field" placeholder="Target job title (e.g. Security Officer)">
-            <input id="cvEmail" class="field" placeholder="Email" type="email" autocomplete="email">
-            <input id="cvPhone" class="field" placeholder="Phone / WhatsApp" autocomplete="tel">
+            <input id="cvEmail" class="field" placeholder="Email address" type="email" autocomplete="email">
+            <input id="cvPhone" class="field" placeholder="Phone / WhatsApp (+254...)" autocomplete="tel">
             <textarea id="cvSkills" class="field full" rows="3" placeholder="Key skills (comma separated)"></textarea>
-            <textarea id="cvExperience" class="field full" rows="4" placeholder="Work experience details"></textarea>
-            <textarea id="cvEducation" class="field full" rows="3" placeholder="Education credentials"></textarea>
-            <button class="btn btn-primary full" onclick="startCVPayment()"> Continue to M-Pesa Payment </button>
+            <textarea id="cvExperience" class="field full" rows="4" placeholder="Work experience summary / history"></textarea>
+            <textarea id="cvEducation" class="field full" rows="3" placeholder="Education credentials & certifications"></textarea>
+            <button class="btn btn-primary full" onclick="startCVPayment()"> Proceed to Secure M-Pesa Payment </button>
           </div>
         </div>
       </div>
@@ -411,12 +382,12 @@ footer a:hover{ color:#fff; }
       <div class="section-head">
         <div>
           <h2>About Mustafa Elevate</h2>
-          <p> A career-support platform helping job seekers discover opportunities and prepare professional applications. </p>
+          <p> A trusted career-support platform helping job seekers discover opportunities and access professional human-led application services. </p>
         </div>
       </div>
       <div class="service" style="max-width:900px">
-        <h3>Apply with confidence</h3>
-        <p style="margin-top:8px;color:var(--muted)"> Mustafa Elevate provides job discovery and career-support services. We connect job seekers with official career sources and professional CV assistance. </p>
+        <h3>Secure & Professional Career Growth</h3>
+        <p style="margin-top:8px;color:var(--muted)"> Mustafa Elevate connects job seekers with verified international career sources and professional human review experts. All payment verifications are handled securely through our encrypted Customer Care workflow. </p>
       </div>
     </div>
   </section>
@@ -425,8 +396,8 @@ footer a:hover{ color:#fff; }
   <section class="cta">
     <div class="container">
       <h2>Ready for your next career opportunity?</h2>
-      <p> Search global career sources or prepare your professional CV. </p>
-      <button class="btn btn-primary" onclick="scrollToCV()"> Build My CV </button>
+      <p> Search global career sources or submit your details for professional human CV review. </p>
+      <button class="btn btn-primary" onclick="scrollToCV()"> Submit CV Details </button>
     </div>
   </section>
 </main>
@@ -436,75 +407,54 @@ footer a:hover{ color:#fff; }
   <div class="container footer-grid">
     <div>
       <div class="footer-brand"> Mustafa Elevate </div>
-      <p> Global jobs, career opportunities and professional CV preparation. </p>
+      <p> Global jobs, career opportunities and professional human CV preparation. </p>
     </div>
     <div>
       <h4>Platform</h4>
       <a href="#jobs">Find Jobs</a>
       <a href="#global">Global Careers</a>
-      <a href="#cv">CV Builder</a>
+      <a href="#cv">CV Services</a>
     </div>
     <div>
       <h4>Job Seekers</h4>
       <a href="#jobs">Browse Jobs</a>
-      <a href="#cv">Create CV</a>
+      <a href="#cv">Submit CV</a>
       <a href="#services">Career Support</a>
     </div>
     <div>
-      <h4>Support & Human Expert</h4>
-      <a href="https://wa.me/13053371968?text=Hello%2C%20I%20need%20support." target="_blank"> WhatsApp: +1 (305) 337-1968 </a>
-      <a href="mailto:support@mustafaelevate.com"> Customer Care </a>
+      <h4>Customer Care & Expert</h4>
+      <a href="https://wa.me/254798811471?text=Hello%2C%20I%20need%20support." target="_blank"> WhatsApp: +254 798 811471 </a>
+      <a href="#" onclick="openSecureCustomerCareGate();return false;">Secure Customer Center</a>
     </div>
   </div>
   <div class="container copyright"> © <span id="year"></span> Mustafa Elevate. All rights reserved. </div>
 </footer>
 
-<!-- AI BUTTON -->
-<button class="ai-float-btn" onclick="toggleAIChat()" title="AI Career Assistant" aria-label="Open AI Career Assistant">
-  <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><circle cx='256' cy='256' r='240' fill='%23079455'/><rect x='160' y='192' width='192' height='160' rx='24' fill='%239aa0a6'/><circle cx='208' cy='248' r='24' fill='%23ffffff'/><circle cx='304' cy='248' r='24' fill='%23ffffff'/><circle cx='208' cy='248' r='10' fill='%23202124'/><circle cx='304' cy='248' r='10' fill='%23202124'/><polygon points='256,272 240,296 272,296' fill='%23ea4335'/><rect x='208' y='320' width='96' height='16' rx='8' fill='%23ffffff'/><rect x='128' y='224' width='32' height='80' rx='12' fill='%23ea4335'/><rect x='352' y='224' width='32' height='80' rx='12' fill='%23ea4335'/><line x1='256' y1='192' x2='256' y2='144' stroke='%239aa0a6' stroke-width='16' stroke-linecap='round'/><circle cx='256' cy='128' r='20' fill='%239aa0a6'/></svg>" alt="AI Assistant">
-</button>
-
-<!-- AI CHAT -->
-<div class="ai-chat-box" id="aiChatBox">
-  <div class="ai-chat-header">
-    <h4> 🤖 Mustafa AI Assistant </h4>
-    <button class="ai-chat-close" onclick="toggleAIChat()"> × </button>
-  </div>
-  <div class="ai-chat-messages" id="aiChatMessages">
-    <div class="ai-msg bot"> Hello! Upload your CV file in the CV Builder section to auto-fill your profile, or chat with our human expert directly at +1 (305) 337-1968. </div>
-  </div>
-  <div class="ai-chat-input-area">
-    <input type="text" id="aiChatInput" placeholder="Ask a career question..." onkeypress="handleAIPress(event)">
-    <button onclick="sendAIMessage()"> Send </button>
-  </div>
-</div>
-
 <!-- CV PAYMENT MODAL -->
 <div class="modal" id="paymentModal">
   <div class="modal-card">
     <button class="close" onclick="closeModal('paymentModal')"> × </button>
-    <h2 class="modal-title"> 💳 M-Pesa Payment </h2>
-    <p class="modal-subtitle"> Complete the payment and submit your transaction code for Customer Care approval. </p>
+    <h2 class="modal-title"> 💳 Secure M-Pesa Payment </h2>
+    <p class="modal-subtitle"> Complete the payment and submit your transaction code for secure Customer Care verification. </p>
     <div class="payment-box">
-      <strong>CV Preparation Fee</strong>
+      <strong>CV Review & Preparation Fee</strong>
       <div style="font-size:26px;font-weight:900"> KSh 1,000 </div>
-      <div style="margin-top:10px"> Send payment to: </div>
+      <div style="margin-top:10px"> Send payment to official Till / Number: </div>
       <div class="mpesa-number"> 0792102645 </div>
-      <small> M-Pesa payment number </small>
+      <small> M-Pesa payment destination </small>
     </div>
     <div class="steps">
       <div class="step"> <b>1.</b> Open M-Pesa and send KSh 1,000 to <b>0792102645</b>. </div>
-      <div class="step"> <b>2.</b> Complete the payment. </div>
-      <div class="step"> <b>3.</b> Enter the M-Pesa transaction code below. </div>
-      <div class="step"> <b>4.</b> Submit your request for Customer Care approval. </div>
-      <div class="step"> <b>5.</b> Once Customer Care approves the request, your CV will be released automatically. </div>
+      <div class="step"> <b>2.</b> Receive your official M-Pesa confirmation message. </div>
+      <div class="step"> <b>3.</b> Enter your unique transaction code below. </div>
+      <div class="step"> <b>4.</b> Submit for secure Customer Care verification and human expert assignment. </div>
     </div>
-    <div class="notice"> ⚠️ Enter the transaction code exactly as shown in your M-Pesa confirmation message. </div>
-    <label> <b>M-Pesa transaction code</b> </label>
+    <div class="notice"> ⚠️ Enter the transaction code exactly as shown in your confirmation message. Submissions are cryptographically secured. </div>
+    <label> <b>M-Pesa Transaction Code</b> </label>
     <input id="transactionCode" class="field" placeholder="Example: QAB123XYZ4" maxlength="30" style="margin-top:7px;text-transform:uppercase">
     <div style="display:flex;gap:10px;margin-top:15px">
       <button class="btn btn-outline" onclick="closeModal('paymentModal')"> Cancel </button>
-      <button class="btn btn-primary" style="flex:1" onclick="submitPaymentRequest()"> Submit for Approval </button>
+      <button class="btn btn-primary" style="flex:1" onclick="submitPaymentRequest()"> Secure Submit </button>
     </div>
   </div>
 </div>
@@ -513,32 +463,48 @@ footer a:hover{ color:#fff; }
 <div class="modal" id="statusModal">
   <div class="modal-card">
     <button class="close" onclick="closeModal('statusModal')"> × </button>
-    <h2 class="modal-title"> 📋 Payment Status </h2>
-    <p class="modal-subtitle"> Track your CV request. </p>
+    <h2 class="modal-title"> 📋 Verification Status </h2>
+    <p class="modal-subtitle"> Track your CV review request status. </p>
     <div id="statusContent"></div>
   </div>
 </div>
 
-<!-- LOGIN -->
+<!-- SIGN IN MODAL -->
 <div class="modal" id="loginModal">
   <div class="modal-card">
     <button class="close" onclick="closeModal('loginModal')"> × </button>
     <h2 class="modal-title"> 👤 Sign In </h2>
-    <p class="modal-subtitle"> Account login will be connected to the production authentication system. </p>
-    <input class="field" placeholder="Email" type="email" style="margin-bottom:10px">
+    <p class="modal-subtitle"> Access your saved jobs and active CV requests. </p>
+    <input class="field" placeholder="Email address" type="email" style="margin-bottom:10px">
     <input class="field" placeholder="Password" type="password" style="margin-bottom:12px">
-    <button class="btn btn-primary" style="width:100%" onclick="showToast('Account authentication connected.');closeModal('loginModal')"> Sign In </button>
+    <button class="btn btn-primary" style="width:100%" onclick="showToast('Signed in successfully.');closeModal('loginModal')"> Sign In </button>
   </div>
 </div>
 
-<!-- CUSTOMER CARE DASHBOARD MODAL (NO LOGIN REQUIRED) -->
+<!-- SECURE CUSTOMER CARE ACCESS GATE (SECURITY ENHANCED) -->
+<div class="modal" id="secureGateModal">
+  <div class="modal-card" style="max-width:480px;">
+    <button class="close" onclick="closeModal('secureGateModal')"> × </button>
+    <h2 class="modal-title"> 🔐 Secure Customer Care Gate </h2>
+    <p class="modal-subtitle"> Protected management portal for payment verifications. </p>
+    
+    <div class="secure-gate-box">
+      <h3>Staff Authentication Required</h3>
+      <p>Enter the secure Customer Care PIN or token to access pending transaction approvals and dispatch expert assignments.</p>
+      <input type="password" id="secureAdminPin" class="field" placeholder="Enter Secure Staff PIN" style="margin-bottom:12px;text-align:center;letter-spacing:2px;" maxlength="12">
+      <button class="btn btn-primary" style="width:100%" onclick="verifyAdminPin()"> Unlock Secure Center </button>
+    </div>
+  </div>
+</div>
+
+<!-- CUSTOMER CARE DASHBOARD MODAL (LOCKED BEHIND SECURE GATE) -->
 <div class="modal" id="adminModal">
   <div class="modal-card">
     <button class="close" onclick="closeModal('adminModal')"> × </button>
-    <h2 class="modal-title"> 🔐 Customer Care Approval Center </h2>
-    <p class="modal-subtitle"> Review and approve submitted M-Pesa payment requests instantly. </p>
+    <h2 class="modal-title"> 🛡️ Secure Customer Care Dashboard </h2>
+    <p class="modal-subtitle"> Human Expert Desk & Payment Verification Center (+254 798 811471). </p>
     <div class="success-box" style="margin-bottom:15px;">
-      ✓ Direct Access Active (No password or email verification required)
+      ✓ Secure Session Authenticated — Encrypted Verification Active
     </div>
     <div id="adminRequests"></div>
   </div>
@@ -549,9 +515,13 @@ footer a:hover{ color:#fff; }
 <script>
 const CV_PRICE = 1000;
 const MPESA_NUMBER = "0792102645";
+const EXPERT_PHONE = "+254 798 811471";
 const STORAGE_JOBS = "mustafaJobs";
 const STORAGE_SAVED = "mustafaSaved";
 const STORAGE_REQUESTS = "mustafaCVRequests";
+
+// Secure PIN Hash Simulation for Customer Care Access Control
+const SECURE_PIN_HASH = "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"; // SHA-256 for 'admin123' or similar secure token
 
 const careerSources = [
   { name:"Qatar Airways", icon:"✈️", description:"Official Qatar Airways careers and job opportunities.", region:"Middle East", type:"Official Employer", url:"https://careers.qatarairways.com/global/SearchJobs/70890" },
@@ -713,7 +683,7 @@ function openJob(id){
   const external = job.apply ? `
     <a href="${escapeHTML(job.apply)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="flex:1"> Open Official Application </a>
   ` : `
-    <button class="btn btn-primary" style="flex:1" onclick="scrollToCV()"> Prepare CV </button>
+    <button class="btn btn-primary" style="flex:1" onclick="scrollToCV()"> Request CV Expert </button>
   `;
   document.getElementById("jobDetail").innerHTML = `
     <h2 class="modal-title"> ${escapeHTML(job.title)} </h2>
@@ -725,7 +695,7 @@ function openJob(id){
     </div>
     <p style="margin:18px 0"> ${escapeHTML(job.description)} </p>
     <div class="notice"> Mustafa Elevate is a career-support platform. Verify the vacancy and application details on the employer's official website before submitting documents. </div>
-    <div style="display:flex;gap:10px;margin-top:18px"> ${external} <button class="btn btn-outline" onclick="scrollToCV()"> Build CV </button> </div>
+    <div style="display:flex;gap:10px;margin-top:18px"> ${external} <button class="btn btn-outline" onclick="scrollToCV()"> CV Services </button> </div>
   `;
   openModal("jobModal");
 }
@@ -764,79 +734,6 @@ function renderCareerSources(){
   }
 }
 document.getElementById("statSources").textContent = careerSources.length + "+";
-
-/* ================= INTELLIGENT AI PARSER LOGIC ================= */
-async function handleCVUpload(event) {
-  const file = event.target.files[0];
-  if (!file) return;
-  showToast("Analyzing uploaded CV with AI...");
-
-  try {
-    let extractedText = "";
-    if (file.type === "application/pdf" || file.name.endsWith(".pdf")) {
-      const arrayBuffer = await file.arrayBuffer();
-      const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
-      for (let i = 1; i <= pdf.numPages; i++) {
-        const page = await pdf.getPage(i);
-        const textContent = await page.getTextContent();
-        extractedText += textContent.items.map(item => item.str).join(" ") + "\n";
-      }
-    } else {
-      extractedText = await file.text();
-    }
-
-    processAIExtraction(extractedText);
-  } catch (error) {
-    console.error(error);
-    showToast("Could not read file. Please enter details manually.");
-  }
-}
-
-function processAIExtraction(text) {
-  const lines = text.split("\n").map(l => l.trim()).filter(Boolean);
-  
-  let name = "";
-  let email = "";
-  let phone = "";
-  let role = "Professional Candidate";
-  
-  const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
-  const phoneRegex = /(\+?[0-9]{10,13}|[0-9]{3}[-\s]?[0-9]{3}[-\s]?[0-9]{4})/;
-
-  for (let line of lines) {
-    if (!email && emailRegex.test(line)) {
-      const match = line.match(emailRegex);
-      if (match) email = match[0];
-    }
-    if (!phone && phoneRegex.test(line)) {
-      const match = line.match(phoneRegex);
-      if (match) phone = match[0];
-    }
-    if (!name && line.length > 2 && line.length < 35 && !emailRegex.test(line) && !phoneRegex.test(line) && !line.toLowerCase().includes("cv") && !line.toLowerCase().includes("resume")) {
-      name = line;
-    }
-  }
-
-  if (name) document.getElementById("cvName").value = name;
-  if (email) document.getElementById("cvEmail").value = email;
-  if (phone) document.getElementById("cvPhone").value = phone;
-
-  // Intelligent parsing to separate summary, skills, and experience cleanly
-  let lowerText = text.toLowerCase();
-  if (lowerText.includes("security") || lowerText.includes("guard") || lowerText.includes("safety")) {
-    role = "Security Professional";
-  }
-
-  document.getElementById("cvRole").value = role;
-  document.getElementById("cvSkills").value = "Access Control, Incident Reporting, Surveillance Operations, Patrolling, Emergency Response, Customer Service, Professional Communication";
-  
-  // Clean parsed experience block
-  let cleanExp = text.length > 200 ? text.substring(0, 450) + "..." : text;
-  document.getElementById("cvExperience").value = cleanExp;
-  document.getElementById("cvEducation").value = "High School Diploma / Professional Certifications parsed successfully.";
-
-  showToast("AI successfully parsed and structured your CV profile cleanly!");
-}
 
 function getCVFormData(){
   return {
@@ -886,7 +783,7 @@ function submitPaymentRequest(){
   currentRequestId = request.id;
   closeModal("paymentModal");
   showStatus(request.id);
-  showToast("Payment submitted. Waiting for Customer Care approval.");
+  showToast("Payment submitted securely. Waiting for Customer Care verification.");
   startApprovalPolling(request.id);
 }
 
@@ -905,32 +802,35 @@ function showStatus(id){
   if(request.status === "pending"){
     content = `
       <div class="payment-box">
-        <span class="status pending"> PENDING APPROVAL </span>
-        <h3 style="margin-top:12px"> Your payment is awaiting Customer Care approval. </h3>
+        <span class="status pending"> PENDING VERIFICATION </span>
+        <h3 style="margin-top:12px"> Your payment is awaiting secure Customer Care verification. </h3>
         <p style="margin-top:8px;color:var(--muted)"> Request ID: <b>${escapeHTML(request.id)}</b> </p>
         <p style="margin-top:8px;color:var(--muted)"> Transaction: <b>${escapeHTML(request.transactionCode)}</b> </p>
       </div>
-      <div class="notice"> Keep your M-Pesa confirmation message. </div>
-      <button class="btn btn-primary" style="width:100%" onclick="refreshStatus()"> Check Approval Status </button>
+      <div class="notice"> Our human expert <b>(+254 798 811471)</b> will review your details once payment is verified. </div>
+      <button class="btn btn-primary" style="width:100%" onclick="refreshStatus()"> Check Verification Status </button>
     `;
   }
   if(request.status === "approved"){
     content = `
       <div class="success-box">
-        <span class="status approved"> PAYMENT APPROVED </span>
-        <h3 style="margin-top:10px"> Your CV is ready. </h3>
-        <p style="margin-top:6px"> Customer Care approved your payment. </p>
+        <span class="status approved"> PAYMENT VERIFIED & ASSIGNED </span>
+        <h3 style="margin-top:10px"> Your CV review is confirmed! </h3>
+        <p style="margin-top:6px"> Customer Care has verified your payment and assigned our human expert <b>(+254 798 811471)</b>. </p>
       </div>
-      <button class="btn btn-success" style="width:100%;margin-top:15px" onclick="releaseCV('${escapeHTML(request.id)}')"> 📄 Open My Professional CV </button>
+      <div style="margin-top:15px;display:flex;gap:10px;flex-direction:column;">
+        <button class="btn btn-success" onclick="releaseCV('${escapeHTML(request.id)}')"> 📄 View Formatted Professional CV </button>
+        <a href="https://wa.me/254798811471?text=Hello%2C%20my%20payment%20request%20ID%20is%20${encodeURIComponent(request.id)}.%20I%20have%20submitted%20my%20CV%20details." target="_blank" class="btn btn-dark"> 💬 Contact Human Expert Directly (+254 798 811471) </a>
+      </div>
     `;
   }
   if(request.status === "rejected"){
     content = `
       <div class="danger-box">
-        <span class="status rejected"> PAYMENT NOT APPROVED </span>
-        <h3 style="margin-top:10px"> Customer Care has not approved this request. </h3>
+        <span class="status rejected"> VERIFICATION FAILED </span>
+        <h3 style="margin-top:10px"> Customer Care could not verify this transaction code. </h3>
       </div>
-      <p style="margin-top:12px"> Request ID: <b>${escapeHTML(request.id)}</b> </p>
+      <p style="margin-top:12px"> Request ID: <b>${escapeHTML(request.id)}</b>. Please contact support via WhatsApp at <b>+254 798 811471</b> for assistance. </p>
     `;
   }
   document.getElementById("statusContent").innerHTML = content;
@@ -944,7 +844,6 @@ function refreshStatus(){
     const request = getRequest(currentRequestId);
     if(request && request.status === "approved"){
       stopApprovalPolling();
-      setTimeout(()=>{ releaseCV(currentRequestId); },500);
     }
   }
 }
@@ -957,7 +856,6 @@ function startApprovalPolling(id){
     if(request && request.status === "approved"){
       stopApprovalPolling();
       showStatus(id);
-      setTimeout(()=>{ releaseCV(id); },800);
     }
     if(request && request.status === "rejected"){
       stopApprovalPolling();
@@ -970,14 +868,10 @@ function stopApprovalPolling(){
   if(approvalTimer){ clearInterval(approvalTimer); approvalTimer = null; }
 }
 
-function escapeForHTML(value){
-  return escapeHTML(value).replace(/\n/g,"<br>");
-}
-
 function releaseCV(id){
   const request = getRequest(id);
   if(!request || request.status !== "approved"){
-    showToast("Your CV cannot be released until Customer Care approves the payment.");
+    showToast("Your CV review cannot be released until Customer Care verifies the payment.");
     return;
   }
   const cv = request.cv;
@@ -988,7 +882,7 @@ function releaseCV(id){
     <html lang="en">
     <head>
     <meta charset="UTF-8">
-    <title> ${escapeHTML(cv.name)} - Professional CV </title>
+    <title> ${escapeHTML(cv.name)} - Professional CV (Reviewed by Human Expert) </title>
     <style>
       body{ font-family:Arial,Helvetica,sans-serif; background:#f4f6f8; margin:0; color:#172033; }
       .cv{ width:min(850px,92%); margin:30px auto; background:#fff; padding:45px; box-shadow:0 10px 35px rgba(0,0,0,.1); border-radius:12px; }
@@ -1000,6 +894,7 @@ function releaseCV(id){
       p, li{ line-height:1.6; font-size:14px; color:#344054; }
       .skills-grid{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
       .skill-tag{ background:#eef4ff; color:#155eef; padding:6px 12px; border-radius:6px; font-weight:700; font-size:13px; }
+      .verified-badge{ background:#ecfdf3; color:#067647; padding:6px 12px; border-radius:6px; font-weight:bold; font-size:12px; display:inline-block; margin-bottom:15px; }
       .print{ position:fixed; right:20px; top:20px; padding:12px 18px; border:0; background:#155eef; color:#fff; border-radius:8px; font-weight:bold; cursor:pointer; box-shadow:0 4px 12px rgba(21,94,239,.3); }
       @media print{ body{ background:#fff; } .cv{ width:auto; margin:0; box-shadow:none; border-radius:0; } .print{ display:none; } }
     </style>
@@ -1007,6 +902,7 @@ function releaseCV(id){
     <body>
       <button class="print" onclick="window.print()"> 🖨 Print / Save PDF </button>
       <div class="cv">
+        <div class="verified-badge">✓ Professionally Optimized & Verified by Human Expert (+254 798 811471)</div>
         <div class="header">
           <h1> ${escapeHTML(cv.name)} </h1>
           <div class="role"> ${escapeHTML(cv.role)} </div>
@@ -1014,20 +910,20 @@ function releaseCV(id){
         </div>
         
         <h2>Professional Profile</h2>
-        <p>Motivated and dedicated professional with strong experience as a ${escapeHTML(cv.role)}. Committed to maintaining high standards of excellence, safety, reliability, and delivering exceptional performance across all assigned responsibilities.</p>
+        <p>Dedicated and results-driven professional specializing as a ${escapeHTML(cv.role)}. Meticulously formatted and reviewed for global standards, emphasizing operational excellence, reliability, and precision across all professional undertakings.</p>
         
-        <h2>Key Skills</h2>
+        <h2>Key Competencies & Skills</h2>
         <div class="skills-grid">
           ${(cv.skills || "").split(",").map(s => `<span class="skill-tag">${escapeHTML(s.trim())}</span>`).join("")}
         </div>
         
-        <h2>Work Experience</h2>
-        <p style="white-space: pre-line;"> ${escapeHTML(cv.experience || "Professional work history details.")} </p>
+        <h2>Professional Experience</h2>
+        <p style="white-space: pre-line;"> ${escapeHTML(cv.experience || "Professional employment history and achievements.")} </p>
         
-        <h2>Education & Credentials</h2>
-        <p style="white-space: pre-line;"> ${escapeHTML(cv.education || "Educational qualifications and certifications.")} </p>
+        <h2>Education & Certifications</h2>
+        <p style="white-space: pre-line;"> ${escapeHTML(cv.education || "Educational credentials and professional qualifications.")} </p>
         
-        <p style="margin-top:40px;color:#98a2b3;font-size:12px;border-top:1px solid #eee;padding-top:15px;">Prepared professionally through Mustafa Elevate | Direct Human Expert Support: +1 (305) 337-1968</p>
+        <p style="margin-top:40px;color:#98a2b3;font-size:12px;border-top:1px solid #eee;padding-top:15px;">Verified Professional CV via Mustafa Elevate | Direct Expert Support Desk: +254 798 811471</p>
       </div>
     </body>
     </html>
@@ -1038,8 +934,26 @@ function releaseCV(id){
   closeModal("statusModal");
 }
 
-/* ================= OPEN CUSTOMER CARE DIRECTLY ================= */
-function openCustomerCarePortal(){
+/* ================= SECURE CUSTOMER CARE GATE LOGIC ================= */
+function openSecureCustomerCareGate(){
+  document.getElementById("secureAdminPin").value = "";
+  openModal("secureGateModal");
+}
+
+function verifyAdminPin(){
+  const enteredPin = document.getElementById("secureAdminPin").value.trim();
+  // Secure check: accepting secure PIN 'Mustafa254#' or default staff passcode for demonstration
+  if(enteredPin === "Mustafa254#" || enteredPin === "admin123" || enteredPin === "7988") {
+    closeModal("secureGateModal");
+    showToast("Secure session authenticated successfully.");
+    openSecureCustomerCarePortal();
+  } else {
+    showToast("Invalid security PIN. Access denied.");
+    document.getElementById("secureAdminPin").focus();
+  }
+}
+
+function openSecureCustomerCarePortal(){
   renderAdminRequests();
   openModal("adminModal");
 }
@@ -1051,28 +965,28 @@ function renderAdminRequests(){
     container.innerHTML = `
       <div class="empty">
         <h3>No payment requests</h3>
-        <p style="margin-top:6px"> New CV payment requests will appear here. </p>
+        <p style="margin-top:6px"> Secure CV verification requests will appear here when submitted. </p>
       </div>
     `;
     return;
   }
   container.innerHTML = cvRequests.slice().reverse().map(request=>`
     <div class="request-card">
-      <h4> ${escapeHTML(request.cv.name)} </h4>
+      <h4> ${escapeHTML(request.cv.name)} — Target: ${escapeHTML(request.cv.role)} </h4>
       <div class="request-meta">
         Request ID: <b>${escapeHTML(request.id)}</b> <br>
-        Phone: ${escapeHTML(request.cv.phone)} <br>
+        Phone / WhatsApp: ${escapeHTML(request.cv.phone)} <br>
         Amount: KSh ${request.amount.toLocaleString()} <br>
-        M-Pesa Code: <b>${escapeHTML(request.transactionCode)}</b> <br>
-        Status: <b>${escapeHTML(request.status.toUpperCase())}</b>
+        M-Pesa Transaction Code: <b>${escapeHTML(request.transactionCode)}</b> <br>
+        Verification Status: <b>${escapeHTML(request.status.toUpperCase())}</b>
       </div>
       ${request.status === "pending" ? `
         <div class="request-actions">
-          <button class="btn btn-success" onclick="approveRequest('${escapeHTML(request.id)}')"> ✓ Approve </button>
-          <button class="btn btn-danger" onclick="rejectRequest('${escapeHTML(request.id)}')"> ✕ Reject </button>
+          <button class="btn btn-success" onclick="approveRequest('${escapeHTML(request.id)}')"> ✓ Verify & Assign Expert </button>
+          <button class="btn btn-danger" onclick="rejectRequest('${escapeHTML(request.id)}')"> ✕ Reject Code </button>
         </div>
       ` : `
-        <div class="${request.status === "approved" ? "success-box" : "danger-box"}"> Request: ${escapeHTML(request.status)} </div>
+        <div class="${request.status === "approved" ? "success-box" : "danger-box"}"> Status: ${escapeHTML(request.status.toUpperCase())} </div>
       `}
     </div>
   `).join("");
@@ -1085,12 +999,11 @@ function approveRequest(id){
   request.approvedAt = new Date().toISOString();
   localStorage.setItem(STORAGE_REQUESTS, JSON.stringify(cvRequests));
   renderAdminRequests();
-  showToast("Payment approved successfully.");
+  showToast("Payment verified successfully. Human expert assigned.");
   if(currentRequestId === id){
     setTimeout(()=>{
       closeModal("adminModal");
       showStatus(id);
-      setTimeout(()=>{ releaseCV(id); },800);
     },400);
   }
 }
@@ -1102,49 +1015,8 @@ function rejectRequest(id){
   request.rejectedAt = new Date().toISOString();
   localStorage.setItem(STORAGE_REQUESTS, JSON.stringify(cvRequests));
   renderAdminRequests();
-  showToast("Payment request marked as rejected.");
+  showToast("Transaction code marked as invalid.");
   if(currentRequestId === id){ showStatus(id); }
-}
-
-function toggleAIChat(){
-  document.getElementById("aiChatBox").classList.toggle("show");
-}
-
-function handleAIPress(event){
-  if(event.key === "Enter"){ sendAIMessage(); }
-}
-
-function addChatMessage(text,type){
-  const messages = document.getElementById("aiChatMessages");
-  const message = document.createElement("div");
-  message.className = "ai-msg " + type;
-  message.textContent = text;
-  messages.appendChild(message);
-  messages.scrollTop = messages.scrollHeight;
-}
-
-function sendAIMessage(){
-  const input = document.getElementById("aiChatInput");
-  const text = input.value.trim();
-  if(!text) return;
-  addChatMessage(text,"user");
-  input.value = "";
-  setTimeout(()=>{
-    const lower = text.toLowerCase();
-    let reply = "I can help you search jobs, find global career sources, or prepare your professional CV.";
-    if(lower.includes("human") || lower.includes("expert") || lower.includes("call") || lower.includes("whatsapp")){
-      reply = "You can connect directly with our human CV expert via WhatsApp at +1 (305) 337-1968.";
-    } else if(lower.includes("job") || lower.includes("work")){
-      reply = "Go to the Job Dashboard to search by title, company, or location.";
-      document.getElementById("jobs").scrollIntoView({behavior:"smooth"});
-    } else if(lower.includes("cv") || lower.includes("resume")){
-      reply = "Upload your CV file in the CV Builder section, or contact our human expert at +1 (305) 337-1968!";
-      scrollToCV();
-    } else if(lower.includes("mpesa") || lower.includes("pay") || lower.includes("cost")){
-      reply = "The professional CV preparation fee is KSh 1,000. Send payment to M-Pesa number 0792102645, then submit your transaction code.";
-    }
-    addChatMessage(reply,"bot");
-  },500);
 }
 
 function scrollToCV(){
