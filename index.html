@@ -2,12 +2,24 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
 <meta name="theme-color" content="#155eef">
-<meta name="description" content="Mustafa Elevate - Global jobs, career opportunities and professional CV preparation.">
+
+<meta name="description"
+      content="Mustafa Elevate - Global jobs, career opportunities, professional CV preparation and secure customer support.">
+
+<meta name="keywords"
+      content="jobs, careers, Kenya jobs, global jobs, Qatar jobs, driver jobs, security jobs, aviation jobs, CV, employment">
+
+<meta name="author" content="Mustafa Elevate">
+
 <title>Mustafa Elevate | Global Jobs & Career Platform</title>
 
 <style>
+
 :root{
     --primary:#155eef;
     --primary2:#0b4dcc;
@@ -15,7 +27,7 @@
     --text:#101828;
     --muted:#667085;
     --bg:#f5f7fb;
-    --card:#fff;
+    --card:#ffffff;
     --line:#e4e7ec;
     --success:#079455;
     --warning:#f79009;
@@ -35,8 +47,8 @@ html{
 }
 
 body{
-    font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,
-    "Segoe UI",Roboto,Arial,sans-serif;
+    font-family:Inter,system-ui,-apple-system,
+    BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
     color:var(--text);
     background:var(--bg);
     line-height:1.55;
@@ -46,12 +58,20 @@ body.modal-open{
     overflow:hidden;
 }
 
-button,input,select,textarea{
+button,
+input,
+select,
+textarea{
     font:inherit;
 }
 
 button{
     cursor:pointer;
+}
+
+button:disabled{
+    cursor:not-allowed;
+    opacity:.55;
 }
 
 a{
@@ -64,7 +84,9 @@ a{
     margin:auto;
 }
 
-/* HEADER */
+/* =========================================================
+   HEADER
+========================================================= */
 
 header{
     position:sticky;
@@ -88,6 +110,7 @@ header{
     font-weight:900;
     letter-spacing:-.8px;
     color:var(--navy);
+    white-space:nowrap;
 }
 
 .brand span{
@@ -133,6 +156,10 @@ header{
     box-shadow:0 5px 15px rgba(21,94,239,.2);
 }
 
+.btn-primary:hover{
+    background:var(--primary2);
+}
+
 .btn-outline{
     background:#fff;
     border:1px solid #cfd6e4;
@@ -154,10 +181,9 @@ header{
     color:#fff;
 }
 
-.btn:disabled{
-    opacity:.55;
-    cursor:not-allowed;
-    transform:none;
+.btn-warning{
+    background:var(--warning);
+    color:#fff;
 }
 
 .menu{
@@ -165,9 +191,12 @@ header{
     border:0;
     background:none;
     font-size:28px;
+    color:var(--navy);
 }
 
-/* HERO */
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero{
     background:linear-gradient(
@@ -180,6 +209,17 @@ header{
     padding:72px 0 82px;
     position:relative;
     overflow:hidden;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:420px;
+    height:420px;
+    border-radius:50%;
+    background:rgba(255,255,255,.05);
+    right:-120px;
+    top:-150px;
 }
 
 .hero-grid{
@@ -282,6 +322,7 @@ header{
     padding:12px 13px;
     outline:none;
     background:#fff;
+    color:var(--text);
 }
 
 .field:focus{
@@ -304,7 +345,14 @@ header{
     color:#344054;
 }
 
-/* SECTIONS */
+.quick button:hover{
+    background:#eef4ff;
+    color:var(--primary);
+}
+
+/* =========================================================
+   SECTIONS
+========================================================= */
 
 section{
     padding:65px 0;
@@ -328,18 +376,15 @@ section{
     max-width:700px;
 }
 
-/* JOBS */
+/* =========================================================
+   JOBS
+========================================================= */
 
 .filters{
-    display:flex;
-    flex-wrap:wrap;
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr auto;
     gap:9px;
     margin-bottom:23px;
-}
-
-.filters .field{
-    width:auto;
-    min-width:150px;
 }
 
 .job-grid{
@@ -390,6 +435,11 @@ section{
     border-radius:99px;
     font-weight:800;
     height:max-content;
+}
+
+.external{
+    background:#f2f4f7;
+    color:#475467;
 }
 
 .job h3{
@@ -455,7 +505,9 @@ section{
     color:var(--muted);
 }
 
-/* GLOBAL CAREERS */
+/* =========================================================
+   GLOBAL CAREERS
+========================================================= */
 
 .career-section{
     background:#fff;
@@ -528,7 +580,9 @@ section{
     font-weight:800;
 }
 
-/* SERVICES */
+/* =========================================================
+   SERVICES
+========================================================= */
 
 .service-grid{
     display:grid;
@@ -570,7 +624,9 @@ section{
     font-weight:800;
 }
 
-/* CV */
+/* =========================================================
+   CV
+========================================================= */
 
 .cv-section{
     background:#eef4ff;
@@ -620,7 +676,9 @@ section{
     grid-column:1/-1;
 }
 
-/* PAYMENT */
+/* =========================================================
+   PAYMENT
+========================================================= */
 
 .payment-box{
     border:2px solid #dbe7ff;
@@ -674,7 +732,9 @@ section{
     color:#b42318;
 }
 
-/* CTA */
+/* =========================================================
+   CTA
+========================================================= */
 
 .cta{
     background:var(--navy);
@@ -692,7 +752,9 @@ section{
     margin:10px auto 22px;
 }
 
-/* FOOTER */
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer{
     background:#070f25;
@@ -735,13 +797,15 @@ footer a:hover{
     font-size:13px;
 }
 
-/* MODALS */
+/* =========================================================
+   MODALS
+========================================================= */
 
 .modal{
     display:none;
     position:fixed;
     inset:0;
-    background:rgba(3,10,25,.68);
+    background:rgba(3,10,25,.72);
     z-index:2000;
     padding:20px;
     overflow:auto;
@@ -811,6 +875,30 @@ footer a:hover{
     color:#b42318;
 }
 
+.info-box{
+    padding:15px;
+    border-radius:12px;
+    background:#eff8ff;
+    border:1px solid #b2ddff;
+    color:#175cd3;
+}
+
+.security-box{
+    padding:16px;
+    border-radius:14px;
+    background:#f8fafc;
+    border:1px solid var(--line);
+    margin:15px 0;
+}
+
+.security-box ul{
+    margin:10px 0 0 20px;
+}
+
+.security-box li{
+    margin:5px 0;
+}
+
 .request-card{
     border:1px solid var(--line);
     border-radius:14px;
@@ -839,6 +927,102 @@ footer a:hover{
     padding:9px;
 }
 
+.otp-input{
+    width:100%;
+    text-align:center;
+    font-size:30px;
+    font-weight:900;
+    letter-spacing:10px;
+    padding:15px;
+    border:2px solid #d0d5dd;
+    border-radius:12px;
+    outline:none;
+}
+
+.otp-input:focus{
+    border-color:var(--primary);
+    box-shadow:0 0 0 4px rgba(21,94,239,.1);
+}
+
+.otp-methods{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin:15px 0;
+}
+
+.otp-method{
+    border:1px solid var(--line);
+    background:#fff;
+    border-radius:14px;
+    padding:15px;
+    text-align:left;
+}
+
+.otp-method:hover{
+    border-color:var(--primary);
+}
+
+.otp-method strong{
+    display:block;
+    margin-bottom:4px;
+}
+
+.otp-method small{
+    color:var(--muted);
+}
+
+.security-header{
+    text-align:center;
+    padding:5px 0 15px;
+}
+
+.security-icon{
+    width:70px;
+    height:70px;
+    margin:0 auto 15px;
+    border-radius:50%;
+    background:#eef4ff;
+    color:var(--primary);
+    display:grid;
+    place-items:center;
+    font-size:32px;
+}
+
+.countdown{
+    text-align:center;
+    font-weight:800;
+    color:var(--warning);
+    margin:12px 0;
+}
+
+.dashboard-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-bottom:20px;
+}
+
+.dashboard-user{
+    background:#f8fafc;
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:10px 13px;
+    font-size:13px;
+}
+
+.dashboard-actions{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+/* =========================================================
+   TOAST
+========================================================= */
+
 .toast{
     position:fixed;
     right:18px;
@@ -857,7 +1041,9 @@ footer a:hover{
     display:block;
 }
 
-/* AI */
+/* =========================================================
+   AI
+========================================================= */
 
 .ai-float-btn{
     position:fixed;
@@ -987,7 +1173,25 @@ footer a:hover{
     font-weight:700;
 }
 
-/* RESPONSIVE */
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1100px){
+
+    .career-grid,
+    .service-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .filters{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .filters .clear-filter{
+        grid-column:1/-1;
+    }
+}
 
 @media(max-width:950px){
 
@@ -997,11 +1201,6 @@ footer a:hover{
     }
 
     .job-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .service-grid,
-    .career-grid{
         grid-template-columns:1fr 1fr;
     }
 
@@ -1060,6 +1259,14 @@ footer a:hover{
         grid-template-columns:1fr;
     }
 
+    .filters{
+        grid-template-columns:1fr;
+    }
+
+    .filters .clear-filter{
+        grid-column:auto;
+    }
+
     .section-head{
         align-items:flex-start;
         flex-direction:column;
@@ -1078,6 +1285,10 @@ footer a:hover{
         padding:20px;
     }
 
+    .otp-methods{
+        grid-template-columns:1fr;
+    }
+
     .ai-float-btn{
         right:15px;
         bottom:15px;
@@ -1089,934 +1300,1597 @@ footer a:hover{
         width:calc(100vw - 20px);
     }
 }
+
+@media(max-width:420px){
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .brand{
+        font-size:21px;
+    }
+
+    .hero h1{
+        font-size:40px;
+    }
+
+    .cv-box{
+        padding:22px;
+    }
+
+    .otp-input{
+        font-size:24px;
+        letter-spacing:6px;
+    }
+}
+
 </style>
 </head>
 
 <body>
 
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
 <header>
-    <div class="container nav">
 
-        <a class="brand" href="#home">
-            Mustafa <span>Elevate</span>
-        </a>
+<div class="container nav">
 
-        <nav class="navlinks" id="navLinks">
-            <a href="#jobs" onclick="closeMobileMenu()">Find Jobs</a>
-            <a href="#global" onclick="closeMobileMenu()">Global Careers</a>
-            <a href="#cv" onclick="closeMobileMenu()">CV Builder</a>
-            <a href="#services" onclick="closeMobileMenu()">Services</a>
-            <a href="#about" onclick="closeMobileMenu()">About</a>
-        </nav>
+<a class="brand" href="#home">
+    Mustafa <span>Elevate</span>
+</a>
 
-        <div class="nav-actions">
-            <button class="btn btn-outline" onclick="openModal('loginModal')">
-                Sign In
-            </button>
+<nav class="navlinks" id="navLinks">
 
-            <button class="btn btn-primary" onclick="scrollToCV()">
-                Get CV Help
-            </button>
-        </div>
+<a href="#jobs" onclick="closeMobileMenu()">
+    Find Jobs
+</a>
 
-        <button class="menu" onclick="toggleMenu()" aria-label="Open menu">
-            ☰
-        </button>
+<a href="#global" onclick="closeMobileMenu()">
+    Global Careers
+</a>
 
-    </div>
+<a href="#cv" onclick="closeMobileMenu()">
+    CV Builder
+</a>
+
+<a href="#services" onclick="closeMobileMenu()">
+    Services
+</a>
+
+<a href="#about" onclick="closeMobileMenu()">
+    About
+</a>
+
+</nav>
+
+<div class="nav-actions">
+
+<button
+    type="button"
+    class="btn btn-outline"
+    onclick="openModal('loginModal')">
+
+    Sign In
+
+</button>
+
+<button
+    type="button"
+    class="btn btn-primary"
+    onclick="scrollToCV()">
+
+    Get CV Help
+
+</button>
+
+</div>
+
+<button
+    type="button"
+    class="menu"
+    onclick="toggleMenu()"
+    aria-label="Open menu"
+    aria-expanded="false"
+    id="menuButton">
+
+    ☰
+
+</button>
+
+</div>
+
 </header>
+
 
 <main>
 
-<!-- HERO -->
+<!-- =========================================================
+     HERO
+========================================================= -->
 
 <section class="hero" id="home">
 
-    <div class="container hero-grid">
+<div class="container hero-grid">
 
-        <div>
+<div>
 
-            <div class="badge">
-                🌍 GLOBAL CAREER PLATFORM
-            </div>
+<div class="badge">
+    🌍 GLOBAL CAREER PLATFORM
+</div>
 
-            <h1>
-                Find the right job.<br>
-                <span>Build a stronger career.</span>
-            </h1>
+<h1>
+    Find the right job.<br>
+    <span>Build a stronger career.</span>
+</h1>
 
-            <p>
-                Discover opportunities from Kenya and around the world,
-                explore official employer career pages and prepare a
-                professional CV for your applications.
-            </p>
+<p>
+    Discover opportunities from Kenya and around the world,
+    explore official employer career pages and prepare a
+    professional CV for your applications.
+</p>
 
-            <div class="hero-buttons">
+<div class="hero-buttons">
 
-                <a href="#jobs" class="btn btn-primary">
-                    🔎 Explore Jobs
-                </a>
+<a href="#jobs"
+   class="btn btn-primary">
 
-                <a href="#global"
-                   class="btn btn-outline"
-                   style="color:var(--primary)">
-                    🌍 Global Careers
-                </a>
+    🔎 Explore Jobs
 
-            </div>
+</a>
 
-            <div class="stats">
+<a href="#global"
+   class="btn btn-outline"
+   style="color:var(--primary)">
 
-                <div class="stat">
-                    <strong id="statJobs">0+</strong>
-                    <small>Jobs listed</small>
-                </div>
+    🌍 Global Careers
 
-                <div class="stat">
-                    <strong id="statSources">0+</strong>
-                    <small>Career sources</small>
-                </div>
+</a>
 
-                <div class="stat">
-                    <strong>1000 KES</strong>
-                    <small>Professional CV</small>
-                </div>
+</div>
 
-            </div>
+<div class="stats">
 
-        </div>
+<div class="stat">
 
-        <div class="hero-card">
+<strong id="statJobs">
+    0+
+</strong>
 
-            <h3>Find your next opportunity</h3>
+<small>
+    Jobs listed
+</small>
 
-            <p>
-                Search by position, company, country or city.
-            </p>
+</div>
 
-            <div class="search-box">
+<div class="stat">
 
-                <input
-                    id="heroKeyword"
-                    class="field"
-                    placeholder="Job title or company"
-                >
+<strong id="statSources">
+    0+
+</strong>
 
-                <input
-                    id="heroLocation"
-                    class="field"
-                    placeholder="Country or city"
-                >
+<small>
+    Career sources
+</small>
 
-                <button class="btn btn-primary" onclick="searchJobs()">
-                    Search
-                </button>
+</div>
 
-            </div>
+<div class="stat">
 
-            <div class="quick">
+<strong>
+    1000 KES
+</strong>
 
-                <button onclick="quickSearch('Driver')">
-                    🚗 Driver
-                </button>
+<small>
+    Professional CV
+</small>
 
-                <button onclick="quickSearch('Security')">
-                    🛡 Security
-                </button>
+</div>
 
-                <button onclick="quickSearch('Aviation')">
-                    ✈ Aviation
-                </button>
+</div>
 
-                <button onclick="quickSearch('Remote')">
-                    💻 Remote
-                </button>
+</div>
 
-                <button onclick="quickSearch('Hospitality')">
-                    🏨 Hospitality
-                </button>
 
-            </div>
+<div class="hero-card">
 
-        </div>
+<h3>
+    Find your next opportunity
+</h3>
 
-    </div>
+<p>
+    Search by position, company, country or city.
+</p>
+
+<form
+    id="heroSearchForm"
+    class="search-box">
+
+<input
+    id="heroKeyword"
+    class="field"
+    placeholder="Job title or company"
+    autocomplete="off">
+
+<input
+    id="heroLocation"
+    class="field"
+    placeholder="Country or city"
+    autocomplete="off">
+
+<button
+    type="submit"
+    class="btn btn-primary">
+
+    Search
+
+</button>
+
+</form>
+
+<div class="quick">
+
+<button type="button"
+        onclick="quickSearch('Driver')">
+    🚗 Driver
+</button>
+
+<button type="button"
+        onclick="quickSearch('Security')">
+    🛡 Security
+</button>
+
+<button type="button"
+        onclick="quickSearch('Aviation')">
+    ✈ Aviation
+</button>
+
+<button type="button"
+        onclick="quickSearch('Remote')">
+    💻 Remote
+</button>
+
+<button type="button"
+        onclick="quickSearch('Hospitality')">
+    🏨 Hospitality
+</button>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- JOB DASHBOARD -->
+<!-- =========================================================
+     JOB DASHBOARD
+========================================================= -->
 
 <section id="jobs">
 
-    <div class="container">
+<div class="container">
 
-        <div class="section-head">
+<div class="section-head">
 
-            <div>
-                <h2>Job Dashboard</h2>
+<div>
 
-                <p>
-                    Browse opportunities listed on Mustafa Elevate.
-                    For external jobs, always apply through the employer's
-                    official career website.
-                </p>
-            </div>
+<h2>
+    Job Dashboard
+</h2>
 
-            <button class="btn btn-outline"
-                    onclick="openModal('adminModal')">
-                🔐 Customer Care
-            </button>
+<p>
+    Browse opportunities listed on Mustafa Elevate.
+    For external jobs, always apply through the employer's
+    official career website.
+</p>
 
-        </div>
+</div>
 
-        <div class="filters">
+<button
+    type="button"
+    class="btn btn-dark"
+    onclick="openCustomerCare()">
 
-            <input
-                id="keyword"
-                class="field"
-                placeholder="Search jobs..."
-                oninput="renderJobs()"
-            >
+    🔐 Customer Care
 
-            <select
-                id="country"
-                class="field"
-                onchange="renderJobs()">
+</button>
 
-                <option value="">
-                    All locations
-                </option>
-
-            </select>
-
-            <select
-                id="category"
-                class="field"
-                onchange="renderJobs()">
-
-                <option value="">
-                    All categories
-                </option>
-
-                <option>Aviation</option>
-                <option>Driving</option>
-                <option>Security</option>
-                <option>Government</option>
-                <option>Hospitality</option>
-                <option>Healthcare</option>
-                <option>Technology</option>
-                <option>Remote</option>
-
-            </select>
-
-            <select
-                id="type"
-                class="field"
-                onchange="renderJobs()">
-
-                <option value="">
-                    All job types
-                </option>
-
-                <option>Full Time</option>
-                <option>Part Time</option>
-                <option>Contract</option>
-                <option>Remote</option>
-
-            </select>
-
-        </div>
-
-        <div id="jobGrid" class="job-grid"></div>
-
-    </div>
-
-</section>
+</div>
 
 
-<!-- GLOBAL CAREERS -->
+<div class="filters">
 
-<section class="career-section" id="global">
+<input
+    id="keyword"
+    class="field"
+    placeholder="Search jobs, companies, cities..."
+    autocomplete="off">
 
-    <div class="container">
+<select
+    id="country"
+    class="field">
 
-        <div class="section-head">
+<option value="">
+    All locations
+</option>
 
-            <div>
+</select>
 
-                <h2>Global Career Sources</h2>
+<select
+    id="category"
+    class="field">
 
-                <p>
-                    Connect directly to official employer career pages
-                    and major international job platforms.
-                </p>
+<option value="">
+    All categories
+</option>
 
-            </div>
+<option>Aviation</option>
+<option>Driving</option>
+<option>Security</option>
+<option>Government</option>
+<option>Hospitality</option>
+<option>Healthcare</option>
+<option>Technology</option>
+<option>Remote</option>
 
-        </div>
+</select>
 
-        <div class="career-toolbar">
+<select
+    id="type"
+    class="field">
 
-            <input
-                id="careerSearch"
-                class="field"
-                placeholder="Search career sources..."
-                oninput="renderCareerSources()"
-            >
+<option value="">
+    All job types
+</option>
 
-            <select
-                id="careerRegion"
-                class="field"
-                onchange="renderCareerSources()">
+<option>Full Time</option>
+<option>Part Time</option>
+<option>Contract</option>
+<option>Remote</option>
 
-                <option value="">All regions</option>
-                <option>Africa</option>
-                <option>Middle East</option>
-                <option>Europe</option>
-                <option>North America</option>
-                <option>Asia-Pacific</option>
-                <option>Worldwide</option>
+</select>
 
-            </select>
+<button
+    type="button"
+    class="btn btn-outline clear-filter"
+    onclick="clearJobSearch()">
 
-        </div>
+    Clear
 
-        <div id="careerGrid" class="career-grid"></div>
+</button>
 
-    </div>
+</div>
+
+
+<div id="jobGrid"
+     class="job-grid">
+</div>
+
+</div>
 
 </section>
 
 
-<!-- SERVICES -->
+<!-- =========================================================
+     GLOBAL CAREERS
+========================================================= -->
+
+<section class="career-section"
+         id="global">
+
+<div class="container">
+
+<div class="section-head">
+
+<div>
+
+<h2>
+    Global Career Sources
+</h2>
+
+<p>
+    Connect directly to official employer career pages
+    and major international job platforms.
+</p>
+
+</div>
+
+</div>
+
+<div class="career-toolbar">
+
+<input
+    id="careerSearch"
+    class="field"
+    placeholder="Search career sources..."
+    autocomplete="off">
+
+<select
+    id="careerRegion"
+    class="field">
+
+<option value="">
+    All regions
+</option>
+
+<option>Africa</option>
+<option>Middle East</option>
+<option>Europe</option>
+<option>North America</option>
+<option>Asia-Pacific</option>
+<option>Worldwide</option>
+
+</select>
+
+</div>
+
+<div id="careerGrid"
+     class="career-grid">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     SERVICES
+========================================================= -->
 
 <section id="services">
 
-    <div class="container">
+<div class="container">
 
-        <div class="section-head">
+<div class="section-head">
 
-            <div>
+<div>
 
-                <h2>Career Support</h2>
+<h2>
+    Career Support
+</h2>
 
-                <p>
-                    Tools to help you move from job search to
-                    professional application.
-                </p>
+<p>
+    Tools to help you move from job search to
+    professional application.
+</p>
 
-            </div>
+</div>
 
-        </div>
-
-        <div class="service-grid">
-
-            <div class="service">
-                <div class="icon">⚡</div>
-                <h3>AI CV Preparation</h3>
-                <p>
-                    Prepare an ATS-friendly structured professional CV.
-                </p>
-                <a href="#cv">Build CV →</a>
-            </div>
-
-            <div class="service">
-                <div class="icon">👤</div>
-                <h3>Human CV Expert</h3>
-                <p>
-                    Request human assistance with CV preparation.
-                </p>
-                <a href="#cv">Get help →</a>
-            </div>
-
-            <div class="service">
-                <div class="icon">🎯</div>
-                <h3>Job Matching</h3>
-                <p>
-                    Search opportunities by title, country and category.
-                </p>
-                <a href="#jobs">Find jobs →</a>
-            </div>
-
-            <div class="service">
-                <div class="icon">📄</div>
-                <h3>Application Support</h3>
-                <p>
-                    Prepare your information before applying.
-                </p>
-                <a href="#jobs">Apply →</a>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
+</div>
 
 
-<!-- CV -->
+<div class="service-grid">
 
-<section class="cv-section" id="cv">
+<div class="service">
 
-    <div class="container">
+<div class="icon">
+    ⚡
+</div>
 
-        <div class="cv-box">
+<h3>
+    AI CV Preparation
+</h3>
 
-            <div>
+<p>
+    Prepare an ATS-friendly structured professional CV.
+</p>
 
-                <div
-                    class="badge"
-                    style="background:#e6efff;color:#174ea6;border:0">
+<a href="#cv">
+    Build CV →
+</a>
 
-                    APPLICATION & CV ASSISTANT
-
-                </div>
-
-                <h2 style="font-size:36px;line-height:1.15;margin-top:10px">
-                    Build a CV that presents your experience professionally.
-                </h2>
-
-                <p style="color:var(--muted);margin-top:12px">
-
-                    Professional CV preparation costs
-                    <b>1000 KES</b>.
-
-                    Payment is submitted for Customer Care approval.
-                    Your CV is released only after approval.
-
-                </p>
-
-                <div class="cv-list">
-
-                    <div>
-                        <span class="check">✓</span>
-                        ATS-friendly professional structure
-                    </div>
-
-                    <div>
-                        <span class="check">✓</span>
-                        Tailored to your target role
-                    </div>
-
-                    <div>
-                        <span class="check">✓</span>
-                        M-Pesa payment submission
-                    </div>
-
-                    <div>
-                        <span class="check">✓</span>
-                        Customer Care approval
-                    </div>
-
-                    <div>
-                        <span class="check">✓</span>
-                        CV automatically released after approval
-                    </div>
-
-                </div>
-
-            </div>
+</div>
 
 
-            <div class="cv-form">
+<div class="service">
 
-                <h3>Quick CV Starter — 1000 KES</h3>
+<div class="icon">
+    👤
+</div>
 
-                <p style="color:var(--muted);font-size:13px;margin:5px 0 15px">
-                    Complete your details before proceeding to payment.
-                </p>
+<h3>
+    Human CV Expert
+</h3>
 
-                <div class="form-grid">
+<p>
+    Request human assistance with CV preparation.
+</p>
 
-                    <input
-                        id="cvName"
-                        class="field"
-                        placeholder="Full name"
-                        autocomplete="name"
-                    >
+<a href="#cv">
+    Get help →
+</a>
 
-                    <input
-                        id="cvRole"
-                        class="field"
-                        placeholder="Target job title"
-                    >
+</div>
 
-                    <input
-                        id="cvEmail"
-                        class="field"
-                        placeholder="Email"
-                        type="email"
-                        autocomplete="email"
-                    >
 
-                    <input
-                        id="cvPhone"
-                        class="field"
-                        placeholder="Phone / WhatsApp"
-                        autocomplete="tel"
-                    >
+<div class="service">
 
-                    <textarea
-                        id="cvSkills"
-                        class="field full"
-                        rows="3"
-                        placeholder="Key skills"></textarea>
+<div class="icon">
+    🎯
+</div>
 
-                    <textarea
-                        id="cvExperience"
-                        class="field full"
-                        rows="4"
-                        placeholder="Work experience"></textarea>
+<h3>
+    Job Matching
+</h3>
 
-                    <textarea
-                        id="cvEducation"
-                        class="field full"
-                        rows="3"
-                        placeholder="Education"></textarea>
+<p>
+    Search opportunities by title, country and category.
+</p>
 
-                    <button
-                        class="btn btn-primary full"
-                        onclick="startCVPayment()">
+<a href="#jobs">
+    Find jobs →
+</a>
 
-                        Continue to M-Pesa Payment
+</div>
 
-                    </button>
 
-                </div>
+<div class="service">
 
-            </div>
+<div class="icon">
+    📄
+</div>
 
-        </div>
+<h3>
+    Application Support
+</h3>
 
-    </div>
+<p>
+    Prepare your information before applying.
+</p>
+
+<a href="#jobs">
+    Apply →
+</a>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- ABOUT -->
+<!-- =========================================================
+     CV SECTION
+========================================================= -->
+
+<section class="cv-section"
+         id="cv">
+
+<div class="container">
+
+<div class="cv-box">
+
+<div>
+
+<div class="badge"
+     style="background:#e6efff;color:#174ea6;border:0">
+
+    APPLICATION & CV ASSISTANT
+
+</div>
+
+<h2 style="font-size:36px;line-height:1.15;margin-top:10px">
+
+    Build a CV that presents your experience professionally.
+
+</h2>
+
+<p style="color:var(--muted);margin-top:12px">
+
+    Professional CV preparation costs
+    <b>1000 KES</b>.
+    Payment is submitted for secure Customer Care approval.
+    Your CV is released only after approval.
+
+</p>
+
+
+<div class="cv-list">
+
+<div>
+<span class="check">✓</span>
+ATS-friendly professional structure
+</div>
+
+<div>
+<span class="check">✓</span>
+Tailored to your target role
+</div>
+
+<div>
+<span class="check">✓</span>
+M-Pesa payment submission
+</div>
+
+<div>
+<span class="check">✓</span>
+Secure Customer Care approval
+</div>
+
+<div>
+<span class="check">✓</span>
+CV released after approval
+</div>
+
+</div>
+
+</div>
+
+
+<div class="cv-form">
+
+<h3>
+    Quick CV Starter — 1000 KES
+</h3>
+
+<p style="color:var(--muted);font-size:13px;margin:5px 0 15px">
+
+    Complete your details before proceeding to payment.
+
+</p>
+
+
+<div class="form-grid">
+
+<input
+    id="cvName"
+    class="field"
+    placeholder="Full name"
+    autocomplete="name">
+
+<input
+    id="cvRole"
+    class="field"
+    placeholder="Target job title">
+
+<input
+    id="cvEmail"
+    class="field"
+    placeholder="Email"
+    type="email"
+    autocomplete="email">
+
+<input
+    id="cvPhone"
+    class="field"
+    placeholder="Phone / WhatsApp"
+    autocomplete="tel">
+
+<textarea
+    id="cvSkills"
+    class="field full"
+    rows="3"
+    placeholder="Key skills"></textarea>
+
+<textarea
+    id="cvExperience"
+    class="field full"
+    rows="4"
+    placeholder="Work experience"></textarea>
+
+<textarea
+    id="cvEducation"
+    class="field full"
+    rows="3"
+    placeholder="Education"></textarea>
+
+<button
+    type="button"
+    class="btn btn-primary full"
+    onclick="startCVPayment()">
+
+    Continue to M-Pesa Payment
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
 
 <section id="about">
 
-    <div class="container">
+<div class="container">
 
-        <div class="section-head">
+<div class="section-head">
 
-            <div>
+<div>
 
-                <h2>About Mustafa Elevate</h2>
+<h2>
+    About Mustafa Elevate
+</h2>
 
-                <p>
-                    A career-support platform helping job seekers
-                    discover opportunities and prepare professional applications.
-                </p>
+<p>
+    A career-support platform helping job seekers
+    discover opportunities and prepare professional applications.
+</p>
 
-            </div>
+</div>
 
-        </div>
+</div>
 
-        <div class="service" style="max-width:900px">
 
-            <h3>Apply with confidence</h3>
+<div class="service"
+     style="max-width:900px">
 
-            <p style="margin-top:8px;color:var(--muted)">
+<h3>
+    Apply with confidence
+</h3>
 
-                Mustafa Elevate provides job discovery and career-support
-                services. We connect job seekers with official career
-                sources. Applicants should verify vacancies and complete
-                applications on the employer's official website.
+<p style="margin-top:8px;color:var(--muted)">
 
-            </p>
+    Mustafa Elevate provides job discovery and career-support
+    services. We connect job seekers with official career
+    sources. Applicants should verify vacancies and complete
+    applications on the employer's official website.
 
-        </div>
+</p>
 
-    </div>
+</div>
+
+</div>
 
 </section>
 
 
-<!-- CTA -->
+<!-- =========================================================
+     CTA
+========================================================= -->
 
 <section class="cta">
 
-    <div class="container">
+<div class="container">
 
-        <h2>Ready for your next career opportunity?</h2>
+<h2>
+    Ready for your next career opportunity?
+</h2>
 
-        <p>
-            Search global career sources or prepare your professional CV.
-        </p>
+<p>
+    Search global career sources or prepare your professional CV.
+</p>
 
-        <button class="btn btn-primary"
-                onclick="scrollToCV()">
+<button
+    type="button"
+    class="btn btn-primary"
+    onclick="scrollToCV()">
 
-            Build My CV
+    Build My CV
 
-        </button>
+</button>
 
-    </div>
+</div>
 
 </section>
 
 </main>
 
 
-<!-- FOOTER -->
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
 <footer>
 
-    <div class="container footer-grid">
+<div class="container footer-grid">
 
-        <div>
+<div>
 
-            <div class="footer-brand">
-                Mustafa Elevate
-            </div>
+<div class="footer-brand">
+    Mustafa Elevate
+</div>
 
-            <p>
-                Global jobs, career opportunities and professional
-                CV preparation.
-            </p>
+<p>
+    Global jobs, career opportunities and professional
+    CV preparation.
+</p>
 
-        </div>
+</div>
 
-        <div>
 
-            <h4>Platform</h4>
+<div>
 
-            <a href="#jobs">Find Jobs</a>
-            <a href="#global">Global Careers</a>
-            <a href="#cv">CV Builder</a>
+<h4>
+    Platform
+</h4>
 
-        </div>
+<a href="#jobs">
+    Find Jobs
+</a>
 
-        <div>
+<a href="#global">
+    Global Careers
+</a>
 
-            <h4>Job Seekers</h4>
+<a href="#cv">
+    CV Builder
+</a>
 
-            <a href="#jobs">Browse Jobs</a>
-            <a href="#cv">Create CV</a>
-            <a href="#services">Career Support</a>
+</div>
 
-        </div>
 
-        <div>
+<div>
 
-            <h4>Support</h4>
+<h4>
+    Job Seekers
+</h4>
 
-            <a href="mailto:support@mustafaelevate.com">
-                Customer Care
-            </a>
+<a href="#jobs">
+    Browse Jobs
+</a>
 
-            <a href="#about">
-                About Mustafa Elevate
-            </a>
+<a href="#cv">
+    Create CV
+</a>
 
-        </div>
+<a href="#services">
+    Career Support
+</a>
 
-    </div>
+</div>
 
-    <div class="container copyright">
 
-        © <span id="year"></span>
-        Mustafa Elevate. All rights reserved.
+<div>
 
-    </div>
+<h4>
+    Support
+</h4>
+
+<a href="mailto:support@mustafaelevate.com">
+    Customer Care
+</a>
+
+<a href="#about">
+    About Mustafa Elevate
+</a>
+
+</div>
+
+</div>
+
+
+<div class="container copyright">
+
+© <span id="year"></span>
+Mustafa Elevate. All rights reserved.
+
+</div>
 
 </footer>
 
 
-<!-- AI BUTTON -->
+<!-- =========================================================
+     AI BUTTON
+========================================================= -->
 
 <button
+    type="button"
     class="ai-float-btn"
     onclick="toggleAIChat()"
     title="AI Career Assistant"
     aria-label="Open AI Career Assistant">
 
-    <img
-        src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><circle cx='256' cy='256' r='240' fill='%23079455'/><rect x='160' y='192' width='192' height='160' rx='24' fill='%239aa0a6'/><circle cx='208' cy='248' r='24' fill='%23ffffff'/><circle cx='304' cy='248' r='24' fill='%23ffffff'/><circle cx='208' cy='248' r='10' fill='%23202124'/><circle cx='304' cy='248' r='10' fill='%23202124'/><polygon points='256,272 240,296 272,296' fill='%23ea4335'/><rect x='208' y='320' width='96' height='16' rx='8' fill='%23ffffff'/><rect x='128' y='224' width='32' height='80' rx='12' fill='%23ea4335'/><rect x='352' y='224' width='32' height='80' rx='12' fill='%23ea4335'/><line x1='256' y1='192' x2='256' y2='144' stroke='%239aa0a6' stroke-width='16' stroke-linecap='round'/><circle cx='256' cy='128' r='20' fill='%239aa0a6'/></svg>"
-        alt="AI Assistant">
+<img
+    src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><circle cx='256' cy='256' r='240' fill='%23079455'/><rect x='160' y='192' width='192' height='160' rx='24' fill='%239aa0a6'/><circle cx='208' cy='248' r='24' fill='%23ffffff'/><circle cx='304' cy='248' r='24' fill='%23ffffff'/><circle cx='208' cy='248' r='10' fill='%23202124'/><circle cx='304' cy='248' r='10' fill='%23202124'/><polygon points='256,272 240,296 272,296' fill='%23ea4335'/><rect x='208' y='320' width='96' height='16' rx='8' fill='%23ffffff'/><rect x='128' y='224' width='32' height='80' rx='12' fill='%23ea4335'/><rect x='352' y='224' width='32' height='80' rx='12' fill='%23ea4335'/><line x1='256' y1='192' x2='256' y2='144' stroke='%239aa0a6' stroke-width='16' stroke-linecap='round'/><circle cx='256' cy='128' r='20' fill='%239aa0a6'/></svg>"
+    alt="AI Assistant">
 
 </button>
 
 
-<!-- AI CHAT -->
+<!-- =========================================================
+     AI CHAT
+========================================================= -->
 
-<div class="ai-chat-box" id="aiChatBox">
+<div class="ai-chat-box"
+     id="aiChatBox">
 
-    <div class="ai-chat-header">
+<div class="ai-chat-header">
 
-        <h4>
-            🤖 Mustafa AI Assistant
-        </h4>
+<h4>
+    🤖 Mustafa AI Assistant
+</h4>
 
-        <button
-            class="ai-chat-close"
-            onclick="toggleAIChat()">
-            ×
-        </button>
+<button
+    type="button"
+    class="ai-chat-close"
+    onclick="toggleAIChat()">
 
-    </div>
+    ×
 
-    <div
-        class="ai-chat-messages"
-        id="aiChatMessages">
-
-        <div class="ai-msg bot">
-            Hello! I am your Mustafa Elevate AI Career Assistant.
-            Ask me about jobs, global careers, M-Pesa payment or CV preparation.
-        </div>
-
-    </div>
-
-    <div class="ai-chat-input-area">
-
-        <input
-            type="text"
-            id="aiChatInput"
-            placeholder="Ask a career question..."
-            onkeypress="handleAIPress(event)"
-        >
-
-        <button onclick="sendAIMessage()">
-            Send
-        </button>
-
-    </div>
+</button>
 
 </div>
 
 
-<!-- CV PAYMENT MODAL -->
+<div class="ai-chat-messages"
+     id="aiChatMessages">
 
-<div class="modal" id="paymentModal">
+<div class="ai-msg bot">
 
-    <div class="modal-card">
+Hello! I am your Mustafa Elevate AI Career Assistant.
 
-        <button
-            class="close"
-            onclick="closeModal('paymentModal')">
-            ×
-        </button>
+Ask me about jobs, global careers, M-Pesa payment,
+CV preparation or Customer Care.
 
-        <h2 class="modal-title">
-            💳 M-Pesa Payment
-        </h2>
-
-        <p class="modal-subtitle">
-            Complete the payment and submit your transaction code
-            for Customer Care approval.
-        </p>
-
-        <div class="payment-box">
-
-            <strong>CV Preparation Fee</strong>
-
-            <div style="font-size:26px;font-weight:900">
-                KSh 1,000
-            </div>
-
-            <div style="margin-top:10px">
-                Send payment to:
-            </div>
-
-            <div class="mpesa-number">
-                0792102645
-            </div>
-
-            <small>
-                M-Pesa payment number
-            </small>
-
-        </div>
-
-        <div class="steps">
-
-            <div class="step">
-                <b>1.</b>
-                Open M-Pesa and send KSh 1,000 to
-                <b>0792102645</b>.
-            </div>
-
-            <div class="step">
-                <b>2.</b>
-                Complete the payment.
-            </div>
-
-            <div class="step">
-                <b>3.</b>
-                Enter the M-Pesa transaction code below.
-            </div>
-
-            <div class="step">
-                <b>4.</b>
-                Submit your request for Customer Care approval.
-            </div>
-
-            <div class="step">
-                <b>5.</b>
-                Once Customer Care approves the request,
-                your CV will be released automatically.
-            </div>
-
-        </div>
-
-        <div class="notice">
-            ⚠️ Enter the transaction code exactly as shown in your
-            M-Pesa confirmation message. Entering a code does not
-            automatically verify payment.
-        </div>
-
-        <label>
-            <b>M-Pesa transaction code</b>
-        </label>
-
-        <input
-            id="transactionCode"
-            class="field"
-            placeholder="Example: QAB123XYZ4"
-            maxlength="30"
-            style="margin-top:7px;text-transform:uppercase"
-        >
-
-        <div style="display:flex;gap:10px;margin-top:15px">
-
-            <button
-                class="btn btn-outline"
-                onclick="closeModal('paymentModal')">
-                Cancel
-            </button>
-
-            <button
-                class="btn btn-primary"
-                style="flex:1"
-                onclick="submitPaymentRequest()">
-                Submit for Approval
-            </button>
-
-        </div>
-
-    </div>
+</div>
 
 </div>
 
 
-<!-- PAYMENT STATUS -->
+<form
+    class="ai-chat-input-area"
+    id="aiChatForm">
 
-<div class="modal" id="statusModal">
+<input
+    type="text"
+    id="aiChatInput"
+    placeholder="Ask a career question..."
+    autocomplete="off">
 
-    <div class="modal-card">
+<button type="submit">
+    Send
+</button>
 
-        <button
-            class="close"
-            onclick="closeModal('statusModal')">
-            ×
-        </button>
-
-        <h2 class="modal-title">
-            📋 Payment Status
-        </h2>
-
-        <p class="modal-subtitle">
-            Track your CV request.
-        </p>
-
-        <div id="statusContent"></div>
-
-    </div>
+</form>
 
 </div>
 
 
-<!-- LOGIN -->
+<!-- =========================================================
+     CV PAYMENT MODAL
+========================================================= -->
 
-<div class="modal" id="loginModal">
+<div class="modal"
+     id="paymentModal">
 
-    <div class="modal-card">
+<div class="modal-card">
 
-        <button
-            class="close"
-            onclick="closeModal('loginModal')">
-            ×
-        </button>
+<button
+    type="button"
+    class="close"
+    onclick="closeModal('paymentModal')">
 
-        <h2 class="modal-title">
-            👤 Sign In
-        </h2>
+    ×
 
-        <p class="modal-subtitle">
-            Account login will be connected to the production
-            authentication system.
-        </p>
+</button>
 
-        <input
-            class="field"
-            placeholder="Email"
-            type="email"
-            style="margin-bottom:10px"
-        >
 
-        <input
-            class="field"
-            placeholder="Password"
-            type="password"
-            style="margin-bottom:12px"
-        >
+<h2 class="modal-title">
+    💳 M-Pesa Payment
+</h2>
 
-        <button
-            class="btn btn-primary"
-            style="width:100%"
-            onclick="showToast('Account authentication will be connected to the production backend.');closeModal('loginModal')">
-            Sign In
-        </button>
+<p class="modal-subtitle">
 
-        <div class="notice">
-            This static version does not store passwords.
-            A real login system requires secure backend authentication.
-        </div>
+    Complete the payment and submit your transaction code
+    for secure Customer Care approval.
 
-    </div>
+</p>
+
+
+<div class="payment-box">
+
+<strong>
+    CV Preparation Fee
+</strong>
+
+<div style="font-size:26px;font-weight:900">
+
+    KSh 1,000
+
+</div>
+
+<div style="margin-top:10px">
+    Send payment to:
+</div>
+
+<div class="mpesa-number">
+    0792102645
+</div>
+
+<small>
+    M-Pesa payment number
+</small>
 
 </div>
 
 
-<!-- CUSTOMER CARE -->
+<div class="steps">
 
-<div class="modal" id="adminModal">
+<div class="step">
+<b>1.</b>
+Open M-Pesa and send KSh 1,000 to
+<b>0792102645</b>.
+</div>
 
-    <div class="modal-card">
+<div class="step">
+<b>2.</b>
+Complete the payment.
+</div>
 
-        <button
-            class="close"
-            onclick="closeModal('adminModal')">
-            ×
-        </button>
+<div class="step">
+<b>3.</b>
+Enter the M-Pesa transaction code below.
+</div>
 
-        <h2 class="modal-title">
-            🔐 Customer Care Approval Center
-        </h2>
+<div class="step">
+<b>4.</b>
+Submit your request for Customer Care approval.
+</div>
 
-        <p class="modal-subtitle">
-            Review submitted M-Pesa payment requests.
-        </p>
-
-        <div class="danger-box">
-            <b>Important:</b>
-            This approval center currently uses browser localStorage.
-            It is suitable for testing only. For real production
-            Customer Care approval across different devices, connect
-            this page to a secure backend/database.
-        </div>
-
-        <div id="adminRequests"></div>
-
-    </div>
+<div class="step">
+<b>5.</b>
+Customer Care verifies the payment through the secure
+Customer Care Center.
+</div>
 
 </div>
 
 
-<div class="toast" id="toast"></div>
+<div class="notice">
+
+⚠️ Enter the transaction code exactly as shown
+in your M-Pesa confirmation message.
+
+Entering a code does not automatically verify payment.
+
+</div>
+
+
+<label for="transactionCode">
+<b>M-Pesa transaction code</b>
+</label>
+
+<input
+    id="transactionCode"
+    class="field"
+    placeholder="Example: QAB123XYZ4"
+    maxlength="30"
+    autocomplete="off"
+    style="margin-top:7px;text-transform:uppercase">
+
+
+<div style="display:flex;gap:10px;margin-top:15px">
+
+<button
+    type="button"
+    class="btn btn-outline"
+    onclick="closeModal('paymentModal')">
+
+    Cancel
+
+</button>
+
+<button
+    type="button"
+    class="btn btn-primary"
+    style="flex:1"
+    onclick="submitPaymentRequest()">
+
+    Submit for Approval
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+     STATUS MODAL
+========================================================= -->
+
+<div class="modal"
+     id="statusModal">
+
+<div class="modal-card">
+
+<button
+    type="button"
+    class="close"
+    onclick="closeModal('statusModal')">
+
+    ×
+
+</button>
+
+<h2 class="modal-title">
+    📋 Payment Status
+</h2>
+
+<p class="modal-subtitle">
+    Track your CV request.
+</p>
+
+<div id="statusContent"></div>
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+     NORMAL USER LOGIN
+========================================================= -->
+
+<div class="modal"
+     id="loginModal">
+
+<div class="modal-card">
+
+<button
+    type="button"
+    class="close"
+    onclick="closeModal('loginModal')">
+
+    ×
+
+</button>
+
+<h2 class="modal-title">
+    👤 Sign In
+</h2>
+
+<p class="modal-subtitle">
+
+    Sign in to access your Mustafa Elevate account.
+
+</p>
+
+<input
+    id="loginEmail"
+    class="field"
+    placeholder="Email"
+    type="email"
+    autocomplete="email"
+    style="margin-bottom:10px">
+
+<input
+    id="loginPassword"
+    class="field"
+    placeholder="Password"
+    type="password"
+    autocomplete="current-password"
+    style="margin-bottom:12px">
+
+<button
+    type="button"
+    class="btn btn-primary"
+    style="width:100%"
+    onclick="handleUserLogin()">
+
+    Sign In
+
+</button>
+
+<div class="notice">
+
+Your account authentication must be handled by the
+secure production backend.
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+     CUSTOMER CARE SECURITY LOGIN
+========================================================= -->
+
+<div class="modal"
+     id="customerCareLoginModal">
+
+<div class="modal-card">
+
+<button
+    type="button"
+    class="close"
+    onclick="closeModal('customerCareLoginModal')">
+
+    ×
+
+</button>
+
+
+<div class="security-header">
+
+<div class="security-icon">
+    🔐
+</div>
+
+<h2 class="modal-title">
+    Secure Customer Care Center
+</h2>
+
+<p class="modal-subtitle">
+
+    Authorized Customer Care access only.
+
+</p>
+
+</div>
+
+
+<div class="danger-box">
+
+<strong>Protected Area</strong>
+
+<p style="margin-top:6px">
+
+    A one-time verification code is required.
+    Your code must be generated and verified by
+    the secure Mustafa Elevate backend.
+
+</p>
+
+</div>
+
+
+<label for="customerCareEmail">
+
+<b>Authorized email address</b>
+
+</label>
+
+<input
+    id="customerCareEmail"
+    class="field"
+    type="email"
+    placeholder="Enter authorized email address"
+    autocomplete="email"
+    style="margin-top:7px">
+
+
+<div class="otp-methods">
+
+<button
+    type="button"
+    class="otp-method"
+    onclick="requestCustomerCareCode('email')">
+
+    <strong>
+        📧 Send Code to Email
+    </strong>
+
+    <small>
+        Send a one-time login code to the
+        authorized email address.
+    </small>
+
+</button>
+
+
+<button
+    type="button"
+    class="otp-method"
+    onclick="requestCustomerCareCode('customer-care')">
+
+    <strong>
+        📱 Customer Care Contact
+    </strong>
+
+    <small>
+        Request the verification code through
+        the configured Customer Care contact.
+    </small>
+
+</button>
+
+</div>
+
+
+<div class="security-box">
+
+<strong>
+    Security protection
+</strong>
+
+<ul>
+
+<li>
+    One-time verification code
+</li>
+
+<li>
+    Code expires automatically
+</li>
+
+<li>
+    Limited verification attempts
+</li>
+
+<li>
+    Rate-limited login requests
+</li>
+
+<li>
+    Secure server-side verification
+</li>
+
+<li>
+    Customer Care session protection
+</li>
+
+</ul>
+
+</div>
+
+
+<button
+    type="button"
+    class="btn btn-outline"
+    style="width:100%"
+    onclick="closeModal('customerCareLoginModal')">
+
+    Cancel
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+     CUSTOMER CARE OTP VERIFICATION
+========================================================= -->
+
+<div class="modal"
+     id="customerCareOTPModal">
+
+<div class="modal-card">
+
+<button
+    type="button"
+    class="close"
+    onclick="closeModal('customerCareOTPModal')">
+
+    ×
+
+</button>
+
+
+<div class="security-header">
+
+<div class="security-icon">
+    🔑
+</div>
+
+<h2 class="modal-title">
+    Verify Customer Care Login
+</h2>
+
+<p class="modal-subtitle"
+   id="otpDescription">
+
+    Enter the one-time code sent to your
+    authorized contact.
+
+</p>
+
+</div>
+
+
+<div class="info-box">
+
+A verification code has been requested.
+Do not share this code with unauthorized persons.
+
+</div>
+
+
+<label for="customerCareOTP">
+
+<b>Verification code</b>
+
+</label>
+
+<input
+    id="customerCareOTP"
+    class="otp-input"
+    type="text"
+    inputmode="numeric"
+    autocomplete="one-time-code"
+    maxlength="6"
+    placeholder="000000"
+    style="margin-top:8px">
+
+
+<div class="countdown">
+
+Code expires in:
+<span id="otpCountdown">
+    --:--
+</span>
+
+</div>
+
+
+<button
+    type="button"
+    class="btn btn-primary"
+    style="width:100%"
+    onclick="verifyCustomerCareCode()">
+
+    🔓 Verify & Enter Customer Care
+
+</button>
+
+
+<button
+    type="button"
+    class="btn btn-outline"
+    style="width:100%;margin-top:9px"
+    onclick="backToCustomerCareLogin()">
+
+    Back
+
+</button>
+
+
+<div class="notice">
+
+For security, repeated incorrect codes or excessive
+login requests may temporarily block further attempts.
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+     CUSTOMER CARE DASHBOARD
+========================================================= -->
+
+<div class="modal"
+     id="customerCareDashboardModal">
+
+<div class="modal-card">
+
+<button
+    type="button"
+    class="close"
+    onclick="secureCustomerCareLogout()">
+
+    ×
+
+</button>
+
+
+<div class="dashboard-header">
+
+<div>
+
+<h2 class="modal-title">
+    🔐 Customer Care Center
+</h2>
+
+<p class="modal-subtitle">
+    Secure payment approval dashboard.
+</p>
+
+</div>
+
+
+<div class="dashboard-actions">
+
+<button
+    type="button"
+    class="btn btn-outline"
+    onclick="loadCustomerCareRequests()">
+
+    🔄 Refresh
+
+</button>
+
+<button
+    type="button"
+    class="btn btn-danger"
+    onclick="secureCustomerCareLogout()">
+
+    Logout
+
+</button>
+
+</div>
+
+</div>
+
+
+<div class="dashboard-user">
+
+🔒 Secure session:
+<span id="customerCareSessionEmail">
+    Authorized Customer Care
+</span>
+
+</div>
+
+
+<div class="success-box"
+     style="margin-top:15px">
+
+<b>Secure session active.</b>
+
+<p style="margin-top:5px">
+
+Payment approval actions are sent to the
+secure backend. They are not stored in browser
+localStorage.
+
+</p>
+
+</div>
+
+
+<div id="customerCareRequests"
+     style="margin-top:18px">
+
+<div class="empty">
+
+Loading secure payment requests...
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+     JOB DETAIL MODAL
+========================================================= -->
+
+<div class="modal"
+     id="jobModal">
+
+<div class="modal-card">
+
+<button
+    type="button"
+    class="close"
+    onclick="closeModal('jobModal')">
+
+    ×
+
+</button>
+
+<div id="jobDetail"></div>
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+     TOAST
+========================================================= -->
+
+<div class="toast"
+     id="toast">
+</div>
 
 
 <script>
@@ -2024,2064 +2898,346 @@ footer a:hover{
 /* ============================================================
    MUSTAFA ELEVATE
    FRONTEND APPLICATION
-   ============================================================ */
+   SECURE CUSTOMER CARE OTP READY
+============================================================ */
 
 
-/* ------------------------------------------------------------
+/* ============================================================
    CONFIGURATION
------------------------------------------------------------- */
+============================================================ */
+
+/*
+IMPORTANT:
+
+The Customer Care security system MUST use a backend.
+
+If this website is hosted separately from the backend,
+replace the empty value below with your real backend URL.
+
+Example:
+
+const API_BASE = "https://your-real-mustafa-backend.onrender.com";
+
+Do NOT put private API keys, passwords or OTP secrets here.
+*/
+
+const API_BASE =
+    window.MUSTAFA_API_BASE || "";
+
+
+/*
+CV configuration
+*/
 
 const CV_PRICE = 1000;
 
 const MPESA_NUMBER = "0792102645";
 
-const STORAGE_JOBS = "mustafaJobs";
 
-const STORAGE_SAVED = "mustafaSaved";
+/*
+Local storage is used only for non-sensitive frontend
+information such as saved jobs and temporary CV request
+information.
 
-const STORAGE_REQUESTS = "mustafaCVRequests";
+Customer Care authentication and approval MUST NOT rely
+on localStorage.
+*/
 
+const STORAGE_JOBS =
+    "mustafaJobs";
 
-/* ------------------------------------------------------------
-   GLOBAL CAREER SOURCES
------------------------------------------------------------- */
+const STORAGE_SAVED =
+    "mustafaSaved";
 
-const careerSources = [
+const STORAGE_REQUESTS =
+    "mustafaCVRequests";
 
-    {
-        name:"Qatar Airways",
-        icon:"✈️",
-        description:"Official Qatar Airways careers and job opportunities.",
-        region:"Middle East",
-        type:"Official Employer",
-        url:"https://careers.qatarairways.com/global/SearchJobs/70890"
-    },
-
-    {
-        name:"Carnival Cruise Line",
-        icon:"🚢",
-        description:"Official land-based careers with Carnival Cruise Line.",
-        region:"Worldwide",
-        type:"Official Employer",
-        url:"https://jobs.carnival.com/search-jobs"
-    },
-
-    {
-        name:"Carnival Shipboard Careers",
-        icon:"🛳️",
-        description:"Official shipboard opportunities with Carnival.",
-        region:"Worldwide",
-        type:"Official Employer",
-        url:"https://shipjobs.carnival.com/search"
-    },
-
-    {
-        name:"Emirates Group",
-        icon:"✈️",
-        description:"Explore Emirates Group careers and international opportunities.",
-        region:"Middle East",
-        type:"Official Employer",
-        url:"https://www.emiratesgroupcareers.com/"
-    },
-
-    {
-        name:"Etihad Airways",
-        icon:"✈️",
-        description:"Explore aviation and corporate careers with Etihad.",
-        region:"Middle East",
-        type:"Official Employer",
-        url:"https://careers.etihad.com/"
-    },
-
-    {
-        name:"Kenya Airways",
-        icon:"🇰🇪",
-        description:"Official Kenya Airways career opportunities.",
-        region:"Africa",
-        type:"Official Employer",
-        url:"https://www.kenya-airways.com/careers/"
-    },
-
-    {
-        name:"British Airways",
-        icon:"🇬🇧",
-        description:"Explore British Airways careers.",
-        region:"Europe",
-        type:"Official Employer",
-        url:"https://careers.ba.com/"
-    },
-
-    {
-        name:"Lufthansa Group",
-        icon:"✈️",
-        description:"International aviation careers across the Lufthansa Group.",
-        region:"Europe",
-        type:"Official Employer",
-        url:"https://www.lufthansagroup.careers/"
-    },
-
-    {
-        name:"Singapore Airlines",
-        icon:"✈️",
-        description:"Explore Singapore Airlines careers.",
-        region:"Asia-Pacific",
-        type:"Official Employer",
-        url:"https://www.singaporeair.com/en_UK/sg/careers/"
-    },
-
-    {
-        name:"Royal Caribbean Group",
-        icon:"🚢",
-        description:"Cruise and corporate career opportunities.",
-        region:"Worldwide",
-        type:"Official Employer",
-        url:"https://careers.royalcaribbeangroup.com/"
-    },
-
-    {
-        name:"MSC Cruises",
-        icon:"🚢",
-        description:"Explore careers with MSC Cruises.",
-        region:"Worldwide",
-        type:"Official Employer",
-        url:"https://careers.msccruises.com/"
-    },
-
-    {
-        name:"Disney Careers",
-        icon:"🏰",
-        description:"Search Disney jobs and professional opportunities.",
-        region:"Worldwide",
-        type:"Official Employer",
-        url:"https://jobs.disneycareers.com/"
-    },
-
-    {
-        name:"Marriott Careers",
-        icon:"🏨",
-        description:"Hospitality and corporate careers with Marriott.",
-        region:"Worldwide",
-        type:"Official Employer",
-        url:"https://careers.marriott.com/"
-    },
-
-    {
-        name:"Hilton Careers",
-        icon:"🏨",
-        description:"Search hospitality opportunities with Hilton.",
-        region:"Worldwide",
-        type:"Official Employer",
-        url:"https://jobs.hilton.com/"
-    },
-
-    {
-        name:"Accor Careers",
-        icon:"🏨",
-        description:"Explore international hospitality careers.",
-        region:"Worldwide",
-        type:"Official Employer",
-        url:"https://careers.accor.com/"
-    },
-
-    {
-        name:"United Nations Careers",
-        icon:"🌐",
-        description:"Official United Nations career opportunities.",
-        region:"Worldwide",
-        type:"International Organization",
-        url:"https://careers.un.org/"
-    },
-
-    {
-        name:"WHO Careers",
-        icon:"🌍",
-        description:"International health and professional opportunities.",
-        region:"Worldwide",
-        type:"International Organization",
-        url:"https://www.who.int/careers"
-    },
-
-    {
-        name:"UNDP Careers",
-        icon:"🌍",
-        description:"Explore United Nations Development Programme opportunities.",
-        region:"Worldwide",
-        type:"International Organization",
-        url:"https://www.undp.org/careers"
-    },
-
-    {
-        name:"IOM Careers",
-        icon:"🌍",
-        description:"Explore career opportunities with IOM.",
-        region:"Worldwide",
-        type:"International Organization",
-        url:"https://www.iom.int/careers"
-    },
-
-    {
-        name:"World Bank Careers",
-        icon:"🏦",
-        description:"Explore professional opportunities with the World Bank.",
-        region:"Worldwide",
-        type:"International Organization",
-        url:"https://www.worldbank.org/en/about/careers"
-    },
-
-    {
-        name:"LinkedIn Jobs",
-        icon:"💼",
-        description:"Search professional jobs worldwide.",
-        region:"Worldwide",
-        type:"Job Platform",
-        url:"https://www.linkedin.com/jobs/"
-    },
-
-    {
-        name:"Indeed",
-        icon:"🔎",
-        description:"Search jobs across many countries and industries.",
-        region:"Worldwide",
-        type:"Job Platform",
-        url:"https://www.indeed.com/"
-    },
-
-    {
-        name:"Glassdoor Jobs",
-        icon:"💼",
-        description:"Search jobs and explore employer information.",
-        region:"Worldwide",
-        type:"Job Platform",
-        url:"https://www.glassdoor.com/Job/index.htm"
-    },
-
-    {
-        name:"EURES",
-        icon:"🇪🇺",
-        description:"European employment and mobility opportunities.",
-        region:"Europe",
-        type:"Job Platform",
-        url:"https://eures.europa.eu/"
-    },
-
-    {
-        name:"Government of Canada Jobs",
-        icon:"🇨🇦",
-        description:"Official Government of Canada job opportunities.",
-        region:"North America",
-        type:"Government",
-        url:"https://www.canada.ca/en/services/jobs/opportunities.html"
-    },
-
-    {
-        name:"USAJOBS",
-        icon:"🇺🇸",
-        description:"Official U.S. federal government jobs.",
-        region:"North America",
-        type:"Government",
-        url:"https://www.usajobs.gov/"
-    },
-
-    {
-        name:"UK Civil Service Jobs",
-        icon:"🇬🇧",
-        description:"Official UK Civil Service vacancies.",
-        region:"Europe",
-        type:"Government",
-        url:"https://www.civilservicejobs.service.gov.uk/"
-    },
-
-    {
-        name:"APS Jobs Australia",
-        icon:"🇦🇺",
-        description:"Australian Public Service job opportunities.",
-        region:"Asia-Pacific",
-        type:"Government",
-        url:"https://www.apsjobs.gov.au/"
-    },
-
-    {
-        name:"New Zealand Government Jobs",
-        icon:"🇳🇿",
-        description:"Explore New Zealand government opportunities.",
-        region:"Asia-Pacific",
-        type:"Government",
-        url:"https://jobs.govt.nz/"
-    },
-
-    {
-        name:"GulfTalent",
-        icon:"🌍",
-        description:"Professional jobs across the Gulf and Middle East.",
-        region:"Middle East",
-        type:"Job Platform",
-        url:"https://www.gulftalent.com/"
-    },
-
-    {
-        name:"Bayt",
-        icon:"💼",
-        description:"Jobs across the Middle East and wider region.",
-        region:"Middle East",
-        type:"Job Platform",
-        url:"https://www.bayt.com/"
-    }
-
-];
+const STORAGE_CURRENT_REQUEST =
+    "mustafaCurrentRequest";
 
 
-/* ------------------------------------------------------------
-   LOCAL JOBS
------------------------------------------------------------- */
+/*
+Customer Care security state.
+The actual authorization comes from the backend.
+*/
 
-const defaultJobs = [
+let customerCareState = {
 
-    {
-        id:1,
-        title:"Customer Care Agent",
-        company:"Qatar Airways",
-        location:"Doha, Qatar",
-        type:"Full Time",
-        category:"Aviation",
-        salary:"Not specified",
-        verified:true,
-        description:"Explore customer-facing aviation opportunities through the official Qatar Airways careers portal.",
-        apply:"https://careers.qatarairways.com/global/SearchJobs/70890",
-        source:"Official Qatar Airways Careers"
-    },
+    authenticated:false,
 
-    {
-        id:2,
-        title:"International Career Opportunities",
-        company:"Carnival Cruise Line",
-        location:"Worldwide",
-        type:"Full Time",
-        category:"Hospitality",
-        salary:"Not specified",
-        verified:true,
-        description:"Explore official Carnival Cruise Line land-based and shipboard career opportunities.",
-        apply:"https://jobs.carnival.com/search-jobs",
-        source:"Official Carnival Careers"
-    },
+    email:"",
 
-    {
-        id:3,
-        title:"Remote Customer Support",
-        company:"Global Job Search",
-        location:"Remote",
-        type:"Remote",
-        category:"Remote",
-        salary:"Varies",
-        verified:false,
-        description:"Use major international job platforms to search for remote customer support opportunities.",
-        apply:"https://www.linkedin.com/jobs/",
-        source:"External Job Platform"
-    }
+    token:"",
 
-];
+    expiresAt:0
+
+};
 
 
-let jobs =
-    JSON.parse(localStorage.getItem(STORAGE_JOBS) || "null")
-    || defaultJobs;
+let otpState = {
+
+    email:"",
+
+    method:"",
+
+    requestId:"",
+
+    expiresAt:0
+
+};
 
 
-let saved =
-    JSON.parse(localStorage.getItem(STORAGE_SAVED) || "[]");
-
-
-let cvRequests =
-    JSON.parse(localStorage.getItem(STORAGE_REQUESTS) || "[]");
-
+let otpTimer = null;
 
 let currentCVData = null;
 
 let currentRequestId = null;
 
-let approvalTimer = null;
 
-
-/* ------------------------------------------------------------
-   UTILITY
------------------------------------------------------------- */
-
-function showToast(message){
-
-    const toast = document.getElementById("toast");
-
-    toast.textContent = message;
-
-    toast.classList.add("show");
-
-    clearTimeout(toast._timer);
-
-    toast._timer = setTimeout(()=>{
-        toast.classList.remove("show");
-    },3500);
-}
-
-
-function openModal(id){
-
-    const modal = document.getElementById(id);
-
-    if(!modal) return;
-
-    modal.classList.add("show");
-
-    document.body.classList.add("modal-open");
-
-}
-
-
-function closeModal(id){
-
-    const modal = document.getElementById(id);
-
-    if(!modal) return;
-
-    modal.classList.remove("show");
-
-    if(!document.querySelector(".modal.show")){
-        document.body.classList.remove("modal-open");
-    }
-
-}
-
-
-document.querySelectorAll(".modal").forEach(modal=>{
-
-    modal.addEventListener("click",function(e){
-
-        if(e.target === modal){
-            closeModal(modal.id);
-        }
-
-    });
-
-});
-
-
-/* ------------------------------------------------------------
-   MOBILE MENU
------------------------------------------------------------- */
-
-function toggleMenu(){
-
-    document
-        .getElementById("navLinks")
-        .classList.toggle("mobile-open");
-
-}
-
-
-function closeMobileMenu(){
-
-    document
-        .getElementById("navLinks")
-        .classList.remove("mobile-open");
-
-}
-
-
-/* ------------------------------------------------------------
-   SEARCH
------------------------------------------------------------- */
-
-function searchJobs(){
-
-    const keyword =
-        document.getElementById("heroKeyword").value.trim();
-
-    const location =
-        document.getElementById("heroLocation").value.trim();
-
-    document.getElementById("keyword").value = keyword;
-
-    const country =
-        document.getElementById("country");
-
-    const match =
-        [...country.options].find(
-            option =>
-                option.value.toLowerCase() === location.toLowerCase()
-        );
-
-    if(match){
-        country.value = match.value;
-    }else{
-        country.value = "";
-    }
-
-    renderJobs();
-
-    document
-        .getElementById("jobs")
-        .scrollIntoView({behavior:"smooth"});
-
-}
-
-
-function quickSearch(term){
-
-    document.getElementById("heroKeyword").value = term;
-
-    document.getElementById("keyword").value = term;
-
-    renderJobs();
-
-    document
-        .getElementById("jobs")
-        .scrollIntoView({behavior:"smooth"});
-
-}
-
-
-/* ------------------------------------------------------------
-   JOB DASHBOARD
------------------------------------------------------------- */
-
-function populateCountries(){
-
-    const select =
-        document.getElementById("country");
-
-    const locations =
-        [...new Set(
-            jobs
-            .map(job=>job.location)
-            .filter(Boolean)
-        )]
-        .sort();
-
-    select.innerHTML =
-        '<option value="">All locations</option>';
-
-    locations.forEach(location=>{
-
-        const option =
-            document.createElement("option");
-
-        option.value = location;
-
-        option.textContent = location;
-
-        select.appendChild(option);
-
-    });
-
-}
-
-
-function escapeHTML(value){
-
-    return String(value ?? "")
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-
-}
-
-
-function getInitials(company){
-
-    return String(company || "ME")
-        .split(" ")
-        .filter(Boolean)
-        .slice(0,2)
-        .map(word=>word[0])
-        .join("")
-        .toUpperCase();
-
-}
-
-
-function renderJobs(){
-
-    const grid =
-        document.getElementById("jobGrid");
-
-    const keyword =
-        document
-            .getElementById("keyword")
-            .value
-            .trim()
-            .toLowerCase();
-
-    const country =
-        document.getElementById("country").value;
-
-    const category =
-        document.getElementById("category").value;
-
-    const type =
-        document.getElementById("type").value;
-
-
-    const filtered =
-        jobs.filter(job=>{
-
-            const searchable = [
-
-                job.title,
-                job.company,
-                job.location,
-                job.category,
-                job.type,
-                job.description
-
-            ]
-            .join(" ")
-            .toLowerCase();
-
-
-            const keywordMatch =
-                !keyword || searchable.includes(keyword);
-
-            const countryMatch =
-                !country || job.location === country;
-
-            const categoryMatch =
-                !category || job.category === category;
-
-            const typeMatch =
-                !type || job.type === type;
-
-
-            return (
-                keywordMatch &&
-                countryMatch &&
-                categoryMatch &&
-                typeMatch
-            );
-
-        });
-
-
-    if(!filtered.length){
-
-        grid.innerHTML = `
-            <div class="empty" style="grid-column:1/-1">
-                <h3>No matching jobs found</h3>
-                <p style="margin-top:7px">
-                    Try another keyword or explore our Global Careers section.
-                </p>
-                <a
-                    href="#global"
-                    class="btn btn-primary"
-                    style="margin-top:15px">
-                    Explore Global Careers
-                </a>
-            </div>
-        `;
-
-    }else{
-
-        grid.innerHTML =
-            filtered.map(job=>{
-
-                const initials =
-                    getInitials(job.company);
-
-                const isSaved =
-                    saved.includes(job.id);
-
-                return `
-
-                <article class="job">
-
-                    <div class="job-top">
-
-                        <div class="company-logo">
-                            ${escapeHTML(initials)}
-                        </div>
-
-                        <span class="verified">
-                            ${job.verified ? "✓ Verified" : "External Source"}
-                        </span>
-
-                    </div>
-
-                    <h3>
-                        ${escapeHTML(job.title)}
-                    </h3>
-
-                    <div class="company">
-                        ${escapeHTML(job.company)}
-                    </div>
-
-                    <div class="meta">
-                        📍 ${escapeHTML(job.location)}
-                        • ${escapeHTML(job.type)}
-                    </div>
-
-                    <div class="tags">
-
-                        <span class="tag">
-                            ${escapeHTML(job.category)}
-                        </span>
-
-                        <span class="tag">
-                            ${escapeHTML(job.salary || "Salary not specified")}
-                        </span>
-
-                    </div>
-
-                    <p class="job-desc">
-                        ${escapeHTML(job.description)}
-                    </p>
-
-                    <div class="job-bottom">
-
-                        <button
-                            class="btn btn-primary"
-                            onclick="openJob(${job.id})">
-                            View Job
-                        </button>
-
-                        <button
-                            class="btn btn-outline"
-                            onclick="toggleSaved(${job.id})"
-                            title="Save job">
-
-                            ${isSaved ? "★" : "☆"}
-
-                        </button>
-
-                    </div>
-
-                </article>
-
-                `;
-
-            }).join("");
-
-    }
-
-
-    document.getElementById("statJobs").textContent =
-        jobs.length + "+";
-
-}
-
-
-function openJob(id){
-
-    const job =
-        jobs.find(item=>item.id === id);
-
-    if(!job) return;
-
-    const external =
-        job.apply
-        ? `
-            <a
-                href="${escapeHTML(job.apply)}"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn btn-primary"
-                style="flex:1">
-                Open Official Application
-            </a>
-        `
-        : `
-            <button
-                class="btn btn-primary"
-                style="flex:1"
-                onclick="scrollToCV()">
-                Prepare CV
-            </button>
-        `;
-
-
-    document.getElementById("jobDetail").innerHTML = `
-
-        <h2 class="modal-title">
-            ${escapeHTML(job.title)}
-        </h2>
-
-        <p class="modal-subtitle">
-            ${escapeHTML(job.company)}
-        </p>
-
-        <div class="tags">
-
-            <span class="tag">
-                📍 ${escapeHTML(job.location)}
-            </span>
-
-            <span class="tag">
-                ${escapeHTML(job.type)}
-            </span>
-
-            <span class="tag">
-                ${escapeHTML(job.category)}
-            </span>
-
-        </div>
-
-        <p style="margin:18px 0">
-            ${escapeHTML(job.description)}
-        </p>
-
-        <div class="notice">
-
-            Mustafa Elevate is a career-support platform.
-            Verify the vacancy and application details on the
-            employer's official website before submitting documents.
-
-        </div>
-
-        <div style="display:flex;gap:10px;margin-top:18px">
-
-            ${external}
-
-            <button
-                class="btn btn-outline"
-                onclick="scrollToCV()">
-                Build CV
-            </button>
-
-        </div>
-
-    `;
-
-    openModal("jobModal");
-
-}
-
-
-function toggleSaved(id){
-
-    if(saved.includes(id)){
-
-        saved =
-            saved.filter(item=>item !== id);
-
-        showToast("Job removed from saved jobs.");
-
-    }else{
-
-        saved.push(id);
-
-        showToast("Job saved.");
-
-    }
-
-    localStorage.setItem(
-        STORAGE_SAVED,
-        JSON.stringify(saved)
-    );
-
-    renderJobs();
-
-}
-
-
-/* ------------------------------------------------------------
-   GLOBAL CAREERS
------------------------------------------------------------- */
-
-function renderCareerSources(){
-
-    const grid =
-        document.getElementById("careerGrid");
-
-    const query =
-        document
-            .getElementById("careerSearch")
-            .value
-            .trim()
-            .toLowerCase();
-
-    const region =
-        document.getElementById("careerRegion").value;
-
-
-    const filtered =
-        careerSources.filter(source=>{
-
-            const searchable = [
-
-                source.name,
-                source.description,
-                source.region,
-                source.type
-
-            ]
-            .join(" ")
-            .toLowerCase();
-
-
-            return (
-                (!query || searchable.includes(query)) &&
-                (!region || source.region === region)
-            );
-
-        });
-
-
-    grid.innerHTML =
-        filtered.map(source=>`
-
-            <div class="career-card">
-
-                <div class="career-icon">
-                    ${source.icon}
-                </div>
-
-                <h3>
-                    ${escapeHTML(source.name)}
-                </h3>
-
-                <p>
-                    ${escapeHTML(source.description)}
-                </p>
-
-                <span class="source-type">
-                    ${escapeHTML(source.type)}
-                    • ${escapeHTML(source.region)}
-                </span>
-
-                <a
-                    href="${escapeHTML(source.url)}"
-                    target="_blank"
-                    rel="noopener noreferrer">
-
-                    Open Official Careers →
-
-                </a>
-
-            </div>
-
-        `).join("");
-
-
-    if(!filtered.length){
-
-        grid.innerHTML = `
-            <div class="empty" style="grid-column:1/-1">
-                No career source matches your search.
-            </div>
-        `;
-
-    }
-
-}
-
-
-document.getElementById("statSources").textContent =
-    careerSources.length + "+";
-
-
-/* ------------------------------------------------------------
-   CV
------------------------------------------------------------- */
-
-function getCVFormData(){
-
-    return {
-
-        name:
-            document.getElementById("cvName").value.trim(),
-
-        role:
-            document.getElementById("cvRole").value.trim(),
-
-        email:
-            document.getElementById("cvEmail").value.trim(),
-
-        phone:
-            document.getElementById("cvPhone").value.trim(),
-
-        skills:
-            document.getElementById("cvSkills").value.trim(),
-
-        experience:
-            document.getElementById("cvExperience").value.trim(),
-
-        education:
-            document.getElementById("cvEducation").value.trim()
-
-    };
-
-}
-
-
-function startCVPayment(){
-
-    const data =
-        getCVFormData();
-
-
-    if(!data.name){
-
-        showToast("Please enter your full name.");
-
-        document.getElementById("cvName").focus();
-
-        return;
-
-    }
-
-
-    if(!data.role){
-
-        showToast("Please enter your target job title.");
-
-        document.getElementById("cvRole").focus();
-
-        return;
-
-    }
-
-
-    if(!data.phone){
-
-        showToast("Please enter your phone or WhatsApp number.");
-
-        document.getElementById("cvPhone").focus();
-
-        return;
-
-    }
-
-
-    if(
-        data.email &&
-        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)
-    ){
-
-        showToast("Please enter a valid email address.");
-
-        return;
-
-    }
-
-
-    currentCVData = data;
-
-    document.getElementById("transactionCode").value = "";
-
-    openModal("paymentModal");
-
-}
-
-
-function createRequestId(){
-
-    const now =
-        Date.now().toString(36).toUpperCase();
-
-    const random =
-        Math.random()
-            .toString(36)
-            .substring(2,7)
-            .toUpperCase();
-
-    return "ME-" + now + "-" + random;
-
-}
-
-
-function submitPaymentRequest(){
-
-    if(!currentCVData){
-
-        showToast("Please complete the CV form first.");
-
-        closeModal("paymentModal");
-
-        scrollToCV();
-
-        return;
-
-    }
-
-
-    const code =
-        document
-            .getElementById("transactionCode")
-            .value
-            .trim()
-            .toUpperCase();
-
-
-    if(!code){
-
-        showToast("Please enter your M-Pesa transaction code.");
-
-        return;
-
-    }
-
-
-    if(code.length < 6){
-
-        showToast("The transaction code looks too short.");
-
-        return;
-
-    }
-
-
-    const request = {
-
-        id:createRequestId(),
-
-        createdAt:new Date().toISOString(),
-
-        status:"pending",
-
-        paymentNumber:MPESA_NUMBER,
-
-        amount:CV_PRICE,
-
-        transactionCode:code,
-
-        cv:currentCVData
-
-    };
-
-
-    cvRequests.push(request);
-
-    localStorage.setItem(
-        STORAGE_REQUESTS,
-        JSON.stringify(cvRequests)
-    );
-
-
-    currentRequestId = request.id;
-
-
-    closeModal("paymentModal");
-
-    showStatus(request.id);
-
-    showToast(
-        "Payment submitted. Waiting for Customer Care approval."
-    );
-
-    startApprovalPolling(request.id);
-
-}
-
-
-/* ------------------------------------------------------------
-   STATUS
------------------------------------------------------------- */
-
-function getRequest(id){
-
-    return cvRequests.find(
-        request=>request.id === id
-    );
-
-}
-
-
-function showStatus(id){
-
-    const request =
-        getRequest(id);
-
-
-    if(!request){
-
-        document.getElementById("statusContent").innerHTML = `
-            <div class="danger-box">
-                Request not found.
-            </div>
-        `;
-
-        openModal("statusModal");
-
-        return;
-
-    }
-
-
-    let content = "";
-
-
-    if(request.status === "pending"){
-
-        content = `
-
-            <div class="payment-box">
-
-                <span class="status pending">
-                    PENDING APPROVAL
-                </span>
-
-                <h3 style="margin-top:12px">
-                    Your payment is awaiting Customer Care approval.
-                </h3>
-
-                <p style="margin-top:8px;color:var(--muted)">
-                    Request ID:
-                    <b>${escapeHTML(request.id)}</b>
-                </p>
-
-                <p style="margin-top:8px;color:var(--muted)">
-                    Transaction:
-                    <b>${escapeHTML(request.transactionCode)}</b>
-                </p>
-
-            </div>
-
-            <div class="notice">
-
-                Keep your M-Pesa confirmation message.
-                Do not make another payment unless Customer Care
-                instructs you to do so.
-
-            </div>
-
-            <button
-                class="btn btn-primary"
-                style="width:100%"
-                onclick="refreshStatus()">
-
-                Check Approval Status
-
-            </button>
-
-        `;
-
-    }
-
-
-    if(request.status === "approved"){
-
-        content = `
-
-            <div class="success-box">
-
-                <span class="status approved">
-                    PAYMENT APPROVED
-                </span>
-
-                <h3 style="margin-top:10px">
-                    Your CV is ready.
-                </h3>
-
-                <p style="margin-top:6px">
-                    Customer Care approved your payment.
-                </p>
-
-            </div>
-
-            <button
-                class="btn btn-success"
-                style="width:100%;margin-top:15px"
-                onclick="releaseCV('${escapeHTML(request.id)}')">
-
-                📄 Open My CV
-
-            </button>
-
-        `;
-
-    }
-
-
-    if(request.status === "rejected"){
-
-        content = `
-
-            <div class="danger-box">
-
-                <span class="status rejected">
-                    PAYMENT NOT APPROVED
-                </span>
-
-                <h3 style="margin-top:10px">
-                    Customer Care has not approved this request.
-                </h3>
-
-                <p style="margin-top:6px">
-                    Please contact Customer Care and provide your
-                    request ID if you believe this was an error.
-                </p>
-
-            </div>
-
-            <p style="margin-top:12px">
-                Request ID:
-                <b>${escapeHTML(request.id)}</b>
-            </p>
-
-        `;
-
-    }
-
-
-    document.getElementById("statusContent").innerHTML =
-        content;
-
-    openModal("statusModal");
-
-}
-
-
-function refreshStatus(){
-
-    if(currentRequestId){
-
-        cvRequests =
-            JSON.parse(
-                localStorage.getItem(STORAGE_REQUESTS) || "[]"
-            );
-
-        showStatus(currentRequestId);
-
-        const request =
-            getRequest(currentRequestId);
-
-        if(request && request.status === "approved"){
-
-            stopApprovalPolling();
-
-            setTimeout(()=>{
-                releaseCV(currentRequestId);
-            },500);
-
-        }
-
-    }
-
-}
-
-
-function startApprovalPolling(id){
-
-    stopApprovalPolling();
-
-    approvalTimer =
-        setInterval(()=>{
-
-            cvRequests =
-                JSON.parse(
-                    localStorage.getItem(STORAGE_REQUESTS) || "[]"
-                );
-
-            const request =
-                getRequest(id);
-
-            if(
-                request &&
-                request.status === "approved"
-            ){
-
-                stopApprovalPolling();
-
-                showStatus(id);
-
-                setTimeout(()=>{
-                    releaseCV(id);
-                },800);
-
-            }
-
-            if(
-                request &&
-                request.status === "rejected"
-            ){
-
-                stopApprovalPolling();
-
-                showStatus(id);
-
-            }
-
-        },5000);
-
-}
-
-
-function stopApprovalPolling(){
-
-    if(approvalTimer){
-
-        clearInterval(approvalTimer);
-
-        approvalTimer = null;
-
-    }
-
-}
-
-
-/* ------------------------------------------------------------
-   CV GENERATOR
------------------------------------------------------------- */
-
-function escapeForHTML(value){
-
-    return escapeHTML(value)
-        .replace(/\n/g,"<br>");
-
-}
-
-
-function releaseCV(id){
-
-    const request =
-        getRequest(id);
-
-
-    if(!request){
-
-        showToast("CV request could not be found.");
-
-        return;
-
-    }
-
-
-    if(request.status !== "approved"){
-
-        showToast(
-            "Your CV cannot be released until Customer Care approves the payment."
-        );
-
-        return;
-
-    }
-
-
-    const cv =
-        request.cv;
-
-
-    const cvWindow =
-        window.open("", "_blank");
-
-
-    if(!cvWindow){
-
-        showToast(
-            "Please allow pop-ups to open your CV."
-        );
-
-        return;
-
-    }
-
-
-    const cvDocument = `
-
-<!DOCTYPE html>
-
-<html lang="en">
-
-<head>
-
-<meta charset="UTF-8">
-
-<title>
-${escapeHTML(cv.name)} - Professional CV
-</title>
-
-<style>
-
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#f4f6f8;
-    margin:0;
-    color:#172033;
-}
-
-.cv{
-    width:min(850px,92%);
-    margin:30px auto;
-    background:#fff;
-    padding:45px;
-    box-shadow:0 10px 35px rgba(0,0,0,.1);
-}
-
-.header{
-    border-bottom:3px solid #155eef;
-    padding-bottom:18px;
-    margin-bottom:25px;
-}
-
-h1{
-    margin:0;
-    font-size:34px;
-}
-
-.role{
-    color:#155eef;
-    font-size:18px;
-    font-weight:bold;
-    margin-top:5px;
-}
-
-.contact{
-    margin-top:10px;
-    color:#667085;
-}
-
-h2{
-    color:#081a3a;
-    border-bottom:1px solid #ddd;
-    padding-bottom:6px;
-    margin-top:25px;
-}
-
-p{
-    line-height:1.6;
-}
-
-.print{
-    position:fixed;
-    right:20px;
-    top:20px;
-    padding:12px 18px;
-    border:0;
-    background:#155eef;
-    color:#fff;
-    border-radius:8px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-@media print{
-
-    body{
-        background:#fff;
-    }
-
-    .cv{
-        width:auto;
-        margin:0;
-        box-shadow:none;
-    }
-
-    .print{
-        display:none;
-    }
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-<button class="print" onclick="window.print()">
-Print / Save PDF
-</button>
-
-<div class="cv">
-
-    <div class="header">
-
-        <h1>
-            ${escapeHTML(cv.name)}
-        </h1>
-
-        <div class="role">
-            ${escapeHTML(cv.role)}
-        </div>
-
-        <div class="contact">
-
-            ${cv.email ? escapeHTML(cv.email) : ""}
-            ${cv.email && cv.phone ? " • " : ""}
-            ${cv.phone ? escapeHTML(cv.phone) : ""}
-
-        </div>
-
-    </div>
-
-
-    <h2>
-        Professional Profile
-    </h2>
-
-    <p>
-        Motivated professional seeking opportunities as
-        ${escapeHTML(cv.role)} with a strong commitment to
-        professional growth, reliability and high-quality performance.
-    </p>
-
-
-    <h2>
-        Key Skills
-    </h2>
-
-    <p>
-        ${escapeForHTML(cv.skills || "Professional communication, teamwork, reliability and problem solving.")}
-    </p>
-
-
-    <h2>
-        Work Experience
-    </h2>
-
-    <p>
-        ${escapeForHTML(cv.experience || "Experience details to be updated.")}
-    </p>
-
-
-    <h2>
-        Education
-    </h2>
-
-    <p>
-        ${escapeForHTML(cv.education || "Education details to be updated.")}
-    </p>
-
-
-    <p style="margin-top:40px;color:#98a2b3;font-size:12px">
-
-        Prepared through Mustafa Elevate.
-
-    </p>
-
-</div>
-
-</body>
-
-</html>
-
-`;
-
-
-    cvWindow.document.open();
-
-    cvWindow.document.write(cvDocument);
-
-    cvWindow.document.close();
-
-
-    closeModal("statusModal");
-
-}
-
-
-/* ------------------------------------------------------------
-   CUSTOMER CARE APPROVAL CENTER
------------------------------------------------------------- */
-
-function renderAdminRequests(){
-
-    const container =
-        document.getElementById("adminRequests");
-
-
-    cvRequests =
-        JSON.parse(
-            localStorage.getItem(STORAGE_REQUESTS) || "[]"
-        );
-
-
-    if(!cvRequests.length){
-
-        container.innerHTML = `
-
-            <div class="empty">
-
-                <h3>No payment requests</h3>
-
-                <p style="margin-top:6px">
-                    New CV payment requests will appear here.
-                </p>
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    container.innerHTML =
-        cvRequests
-        .slice()
-        .reverse()
-        .map(request=>`
-
-            <div class="request-card">
-
-                <h4>
-                    ${escapeHTML(request.cv.name)}
-                </h4>
-
-                <div class="request-meta">
-
-                    Request ID:
-                    <b>${escapeHTML(request.id)}</b>
-                    <br>
-
-                    Phone:
-                    ${escapeHTML(request.cv.phone)}
-                    <br>
-
-                    Amount:
-                    KSh ${request.amount.toLocaleString()}
-                    <br>
-
-                    M-Pesa Code:
-                    <b>${escapeHTML(request.transactionCode)}</b>
-                    <br>
-
-                    Status:
-                    <b>${escapeHTML(request.status.toUpperCase())}</b>
-
-                </div>
-
-                ${
-                    request.status === "pending"
-                    ? `
-
-                        <div class="request-actions">
-
-                            <button
-                                class="btn btn-success"
-                                onclick="approveRequest('${escapeHTML(request.id)}')">
-
-                                ✓ Approve
-
-                            </button>
-
-                            <button
-                                class="btn btn-danger"
-                                onclick="rejectRequest('${escapeHTML(request.id)}')">
-
-                                ✕ Reject
-
-                            </button>
-
-                        </div>
-
-                    `
-                    : `
-                        <div class="${
-                            request.status === "approved"
-                            ? "success-box"
-                            : "danger-box"
-                        }">
-
-                            Request:
-                            ${escapeHTML(request.status)}
-
-                        </div>
-                    `
-                }
-
-            </div>
-
-        `).join("");
-
-}
-
-
-function approveRequest(id){
-
-    const request =
-        cvRequests.find(item=>item.id === id);
-
-    if(!request) return;
-
-
-    request.status = "approved";
-
-    request.approvedAt =
-        new Date().toISOString();
-
-
-    localStorage.setItem(
-        STORAGE_REQUESTS,
-        JSON.stringify(cvRequests)
-    );
-
-
-    renderAdminRequests();
-
-    showToast(
-        "Payment approved successfully."
-    );
-
-
-    if(currentRequestId === id){
-
-        setTimeout(()=>{
-
-            closeModal("adminModal");
-
-            showStatus(id);
-
-            setTimeout(()=>{
-                releaseCV(id);
-            },800);
-
-        },400);
-
-    }
-
-}
-
-
-function rejectRequest(id){
-
-    const request =
-        cvRequests.find(item=>item.id === id);
-
-    if(!request) return;
-
-
-    request.status = "rejected";
-
-    request.rejectedAt =
-        new Date().toISOString();
-
-
-    localStorage.setItem(
-        STORAGE_REQUESTS,
-        JSON.stringify(cvRequests)
-    );
-
-
-    renderAdminRequests();
-
-    showToast(
-        "Payment request marked as rejected."
-    );
-
-
-    if(currentRequestId === id){
-
-        showStatus(id);
-
-    }
-
-}
-
-
-/* ------------------------------------------------------------
-   ADMIN MODAL REFRESH
------------------------------------------------------------- */
-
-document
-    .getElementById("adminModal")
-    .addEventListener("click",function(){
-
-        renderAdminRequests();
-
-    });
-
-
-/* ------------------------------------------------------------
-   AI CHAT
------------------------------------------------------------- */
-
-function toggleAIChat(){
-
-    document
-        .getElementById("aiChatBox")
-        .classList.toggle("show");
-
-}
-
-
-function handleAIPress(event){
-
-    if(event.key === "Enter"){
-
-        sendAIMessage();
-
-    }
-
-}
-
-
-function addChatMessage(text,type){
-
-    const messages =
-        document.getElementById("aiChatMessages");
-
-    const message =
-        document.createElement("div");
-
-    message.className =
-        "ai-msg " + type;
-
-    message.textContent =
-        text;
-
-    messages.appendChild(message);
-
-    messages.scrollTop =
-        messages.scrollHeight;
-
-}
-
-
-function sendAIMessage(){
-
-    const input =
-        document.getElementById("aiChatInput");
-
-    const text =
-        input.value.trim();
-
-    if(!text) return;
-
-
-    addChatMessage(text,"user");
-
-    input.value = "";
-
-
-    setTimeout(()=>{
-
-        const lower =
-            text.toLowerCase();
-
-        let reply =
-            "I can help you search jobs, find global career sources, prepare your CV or understand the M-Pesa approval process.";
-
-
-        if(
-            lower.includes("job") ||
-            lower.includes("work") ||
-            lower.includes("find")
-        ){
-
-            reply =
-                "Go to the Job Dashboard to search by job title, company, location or category.";
-
-            document
-                .getElementById("jobs")
-                .scrollIntoView({behavior:"smooth"});
-
-        }
-
-
-        else if(
-            lower.includes("cv") ||
-            lower.includes("resume")
-        ){
-
-            reply =
-                "The Professional CV service costs KSh 1,000. Complete the CV form, pay through M-Pesa to 0792102645, submit your transaction code and wait for Customer Care approval.";
-
-            scrollToCV();
-
-        }
-
-
-        else if(
-            lower.includes("mpesa") ||
-            lower.includes("m-pesa") ||
-            lower.includes("pay") ||
-            lower.includes("cost")
-        ){
-
-            reply =
-                "The professional CV fee is KSh 1,000. Send payment to M-Pesa number 0792102645. Then enter your transaction code in the CV Builder and submit it for Customer Care approval.";
-
-        }
-
-
-        else if(
-            lower.includes("qatar") ||
-            lower.includes("carnival") ||
-            lower.includes("international") ||
-            lower.includes("global")
-        ){
-
-            reply =
-                "Open the Global Careers section to access official career portals including Qatar Airways, Carnival, Emirates, Etihad, international organizations and major job platforms.";
-
-            document
-                .getElementById("global")
-                .scrollIntoView({behavior:"smooth"});
-
-        }
-
-
-        else if(
-            lower.includes("approved") ||
-            lower.includes("approval") ||
-            lower.includes("status")
-        ){
-
-            reply =
-                "After submitting your M-Pesa transaction code, your request remains pending until Customer Care approves it. Once approved, your CV can be released automatically.";
-
-        }
-
-
-        addChatMessage(reply,"bot");
-
-    },500);
-
-}
-
-
-/* ------------------------------------------------------------
-   NAVIGATION
------------------------------------------------------------- */
-
-function scrollToCV(){
-
-    document
-        .getElementById("cv")
-        .scrollIntoView({behavior:"smooth"});
-
-}
-
-
-/* ------------------------------------------------------------
-   STARTUP
------------------------------------------------------------- */
-
-function initialize(){
-
-    document.getElementById("year").textContent =
-        new Date().getFullYear();
-
-    populateCountries();
-
-    renderJobs();
-
-    renderCareerSources();
-
-}
-
-
-initialize();
-
-</script>
-
-
-<!-- JOB DETAIL MODAL -->
-
-<div class="modal" id="jobModal">
-
-    <div class="modal-card">
-
-        <button
-            class="close"
-            onclick="closeModal('jobModal')">
-            ×
-        </button>
-
-        <div id="jobDetail"></div>
-
-    </div>
-
-</div>
-
-</body>
-</html>
+/* ============================================================
+   GLOBAL CAREER SOURCES
+============================================================ */
+
+const careerSources = [
+
+{
+name:"Qatar Airways",
+icon:"✈️",
+description:"Official Qatar Airways careers and job opportunities.",
+region:"Middle East",
+type:"Official Employer",
+url:"https://careers.qatarairways.com/global/SearchJobs/70890"
+},
+
+{
+name:"Carnival Cruise Line",
+icon:"🚢",
+description:"Official land-based careers with Carnival Cruise Line.",
+region:"Worldwide",
+type:"Official Employer",
+url:"https://jobs.carnival.com/search-jobs"
+},
+
+{
+name:"Carnival Shipboard Careers",
+icon:"🛳️",
+description:"Official shipboard opportunities with Carnival.",
+region:"Worldwide",
+type:"Official Employer",
+url:"https://shipjobs.carnival.com/search"
+},
+
+{
+name:"Emirates Group",
+icon:"✈️",
+description:"Explore Emirates Group careers and international opportunities.",
+region:"Middle East",
+type:"Official Employer",
+url:"https://www.emiratesgroupcareers.com/"
+},
+
+{
+name:"Etihad Airways",
+icon:"✈️",
+description:"Explore aviation and corporate careers with Etihad.",
+region:"Middle East",
+type:"Official Employer",
+url:"https://careers.etihad.com/"
+},
+
+{
+name:"Kenya Airways",
+icon:"🇰🇪",
+description:"Official Kenya Airways career opportunities.",
+region:"Africa",
+type:"Official Employer",
+url:"https://www.kenya-airways.com/careers/"
+},
+
+{
+name:"British Airways",
+icon:"🇬🇧",
+description:"Explore British Airways careers.",
+region:"Europe",
+type:"Official Employer",
+url:"https://careers.ba.com/"
+},
+
+{
+name:"Lufthansa Group",
+icon:"✈️",
+description:"International aviation careers across the Lufthansa Group.",
+region:"Europe",
+type:"Official Employer",
+url:"https://www.lufthansagroup.careers/"
+},
+
+{
+name:"Singapore Airlines",
+icon:"✈️",
+description:"Explore Singapore Airlines careers.",
+region:"Asia-Pacific",
+type:"Official Employer",
+url:"https://www.singaporeair.com/en_UK/sg/careers/"
+},
+
+{
+name:"Royal Caribbean Group",
+icon:"🚢",
+description:"Cruise and corporate career opportunities.",
+region:"Worldwide",
+type:"Official Employer",
+url:"https://careers.royalcaribbeangroup.com/"
+},
+
+{
+name:"MSC Cruises",
+icon:"🚢",
+description:"Explore careers with MSC Cruises.",
+region:"Worldwide",
+type:"Official Employer",
+url:"https://careers.msccruises.com/"
+},
+
+{
+name:"Disney Careers",
+icon:"🏰",
+description:"Search Disney jobs and professional opportunities.",
+region:"Worldwide",
+type:"Official Employer",
+url:"https://jobs.disneycareers.com/"
+},
+
+{
+name:"Marriott Careers",
+icon:"🏨",
+description:"Hospitality and corporate careers with Marriott.",
+region:"Worldwide",
+type:"Official Employer",
+url:"https://careers.marriott.com/"
+},
+
+{
+name:"Hilton Careers",
+icon:"🏨",
+description:"Search hospitality opportunities with Hilton.",
+region:"Worldwide",
+type:"Official Employer",
+url:"https://jobs.hilton.com/"
+},
+
+{
+name:"Accor Careers",
+icon:"🏨",
+description:"Explore international hospitality careers.",
+region:"Worldwide",
+type:"Official Employer",
+url:"https://careers.accor.com/"
+},
+
+{
+name:"United Nations Careers",
+icon:"🌐",
+description:"Official United Nations career opportunities.",
+region:"Worldwide",
+type:"International Organization",
+url:"https://careers.un.org/"
+},
+
+{
+name:"WHO Careers",
+icon:"🌍",
+description:"International health and professional opportunities.",
+region:"Worldwide",
+type:"International Organization",
+url:"https://www.who.int/careers"
+},
+
+{
+name:"UNDP Careers",
+icon:"🌍",
+description:"Explore United Nations Development Programme opportunities.",
+region:"Worldwide",
+type:"International Organization",
+url:"https://www.undp.org/careers"
+},
+
+{
+name:"IOM Careers",
+icon:"🌍",
+description:"Explore career opportunities with IOM.",
+region:"Worldwide",
+type:"International Organization",
+url:"https://www.iom.int/careers"
+},
+
+{
+name:"World Bank Careers",
+icon:"🏦",
+description:"Explore professional opportunities with the World Bank.",
+region:"Worldwide",
+type:"International Organization",
+url:"https://www.worldbank.org/en/about/careers"
+},
+
+{
+name:"LinkedIn Jobs",
+icon:"💼",
+description:"Search professional jobs worldwide.",
+region:"Worldwide",
+type:"Job Platform",
+url:"https://www.linkedin.com/jobs/"
+},
+
+{
+name:"Indeed",
+icon:"🔎",
+description:"Search jobs across many countries and industries.",
+region:"Worldwide",
+type:"Job Platform",
+url:"https://www.indeed.com/"
+},
+
+{
+name:"Glassdoor Jobs",
+icon:"💼",
+description:"Search jobs and explore employer information.",
+region:"Worldwide",
+type:"Job Platform",
+url:"https://www.glassdoor.com/Job/index.htm"
+},
+
+{
+name:"EURES",
+icon:"🇪🇺",
+description:"European employment and mobility opportunities.",
+region:"Europe",
+type:"Job Platform",
+url:"https://eures.europa.eu/"
+},
+
+{
+name:"Government of Canada Jobs",
+icon:"🇨🇦",
+description:"Official Government of Canada job opportunities.",
+region:"North America",
+type:"Government",
+url:"https://www.canada.ca/en/services/jobs/opportunities.html"
+},
+
+{
+name:"USAJOBS",
+icon:"🇺🇸",
+description:"Official U.S. federal government jobs.",
+region:"North America",
+type:"Government",
+url:"https://www.usajobs.gov/"
+},
+
+{
+name:"UK Civil Service Jobs",
+icon:"🇬🇧",
+description:"Official UK Civil Service vacancies.",
+region:"Europe",
+type:"Government",
+url:"https://www.civilservicejobs.service.gov
