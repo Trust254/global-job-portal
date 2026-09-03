@@ -3,115 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Job Finder & Instant AI CV Builder</title>
-    <!-- Tailwind CSS CDN for styling -->
+    <title>Mustafa Elevate Job Hunting & CV Preparation</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
 
-    <!-- Header / Navbar -->
+    <!-- Header -->
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-blue-600">
-                JobPortal<span class="text-gray-800">Pro</span>
+            <div class="text-xl font-extrabold text-blue-600">
+                Mustafa <span class="text-gray-800">Elevate</span>
             </div>
             <nav class="hidden md:flex space-x-6 font-medium text-gray-600">
-                <a href="#" class="hover:text-blue-600">Find Jobs</a>
-                <a href="#" class="hover:text-blue-600">Qatar Airways Jobs</a>
-                <a href="#" class="hover:text-blue-600">Government Listings</a>
-                <a href="#" class="text-blue-600 font-semibold">AI CV Builder</a>
+                <a href="#jobs-section" class="hover:text-blue-600">Live Jobs</a>
+                <a href="https://careers.qatarairways.com/" target="_blank" class="text-blue-500 hover:underline">Qatar Airways Careers ↗</a>
+                <a href="https://www.linkedin.com/jobs" target="_blank" class="text-blue-500 hover:underline">LinkedIn Jobs ↗</a>
             </nav>
             <div>
-                <a href="#cv-builder" class="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition">Build CV Now</a>
+                <a href="#cv-section" class="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition">Get CV Help</a>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section with Search -->
-    <section class="bg-blue-900 text-white py-20 px-4">
+    <!-- Hero / Live Job Search -->
+    <section class="bg-blue-900 text-white py-16 px-4">
         <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-4xl md:text-5xl font-extrabold mb-4">
-                Find International & Government Jobs Instantly
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-4">
+                Mustafa Elevate Job Hunting & CV Prep
             </h1>
-            <p class="text-lg text-blue-200 mb-8">
-                Search open roles from top employers like Qatar Airways and build your ATS-optimized CV in seconds.
+            <p class="text-blue-200 mb-8">
+                Search verified live openings aggregated from trusted sources like Qatar Airways and LinkedIn, apply on our platform, and get your CV built instantly.
             </p>
 
-            <!-- Search Bar Form -->
+            <!-- Search Bar -->
             <div class="bg-white p-3 rounded-xl shadow-lg flex flex-col md:flex-row gap-3">
                 <input 
                     type="text" 
-                    placeholder="Job title, keywords, or company (e.g., Qatar Airways)" 
+                    id="searchInput"
+                    placeholder="Search job title (e.g., Cabin Crew, Security, Engineer)" 
                     class="flex-1 p-3 text-gray-800 focus:outline-none"
                 >
-                <input 
-                    type="text" 
-                    placeholder="Location (e.g., Doha, Remote)" 
-                    class="md:w-1/3 p-3 text-gray-800 border-t md:border-t-0 md:border-l border-gray-200 focus:outline-none"
-                >
-                <button class="bg-blue-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-blue-700 transition">
+                <button onclick="filterJobs()" class="bg-blue-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-blue-700 transition">
                     Search Jobs
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- Featured Categories Section -->
-    <section class="max-w-7xl mx-auto px-4 py-16">
-        <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Explore Top Categories</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                <h3 class="text-xl font-bold text-blue-600 mb-2">Aviation & Airlines</h3>
-                <p class="text-gray-600 mb-4">Find cabin crew, ground operations, and engineering openings with elite carriers.</p>
-                <a href="#" class="text-blue-600 font-semibold hover:underline">View Openings &rarr;</a>
+    <!-- Live Job Listings Feed -->
+    <section id="jobs-section" class="max-w-6xl mx-auto px-4 py-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-2">Verified Live Opportunities</h2>
+        <p class="text-gray-600 mb-6">Apply directly through Mustafa Elevate, or check the official trusted source links below.</p>
+        
+        <div id="jobListContainer" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <!-- Job Card 1: Qatar Airways -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded">Qatar Airways Portal</span>
+                        <a href="https://careers.qatarairways.com/" target="_blank" class="text-xs text-blue-600 font-medium hover:underline">Official Source ↗</a>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Cabin Crew / Customer Service</h3>
+                    <p class="text-blue-600 font-medium">Qatar Airways • Doha, Qatar</p>
+                    <p class="text-gray-600 text-sm mt-2">Provide world-class hospitality and safety standards for global passengers.</p>
+                </div>
+                <div class="mt-6 space-y-2">
+                    <button onclick="startApplication('Cabin Crew - Qatar Airways')" class="w-full bg-blue-600 text-white font-semibold py-2.5 rounded-lg hover:bg-blue-700 transition">
+                        Apply Here on Mustafa Elevate
+                    </button>
+                </div>
             </div>
-            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                <h3 class="text-xl font-bold text-blue-600 mb-2">Government Sectors</h3>
-                <p class="text-gray-600 mb-4">Discover verified administrative, public service, and infrastructural government jobs.</p>
-                <a href="#" class="text-blue-600 font-semibold hover:underline">View Openings &rarr;</a>
+
+            <!-- Job Card 2: LinkedIn / International -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">LinkedIn Trusted Feed</span>
+                        <a href="https://www.linkedin.com/jobs" target="_blank" class="text-xs text-blue-600 font-medium hover:underline">Official Source ↗</a>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Senior IT Systems Administrator</h3>
+                    <p class="text-blue-600 font-medium">International Enterprise • Remote / Hybrid</p>
+                    <p class="text-gray-600 text-sm mt-2">Manage secure cloud systems and network infrastructure for global operations.</p>
+                </div>
+                <div class="mt-6 space-y-2">
+                    <button onclick="startApplication('Senior IT Systems Administrator')" class="w-full bg-blue-600 text-white font-semibold py-2.5 rounded-lg hover:bg-blue-700 transition">
+                        Apply Here on Mustafa Elevate
+                    </button>
+                </div>
             </div>
-            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                <h3 class="text-xl font-bold text-blue-600 mb-2">International Remote</h3>
-                <p class="text-gray-600 mb-4">Work globally with cross-border enterprises offering remote contract positions.</p>
-                <a href="#" class="text-blue-600 font-semibold hover:underline">View Openings &rarr;</a>
-            </div>
+
         </div>
     </section>
 
-    <!-- Instant CV Builder Highlight Section -->
-    <section id="cv-builder" class="bg-gray-100 py-16 px-4">
-        <div class="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-md">
-            <div class="text-center mb-6">
-                <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Instant Feature</span>
-                <h2 class="text-2xl font-bold text-gray-900 mt-2">Need a CV right now?</h2>
-                <p class="text-gray-600">Provide your basic career info and let our system format a professional CV immediately.</p>
+    <!-- Post-Application & CV Direction Section -->
+    <section id="cv-section" class="bg-gray-100 py-16 px-4 border-t">
+        <div class="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-md text-center">
+            <div id="stepTracker">
+                <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Application & CV Assistant</span>
+                <h2 id="modalTitle" class="text-2xl font-bold text-gray-900 mt-3">Select a Job & Apply to Start</h2>
+                <p id="modalDesc" class="text-gray-600 mt-2">Click "Apply Here on Mustafa Elevate" on any job above. Once your application is logged, our system will automatically prepare your tailored CV pathway.</p>
             </div>
 
-            <!-- Quick CV Form Simulation -->
-            <form class="space-y-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">Target Job Title</label>
-                    <input type="text" placeholder="e.g., Customer Service Agent - Qatar Airways" class="mt-1 w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <div id="actionArea" class="mt-6 hidden">
+                <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg mb-6 text-left">
+                    <p class="text-sm font-semibold text-blue-900">Application Registered For:</p>
+                    <p id="selectedJobText" class="text-lg font-bold text-blue-700"></p>
                 </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">Past Experience / Key Duties</label>
-                    <textarea rows="3" placeholder="Briefly describe what you did at your last job..." class="mt-1 w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+
+                <p class="font-medium text-gray-800 mb-4">Application complete! How would you like your CV prepared for this exact role?</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <button onclick="chooseAI()" class="bg-blue-600 text-white font-semibold p-4 rounded-xl hover:bg-blue-700 transition">
+                        ⚡ Instant AI CV Builder<br><span class="text-xs font-normal text-blue-200">Generated automatically in seconds</span>
+                    </button>
+                    <button onclick="chooseHuman()" class="bg-emerald-600 text-white font-semibold p-4 rounded-xl hover:bg-emerald-700 transition">
+                        👤 Mustafa Human Expert CV<br><span class="text-xs font-normal text-emerald-200">Redirects to human preparation site</span>
+                    </button>
                 </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">Core Skills</label>
-                    <input type="text" placeholder="e.g., Client Relations, Communication, Problem Solving" class="mt-1 w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                </div>
-                <button type="button" onclick="alert('AI CV Generator triggered successfully!')" class="w-full bg-blue-600 text-white font-semibold p-3 rounded-lg hover:bg-blue-700 transition">
-                    Generate CV Instantly
-                </button>
-            </form>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-gray-400 py-8 px-4 text-center">
-        <p>&copy; 2026 JobPortalPro. All rights reserved. Helping job seekers land global and government opportunities.</p>
+        <p>&copy; 2026 Mustafa Elevate. Trusted job matching and professional CV preparation.</p>
     </footer>
+
+    <script>
+        function startApplication(jobTitle) {
+            // Smooth scroll to CV section
+            document.getElementById('cv-section').scrollIntoView({ behavior: 'smooth' });
+            
+            // Update UI to simulate successful on-site application
+            document.getElementById('modalTitle').innerText = "Application Submitted Successfully!";
+            document.getElementById('modalDesc').innerText = "Your application has been recorded on Mustafa Elevate. Let's make sure your CV matches this role perfectly.";
+            document.getElementById('selectedJobText').innerText = jobTitle;
+            document.getElementById('actionArea').classList.remove('hidden');
+        }
+
+        function chooseAI() {
+            alert("Launching Instant AI CV Generator for this specific job position...");
+        }
+
+        function chooseHuman() {
+            // Redirect user to your dedicated human CV preparation site link
+            window.location.href = "https://example.com/mustafa-human-cv-service";
+        }
+
+        function filterJobs() {
+            let query = document.getElementById('searchInput').value;
+            alert("Searching trusted databases for: " + query);
+        }
+    </script>
 
 </body>
 </html>
