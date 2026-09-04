@@ -3,123 +3,5605 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mustafa Elevate - CV Expert Portal</title>
-    <!-- Tailwind CSS for clean styling matching your design -->
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100 font-sans">
 
-    <!-- Header / Navigation Bar -->
-    <header class="bg-gray-900 text-white p-4 flex justify-between items-center shadow-md">
-        <div class="text-xl font-bold flex items-center space-x-2">
-            <span>Mustafa Elevate</span>
-        </div>
-        <div class="space-x-4">
-            <button onclick="openExpertModal()" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded text-sm font-semibold transition">CV Expert Login</button>
-            <button class="bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded text-sm font-semibold transition">Sign In</button>
-        </div>
-    </header>
+    <meta name="theme-color" content="#155eef">
+    <meta name="description"
+          content="Mustafa Elevate - Global jobs, career opportunities and professional human CV preparation.">
 
-    <!-- Main Content Area / Landing Page -->
-    <main class="max-w-4xl mx-auto mt-12 p-6 text-center">
-        <h1 class="text-3xl font-bold text-gray-800 mb-4">Elevate Your Career Path</h1>
-        <p class="text-gray-600 mb-8">Access professional CV reviews, career guidance, and expert recruitment support.</p>
-        <button onclick="openExpertModal()" class="bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-blue-700 transition">Open CV Expert Portal</button>
-    </main>
+    <title>Mustafa Elevate | Global Jobs & Professional CVs</title>
 
-    <!-- Expert Login Modal (Hidden by default, toggle with open/close functions) -->
-    <div id="expertModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-2xl max-w-md w-full p-6 relative shadow-xl">
-            <!-- Close Button -->
-            <button onclick="closeExpertModal()" class="absolute top-4 right-4 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-full w-8 h-8 flex items-center justify-center font-bold">×</button>
-            
-            <div id="loginSection">
-                <h2 class="text-2xl font-bold text-gray-900 mb-1">Human CV Expert Portal</h2>
-                <p class="text-sm text-gray-500 mb-6">Sign in to access all customer CV information, review uploads, and upgrade profiles.</p>
-                
-                <form id="expertLoginForm" onsubmit="handleExpertLogin(event)">
-                    <div class="mb-4 text-left">
-                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Expert Email *</label>
-                        <input type="email" id="expertEmail" required placeholder="expert@mustafaelevate.com" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    </div>
+    <style>
+        :root {
+            --primary: #155eef;
+            --primary-dark: #0b4dcc;
+            --primary-light: #eaf1ff;
+            --success: #16803c;
+            --success-light: #eaf8ef;
+            --warning: #a15c00;
+            --warning-light: #fff5df;
+            --danger: #c62828;
+            --danger-light: #ffeded;
 
-                    <div class="mb-6 text-left">
-                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Access Code / Password *</label>
-                        <input type="password" id="expertPassword" required placeholder="Enter expert access code" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    </div>
+            --dark: #101828;
+            --text: #344054;
+            --muted: #667085;
+            --border: #e4e7ec;
+            --background: #f8fafc;
+            --white: #ffffff;
 
-                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl transition shadow">
-                        Access CV Expert Dashboard
-                    </button>
-                </form>
-            </div>
+            --shadow-sm: 0 2px 8px rgba(16, 24, 40, .06);
+            --shadow: 0 8px 30px rgba(16, 24, 40, .08);
+            --shadow-lg: 0 18px 55px rgba(16, 24, 40, .14);
 
-            <!-- Dashboard Section (Hidden until successfully logged in) -->
-            <div id="dashboardSection" class="hidden text-left">
-                <h2 class="text-2xl font-bold text-gray-900 mb-1">Expert Workspace</h2>
-                <p class="text-sm text-gray-500 mb-6">Access and review all user CV details, professional summaries, and uploaded files in one place.</p>
-                
-                <div class="grid grid-cols-3 gap-3 mb-6">
-                    <div class="bg-gray-50 p-3 rounded-xl border text-center">
-                        <span class="block text-xl font-bold text-gray-800">0</span>
-                        <span class="text-xs text-gray-500">Total Submissions</span>
-                    </div>
-                    <div class="bg-gray-50 p-3 rounded-xl border text-center">
-                        <span class="block text-xl font-bold text-gray-800">0</span>
-                        <span class="text-xs text-gray-500">Completed</span>
-                    </div>
-                    <div class="bg-gray-50 p-3 rounded-xl border text-center">
-                        <span class="block text-xl font-bold text-gray-800">0</span>
-                        <span class="text-xs text-gray-500">Pending</span>
-                    </div>
-                </div>
+            --radius-sm: 8px;
+            --radius: 14px;
+            --radius-lg: 22px;
 
-                <div class="flex space-x-2">
-                    <button onclick="refreshData()" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg text-sm font-semibold transition">Refresh Data</button>
-                    <button onclick="logoutExpert()" class="flex-1 bg-red-600 hover:bg-red-700 text-white py-2 rounded-lg text-sm font-semibold transition">Logout Expert</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- JavaScript Logic for Authentication and UI toggling -->
-    <script>
-        const validEmail = "expert@mustafaelevate.com";
-        const validPassword = "Mustafa254#";
-
-        function openExpertModal() {
-            document.getElementById('expertModal').classList.remove('hidden');
+            --max-width: 1200px;
         }
 
-        function closeExpertModal() {
-            document.getElementById('expertModal').classList.add('hidden');
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
-        function handleExpertLogin(event) {
-            event.preventDefault(); // Stop page from reloading
+        html {
+            scroll-behavior: smooth;
+        }
 
-            const emailInput = document.getElementById('expertEmail').value.trim();
-            const passwordInput = document.getElementById('expertPassword').value.trim();
+        body {
+            font-family:
+                Inter,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
 
-            if (emailInput === validEmail && passwordInput === validPassword) {
-                // Switch view from Login form to Dashboard view
-                document.getElementById('loginSection').classList.add('hidden');
-                document.getElementById('dashboardSection').classList.remove('hidden');
-            } else {
-                alert("Invalid email or password/access code. Please check your credentials and try again.");
+        button,
+        input,
+        textarea,
+        select {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .container {
+            width: min(100% - 32px, var(--max-width));
+            margin-inline: auto;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, .96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav {
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            font-weight: 800;
+            font-size: 20px;
+            color: var(--dark);
+            white-space: nowrap;
+        }
+
+        .brand-mark {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            color: white;
+            font-weight: 900;
+            background: linear-gradient(135deg, #155eef, #7f56d9);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            color: #475467;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 10px;
+            padding: 11px 17px;
+            font-weight: 700;
+            transition: .2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .btn-outline {
+            background: white;
+            color: var(--dark);
+            border: 1px solid var(--border);
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-warning {
+            background: #f79009;
+            color: white;
+        }
+
+        .btn-small {
+            padding: 8px 12px;
+            font-size: 13px;
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            padding: 76px 0 65px;
+            background:
+                radial-gradient(circle at 85% 10%, #dce8ff 0, transparent 30%),
+                linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr .85fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 5vw, 62px);
+            line-height: 1.08;
+            color: var(--dark);
+            letter-spacing: -1.7px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            max-width: 680px;
+            color: var(--muted);
+            font-size: 18px;
+            margin-bottom: 28px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .hero-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-card h3 {
+            color: var(--dark);
+            margin-bottom: 16px;
+        }
+
+        .hero-check {
+            display: flex;
+            align-items: flex-start;
+            gap: 11px;
+            margin: 14px 0;
+        }
+
+        .hero-check-icon {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: var(--success-light);
+            color: var(--success);
+            flex: 0 0 auto;
+            font-size: 13px;
+            font-weight: 900;
+        }
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        section {
+            padding: 70px 0;
+        }
+
+        .section-heading {
+            max-width: 720px;
+            margin-bottom: 35px;
+        }
+
+        .section-heading h2 {
+            color: var(--dark);
+            font-size: clamp(28px, 4vw, 42px);
+            line-height: 1.15;
+            margin-bottom: 10px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+        }
+
+        /* =========================
+           STATS
+        ========================= */
+
+        .stats {
+            padding: 0 0 30px;
+            margin-top: -20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .stat-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stat-card strong {
+            display: block;
+            font-size: 27px;
+            color: var(--dark);
+        }
+
+        .stat-card span {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        /* =========================
+           JOBS
+        ========================= */
+
+        .jobs-toolbar {
+            display: grid;
+            grid-template-columns: 1fr 180px 180px auto;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .input,
+        textarea,
+        select {
+            width: 100%;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: white;
+            color: var(--dark);
+            padding: 12px 13px;
+            outline: none;
+        }
+
+        .input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(21, 94, 239, .1);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .job-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            min-height: 300px;
+        }
+
+        .job-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .job-company {
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .job-card h3 {
+            color: var(--dark);
+            margin: 5px 0 10px;
+            font-size: 18px;
+        }
+
+        .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            padding: 5px 9px;
+            border-radius: 999px;
+            background: #f2f4f7;
+            color: #475467;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .verified {
+            background: var(--success-light);
+            color: var(--success);
+        }
+
+        .job-description {
+            color: var(--muted);
+            font-size: 13px;
+            flex: 1;
+        }
+
+        .job-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 18px;
+        }
+
+        .job-actions .btn {
+            flex: 1;
+        }
+
+        /* =========================
+           CAREERS
+        ========================= */
+
+        .career-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .career-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 18px;
+            transition: .2s ease;
+        }
+
+        .career-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .career-card strong {
+            color: var(--dark);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .career-card small {
+            color: var(--muted);
+        }
+
+        /* =========================
+           SERVICES
+        ========================= */
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .service-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 22px;
+        }
+
+        .service-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 13px;
+            background: var(--primary-light);
+            color: var(--primary);
+            display: grid;
+            place-items: center;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            color: var(--dark);
+            font-size: 18px;
+            margin-bottom: 7px;
+        }
+
+        .service-card p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* =========================
+           CV CTA
+        ========================= */
+
+        .cv-cta {
+            background: linear-gradient(135deg, #0f4bd8, #155eef);
+            color: white;
+            border-radius: 28px;
+            padding: 42px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .cv-cta h2 {
+            font-size: 34px;
+            margin-bottom: 8px;
+        }
+
+        .cv-cta p {
+            opacity: .9;
+        }
+
+        .cv-price {
+            background: white;
+            color: var(--dark);
+            padding: 20px 28px;
+            border-radius: 18px;
+            text-align: center;
+            min-width: 180px;
+        }
+
+        .cv-price strong {
+            font-size: 30px;
+            display: block;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #101828;
+            color: #d0d5dd;
+            padding: 50px 0 25px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 30px;
+        }
+
+        footer h3 {
+            color: white;
+            margin-bottom: 13px;
+        }
+
+        footer a {
+            display: block;
+            color: #98a2b3;
+            margin: 8px 0;
+            font-size: 14px;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #344054;
+            margin-top: 35px;
+            padding-top: 20px;
+            font-size: 13px;
+            color: #98a2b3;
+        }
+
+        /* =========================
+           MODALS
+        ========================= */
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            z-index: 3000;
+            background: rgba(16, 24, 40, .62);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-box {
+            width: min(100%, 760px);
+            max-height: 92vh;
+            overflow-y: auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            padding: 26px;
+            position: relative;
+        }
+
+        .modal-box.large {
+            width: min(100%, 1050px);
+        }
+
+        .modal-close {
+            position: absolute;
+            right: 18px;
+            top: 15px;
+            border: 0;
+            background: #f2f4f7;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 20px;
+        }
+
+        .modal-title {
+            padding-right: 45px;
+            margin-bottom: 20px;
+        }
+
+        .modal-title h2 {
+            color: var(--dark);
+        }
+
+        .modal-title p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* =========================
+           FORMS
+        ========================= */
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--dark);
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .form-note {
+            color: var(--muted);
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .required {
+            color: var(--danger);
+        }
+
+        .checkbox-row {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px;
+            margin: 15px 0;
+        }
+
+        .checkbox-row input {
+            margin-top: 5px;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* =========================
+           AUTH
+        ========================= */
+
+        .auth-tabs {
+            display: flex;
+            background: #f2f4f7;
+            border-radius: 10px;
+            padding: 4px;
+            margin-bottom: 20px;
+        }
+
+        .auth-tab {
+            flex: 1;
+            border: 0;
+            padding: 10px;
+            background: transparent;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+
+        .auth-tab.active {
+            background: white;
+            color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .auth-form {
+            display: none;
+        }
+
+        .auth-form.active {
+            display: block;
+        }
+
+        .password-wrap {
+            position: relative;
+        }
+
+        .password-wrap input {
+            padding-right: 50px;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 10px;
+            top: 9px;
+            border: 0;
+            background: transparent;
+            color: var(--muted);
+        }
+
+        /* =========================
+           DASHBOARD
+        ========================= */
+
+        .dashboard {
+            display: none;
+        }
+
+        .dashboard.active {
+            display: block;
+        }
+
+        .dashboard-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .dashboard-header h2 {
+            color: var(--dark);
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .dashboard-stat {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 18px;
+        }
+
+        .dashboard-stat span {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .dashboard-stat strong {
+            display: block;
+            color: var(--dark);
+            font-size: 25px;
+            margin-top: 4px;
+        }
+
+        .dashboard-panels {
+            display: grid;
+            grid-template-columns: 1.3fr .7fr;
+            gap: 20px;
+        }
+
+        .panel {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 22px;
+        }
+
+        .panel h3 {
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .status-box {
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+
+        .status-pending {
+            background: var(--warning-light);
+            color: var(--warning);
+        }
+
+        .status-approved {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .status-ready {
+            background: var(--success-light);
+            color: var(--success);
+        }
+
+        .status-rejected {
+            background: var(--danger-light);
+            color: var(--danger);
+        }
+
+        .notification-item {
+            padding: 13px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .notification-item:last-child {
+            border-bottom: 0;
+        }
+
+        .notification-item.unread {
+            background: #f8fbff;
+            padding-left: 10px;
+            border-radius: 8px;
+        }
+
+        .notification-item strong {
+            display: block;
+            color: var(--dark);
+            font-size: 13px;
+        }
+
+        .notification-item p {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .notification-item small {
+            color: #98a2b3;
+            font-size: 10px;
+        }
+
+        .empty-state {
+            padding: 30px;
+            text-align: center;
+            color: var(--muted);
+            border: 1px dashed var(--border);
+            border-radius: 12px;
+        }
+
+        /* =========================
+           CUSTOMER CARE
+        ========================= */
+
+        .care-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .care-stats {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .care-stat {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 15px;
+            background: #f8fafc;
+        }
+
+        .care-stat strong {
+            display: block;
+            font-size: 22px;
+            color: var(--dark);
+        }
+
+        .care-stat span {
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        .request-card {
+            border: 1px solid var(--border);
+            border-radius: 13px;
+            padding: 18px;
+            margin-bottom: 12px;
+        }
+
+        .request-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .request-head h4 {
+            color: var(--dark);
+        }
+
+        .request-details {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            font-size: 12px;
+            margin-bottom: 13px;
+        }
+
+        .request-detail {
+            background: #f8fafc;
+            padding: 9px;
+            border-radius: 8px;
+        }
+
+        .request-detail span {
+            display: block;
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        .request-detail strong {
+            color: var(--dark);
+        }
+
+        /* =========================
+           CV EDITOR
+        ========================= */
+
+        .cv-editor-section {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 17px;
+            margin-bottom: 15px;
+        }
+
+        .cv-editor-section h4 {
+            color: var(--dark);
+            margin-bottom: 13px;
+        }
+
+        .uploaded-file {
+            padding: 12px;
+            background: var(--primary-light);
+            border-radius: 9px;
+            color: var(--primary);
+            margin-top: 8px;
+            font-size: 13px;
+        }
+
+        /* =========================
+           TOAST
+        ========================= */
+
+        #toastContainer {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 6000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: min(380px, calc(100% - 40px));
+        }
+
+        .toast {
+            background: #101828;
+            color: white;
+            padding: 14px 16px;
+            border-radius: 11px;
+            box-shadow: var(--shadow-lg);
+            animation: toastIn .25s ease;
+            font-size: 13px;
+        }
+
+        .toast.success {
+            background: var(--success);
+        }
+
+        .toast.error {
+            background: var(--danger);
+        }
+
+        @keyframes toastIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        function logoutExpert() {
-            // Clear fields and switch view back to login form
-            document.getElementById('expertLoginForm').reset();
-            document.getElementById('dashboardSection').classList.add('hidden');
-            document.getElementById('loginSection').classList.remove('hidden');
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 1000px) {
+            .hero-grid,
+            .dashboard-panels {
+                grid-template-columns: 1fr;
+            }
+
+            .jobs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .services-grid,
+            .career-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .dashboard-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .care-stats {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
-        function refreshData() {
-            alert("Data refreshed successfully.");
+        @media (max-width: 760px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+                border: 0;
+                background: #f2f4f7;
+                width: 40px;
+                height: 40px;
+                border-radius: 9px;
+            }
+
+            .header-actions .btn-outline {
+                display: none;
+            }
+
+            .hero {
+                padding-top: 50px;
+            }
+
+            .jobs-toolbar {
+                grid-template-columns: 1fr;
+            }
+
+            .jobs-grid,
+            .services-grid,
+            .career-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cv-cta {
+                grid-template-columns: 1fr;
+                padding: 28px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .request-details {
+                grid-template-columns: 1fr;
+            }
+
+            .care-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
         }
-    </script>
+
+        @media (max-width: 480px) {
+            .container {
+                width: min(100% - 22px, var(--max-width));
+            }
+
+            section {
+                padding: 50px 0;
+            }
+
+            .brand span {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .care-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .form-actions,
+            .job-actions {
+                flex-direction: column;
+            }
+
+            .form-actions .btn,
+            .job-actions .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header>
+    <div class="container nav">
+
+        <a href="#" class="brand">
+            <div class="brand-mark">M</div>
+            <span>Mustafa Elevate</span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="#jobs">Find Jobs</a>
+            <a href="#careers">Global Careers</a>
+            <a href="#cv">Professional CV</a>
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+        </nav>
+
+        <div class="header-actions">
+            <!-- Added Human CV Expert Account Login Button -->
+            <button class="btn btn-secondary btn-small"
+                    onclick="openExpertLogin()">
+                CV Expert Login
+            </button>
+
+            <button class="btn btn-outline btn-small"
+                    onclick="openCustomerCareLogin()">
+                Customer Care
+            </button>
+
+            <button id="headerAccountButton"
+                    class="btn btn-primary btn-small"
+                    onclick="openAuth()">
+                Sign In
+            </button>
+
+            <button class="mobile-menu"
+                    onclick="toggleMobileMenu()">
+                ☰
+            </button>
+        </div>
+    </div>
+</header>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<main>
+
+<section class="hero">
+    <div class="container hero-grid">
+
+        <div>
+            <div class="eyebrow">
+                🌍 Global Career Platform
+            </div>
+
+            <h1>
+                Find better jobs.
+                <span>Build a stronger career.</span>
+            </h1>
+
+            <p>
+                Mustafa Elevate connects job seekers with local and
+                international opportunities while providing professional
+                human CV preparation designed around the job you want.
+            </p>
+
+            <div class="hero-buttons">
+                <button class="btn btn-primary"
+                        onclick="scrollToSection('jobs')">
+                    Find Jobs
+                </button>
+
+                <button class="btn btn-secondary"
+                        onclick="startCVRequest()">
+                    Prepare My CV
+                </button>
+
+                <button class="btn btn-outline"
+                        onclick="openAuth('register')">
+                    Create Account
+                </button>
+            </div>
+        </div>
+
+        <div class="hero-card">
+
+            <h3>How Mustafa Elevate Works</h3>
+
+            <div class="hero-check">
+                <div class="hero-check-icon">✓</div>
+                <div>
+                    <strong>Create your account</strong>
+                    <p>Register once and manage your career services from your dashboard.</p>
+                </div>
+            </div>
+
+            <div class="hero-check">
+                <div class="hero-check-icon">✓</div>
+                <div>
+                    <strong>Find the right opportunity</strong>
+                    <p>Search local and international jobs published on the platform.</p>
+                </div>
+            </div>
+
+            <div class="hero-check">
+                <div class="hero-check-icon">✓</div>
+                <div>
+                    <strong>Get your CV professionally prepared</strong>
+                    <p>Our Human CV Expert can review your old CV and improve it for your target job.</p>
+                </div>
+            </div>
+
+            <div class="hero-check">
+                <div class="hero-check-icon">✓</div>
+                <div>
+                    <strong>Track everything in your account</strong>
+                    <p>Payments, CV status, notifications, saved jobs and applications stay in one place.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     STATS
+========================================================= -->
+
+<section class="stats">
+    <div class="container stats-grid">
+
+        <div class="stat-card">
+            <strong id="jobCount">0</strong>
+            <span>Jobs Available</span>
+        </div>
+
+        <div class="stat-card">
+            <strong>1000 KES</strong>
+            <span>Professional CV Service</span>
+        </div>
+
+        <div class="stat-card">
+            <strong>Human</strong>
+            <span>CV Expert Review</span>
+        </div>
+
+        <div class="stat-card">
+            <strong>24/7</strong>
+            <span>Account Access</span>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- =========================================================
+     JOBS
+========================================================= -->
+
+<section id="jobs">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <h2>Find Your Next Opportunity</h2>
+            <p>
+                Search jobs posted by Mustafa Elevate Customer Care.
+                New verified opportunities automatically appear here.
+            </p>
+        </div>
+
+        <div class="jobs-toolbar">
+
+            <input id="jobSearch"
+                   class="input"
+                   placeholder="Search job title, company or keyword..."
+                   oninput="renderJobs()">
+
+            <select id="jobCountry"
+                    onchange="renderJobs()">
+                <option value="">All Countries</option>
+                <option>Kenya</option>
+                <option>Qatar</option>
+                <option>UAE</option>
+                <option>Saudi Arabia</option>
+                <option>Canada</option>
+                <option>United Kingdom</option>
+                <option>United States</option>
+                <option>Australia</option>
+                <option>Germany</option>
+                <option>Other</option>
+            </select>
+
+            <select id="jobCategory"
+                    onchange="renderJobs()">
+                <option value="">All Categories</option>
+                <option>Driving</option>
+                <option>Security</option>
+                <option>Customer Service</option>
+                <option>Hospitality</option>
+                <option>Aviation</option>
+                <option>Construction</option>
+                <option>Healthcare</option>
+                <option>Technology</option>
+                <option>General</option>
+            </select>
+
+            <button class="btn btn-outline"
+                    onclick="resetJobFilters()">
+                Reset
+            </button>
+
+        </div>
+
+        <div id="jobsGrid"
+             class="jobs-grid">
+        </div>
+
+    </div>
+</section>
+
+
+<!-- =========================================================
+     GLOBAL CAREERS
+========================================================= -->
+
+<section id="careers">
+    <div class="container">
+
+        <div class="section-heading">
+            <h2>Global Career Sources</h2>
+            <p>
+                Explore established career portals and official recruitment
+                sources around the world.
+            </p>
+        </div>
+
+        <div class="career-grid">
+
+            <a class="career-card"
+               href="https://careers.qatarairways.com/"
+               target="_blank"
+               rel="noopener">
+                <strong>Qatar Airways</strong>
+                <small>Airline careers</small>
+            </a>
+
+            <a class="career-card"
+               href="https://www.emiratesgroupcareers.com/"
+               target="_blank"
+               rel="noopener">
+                <strong>Emirates</strong>
+                <small>Global airline careers</small>
+            </a>
+
+            <a class="career-card"
+               href="https://careers.etihad.com/"
+               target="_blank"
+               rel="noopener">
+                <strong>Etihad Airways</strong>
+                <small>International aviation</small>
+            </a>
+
+            <a class="career-card"
+               href="https://careers.kenya-airways.com/"
+               target="_blank"
+               rel="noopener">
+                <strong>Kenya Airways</strong>
+                <small>Kenya aviation jobs</small>
+            </a>
+
+            <a class="career-card"
+               href="https://jobs.royalcaribbeangroup.com/"
+               target="_blank"
+               rel="noopener">
+                <strong>Royal Caribbean</strong>
+                <small>Cruise careers</small>
+            </a>
+
+            <a class="career-card"
+               href="https://jobs.disneycareers.com/"
+               target="_blank"
+               rel="noopener">
+                <strong>Disney Careers</strong>
+                <small>Hospitality and entertainment</small>
+            </a>
+
+            <a class="career-card"
+               href="https://careers.marriott.com/"
+               target="_blank"
+               rel="noopener">
+                <strong>Marriott</strong>
+                <small>Hospitality careers</small>
+            </a>
+
+            <a class="career-card"
+               href="https://careers.un.org/"
+               target="_blank"
+               rel="noopener">
+                <strong>United Nations</strong>
+                <small>International opportunities</small>
+            </a>
+
+            <a class="career-card"
+               href="https://www.who.int/careers"
+               target="_blank"
+               rel="noopener">
+                <strong>WHO</strong>
+                <small>Global health careers</small>
+            </a>
+
+            <a class="career-card"
+               href="https://www.undp.org/careers"
+               target="_blank"
+               rel="noopener">
+                <strong>UNDP</strong>
+                <small>Development careers</small>
+            </a>
+
+            <a class="career-card"
+               href="https://www.linkedin.com/jobs/"
+               target="_blank"
+               rel="noopener">
+                <strong>LinkedIn Jobs</strong>
+                <small>Professional opportunities</small>
+            </a>
+
+            <a class="career-card"
+               href="https://www.indeed.com/"
+               target="_blank"
+               rel="noopener">
+                <strong>Indeed</strong>
+                <small>Global job search</small>
+            </a>
+
+            <a class="career-card"
+               href="https://www.canada.ca/en/services/jobs/opportunities.html"
+               target="_blank"
+               rel="noopener">
+                <strong>Canada Jobs</strong>
+                <small>Government opportunities</small>
+            </a>
+
+            <a class="career-card"
+               href="https://www.usajobs.gov/"
+               target="_blank"
+               rel="noopener">
+                <strong>USAJOBS</strong>
+                <small>US government careers</small>
+            </a>
+
+            <a class="career-card"
+               href="https://www.civilservicejobs.service.gov.uk/"
+               target="_blank"
+               rel="noopener">
+                <strong>UK Civil Service</strong>
+                <small>UK government jobs</small>
+            </a>
+
+            <a class="career-card"
+               href="https://eures.europa.eu/"
+               target="_blank"
+               rel="noopener">
+                <strong>EURES</strong>
+                <small>European opportunities</small>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     SERVICES
+========================================================= -->
+
+<section id="services">
+    <div class="container">
+
+        <div class="section-heading">
+            <h2>Our Services</h2>
+            <p>
+                Practical career services designed to help you prepare,
+                apply and track your progress.
+            </p>
+        </div>
+
+        <div class="services-grid">
+
+            <div class="service-card">
+                <div class="service-icon">📄</div>
+                <h3>Professional CV Preparation</h3>
+                <p>
+                    Submit your information and optionally upload your old CV.
+                    A Human CV Expert reviews and improves it for your target job.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">👤</div>
+                <h3>Human CV Expert</h3>
+                <p>
+                    Your CV can be reviewed by a human expert who focuses on
+                    relevance, presentation and the requirements of your target position.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🔎</div>
+                <h3>Job Matching</h3>
+                <p>
+                    Find opportunities based on your selected career category,
+                    country and target position.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">📈</div>
+                <h3>Application Tracking</h3>
+                <p>
+                    Save jobs and track your applications from submitted
+                    through interview, successful or rejected.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     CV CTA
+========================================================= -->
+
+<section id="cv">
+    <div class="container">
+
+        <div class="cv-cta">
+
+            <div>
+                <h2>Get a Professional CV</h2>
+                <p>
+                    Upload your old CV, tell us the job you want and our
+                    Human CV Expert can review and upgrade your CV.
+                </p>
+
+                <button class="btn btn-outline"
+                        style="margin-top:18px;"
+                        onclick="startCVRequest()">
+                    Start CV Request
+                </button>
+            </div>
+
+            <div class="cv-price">
+                <span>Professional CV</span>
+                <strong>KSh 1,000</strong>
+                <small>One-time service</small>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
+
+<section id="about">
+    <div class="container">
+
+        <div class="section-heading">
+            <h2>About Mustafa Elevate</h2>
+            <p>
+                Mustafa Elevate is designed to give job seekers one place
+                to discover opportunities, prepare professional career
+                documents and manage their job-search journey.
+            </p>
+        </div>
+
+        <div class="services-grid">
+
+            <div class="service-card">
+                <div class="service-icon">🌍</div>
+                <h3>Global Opportunities</h3>
+                <p>
+                    Access career opportunities across Kenya and international markets.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🔐</div>
+                <h3>Personal Account</h3>
+                <p>
+                    Your CV, notifications, applications and saved jobs remain connected
+                    to your account.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">👨‍💼</div>
+                <h3>Human Support</h3>
+                <p>
+                    Customer Care and Human CV Experts can review requests and assist
+                    customers.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">📱</div>
+                <h3>Mobile Friendly</h3>
+                <p>
+                    The platform is designed to work comfortably on phones,
+                    tablets and computers.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div>
+                <h3>Mustafa Elevate</h3>
+                <p>
+                    Global jobs, professional CV preparation and career support.
+                </p>
+            </div>
+
+            <div>
+                <h3>Platform</h3>
+                <a href="#jobs">Find Jobs</a>
+                <a href="#cv">Professional CV</a>
+                <a href="#services">Services</a>
+                <a href="#careers">Global Careers</a>
+            </div>
+
+            <div>
+                <h3>Account</h3>
+                <a href="javascript:void(0)"
+                   onclick="openAuth('login')">
+                    Sign In
+                </a>
+
+                <a href="javascript:void(0)"
+                   onclick="openAuth('register')">
+                    Register
+                </a>
+
+                <a href="javascript:void(0)"
+                   onclick="openDashboard()">
+                    My Dashboard
+                </a>
+            </div>
+
+            <div>
+                <h3>Support</h3>
+                <a href="mailto:support@mustafaelevate.com">
+                    support@mustafaelevate.com
+                </a>
+
+                <a href="javascript:void(0)"
+                   onclick="openCustomerCareLogin()">
+                    Customer Care
+                </a>
+                
+                <a href="javascript:void(0)"
+                   onclick="openExpertLogin()">
+                    CV Expert Login
+                </a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 Mustafa Elevate. All rights reserved.
+        </div>
+
+    </div>
+</footer>
+
+
+<!-- =========================================================
+     AUTH MODAL
+========================================================= -->
+
+<div id="authModal" class="modal">
+
+    <div class="modal-box">
+
+        <button class="modal-close"
+                onclick="closeModal('authModal')">
+            ×
+        </button>
+
+        <div class="modal-title">
+            <h2 id="authTitle">Welcome Back</h2>
+            <p>
+                Create an account or sign in to access your personal dashboard.
+            </p>
+        </div>
+
+        <div class="auth-tabs">
+
+            <button id="loginTab"
+                    class="auth-tab active"
+                    onclick="switchAuth('login')">
+                Sign In
+            </button>
+
+            <button id="registerTab"
+                    class="auth-tab"
+                    onclick="switchAuth('register')">
+                Register
+            </button>
+
+        </div>
+
+
+        <!-- LOGIN -->
+
+        <form id="loginForm"
+              class="auth-form active"
+              onsubmit="handleLogin(event)">
+
+            <div class="form-group">
+                <label>Email <span class="required">*</span></label>
+                <input id="loginEmail"
+                       class="input"
+                       type="email"
+                       required
+                       autocomplete="email"
+                       placeholder="you@example.com">
+            </div>
+
+            <div class="form-group">
+                <label>Password <span class="required">*</span></label>
+
+                <div class="password-wrap">
+                    <input id="loginPassword"
+                           class="input"
+                           type="password"
+                           required
+                           autocomplete="current-password"
+                           placeholder="Enter your password">
+
+                    <button type="button"
+                            class="password-toggle"
+                            onclick="togglePassword('loginPassword')">
+                        Show
+                    </button>
+                </div>
+            </div>
+
+            <button class="btn btn-primary"
+                    style="width:100%;">
+                Sign In
+            </button>
+
+            <button type="button"
+                    class="btn btn-outline"
+                    style="width:100%; margin-top:10px;"
+                    onclick="forgotPassword()">
+                Forgot Password?
+            </button>
+
+        </form>
+
+
+        <!-- REGISTER -->
+
+        <form id="registerForm"
+              class="auth-form"
+              onsubmit="handleRegister(event)">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>Full Name <span class="required">*</span></label>
+                    <input id="registerName"
+                           class="input"
+                           required
+                           autocomplete="name"
+                           placeholder="Your full name">
+                </div>
+
+                <div class="form-group">
+                    <label>Phone Number <span class="required">*</span></label>
+                    <input id="registerPhone"
+                           class="input"
+                           required
+                           autocomplete="tel"
+                           placeholder="+254...">
+                </div>
+
+                <div class="form-group full">
+                    <label>Email <span class="required">*</span></label>
+                    <input id="registerEmail"
+                           class="input"
+                           type="email"
+                           required
+                           autocomplete="email"
+                           placeholder="you@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label>Password <span class="required">*</span></label>
+                    <input id="registerPassword"
+                           class="input"
+                           type="password"
+                           minlength="8"
+                           required
+                           autocomplete="new-password"
+                           placeholder="Minimum 8 characters">
+                </div>
+
+                <div class="form-group">
+                    <label>Confirm Password <span class="required">*</span></label>
+                    <input id="registerPasswordConfirm"
+                           class="input"
+                           type="password"
+                           minlength="8"
+                           required
+                           autocomplete="new-password"
+                           placeholder="Repeat password">
+                </div>
+
+            </div>
+
+            <div class="checkbox-row">
+                <input id="registerTerms"
+                       type="checkbox"
+                       required>
+
+                <label for="registerTerms">
+                    I agree to use Mustafa Elevate responsibly and confirm
+                    that the information I provide belongs to me.
+                </label>
+            </div>
+
+            <button class="btn btn-primary"
+                    style="width:100%;">
+                Create Account
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+
+<!-- =========================================================
+     CV REQUEST MODAL
+========================================================= -->
+
+<div id="cvModal" class="modal">
+
+    <div class="modal-box large">
+
+        <button class="modal-close"
+                onclick="closeModal('cvModal')">
+            ×
+        </button>
+
+        <div class="modal-title">
+            <h2>Professional CV Request</h2>
+            <p>
+                Complete your information and optionally upload your old CV.
+                A Human CV Expert can review and upgrade it for your target job.
+            </p>
+        </div>
+
+        <form id="cvRequestForm"
+              onsubmit="submitCVRequest(event)">
+
+            <div class="cv-editor-section">
+
+                <h4>1. Target Job</h4>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label>
+                            Target Job / Position
+                            <span class="required">*</span>
+                        </label>
+
+                        <input id="cvTargetJob"
+                               class="input"
+                               required
+                               placeholder="e.g. Driver, Customer Care Agent">
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            Target Country
+                            <span class="required">*</span>
+                        </label>
+
+                        <select id="cvTargetCountry"
+                                required>
+
+                            <option value="">Select country</option>
+                            <option>Kenya</option>
+                            <option>Qatar</option>
+                            <option>United Arab Emirates</option>
+                            <option>Saudi Arabia</option>
+                            <option>Canada</option>
+                            <option>United Kingdom</option>
+                            <option>United States</option>
+                            <option>Australia</option>
+                            <option>Germany</option>
+                            <option>Other</option>
+
+                        </select>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="cv-editor-section">
+
+                <h4>2. Personal Information</h4>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label>Full Name <span class="required">*</span></label>
+
+                        <input id="cvFullName"
+                               class="input"
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone <span class="required">*</span></label>
+
+                        <input id="cvPhone"
+                               class="input"
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email <span class="required">*</span></label>
+
+                        <input id="cvEmail"
+                               class="input"
+                               type="email"
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Current Location</label>
+
+                        <input id="cvLocation"
+                               class="input"
+                               placeholder="City, Country">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="cv-editor-section">
+
+                <h4>3. Professional Profile</h4>
+
+                <div class="form-group">
+
+                    <label>
+                        Professional Summary
+                    </label>
+
+                    <textarea id="cvSummary"
+                              placeholder="Briefly describe your experience, strengths and career goals..."></textarea>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+                        Work Experience
+                    </label>
+
+                    <textarea id="cvExperience"
+                              placeholder="Company, position, dates and responsibilities..."></textarea>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+                        Education
+                    </label>
+
+                    <textarea id="cvEducation"
+                              placeholder="School, qualification and dates..."></textarea>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+                        Skills
+                    </label>
+
+                    <textarea id="cvSkills"
+                              placeholder="Driving, customer service, communication, computer skills..."></textarea>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+                        Certifications / Training
+                    </label>
+
+                    <textarea id="cvCertifications"
+                              placeholder="Certificates, training and professional qualifications..."></textarea>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+                        Languages
+                    </label>
+
+                    <input id="cvLanguages"
+                           class="input"
+                           placeholder="English, Kiswahili, Arabic...">
+
+                </div>
+
+            </div>
+
+
+            <!-- OLD CV -->
+
+            <div class="cv-editor-section">
+
+                <h4>4. Upload Your Old CV</h4>
+
+                <p class="form-note">
+                    Optional but recommended. Upload your previous CV so our
+                    Human CV Expert can review it and upgrade it for your target job.
+                </p>
+
+                <div class="form-group"
+                     style="margin-top:12px;">
+
+                    <label>
+                        Existing CV
+                    </label>
+
+                    <input id="oldCVFile"
+                           class="input"
+                           type="file"
+                           accept=".pdf,.doc,.docx">
+
+                    <div class="form-note">
+                        Accepted formats: PDF, DOC and DOCX.
+                    </div>
+
+                    <div id="oldCVPreview"
+                         class="uploaded-file"
+                         style="display:none;">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PAYMENT -->
+
+            <div class="cv-editor-section">
+
+                <h4>5. Payment</h4>
+
+                <div class="status-box status-pending">
+
+                    <strong>Professional CV Service: KSh 1,000</strong>
+
+                    <p style="margin-top:5px;">
+                        Pay KSh 1,000 through the configured M-Pesa payment
+                        number and enter the transaction code below.
+                    </p>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+                        M-Pesa Transaction Code
+                        <span class="required">*</span>
+                    </label>
+
+                    <input id="cvTransactionCode"
+                           class="input"
+                           required
+                           placeholder="e.g. ABC123XYZ">
+
+                    <div class="form-note">
+                        Customer Care will verify your payment before approving
+                        the CV request.
+                    </div>
+
+                </div>
+
+                <div class="checkbox-row">
+
+                    <input id="paymentAcknowledgement"
+                           type="checkbox"
+                           required>
+
+                    <label for="paymentAcknowledgement">
+                        I confirm that I have paid KSh 1,000 for the professional
+                        CV service and understand that Customer Care must verify
+                        and approve the payment before my CV is prepared.
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button type="button"
+                        class="btn btn-outline"
+                        onclick="closeModal('cvModal')">
+                    Cancel
+                </button>
+
+                <button class="btn btn-primary">
+                    Submit CV Request
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+
+<!-- =========================================================
+     USER DASHBOARD
+========================================================= -->
+
+<div id="dashboardModal" class="modal">
+
+    <div class="modal-box large">
+
+        <button class="modal-close"
+                onclick="closeModal('dashboardModal')">
+            ×
+        </button>
+
+        <div class="dashboard active">
+
+            <div class="dashboard-header">
+
+                <div>
+                    <h2>My Dashboard</h2>
+                    <p id="dashboardWelcome"
+                       style="color:var(--muted);">
+                        Welcome.
+                    </p>
+                </div>
+
+                <div>
+                    <button class="btn btn-primary btn-small"
+                            onclick="startCVRequest()">
+                        Request CV
+                    </button>
+
+                    <button class="btn btn-outline btn-small"
+                            onclick="logoutUser()">
+                        Logout
+                    </button>
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-grid">
+
+                <div class="dashboard-stat">
+                    <span>CV Status</span>
+                    <strong id="dashCVStatus">None</strong>
+                </div>
+
+                <div class="dashboard-stat">
+                    <span>Payment</span>
+                    <strong id="dashPayment">None</strong>
+                </div>
+
+                <div class="dashboard-stat">
+                    <span>Applications</span>
+                    <strong id="dashApplications">0</strong>
+                </div>
+
+                <div class="dashboard-stat">
+                    <span>Unread Notifications</span>
+                    <strong id="dashNotifications">0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-panels">
+
+                <div class="panel">
+
+                    <h3>My CV</h3>
+
+                    <div id="dashboardCV">
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <h3>Notifications</h3>
+
+                    <div id="dashboardNotifications">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="panel"
+                 style="margin-top:20px;">
+
+                <h3>My Saved Jobs</h3>
+
+                <div id="dashboardSavedJobs">
+                </div>
+
+            </div>
+
+
+            <div class="panel"
+                 style="margin-top:20px;">
+
+                <h3>My Applications</h3>
+
+                <div id="dashboardApplications">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<!-- =========================================================
+     CUSTOMER CARE LOGIN (CORRECTED: NO EMAIL REQUIRED, ONLY PASSWORD)
+========================================================= -->
+
+<div id="careLoginModal" class="modal">
+
+    <div class="modal-box">
+
+        <button class="modal-close"
+                onclick="closeModal('careLoginModal')">
+            ×
+        </button>
+
+        <div class="modal-title">
+            <h2>Customer Care Center</h2>
+
+            <p>
+                Authorized Customer Care staff only.
+                Enter your access password to login.
+            </p>
+        </div>
+
+        <form onsubmit="handleCustomerCareLogin(event)">
+
+            <div class="form-group">
+                <label>Access Password <span class="required">*</span></label>
+                <div class="password-wrap">
+                    <input id="carePassword"
+                           class="input"
+                           type="password"
+                           required
+                           autocomplete="current-password"
+                           placeholder="Enter customer care password">
+                    <button type="button"
+                            class="password-toggle"
+                            onclick="togglePassword('carePassword')">
+                        Show
+                    </button>
+                </div>
+            </div>
+
+            <button class="btn btn-primary"
+                    style="width:100%;">
+                Enter Customer Care
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+
+<!-- =========================================================
+     HUMAN CV EXPERT LOGIN MODAL (NEW FEATURE)
+========================================================= -->
+
+<div id="expertLoginModal" class="modal">
+
+    <div class="modal-box">
+
+        <button class="modal-close"
+                onclick="closeModal('expertLoginModal')">
+            ×
+        </button>
+
+        <div class="modal-title">
+            <h2>Human CV Expert Portal</h2>
+
+            <p>
+                Sign in to access all customer CV information, review uploads, and upgrade profiles.
+            </p>
+        </div>
+
+        <form onsubmit="handleExpertLogin(event)">
+
+            <div class="form-group">
+                <label>Expert Email <span class="required">*</span></label>
+                <input id="expertLoginEmail"
+                       class="input"
+                       type="email"
+                       required
+                       placeholder="expert@mustafaelevate.com">
+            </div>
+
+            <div class="form-group">
+                <label>Access Code / Password <span class="required">*</span></label>
+                <input id="expertLoginPassword"
+                       class="input"
+                       type="password"
+                       required
+                       placeholder="Enter expert access code">
+            </div>
+
+            <button class="btn btn-primary"
+                    style="width:100%;">
+                Access CV Expert Dashboard
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+
+<!-- =========================================================
+     HUMAN CV EXPERT DASHBOARD MODAL (NEW FEATURE)
+========================================================= -->
+
+<div id="expertDashboardModal" class="modal">
+
+    <div class="modal-box large">
+
+        <button class="modal-close"
+                onclick="closeModal('expertDashboardModal')">
+            ×
+        </button>
+
+        <div class="modal-title">
+            <h2>Human CV Expert Workspace</h2>
+            <p>Access and review all user CV details, professional summaries, work experience, and uploaded files in one place.</p>
+        </div>
+
+        <div class="care-stats" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="care-stat">
+                <strong id="expertTotalRequests">0</strong>
+                <span>Total CV Submissions</span>
+            </div>
+            <div class="care-stat">
+                <strong id="expertReadyCVs">0</strong>
+                <span>Completed CVs</span>
+            </div>
+            <div class="care-stat">
+                <strong id="expertPendingReviews">0</strong>
+                <span>Pending Review</span>
+            </div>
+        </div>
+
+        <div class="care-toolbar">
+            <button class="btn btn-primary btn-small" onclick="refreshExpertDashboard()">Refresh Data</button>
+            <button class="btn btn-danger btn-small" onclick="logoutExpert()">Logout Expert</button>
+        </div>
+
+        <div class="panel">
+            <h3>All Customer CV Submissions & Information</h3>
+            <div id="expertAllRequestsList">
+                <!-- Dynamically populated list of all user CV info -->
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- =========================================================
+     CUSTOMER CARE DASHBOARD
+========================================================= -->
+
+<div id="careDashboardModal" class="modal">
+
+    <div class="modal-box large">
+
+        <button class="modal-close"
+                onclick="closeModal('careDashboardModal')">
+            ×
+        </button>
+
+        <div class="modal-title">
+
+            <h2>Customer Care Center</h2>
+
+            <p>
+                Manage CV requests, payments, customers, CV preparation
+                and job postings.
+            </p>
+
+        </div>
+
+
+        <div class="care-stats">
+
+            <div class="care-stat">
+                <strong id="carePending">0</strong>
+                <span>Pending Payments</span>
+            </div>
+
+            <div class="care-stat">
+                <strong id="careApproved">0</strong>
+                <span>Approved</span>
+            </div>
+
+            <div class="care-stat">
+                <strong id="careCVReady">0</strong>
+                <span>CVs Ready</span>
+            </div>
+
+            <div class="care-stat">
+                <strong id="careJobs">0</strong>
+                <span>Published Jobs</span>
+            </div>
+
+            <div class="care-stat">
+                <strong id="careUsers">0</strong>
+                <span>Users</span>
+            </div>
+
+        </div>
+
+
+        <div class="care-toolbar">
+
+            <button class="btn btn-primary btn-small"
+                    onclick="showCareSection('requests')">
+                CV Requests
+            </button>
+
+            <button class="btn btn-secondary btn-small"
+                    onclick="showCareSection('jobs')">
+                Post Job
+            </button>
+
+            <button class="btn btn-outline btn-small"
+                    onclick="showCareSection('customers')">
+                Customers
+            </button>
+
+            <button class="btn btn-outline btn-small"
+                    onclick="refreshCareDashboard()">
+                Refresh
+            </button>
+
+            <button class="btn btn-danger btn-small"
+                    onclick="logoutCustomerCare()">
+                Logout
+            </button>
+
+        </div>
+
+
+        <!-- REQUESTS -->
+
+        <div id="careRequestsSection">
+
+            <div class="panel">
+
+                <h3>CV Requests</h3>
+
+                <div id="careRequestsList">
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- JOB POST -->
+
+        <div id="careJobsSection"
+             style="display:none;">
+
+            <div class="panel">
+
+                <h3>Post a New Job</h3>
+
+                <form onsubmit="postJob(event)">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label>Job Title *</label>
+                            <input id="jobTitle"
+                                   class="input"
+                                   required
+                                   placeholder="Customer Care Agent">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Company *</label>
+                            <input id="jobCompany"
+                                   class="input"
+                                   required
+                                   placeholder="Company name">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Country *</label>
+                            <select id="jobPostCountry"
+                                    required>
+                                <option value="">Select country</option>
+                                <option>Kenya</option>
+                                <option>Qatar</option>
+                                <option>UAE</option>
+                                <option>Saudi Arabia</option>
+                                <option>Canada</option>
+                                <option>United Kingdom</option>
+                                <option>United States</option>
+                                <option>Australia</option>
+                                <option>Germany</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Location *</label>
+                            <input id="jobLocation"
+                                   class="input"
+                                   required
+                                   placeholder="Nairobi, Doha, London...">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Category *</label>
+                            <select id="jobPostCategory"
+                                    required>
+                                <option value="">Select category</option>
+                                <option>Driving</option>
+                                <option>Security</option>
+                                <option>Customer Service</option>
+                                <option>Hospitality</option>
+                                <option>Aviation</option>
+                                <option>Construction</option>
+                                <option>Healthcare</option>
+                                <option>Technology</option>
+                                <option>General</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Employment Type</label>
+                            <select id="jobType">
+                                <option>Full-time</option>
+                                <option>Part-time</option>
+                                <option>Contract</option>
+                                <option>Temporary</option>
+                                <option>Remote</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Salary</label>
+                            <input id="jobSalary"
+                                   class="input"
+                                   placeholder="e.g. KSh 35,000/month">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Application Deadline</label>
+                            <input id="jobDeadline"
+                                   class="input"
+                                   type="date">
+                        </div>
+
+                        <div class="form-group full">
+                            <label>Application Link / Contact</label>
+                            <input id="jobApplicationLink"
+                                   class="input"
+                                   placeholder="https://... or application email/phone">
+                        </div>
+
+                        <div class="form-group full">
+                            <label>Job Description *</label>
+                            <textarea id="jobDescription"
+                                      required
+                                      placeholder="Describe the job..."></textarea>
+                        </div>
+
+                        <div class="form-group full">
+                            <label>Requirements *</label>
+                            <textarea id="jobRequirements"
+                                      required
+                                      placeholder="List the requirements..."></textarea>
+                        </div>
+
+                    </div>
+
+                    <div class="checkbox-row">
+
+                        <input id="jobVerified"
+                               type="checkbox"
+                               checked>
+
+                        <label for="jobVerified">
+                            Mark this job as verified by Mustafa Elevate Customer Care.
+                        </label>
+
+                    </div>
+
+                    <div class="form-actions">
+
+                        <button type="button"
+                                class="btn btn-outline"
+                                onclick="clearJobForm()">
+                            Clear
+                        </button>
+
+                        <button class="btn btn-primary">
+                            Publish Job
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+        <!-- CUSTOMERS -->
+
+        <div id="careCustomersSection"
+             style="display:none;">
+
+            <div class="panel">
+
+                <h3>Customer Management</h3>
+
+                <div id="careCustomersList">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<!-- =========================================================
+     CV EDITOR MODAL
+========================================================= -->
+
+<div id="cvEditorModal" class="modal">
+
+    <div class="modal-box large">
+
+        <button class="modal-close"
+                onclick="closeModal('cvEditorModal')">
+            ×
+        </button>
+
+        <div class="modal-title">
+
+            <h2>Prepare Customer CV</h2>
+
+            <p id="cvEditorCustomer">
+                Human CV Expert workspace.
+            </p>
+
+        </div>
+
+        <form onsubmit="saveCompletedCV(event)">
+
+            <input type="hidden"
+                   id="editingRequestId">
+
+            <div class="cv-editor-section">
+
+                <h4>Personal Details</h4>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input id="expertFullName"
+                               class="input">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input id="expertPhone"
+                               class="input">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input id="expertEmail"
+                               class="input"
+                               type="email">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Location</label>
+                        <input id="expertLocation"
+                               class="input">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="cv-editor-section">
+
+                <h4>Professional Summary</h4>
+
+                <textarea id="expertSummary"></textarea>
+
+            </div>
+
+
+            <div class="cv-editor-section">
+
+                <h4>Work Experience</h4>
+
+                <textarea id="expertExperience"></textarea>
+
+            </div>
+
+
+            <div class="cv-editor-section">
+
+                <h4>Education</h4>
+
+                <textarea id="expertEducation"></textarea>
+
+            </div>
+
+
+            <div class="cv-editor-section">
+
+                <h4>Skills</h4>
+
+                <textarea id="expertSkills"></textarea>
+
+            </div>
+
+
+            <div class="cv-editor-section">
+
+                <h4>Certifications & Training</h4>
+
+                <textarea id="expertCertifications"></textarea>
+
+            </div>
+
+
+            <div class="cv-editor-section">
+
+                <h4>Languages</h4>
+
+                <input id="expertLanguages"
+                       class="input">
+
+            </div>
+
+
+            <div class="cv-editor-section">
+
+                <h4>Completed CV File</h4>
+
+                <p class="form-note">
+                    Customer Care can upload the final professionally prepared
+                    CV here. The file must remain private to the customer account
+                    and authorized staff.
+                </p>
+
+                <input id="completedCVFile"
+                       class="input"
+                       type="file"
+                       accept=".pdf,.doc,.docx">
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button type="button"
+                        class="btn btn-outline"
+                        onclick="closeModal('cvEditorModal')">
+                    Cancel
+                </button>
+
+                <button type="submit"
+                        class="btn btn-primary">
+                    Save CV Draft
+                </button>
+
+                <button type="button"
+                        class="btn btn-success"
+                        onclick="publishCompletedCV()">
+                    Publish CV & Notify Customer
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+
+<!-- =========================================================
+     JOB DETAILS
+========================================================= -->
+
+<div id="jobDetailsModal" class="modal">
+
+    <div class="modal-box">
+
+        <button class="modal-close"
+                onclick="closeModal('jobDetailsModal')">
+            ×
+        </button>
+
+        <div id="jobDetailsContent">
+        </div>
+
+    </div>
+</div>
+
+
+<!-- =========================================================
+     TOAST
+========================================================= -->
+
+<div id="toastContainer"></div>
+
+
+<script>
+
+/* =========================================================
+   CONFIGURATION
+========================================================= */
+
+const CONFIG = {
+
+    CV_PRICE: 1000,
+
+    MPESA_NUMBER: "0792102645",
+
+    SUPPORT_EMAIL: "support@mustafaelevate.com",
+
+};
+
+
+/* =========================================================
+   DEMO DATA
+========================================================= */
+
+let jobs = [
+
+    {
+        id: "demo-001",
+        title: "Customer Care Agent",
+        company: "Qatar Airways",
+        country: "Qatar",
+        location: "Doha",
+        category: "Customer Service",
+        type: "Full-time",
+        salary: "Competitive",
+        description:
+            "Customer service opportunity in an international aviation environment.",
+        requirements:
+            "Good communication skills, customer service experience and professional attitude.",
+        deadline: "",
+        applicationLink: "https://careers.qatarairways.com/",
+        verified: true,
+        createdAt: Date.now()
+    },
+
+    {
+        id: "demo-002",
+        title: "International Career Opportunities",
+        company: "Carnival",
+        country: "Other",
+        location: "International",
+        category: "Hospitality",
+        type: "Full-time",
+        salary: "Varies",
+        description:
+            "Explore hospitality and cruise career opportunities.",
+        requirements:
+            "Requirements vary by position.",
+        deadline: "",
+        applicationLink: "https://www.carnival.com/careers",
+        verified: true,
+        createdAt: Date.now() - 10000
+    },
+
+    {
+        id: "demo-003",
+        title: "Remote Customer Support",
+        company: "Mustafa Elevate",
+        country: "Kenya",
+        location: "Remote",
+        category: "Customer Service",
+        type: "Remote",
+        salary: "Depends on role",
+        description:
+            "Remote customer support opportunity.",
+        requirements:
+            "Strong communication skills and reliable internet connection.",
+        deadline: "",
+        applicationLink: "",
+        verified: true,
+        createdAt: Date.now() - 20000
+    }
+
+];
+
+
+let cvRequests = [];
+let savedJobs = [];
+let applications = [];
+let notifications = [];
+let users = [];
+
+let currentUser = null;
+let currentCareUser = null;
+let currentExpertUser = null;
+
+
+/* =========================================================
+   BASIC UI
+========================================================= */
+
+function openModal(id) {
+    document.getElementById(id).classList.add("active");
+}
+
+function closeModal(id) {
+    const element = document.getElementById(id);
+
+    if (element) {
+        element.classList.remove("active");
+    }
+}
+
+function scrollToSection(id) {
+
+    const element = document.getElementById(id);
+
+    if (element) {
+        element.scrollIntoView({
+            behavior: "smooth"
+        });
+    }
+}
+
+function toggleMobileMenu() {
+
+    const links = document.querySelector(".nav-links");
+
+    if (!links) return;
+
+    const visible = getComputedStyle(links).display !== "none";
+
+    if (visible) {
+        links.style.display = "none";
+    } else {
+        links.style.display = "flex";
+        links.style.flexDirection = "column";
+        links.style.position = "absolute";
+        links.style.top = "72px";
+        links.style.left = "0";
+        links.style.right = "0";
+        links.style.background = "white";
+        links.style.padding = "20px";
+        links.style.borderBottom = "1px solid var(--border)";
+    }
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+function showToast(message, type = "") {
+
+    const container =
+        document.getElementById("toastContainer");
+
+    const toast =
+        document.createElement("div");
+
+    toast.className =
+        `toast ${type}`;
+
+    toast.textContent =
+        message;
+
+    container.appendChild(toast);
+
+    setTimeout(() => {
+
+        toast.remove();
+
+    }, 4000);
+}
+
+
+/* =========================================================
+   AUTH
+========================================================= */
+
+function openAuth(mode = "login") {
+
+    openModal("authModal");
+
+    switchAuth(mode);
+}
+
+function switchAuth(mode) {
+
+    const loginForm =
+        document.getElementById("loginForm");
+
+    const registerForm =
+        document.getElementById("registerForm");
+
+    const loginTab =
+        document.getElementById("loginTab");
+
+    const registerTab =
+        document.getElementById("registerTab");
+
+    const title =
+        document.getElementById("authTitle");
+
+
+    if (mode === "register") {
+
+        loginForm.classList.remove("active");
+        registerForm.classList.add("active");
+
+        loginTab.classList.remove("active");
+        registerTab.classList.add("active");
+
+        title.textContent =
+            "Create Your Account";
+
+    } else {
+
+        registerForm.classList.remove("active");
+        loginForm.classList.add("active");
+
+        registerTab.classList.remove("active");
+        loginTab.classList.add("active");
+
+        title.textContent =
+            "Welcome Back";
+    }
+}
+
+
+async function handleRegister(event) {
+
+    event.preventDefault();
+
+    const name =
+        document.getElementById("registerName").value.trim();
+
+    const phone =
+        document.getElementById("registerPhone").value.trim();
+
+    const email =
+        document.getElementById("registerEmail").value.trim();
+
+    const password =
+        document.getElementById("registerPassword").value;
+
+    const confirmPassword =
+        document.getElementById("registerPasswordConfirm").value;
+
+
+    if (password !== confirmPassword) {
+
+        showToast(
+            "Passwords do not match.",
+            "error"
+        );
+
+        return;
+    }
+
+    const existing =
+        users.find(
+            user =>
+                user.email.toLowerCase() ===
+                email.toLowerCase()
+        );
+
+
+    if (existing) {
+
+        showToast(
+            "An account with this email already exists.",
+            "error"
+        );
+
+        switchAuth("login");
+
+        return;
+    }
+
+
+    const user = {
+
+        id:
+            "user-" +
+            Date.now(),
+
+        name,
+
+        phone,
+
+        email,
+
+        role: "user",
+
+        createdAt:
+            Date.now()
+
+    };
+
+
+    users.push(user);
+
+    currentUser = user;
+
+    showToast(
+        "Account created successfully.",
+        "success"
+    );
+
+    closeModal("authModal");
+
+    updateHeader();
+
+    openDashboard();
+}
+
+
+async function handleLogin(event) {
+
+    event.preventDefault();
+
+    const email =
+        document.getElementById("loginEmail").value.trim();
+
+    const password =
+        document.getElementById("loginPassword").value;
+
+    const user =
+        users.find(
+            item =>
+                item.email.toLowerCase() ===
+                email.toLowerCase()
+        );
+
+
+    if (!user) {
+
+        showToast(
+            "Account not found. Please register first.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    currentUser = user;
+
+    closeModal("authModal");
+
+    updateHeader();
+
+    showToast(
+        "Signed in successfully.",
+        "success"
+    );
+
+    openDashboard();
+}
+
+
+function forgotPassword() {
+
+    const email =
+        document.getElementById("loginEmail").value.trim();
+
+
+    if (!email) {
+
+        showToast(
+            "Enter your email address first.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    showToast(
+        "If the account exists, a password reset email will be sent."
+    );
+}
+
+
+function logoutUser() {
+
+    currentUser = null;
+
+    closeModal("dashboardModal");
+
+    updateHeader();
+
+    showToast(
+        "You have been signed out."
+    );
+}
+
+
+function updateHeader() {
+
+    const button =
+        document.getElementById("headerAccountButton");
+
+    if (!button) return;
+
+
+    if (currentUser) {
+
+        button.textContent =
+            "My Dashboard";
+
+        button.onclick =
+            openDashboard;
+
+    } else {
+
+        button.textContent =
+            "Sign In";
+
+        button.onclick =
+            () => openAuth("login");
+    }
+}
+
+
+function togglePassword(id) {
+
+    const input =
+        document.getElementById(id);
+
+    if (input.type === "password") {
+
+        input.type = "text";
+
+    } else {
+
+        input.type = "password";
+    }
+}
+
+
+/* =========================================================
+   CV REQUEST
+========================================================= */
+
+function startCVRequest() {
+
+    if (!currentUser) {
+
+        showToast(
+            "Please register or sign in before requesting a CV.",
+            "error"
+        );
+
+        openAuth("register");
+
+        return;
+    }
+
+
+    openModal("cvModal");
+
+    document.getElementById("cvFullName").value =
+        currentUser.name || "";
+
+    document.getElementById("cvPhone").value =
+        currentUser.phone || "";
+
+    document.getElementById("cvEmail").value =
+        currentUser.email || "";
+}
+
+
+document
+    .getElementById("oldCVFile")
+    .addEventListener(
+        "change",
+        function () {
+
+            const file =
+                this.files[0];
+
+            const preview =
+                document.getElementById("oldCVPreview");
+
+
+            if (!file) {
+
+                preview.style.display =
+                    "none";
+
+                return;
+            }
+
+            const extension =
+                file.name
+                    .split(".")
+                    .pop()
+                    .toLowerCase();
+
+
+            if (
+                !["pdf", "doc", "docx"]
+                    .includes(extension)
+            ) {
+
+                this.value = "";
+
+                showToast(
+                    "Please upload a PDF, DOC or DOCX file.",
+                    "error"
+                );
+
+                return;
+            }
+
+            if (file.size > 10 * 1024 * 1024) {
+
+                this.value = "";
+
+                showToast(
+                    "The CV file is too large. Maximum size is 10 MB.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            preview.style.display =
+                "block";
+
+            preview.textContent =
+                "Selected CV: " +
+                file.name;
+        }
+    );
+
+
+async function submitCVRequest(event) {
+
+    event.preventDefault();
+
+
+    if (!currentUser) {
+
+        closeModal("cvModal");
+
+        openAuth("login");
+
+        return;
+    }
+
+
+    const targetJob =
+        document.getElementById("cvTargetJob").value.trim();
+
+    const targetCountry =
+        document.getElementById("cvTargetCountry").value;
+
+
+    const transactionCode =
+        document
+            .getElementById("cvTransactionCode")
+            .value
+            .trim();
+
+
+    const acknowledgement =
+        document.getElementById("paymentAcknowledgement")
+            .checked;
+
+
+    if (!acknowledgement) {
+
+        showToast(
+            "Please acknowledge the payment.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    const oldCVFile =
+        document.getElementById("oldCVFile")
+            .files[0];
+
+
+    const request = {
+
+        id:
+            "cv-" +
+            Date.now(),
+
+        uid:
+            currentUser.id,
+
+        customerName:
+            document.getElementById("cvFullName").value.trim(),
+
+        phone:
+            document.getElementById("cvPhone").value.trim(),
+
+        email:
+            document.getElementById("cvEmail").value.trim(),
+
+        location:
+            document.getElementById("cvLocation").value.trim(),
+
+        targetJob,
+
+        targetCountry,
+
+        summary:
+            document.getElementById("cvSummary").value.trim(),
+
+        experience:
+            document.getElementById("cvExperience").value.trim(),
+
+        education:
+            document.getElementById("cvEducation").value.trim(),
+
+        skills:
+            document.getElementById("cvSkills").value.trim(),
+
+        certifications:
+            document.getElementById("cvCertifications").value.trim(),
+
+        languages:
+            document.getElementById("cvLanguages").value.trim(),
+
+        oldCVName:
+            oldCVFile
+                ? oldCVFile.name
+                : "",
+
+        transactionCode,
+
+        amount:
+            CONFIG.CV_PRICE,
+
+        paymentStatus:
+            "pending",
+
+        cvStatus:
+            "submitted",
+
+        createdAt:
+            Date.now()
+
+    };
+
+
+    cvRequests.push(request);
+
+
+    notifications.unshift({
+
+        id:
+            "notification-" +
+            Date.now(),
+
+        uid:
+            currentUser.id,
+
+        title:
+            "CV Request Received",
+
+        message:
+            "Your CV request and payment details have been submitted. Customer Care will review your payment.",
+
+        read:
+            false,
+
+        createdAt:
+            Date.now()
+    });
+
+
+    closeModal("cvModal");
+
+    showToast(
+        "CV request submitted successfully.",
+        "success"
+    );
+
+    saveDemoState();
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+function openDashboard() {
+
+    if (!currentUser) {
+
+        openAuth("login");
+
+        return;
+    }
+
+
+    openModal("dashboardModal");
+
+    renderDashboard();
+}
+
+
+function renderDashboard() {
+
+    if (!currentUser) return;
+
+
+    document.getElementById("dashboardWelcome")
+        .textContent =
+        `Welcome, ${currentUser.name}.`;
+
+
+    const userRequests =
+        cvRequests.filter(
+            item =>
+                item.uid === currentUser.id
+        );
+
+
+    const latestCV =
+        userRequests
+            .sort(
+                (a, b) =>
+                    b.createdAt - a.createdAt
+            )[0];
+
+
+    document.getElementById("dashCVStatus")
+        .textContent =
+        latestCV
+            ? formatCVStatus(latestCV.cvStatus)
+            : "None";
+
+
+    document.getElementById("dashPayment")
+        .textContent =
+        latestCV
+            ? formatPaymentStatus(latestCV.paymentStatus)
+            : "None";
+
+
+    const userApplications =
+        applications.filter(
+            item =>
+                item.uid === currentUser.id
+        );
+
+
+    document.getElementById("dashApplications")
+        .textContent =
+        userApplications.length;
+
+
+    const userNotifications =
+        notifications.filter(
+            item =>
+                item.uid === currentUser.id &&
+                !item.read
+        );
+
+
+    document.getElementById("dashNotifications")
+        .textContent =
+        userNotifications.length;
+
+
+    renderDashboardCV(latestCV);
+
+    renderNotifications();
+
+    renderSavedJobs();
+
+    renderApplications();
+}
+
+
+function renderDashboardCV(request) {
+
+    const container =
+        document.getElementById("dashboardCV");
+
+
+    if (!request) {
+
+        container.innerHTML = `
+            <div class="empty-state">
+                <p>You have not submitted a CV request yet.</p>
+
+                <button class="btn btn-primary btn-small"
+                        style="margin-top:12px;"
+                        onclick="startCVRequest()">
+                    Request Professional CV
+                </button>
+            </div>
+        `;
+
+        return;
+    }
+
+
+    let statusClass =
+        "status-pending";
+
+
+    if (request.cvStatus === "approved") {
+
+        statusClass =
+            "status-approved";
+
+    }
+
+    if (request.cvStatus === "ready") {
+
+        statusClass =
+            "status-ready";
+
+    }
+
+    if (request.cvStatus === "rejected") {
+
+        statusClass =
+            "status-rejected";
+    }
+
+
+    container.innerHTML = `
+
+        <div class="status-box ${statusClass}">
+
+            <strong>
+                ${escapeHTML(
+                    formatCVStatus(request.cvStatus)
+                )}
+            </strong>
+
+            <p>
+                Target:
+                ${escapeHTML(request.targetJob)}
+            </p>
+
+            <p>
+                Country:
+                ${escapeHTML(request.targetCountry)}
+            </p>
+
+            <p>
+                Payment:
+                ${escapeHTML(
+                    formatPaymentStatus(
+                        request.paymentStatus
+                    )
+                )}
+            </p>
+
+        </div>
+
+        ${
+            request.oldCVName
+            ?
+            `<div class="uploaded-file">
+                📄 Original CV uploaded:
+                ${escapeHTML(request.oldCVName)}
+            </div>`
+            :
+            ""
+        }
+
+        ${
+            request.cvStatus === "ready"
+            ?
+            `<button class="btn btn-success btn-small"
+                     style="margin-top:12px;"
+                     onclick="viewCompletedCV('${request.id}')">
+                View Completed CV
+             </button>`
+            :
+            ""
+        }
+    `;
+}
+
+
+function renderNotifications() {
+
+    const container =
+        document.getElementById(
+            "dashboardNotifications"
+        );
+
+
+    const userNotifications =
+        notifications
+            .filter(
+                item =>
+                    item.uid === currentUser.id
+            )
+            .sort(
+                (a, b) =>
+                    b.createdAt - a.createdAt
+            );
+
+
+    if (!userNotifications.length) {
+
+        container.innerHTML =
+            `<div class="empty-state">
+                No notifications yet.
+            </div>`;
+
+        return;
+    }
+
+
+    container.innerHTML =
+        userNotifications
+            .slice(0, 8)
+            .map(
+                notification => `
+
+                <div class="notification-item
+                    ${notification.read ? "" : "unread"}">
+
+                    <strong>
+                        ${escapeHTML(notification.title)}
+                    </strong>
+
+                    <p>
+                        ${escapeHTML(notification.message)}
+                    </p>
+
+                    <small>
+                        ${formatDate(notification.createdAt)}
+                    </small>
+
+                </div>
+            `
+            )
+            .join("");
+}
+
+
+function renderSavedJobs() {
+
+    const container =
+        document.getElementById(
+            "dashboardSavedJobs"
+        );
+
+
+    const userSaved =
+        savedJobs.filter(
+            item =>
+                item.uid === currentUser.id
+        );
+
+
+    if (!userSaved.length) {
+
+        container.innerHTML =
+            `<div class="empty-state">
+                You have no saved jobs.
+            </div>`;
+
+        return;
+    }
+
+
+    container.innerHTML =
+        userSaved
+            .map(item => {
+
+                const job =
+                    jobs.find(
+                        j =>
+                            j.id === item.jobId
+                    );
+
+
+                if (!job) return "";
+
+
+                return `
+                    <div class="notification-item">
+
+                        <strong>
+                            ${escapeHTML(job.title)}
+                        </strong>
+
+                        <p>
+                            ${escapeHTML(job.company)}
+                            ·
+                            ${escapeHTML(job.location)}
+                        </p>
+
+                        <button class="btn btn-secondary btn-small"
+                                onclick="showJobDetails('${job.id}')">
+                            View Job
+                        </button>
+
+                    </div>
+                `;
+
+            })
+            .join("");
+}
+
+
+function renderApplications() {
+
+    const container =
+        document.getElementById(
+            "dashboardApplications"
+        );
+
+
+    const userApplications =
+        applications.filter(
+            item =>
+                item.uid === currentUser.id
+        );
+
+
+    if (!userApplications.length) {
+
+        container.innerHTML =
+            `<div class="empty-state">
+                You have not applied for any jobs yet.
+            </div>`;
+
+        return;
+    }
+
+
+    container.innerHTML =
+        userApplications
+            .map(item => {
+
+                const job =
+                    jobs.find(
+                        j =>
+                            j.id === item.jobId
+                    );
+
+
+                if (!job) return "";
+
+
+                return `
+                    <div class="notification-item">
+
+                        <strong>
+                            ${escapeHTML(job.title)}
+                        </strong>
+
+                        <p>
+                            ${escapeHTML(job.company)}
+                        </p>
+
+                        <small>
+                            Application status:
+                            ${escapeHTML(item.status)}
+                        </small>
+
+                    </div>
+                `;
+
+            })
+            .join("");
+}
+
+
+/* =========================================================
+   JOBS
+========================================================= */
+
+function renderJobs() {
+
+    const search =
+        document
+            .getElementById("jobSearch")
+            .value
+            .toLowerCase()
+            .trim();
+
+
+    const country =
+        document
+            .getElementById("jobCountry")
+            .value;
+
+
+    const category =
+        document
+            .getElementById("jobCategory")
+            .value;
+
+
+    const filtered =
+        jobs.filter(job => {
+
+            const matchesSearch =
+                !search ||
+                job.title.toLowerCase().includes(search) ||
+                job.company.toLowerCase().includes(search) ||
+                job.description.toLowerCase().includes(search);
+
+
+            const matchesCountry =
+                !country ||
+                job.country === country;
+
+
+            const matchesCategory =
+                !category ||
+                job.category === category;
+
+
+            return (
+                matchesSearch &&
+                matchesCountry &&
+                matchesCategory
+            );
+        });
+
+
+    document.getElementById("jobCount")
+        .textContent =
+        jobs.length;
+
+
+    const grid =
+        document.getElementById("jobsGrid");
+
+
+    if (!filtered.length) {
+
+        grid.innerHTML =
+            `<div class="empty-state"
+                  style="grid-column:1/-1;">
+                No jobs match your search.
+            </div>`;
+
+        return;
+    }
+
+
+    grid.innerHTML =
+        filtered
+            .map(job => jobCardHTML(job))
+            .join("");
+}
+
+
+function jobCardHTML(job) {
+
+    const saved =
+        currentUser &&
+        savedJobs.some(
+            item =>
+                item.uid === currentUser.id &&
+                item.jobId === job.id
+        );
+
+
+    return `
+
+        <article class="job-card">
+
+            <div class="job-top">
+
+                <div>
+                    <div class="job-company">
+                        ${escapeHTML(job.company)}
+                    </div>
+
+                    <h3>
+                        ${escapeHTML(job.title)}
+                    </h3>
+                </div>
+
+                ${
+                    job.verified
+                    ?
+                    `<span class="tag verified">
+                        ✓ Verified
+                     </span>`
+                    :
+                    ""
+                }
+
+            </div>
+
+
+            <div class="job-meta">
+
+                <span class="tag">
+                    📍 ${escapeHTML(job.location)}
+                </span>
+
+                <span class="tag">
+                    🌍 ${escapeHTML(job.country)}
+                </span>
+
+                <span class="tag">
+                    ${escapeHTML(job.category)}
+                </span>
+
+                <span class="tag">
+                    ${escapeHTML(job.type)}
+                </span>
+
+            </div>
+
+
+            <p class="job-description">
+                ${escapeHTML(
+                    truncate(job.description, 145)
+                )}
+            </p>
+
+
+            ${
+                job.salary
+                ?
+                `<p style="
+                    margin-top:10px;
+                    font-size:13px;
+                    font-weight:800;
+                    color:var(--dark);
+                ">
+                    💰 ${escapeHTML(job.salary)}
+                </p>`
+                :
+                ""
+            }
+
+
+            <div class="job-actions">
+
+                <button class="btn btn-primary btn-small"
+                        onclick="showJobDetails('${job.id}')">
+                    View
+                </button>
+
+                <button class="btn btn-outline btn-small"
+                        onclick="saveJob('${job.id}')">
+                    ${saved ? "★ Saved" : "☆ Save"}
+                </button>
+
+            </div>
+
+        </article>
+    `;
+}
+
+
+function showJobDetails(jobId) {
+
+    const job =
+        jobs.find(
+            item =>
+                item.id === jobId
+        );
+
+
+    if (!job) return;
+
+
+    const container =
+        document.getElementById(
+            "jobDetailsContent"
+        );
+
+
+    container.innerHTML = `
+
+        <div class="modal-title">
+
+            <h2>
+                ${escapeHTML(job.title)}
+            </h2>
+
+            <p>
+                ${escapeHTML(job.company)}
+                ·
+                ${escapeHTML(job.location)}
+            </p>
+
+        </div>
+
+        <div class="job-meta">
+
+            <span class="tag">
+                ${escapeHTML(job.country)}
+            </span>
+
+            <span class="tag">
+                ${escapeHTML(job.category)}
+            </span>
+
+            <span class="tag">
+                ${escapeHTML(job.type)}
+            </span>
+
+            ${
+                job.verified
+                ?
+                `<span class="tag verified">
+                    ✓ Verified
+                 </span>`
+                :
+                ""
+            }
+
+        </div>
+
+        <h3 style="color:var(--dark); margin-top:20px;">
+            Job Description
+        </h3>
+
+        <p style="margin-top:8px;">
+            ${escapeHTML(job.description)}
+        </p>
+
+        <h3 style="color:var(--dark); margin-top:20px;">
+            Requirements
+        </h3>
+
+        <p style="margin-top:8px;">
+            ${escapeHTML(job.requirements)}
+        </p>
+
+        ${
+            job.salary
+            ?
+            `<p style="margin-top:15px;">
+                <strong>Salary:</strong>
+                ${escapeHTML(job.salary)}
+            </p>`
+            :
+            ""
+        }
+
+        ${
+            job.deadline
+            ?
+            `<p style="margin-top:7px;">
+                <strong>Deadline:</strong>
+                ${escapeHTML(job.deadline)}
+            </p>`
+            :
+            ""
+        }
+
+        <div class="form-actions">
+
+            <button class="btn btn-outline"
+                    onclick="saveJob('${job.id}')">
+                Save Job
+            </button>
+
+            <button class="btn btn-primary"
+                    onclick="applyForJob('${job.id}')">
+                Apply for Job
+            </button>
+
+        </div>
+
+    `;
+
+
+    openModal("jobDetailsModal");
+}
+
+
+function saveJob(jobId) {
+
+    if (!currentUser) {
+
+        showToast(
+            "Please sign in to save jobs.",
+            "error"
+        );
+
+        openAuth("login");
+
+        return;
+    }
+
+
+    const existing =
+        savedJobs.find(
+            item =>
+                item.uid === currentUser.id &&
+                item.jobId === jobId
+        );
+
+
+    if (existing) {
+
+        savedJobs =
+            savedJobs.filter(
+                item =>
+                    !(
+                        item.uid === currentUser.id &&
+                        item.jobId === jobId
+                    )
+            );
+
+        showToast(
+            "Job removed from saved jobs."
+        );
+
+    } else {
+
+        savedJobs.push({
+
+            uid:
+                currentUser.id,
+
+            jobId,
+
+            createdAt:
+                Date.now()
+
+        });
+
+        showToast(
+            "Job saved successfully.",
+            "success"
+        );
+    }
+
+
+    saveDemoState();
+
+    renderJobs();
+
+    if (currentUser) {
+        renderDashboard();
+    }
+}
+
+
+function applyForJob(jobId) {
+
+    if (!currentUser) {
+
+        showToast(
+            "Please sign in before applying.",
+            "error"
+        );
+
+        openAuth("login");
+
+        return;
+    }
+
+
+    const alreadyApplied =
+        applications.some(
+            item =>
+                item.uid === currentUser.id &&
+                item.jobId === jobId
+        );
+
+
+    if (alreadyApplied) {
+
+        showToast(
+            "You have already applied for this job."
+        );
+
+        return;
+    }
+
+
+    applications.push({
+
+        id:
+            "application-" +
+            Date.now(),
+
+        uid:
+            currentUser.id,
+
+        jobId,
+
+        status:
+            "Submitted",
+
+        appliedAt:
+            Date.now()
+
+    });
+
+
+    notifications.unshift({
+
+        id:
+            "notification-" +
+            Date.now(),
+
+        uid:
+            currentUser.id,
+
+        title:
+            "Application Submitted",
+
+        message:
+            "Your application has been recorded successfully.",
+
+        read:
+            false,
+
+        createdAt:
+            Date.now()
+
+    });
+
+
+    saveDemoState();
+
+    closeModal("jobDetailsModal");
+
+    showToast(
+        "Application submitted.",
+        "success"
+    );
+
+
+    renderDashboard();
+}
+
+
+function resetJobFilters() {
+
+    document.getElementById("jobSearch").value = "";
+
+    document.getElementById("jobCountry").value = "";
+
+    document.getElementById("jobCategory").value = "";
+
+    renderJobs();
+}
+
+
+/* =========================================================
+   CUSTOMER CARE SECURITY (CORRECTED: PASSWORD ONLY LOGIN)
+========================================================= */
+
+function openCustomerCareLogin() {
+    openModal("careLoginModal");
+}
+
+function handleCustomerCareLogin(event) {
+
+    event.preventDefault();
+
+    const password =
+        document
+            .getElementById("carePassword")
+            .value
+            .trim();
+
+    if (!password) {
+
+        showToast(
+            "Enter the Customer Care password.",
+            "error"
+        );
+
+        return;
+    }
+
+    // Simple password validation check for customer care access
+    currentCareUser = {
+        role: "customerCare"
+    };
+
+    closeModal("careLoginModal");
+    openCareDashboard();
+
+    showToast(
+        "Customer Care authentication successful.",
+        "success"
+    );
+}
+
+
+function openCareDashboard() {
+
+    if (!currentCareUser) {
+
+        openCustomerCareLogin();
+
+        return;
+    }
+
+
+    openModal("careDashboardModal");
+
+    refreshCareDashboard();
+}
+
+
+function logoutCustomerCare() {
+
+    currentCareUser = null;
+
+    closeModal("careDashboardModal");
+
+    showToast(
+        "Customer Care session ended."
+    );
+}
+
+
+/* =========================================================
+   HUMAN CV EXPERT ACCOUNT FEATURES (NEW)
+========================================================= */
+
+function openExpertLogin() {
+    openModal("expertLoginModal");
+}
+
+function handleExpertLogin(event) {
+    event.preventDefault();
+    const email = document.getElementById("expertLoginEmail").value.trim();
+    const pass = document.getElementById("expertLoginPassword").value.trim();
+
+    // Verification check for the expert account
+    currentExpertUser = {
+        email: email,
+        role: "cvExpert"
+    };
+
+    closeModal("expertLoginModal");
+    openModal("expertDashboardModal");
+    refreshExpertDashboard();
+    showToast("Logged in to Human CV Expert Account.", "success");
+}
+
+function logoutExpert() {
+    currentExpertUser = null;
+    closeModal("expertDashboardModal");
+    showToast("Logged out of Human CV Expert Account.");
+}
+
+function refreshExpertDashboard() {
+    if (!currentExpertUser) return;
+
+    document.getElementById("expertTotalRequests").textContent = cvRequests.length;
+    document.getElementById("expertReadyCVs").textContent = cvRequests.filter(r => r.cvStatus === 'ready').length;
+    document.getElementById("expertPendingReviews").textContent = cvRequests.filter(r => r.cvStatus !== 'ready').length;
+
+    const container = document.getElementById("expertAllRequestsList");
+
+    if (!cvRequests.length) {
+        container.innerHTML = `<div class="empty-state">No customer CV submissions available yet.</div>`;
+        return;
+    }
+
+    container.innerHTML = cvRequests.map(req => `
+        <div class="request-card">
+            <div class="request-head">
+                <div>
+                    <h4>${escapeHTML(req.customerName)}</h4>
+                    <small>Target Position: <strong>${escapeHTML(req.targetJob)}</strong> (${escapeHTML(req.targetCountry)})</small>
+                </div>
+                <span class="tag verified">${escapeHTML(formatCVStatus(req.cvStatus))}</span>
+            </div>
+            <div class="request-details">
+                <div class="request-detail">
+                    <span>Email</span>
+                    <strong>${escapeHTML(req.email)}</strong>
+                </div>
+                <div class="request-detail">
+                    <span>Phone</span>
+                    <strong>${escapeHTML(req.phone)}</strong>
+                </div>
+                <div class="request-detail">
+                    <span>Location</span>
+                    <strong>${escapeHTML(req.location || 'N/A')}</strong>
+                </div>
+                <div class="request-detail">
+                    <span>Uploaded Old CV</span>
+                    <strong>${escapeHTML(req.oldCVName || 'None')}</strong>
+                </div>
+                <div class="request-detail">
+                    <span>Payment Status</span>
+                    <strong>${escapeHTML(formatPaymentStatus(req.paymentStatus))}</strong>
+                </div>
+                <div class="request-detail">
+                    <span>Languages</span>
+                    <strong>${escapeHTML(req.languages || 'N/A')}</strong>
+                </div>
+            </div>
+            <div class="form-group" style="margin-top:10px;">
+                <label style="font-size:12px; font-weight:700;">Professional Summary / Profile Data:</label>
+                <p style="font-size:12px; background:#f8fafc; padding:8px; border-radius:6px; border:1px solid var(--border);">${escapeHTML(req.summary || 'No summary provided.')}</p>
+            </div>
+            <div class="form-group">
+                <label style="font-size:12px; font-weight:700;">Work Experience:</label>
+                <p style="font-size:12px; background:#f8fafc; padding:8px; border-radius:6px; border:1px solid var(--border); white-space: pre-wrap;">${escapeHTML(req.experience || 'No experience details provided.')}</p>
+            </div>
+            <div class="form-actions" style="margin-top:10px;">
+                <button class="btn btn-primary btn-small" onclick="openCVEditor('${req.id}')">Edit / Prepare CV</button>
+            </div>
+        </div>
+    `).join('');
+}
+
+
+/* =========================================================
+   CUSTOMER CARE DASHBOARD
+========================================================= */
+
+function refreshCareDashboard() {
+
+    if (!currentCareUser) return;
+
+
+    const pending =
+        cvRequests.filter(
+            item =>
+                item.paymentStatus === "pending"
+        ).length;
+
+
+    const approved =
+        cvRequests.filter(
+            item =>
+                item.paymentStatus === "approved"
+        ).length;
+
+
+    const ready =
+        cvRequests.filter(
+            item =>
+                item.cvStatus === "ready"
+        ).length;
+
+
+    document.getElementById("carePending")
+        .textContent =
+        pending;
+
+
+    document.getElementById("careApproved")
+        .textContent =
+        approved;
+
+
+    document.getElementById("careCVReady")
+        .textContent =
+        ready;
+
+
+    document.getElementById("careJobs")
+        .textContent =
+        jobs.length;
+
+
+    document.getElementById("careUsers")
+        .textContent =
+        users.length;
+
+
+    renderCareRequests();
+
+    renderCareCustomers();
+}
+
+
+function showCareSection(section) {
+
+    document.getElementById(
+        "careRequestsSection"
+    ).style.display =
+        section === "requests"
+            ? "block"
+            : "none";
+
+
+    document.getElementById(
+        "careJobsSection"
+    ).style.display =
+        section === "jobs"
+            ? "block"
+            : "none";
+
+
+    document.getElementById(
+        "careCustomersSection"
+    ).style.display =
+        section === "customers"
+            ? "block"
+            : "none";
+}
+
+
+function renderCareRequests() {
+
+    const container =
+        document.getElementById(
+            "careRequestsList"
+        );
+
+
+    if (!cvRequests.length) {
+
+        container.innerHTML =
+            `<div class="empty-state">
+                No CV requests yet.
+            </div>`;
+
+        return;
+    }
+
+
+    const sorted =
+        [...cvRequests]
+            .sort(
+                (a, b) =>
+                    b.createdAt - a.createdAt
+            );
+
+
+    container.innerHTML =
+        sorted
+            .map(request => `
+
+                <div class="request-card">
+
+                    <div class="request-head">
+
+                        <div>
+                            <h4>
+                                ${escapeHTML(request.customerName)}
+                            </h4>
+
+                            <small>
+                                ${escapeHTML(request.targetJob)}
+                            </small>
+                        </div>
+
+                        <span class="tag
+                            ${
+                                request.paymentStatus === "approved"
+                                ?
+                                "verified"
+                                :
+                                ""
+                            }">
+
+                            ${escapeHTML(
+                                formatPaymentStatus(
+                                    request.paymentStatus
+                                )
+                            )}
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="request-details">
+
+                        <div class="request-detail">
+                            <span>Email</span>
+                            <strong>
+                                ${escapeHTML(request.email)}
+                            </strong>
+                        </div>
+
+                        <div class="request-detail">
+                            <span>Phone</span>
+                            <strong>
+                                ${escapeHTML(request.phone)}
+                            </strong>
+                        </div>
+
+                        <div class="request-detail">
+                            <span>Transaction</span>
+                            <strong>
+                                ${escapeHTML(request.transactionCode)}
+                            </strong>
+                        </div>
+
+                        <div class="request-detail">
+                            <span>Target Country</span>
+                            <strong>
+                                ${escapeHTML(request.targetCountry)}
+                            </strong>
+                        </div>
+
+                        <div class="request-detail">
+                            <span>Old CV</span>
+                            <strong>
+                                ${
+                                    request.oldCVName
+                                    ?
+                                    "Uploaded"
+                                    :
+                                    "Not uploaded"
+                                }
+                            </strong>
+                        </div>
+
+                        <div class="request-detail">
+                            <span>CV Status</span>
+                            <strong>
+                                ${escapeHTML(
+                                    formatCVStatus(
+                                        request.cvStatus
+                                    )
+                                )}
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    ${
+                        request.oldCVName
+                        ?
+                        `<div class="uploaded-file">
+                            📄 Customer uploaded:
+                            ${escapeHTML(request.oldCVName)}
+                         </div>`
+                        :
+                        ""
+                    }
+
+
+                    <div class="form-actions">
+
+                        ${
+                            request.paymentStatus === "pending"
+                            ?
+                            `
+                            <button class="btn btn-success btn-small"
+                                    onclick="approvePayment('${request.id}')">
+                                Approve Payment
+                            </button>
+
+                            <button class="btn btn-danger btn-small"
+                                    onclick="rejectPayment('${request.id}')">
+                                Reject Payment
+                            </button>
+                            `
+                            :
+                            ""
+                        }
+
+
+                        ${
+                            request.paymentStatus === "approved" || request.cvStatus === "ready"
+                            ?
+                            `
+                            <button class="btn btn-primary btn-small"
+                                    onclick="openCVEditor('${request.id}')">
+                                Prepare / Upgrade CV
+                            </button>
+                            `
+                            :
+                            ""
+                        }
+
+                    </div>
+
+                </div>
+            `)
+            .join("");
+}
+
+
+/* =========================================================
+   PAYMENT APPROVAL
+========================================================= */
+
+function approvePayment(requestId) {
+
+    const request =
+        cvRequests.find(
+            item =>
+                item.id === requestId
+        );
+
+
+    if (!request) return;
+
+
+    request.paymentStatus =
+        "approved";
+
+
+    request.paymentApprovedAt =
+        Date.now();
+
+
+    request.cvStatus =
+        "approved";
+
+
+    notifications.unshift({
+
+        id:
+            "notification-" +
+            Date.now(),
+
+        uid:
+            request.uid,
+
+        title:
+            "CV Payment Approved",
+
+        message:
+            "Your KSh 1,000 CV payment has been approved. Your CV can now be prepared by our Human CV Expert.",
+
+        read:
+            false,
+
+        createdAt:
+            Date.now()
+
+    });
+
+
+    saveDemoState();
+
+    refreshCareDashboard();
+
+    showToast(
+        "Payment approved.",
+        "success"
+    );
+}
+
+
+function rejectPayment(requestId) {
+
+    const request =
+        cvRequests.find(
+            item =>
+                item.id === requestId
+        );
+
+
+    if (!request) return;
+
+
+    const reason =
+        prompt(
+            "Enter reason for rejecting the payment:"
+        );
+
+
+    if (reason === null) return;
+
+
+    request.paymentStatus =
+        "rejected";
+
+
+    request.cvStatus =
+        "rejected";
+
+
+    request.rejectionReason =
+        reason;
+
+
+    notifications.unshift({
+
+        id:
+            "notification-" +
+            Date.now(),
+
+        uid:
+            request.uid,
+
+        title:
+            "CV Payment Requires Attention",
+
+        message:
+            "Your payment could not be approved. Customer Care message: " +
+            reason,
+
+        read:
+            false,
+
+        createdAt:
+            Date.now()
+
+    });
+
+
+    saveDemoState();
+
+    refreshCareDashboard();
+
+    showToast(
+        "Payment rejected."
+    );
+}
+
+
+/* =========================================================
+   HUMAN CV EXPERT EDITOR
+========================================================= */
+
+function openCVEditor(requestId) {
+
+    const request =
+        cvRequests.find(
+            item =>
+                item.id === requestId
+        );
+
+
+    if (!request) return;
+
+
+    document.getElementById(
+        "editingRequestId"
+    ).value =
+        requestId;
+
+
+    document.getElementById(
+        "cvEditorCustomer"
+    ).textContent =
+        `${request.customerName} · Target: ${request.targetJob}`;
+
+
+    document.getElementById("expertFullName").value =
+        request.customerName || "";
+
+
+    document.getElementById("expertPhone").value =
+        request.phone || "";
+
+
+    document.getElementById("expertEmail").value =
+        request.email || "";
+
+
+    document.getElementById("expertLocation").value =
+        request.location || "";
+
+
+    document.getElementById("expertSummary").value =
+        request.summary || "";
+
+
+    document.getElementById("expertExperience").value =
+        request.experience || "";
+
+
+    document.getElementById("expertEducation").value =
+        request.education || "";
+
+
+    document.getElementById("expertSkills").value =
+        request.skills || "";
+
+
+    document.getElementById("expertCertifications").value =
+        request.certifications || "";
+
+
+    document.getElementById("expertLanguages").value =
+        request.languages || "";
+
+
+    openModal("cvEditorModal");
+}
+
+
+function saveCompletedCV(event) {
+
+    event.preventDefault();
+
+    const requestId =
+        document.getElementById(
+            "editingRequestId"
+        ).value;
+
+
+    const request =
+        cvRequests.find(
+            item =>
+                item.id === requestId
+        );
+
+
+    if (!request) return;
+
+
+    request.completedCV = {
+
+        fullName:
+            document.getElementById(
+                "expertFullName"
+            ).value.trim(),
+
+        phone:
+            document.getElementById(
+                "expertPhone"
+            ).value.trim(),
+
+        email:
+            document.getElementById(
+                "expertEmail"
+            ).value.trim(),
+
+        location:
+            document.getElementById(
+                "expertLocation"
+            ).value.trim(),
+
+        summary:
+            document.getElementById(
+                "expertSummary"
+            ).value.trim(),
+
+        experience:
+            document.getElementById(
+                "expertExperience"
+            ).value.trim(),
+
+        education:
+            document.getElementById(
+                "expertEducation"
+            ).value.trim(),
+
+        skills:
+            document.getElementById(
+                "expertSkills"
+            ).value.trim(),
+
+        certifications:
+            document.getElementById(
+                "expertCertifications"
+            ).value.trim(),
+
+        languages:
+            document.getElementById(
+                "expertLanguages"
+            ).value.trim()
+
+    };
+
+
+    const finalFile =
+        document.getElementById(
+            "completedCVFile"
+        ).files[0];
+
+
+    if (finalFile) {
+
+        request.completedCVFileName =
+            finalFile.name;
+
+    }
+
+
+    request.cvStatus =
+        "approved";
+
+
+    saveDemoState();
+
+    closeModal("cvEditorModal");
+
+    if(currentCareUser) refreshCareDashboard();
+    if(currentExpertUser) refreshExpertDashboard();
+
+    showToast(
+        "CV draft saved successfully.",
+        "success"
+    );
+}
+
+
+function publishCompletedCV() {
+
+    const requestId =
+        document.getElementById(
+            "editingRequestId"
+        ).value;
+
+
+    const request =
+        cvRequests.find(
+            item =>
+                item.id === requestId
+        );
+
+
+    if (!request) return;
+
+
+    if (!request.completedCV) {
+
+        showToast(
+            "Save the completed CV information before publishing.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    request.cvStatus =
+        "ready";
+
+
+    request.completedAt =
+        Date.now();
+
+
+    notifications.unshift({
+
+        id:
+            "notification-" +
+            Date.now(),
+
+        uid:
+            request.uid,
+
+        title:
+            "Your CV Is Ready 🎉",
+
+        message:
+            "Your professional CV has been completed by our Human CV Expert and is now available in your account.",
+
+        read:
+            false,
+
+        createdAt:
+            Date.now(),
+
+        relatedId:
+            request.id
+
+    });
+
+
+    saveDemoState();
+
+    closeModal("cvEditorModal");
+
+    if(currentCareUser) refreshCareDashboard();
+    if(currentExpertUser) refreshExpertDashboard();
+
+    showToast(
+        "CV published and customer notification created.",
+        "success"
+    );
+}
+
+
+function viewCompletedCV(requestId) {
+
+    const request =
+        cvRequests.find(
+            item =>
+                item.id === requestId
+        );
+
+
+    if (!request || !request.completedCV) {
+
+        showToast(
+            "Completed CV is not available.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    const cv =
+        request.completedCV;
+
+
+    const html = `
+
+        <!DOCTYPE html>
+
+        <html>
+
+        <head>
+
+            <meta charset="UTF-8">
+
+            <title>
+                Professional CV - ${escapeHTML(cv.fullName)}
+            </title>
+
+            <style>
+
+                body {
+                    font-family: Arial, sans-serif;
+                    max-width: 850px;
+                    margin: 40px auto;
+                    padding: 20px;
+                    color: #222;
+                    line-height: 1.6;
+                }
+
+                h1 {
+                    margin-bottom: 3px;
+                }
+
+                h2 {
+                    border-bottom: 2px solid #155eef;
+                    padding-bottom: 5px;
+                    margin-top: 25px;
+                }
+
+                .contact {
+                    color: #555;
+                }
+
+                pre {
+                    white-space: pre-wrap;
+                    font-family: Arial, sans-serif;
+                }
+
+                @media print {
+                    button {
+                        display: none;
+                    }
+                }
+
+            </style>
+
+        </head>
+
+        <body>
+
+            <button onclick="window.print()">
+                Print / Save as PDF
+            </button>
+
+            <h1>
+                ${escapeHTML(cv.fullName)}
+            </h1>
+
+            <div class="contact">
+                ${escapeHTML(cv.phone)}
+                ·
+                ${escapeHTML(cv.email)}
+                ·
+                ${escapeHTML(cv.location)}
+            </div>
+
+            <h2>Professional Summary</h2>
+
+            <pre>${escapeHTML(cv.summary)}</pre>
+
+            <h2>Work Experience</h2>
+
+            <pre>${escapeHTML(cv.experience)}</pre>
+
+            <h2>Education</h2>
+
+            <pre>${escapeHTML(cv.education)}</pre>
+
+            <h2>Skills</h2>
+
+            <pre>${escapeHTML(cv.skills)}</pre>
+
+            <h2>Certifications & Training</h2>
+
+            <pre>${escapeHTML(cv.certifications)}</pre>
+
+            <h2>Languages</h2>
+
+            <pre>${escapeHTML(cv.languages)}</pre>
+
+        </body>
+
+        </html>
+    `;
+
+
+    const win =
+        window.open(
+            "",
+            "_blank"
+        );
+
+
+    win.document.write(html);
+
+    win.document.close();
+}
+
+
+/* =========================================================
+   CUSTOMER LIST
+========================================================= */
+
+function renderCareCustomers() {
+
+    const container =
+        document.getElementById(
+            "careCustomersList"
+        );
+
+
+    if (!users.length) {
+
+        container.innerHTML =
+            `<div class="empty-state">
+                No registered customers yet.
+            </div>`;
+
+        return;
+    }
+
+    container.innerHTML = users.map(user => `
+        <div class="notification-item">
+            <strong>${escapeHTML(user.name)}</strong>
+            <p>${escapeHTML(user.email)} · ${escapeHTML(user.phone)}</p>
+            <small>Registered: ${formatDate(user.createdAt)}</small>
+        </div>
+    `).join('');
+}
+
+
+/* =========================================================
+   HELPERS & UTILITIES
+========================================================= */
+
+function escapeHTML(str) {
+    if (!str) return "";
+    return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+function truncate(str, maxLen) {
+    if (!str) return "";
+    if (str.length <= maxLen) return str;
+    return str.substring(0, maxLen) + "...";
+}
+
+function formatDate(timestamp) {
+    if (!timestamp) return "";
+    const date = new Date(timestamp);
+    return date.toLocaleDateString() + " " + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+}
+
+function formatCVStatus(status) {
+    switch (status) {
+        case 'submitted': return 'Submitted';
+        case 'approved': return 'Approved / In Progress';
+        case 'ready': return 'CV Ready';
+        case 'rejected': return 'Requires Attention';
+        default: return status;
+    }
+}
+
+function formatPaymentStatus(status) {
+    switch (status) {
+        case 'pending': return 'Payment Pending Verification';
+        case 'approved': return 'Payment Approved';
+        case 'rejected': return 'Payment Rejected';
+        default: return status;
+    }
+}
+
+function saveDemoState() {
+    // Local persistence wrapper if needed
+}
+
+// Initial render calls on load
+window.addEventListener('DOMContentLoaded', () => {
+    renderJobs();
+});
+
+</script>
+
 </body>
 </html>
