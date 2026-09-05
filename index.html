@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#155eef">
-<meta name="description" content="Mustafa Elevate - Worldwide Verified Careers Directory and Human CV Expert Support.">
-<title>Mustafa Elevate | Worldwide Verified Careers & Human CV Experts</title>
+<meta name="description" content="Mustafa Elevate - Worldwide verified career portals and real Human CV Expert support.">
+<title>Mustafa Elevate | Worldwide Careers & Human CV Experts</title>
 
 <style>
 :root{
@@ -24,1165 +24,573 @@
   --shadow:0 10px 30px rgba(16,24,40,.08);
   --radius:16px;
 }
-
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  font-family:Inter,Arial,Helvetica,sans-serif;
-  background:#fff;
-  color:var(--text);
-  line-height:1.55;
-}
-
-button,input,select,textarea{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-img{
-  max-width:100%;
-}
-
-.container{
-  width:min(1180px,92%);
-  margin:auto;
-}
-
-/* HEADER */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Arial,Helvetica,sans-serif;background:#fff;color:var(--text);line-height:1.55}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+.container{width:min(1200px,92%);margin:auto}
 
 header{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:rgba(255,255,255,.96);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.96);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--border)
 }
-
-.nav{
-  min-height:72px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-}
-
-.brand{
-  font-size:23px;
-  font-weight:900;
-  color:var(--dark);
-  white-space:nowrap;
-}
-
-.brand span{
-  color:var(--primary);
-}
-
-.navlinks{
-  display:flex;
-  align-items:center;
-  gap:18px;
-}
-
-.navlinks a{
-  color:#344054;
-  font-weight:700;
-  font-size:13px;
-}
-
-.navlinks a:hover{
-  color:var(--primary);
-}
-
-.nav-actions{
-  display:flex;
-  gap:9px;
-}
-
-.menu{
-  display:none;
-  border:0;
-  background:none;
-  font-size:28px;
-}
-
-/* BUTTONS */
+.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-size:23px;font-weight:900;color:var(--dark);white-space:nowrap}
+.brand span{color:var(--primary)}
+.navlinks{display:flex;align-items:center;gap:15px}
+.navlinks a{color:#344054;font-weight:800;font-size:12px}
+.navlinks a:hover{color:var(--primary)}
+.nav-actions{display:flex;gap:8px}
+.menu{display:none;border:0;background:none;font-size:28px}
 
 .btn{
-  border:0;
-  border-radius:10px;
-  padding:11px 16px;
-  font-weight:800;
-  transition:.2s;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:7px;
+  border:0;border-radius:10px;padding:11px 16px;font-weight:800;transition:.2s;
+  display:inline-flex;align-items:center;justify-content:center;gap:7px
 }
-
-.btn:hover{
-  transform:translateY(-1px);
-}
-
-.btn-primary{
-  background:var(--primary);
-  color:#fff;
-}
-
-.btn-primary:hover{
-  background:var(--primary-dark);
-}
-
-.btn-success{
-  background:var(--success);
-  color:#fff;
-}
-
-.btn-danger{
-  background:var(--danger);
-  color:#fff;
-}
-
-.btn-outline{
-  background:#fff;
-  color:var(--primary);
-  border:1px solid #b2ccff;
-}
-
-.btn-dark{
-  background:var(--dark);
-  color:#fff;
-}
-
-.btn-light{
-  background:#f2f4f7;
-  color:var(--dark);
-}
-
-.full{
-  grid-column:1/-1;
-}
-
-/* HERO */
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:hover{background:var(--primary-dark)}
+.btn-success{background:var(--success);color:#fff}
+.btn-danger{background:var(--danger);color:#fff}
+.btn-outline{background:#fff;color:var(--primary);border:1px solid #b2ccff}
+.btn-dark{background:var(--dark);color:#fff}
+.btn-light{background:#f2f4f7;color:var(--dark)}
+.full{grid-column:1/-1}
 
 .hero{
-  background:
-    radial-gradient(circle at 80% 20%,rgba(21,94,239,.15),transparent 35%),
-    linear-gradient(135deg,#f8fbff,#eef4ff);
-  padding:80px 0 70px;
+  background:radial-gradient(circle at 80% 20%,rgba(21,94,239,.15),transparent 35%),
+  linear-gradient(135deg,#f8fbff,#eef4ff);padding:78px 0 68px
 }
-
-.hero-grid{
-  display:grid;
-  grid-template-columns:1.2fr .8fr;
-  gap:45px;
-  align-items:center;
-}
-
+.hero-grid{display:grid;grid-template-columns:1.18fr .82fr;gap:42px;align-items:center}
 .badge{
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-  background:#e8f0ff;
-  color:#174ea6;
-  border:1px solid #c9dbff;
-  padding:7px 12px;
-  border-radius:30px;
-  font-weight:900;
-  font-size:12px;
-  margin-bottom:16px;
+  display:inline-flex;align-items:center;gap:7px;background:#e8f0ff;color:#174ea6;
+  border:1px solid #c9dbff;padding:7px 12px;border-radius:30px;font-weight:900;font-size:12px;margin-bottom:16px
 }
-
-.hero h1{
-  font-size:50px;
-  line-height:1.08;
-  letter-spacing:-1.5px;
-  color:var(--dark);
-}
-
-.hero h1 span{
-  color:var(--primary);
-}
-
-.hero p{
-  color:var(--muted);
-  font-size:17px;
-  margin:18px 0 25px;
-  max-width:720px;
-}
-
+.hero h1{font-size:50px;line-height:1.08;letter-spacing:-1.5px;color:var(--dark)}
+.hero h1 span{color:var(--primary)}
+.hero p{color:var(--muted);font-size:17px;margin:18px 0 25px;max-width:760px}
 .search-box{
-  display:grid;
-  grid-template-columns:1fr 1fr auto;
-  gap:9px;
-  background:#fff;
-  padding:12px;
-  border-radius:15px;
-  box-shadow:var(--shadow);
-  border:1px solid var(--border);
+  display:grid;grid-template-columns:1fr 1fr auto;gap:9px;background:#fff;padding:12px;
+  border-radius:15px;box-shadow:var(--shadow);border:1px solid var(--border)
 }
-
 .field{
-  width:100%;
-  border:1px solid #d0d5dd;
-  border-radius:10px;
-  padding:12px;
-  background:#fff;
-  outline:none;
+  width:100%;border:1px solid #d0d5dd;border-radius:10px;padding:12px;background:#fff;outline:none
 }
-
-.field:focus{
-  border-color:var(--primary);
-  box-shadow:0 0 0 3px rgba(21,94,239,.1);
-}
-
-textarea.field{
-  resize:vertical;
-}
-
-.quick{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-top:12px;
-}
-
+.field:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(21,94,239,.1)}
+textarea.field{resize:vertical}
+.quick{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 .quick button{
-  border:1px solid var(--border);
-  background:#fff;
-  border-radius:30px;
-  padding:8px 12px;
-  font-weight:700;
-  color:#344054;
+  border:1px solid var(--border);background:#fff;border-radius:30px;padding:8px 12px;
+  font-weight:700;color:#344054
 }
+.hero-card{background:#fff;border:1px solid var(--border);border-radius:22px;padding:25px;box-shadow:var(--shadow)}
+.hero-card h3{margin-bottom:15px}
+.trust-list{display:grid;gap:13px}
+.trust-item{display:flex;gap:12px;align-items:flex-start;padding:13px;background:#f8fafc;border-radius:12px}
+.trust-icon{font-size:25px}
 
-.hero-card{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:22px;
-  padding:25px;
-  box-shadow:var(--shadow);
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:-25px;position:relative;z-index:2}
+.stat{background:#fff;border:1px solid var(--border);border-radius:15px;padding:20px;text-align:center;box-shadow:var(--shadow)}
+.stat strong{display:block;font-size:26px;color:var(--primary)}
+
+section{padding:70px 0}
+.section-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:28px}
+.section-head h2{color:var(--dark);font-size:33px;line-height:1.15}
+.section-head p{color:var(--muted);margin-top:7px}
+
+.filters{
+  display:grid;grid-template-columns:1.3fr 1fr 1fr auto;gap:10px;margin-bottom:20px;
+  padding:15px;background:#f8fafc;border:1px solid var(--border);border-radius:15px
 }
-
-.hero-card h3{
-  margin-bottom:15px;
-}
-
-.trust-list{
-  display:grid;
-  gap:13px;
-}
-
-.trust-item{
-  display:flex;
-  gap:12px;
-  align-items:flex-start;
-  padding:13px;
-  background:#f8fafc;
-  border-radius:12px;
-}
-
-.trust-icon{
-  font-size:25px;
-}
-
-/* STATS */
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
-  margin-top:-25px;
-  position:relative;
-  z-index:2;
-}
-
-.stat{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:15px;
-  padding:20px;
-  text-align:center;
-  box-shadow:var(--shadow);
-}
-
-.stat strong{
-  display:block;
-  font-size:26px;
-  color:var(--primary);
-}
-
-/* SECTIONS */
-
-section{
-  padding:70px 0;
-}
-
-.section-head{
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  align-items:end;
-  margin-bottom:28px;
-}
-
-.section-head h2{
-  color:var(--dark);
-  font-size:33px;
-  line-height:1.15;
-}
-
-.section-head p{
-  color:var(--muted);
-  margin-top:7px;
-}
-
-/* DIRECTORY TABS / REGIONS */
-
-.region-tabs{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-bottom:25px;
-}
-
+.region-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:25px}
 .region-tab{
-  padding:10px 18px;
-  border-radius:10px;
-  border:1px solid var(--border);
-  background:#fff;
-  font-weight:800;
-  cursor:pointer;
-  color:var(--text);
-  transition:.2s;
+  padding:10px 16px;border-radius:10px;border:1px solid var(--border);background:#fff;
+  font-weight:800;cursor:pointer;color:var(--text);transition:.2s
 }
+.region-tab.active,.region-tab:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
 
-.region-tab.active,
-.region-tab:hover{
-  background:var(--primary);
-  color:#fff;
-  border-color:var(--primary);
-}
-
-.directory-section{
-  display:none;
-}
-
-.directory-section.active{
-  display:block;
-}
-
-/* CARDS GRID */
-
-.portal-grid,
-.job-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-}
-
+.portal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .portal-card{
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:22px;
-  background:#fff;
-  box-shadow:0 5px 18px rgba(16,24,40,.04);
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
+  border:1px solid var(--border);border-radius:18px;padding:20px;background:#fff;
+  box-shadow:0 5px 18px rgba(16,24,40,.04);display:flex;flex-direction:column;justify-content:space-between;
+  min-height:260px
 }
-
-.portal-head{
-  display:flex;
-  gap:12px;
-  align-items:flex-start;
-}
-
+.portal-head{display:flex;gap:12px;align-items:flex-start}
 .portal-head img{
-  width:48px;
-  height:48px;
-  object-fit:contain;
-  padding:6px;
-  border:1px solid var(--border);
-  border-radius:12px;
-  background:#fff;
+  width:52px;height:52px;object-fit:contain;padding:6px;border:1px solid var(--border);
+  border-radius:12px;background:#fff;flex:0 0 auto
 }
-
-.portal-card h3{
-  font-size:17px;
-  margin-bottom:4px;
-}
-
-.portal-card p{
-  color:var(--muted);
-  margin:12px 0;
-  font-size:14px;
-}
-
+.portal-card h3{font-size:17px;margin-bottom:4px}
+.portal-card p{color:var(--muted);margin:12px 0;font-size:14px}
 .verified-badge{
-  display:inline-flex;
-  align-items:center;
-  gap:5px;
-  padding:4px 9px;
-  background:var(--success-bg);
-  color:#067647;
-  border-radius:20px;
-  font-size:11px;
-  font-weight:900;
-  margin-bottom:8px;
-  border:1px solid #abefc6;
+  display:inline-flex;align-items:center;gap:5px;padding:4px 9px;background:var(--success-bg);
+  color:#067647;border-radius:20px;font-size:10px;font-weight:900;margin-bottom:8px;border:1px solid #abefc6
+}
+.gov-badge{background:#eff8ff;color:#175cd3;border-color:#b2ccff}
+.job-badge{background:#fff7ed;color:#c2410c;border-color:#fed7aa}
+.info-badge{background:#f5f3ff;color:#6d28d9;border-color:#ddd6fe}
+.portal-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:15px}
+.tag{display:inline-flex;padding:4px 8px;background:#f2f4f7;border-radius:15px;font-size:11px;font-weight:800}
+.empty{
+  padding:35px;text-align:center;border:1px dashed #cfd4dc;border-radius:16px;
+  color:var(--muted);grid-column:1/-1;background:#fafafa
 }
 
-.gov-badge{
-  background:#eff8ff;
-  color:#175cd3;
-  border-color:#b2ccff;
+.category-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.category-card{
+  border:1px solid var(--border);background:#fff;border-radius:14px;padding:16px;
+  box-shadow:0 4px 14px rgba(16,24,40,.04);font-weight:800
 }
+.category-card span{display:block;font-size:24px;margin-bottom:7px}
+.category-card small{display:block;color:var(--muted);font-weight:500;margin-top:4px}
 
-.portal-tags{
-  display:flex;
-  gap:6px;
-  flex-wrap:wrap;
-  margin-bottom:15px;
-}
-
-.tag{
-  display:inline-flex;
-  padding:4px 8px;
-  background:#f2f4f7;
-  border-radius:15px;
-  font-size:12px;
-  font-weight:800;
-}
-
-/* HUMAN CV SECTION */
-
-.cv-section{
-  background:#f5f9ff;
-}
-
+.cv-section{background:#f5f9ff}
 .cv-box{
-  background:#fff;
-  border:1px solid #dbe7ff;
-  border-radius:22px;
-  padding:32px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:35px;
-  box-shadow:var(--shadow);
+  background:#fff;border:1px solid #dbe7ff;border-radius:22px;padding:32px;
+  display:grid;grid-template-columns:1fr 1fr;gap:35px;box-shadow:var(--shadow)
 }
-
-.cv-list{
-  display:grid;
-  gap:12px;
-  margin-top:20px;
-}
-
-.check{
-  color:var(--success);
-  font-weight:900;
-  margin-right:8px;
-}
-
-.cv-form{
-  background:#f8fafc;
-  padding:22px;
-  border-radius:16px;
-  border:1px solid var(--border);
-}
-
-.form-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
-
-.form-grid label{
-  display:block;
-  font-size:13px;
-  font-weight:800;
-  margin-top:4px;
-}
-
+.cv-list{display:grid;gap:12px;margin-top:20px}
+.check{color:var(--success);font-weight:900;margin-right:8px}
+.cv-form{background:#f8fafc;padding:22px;border-radius:16px;border:1px solid var(--border)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.form-grid label{display:block;font-size:13px;font-weight:800;margin-top:4px}
 .human-notice{
-  margin-top:20px;
-  padding:16px;
-  border-radius:12px;
-  background:var(--success-bg);
-  color:#067647;
-  border:1px solid #abefc6;
+  margin-top:20px;padding:16px;border-radius:12px;background:var(--success-bg);
+  color:#067647;border:1px solid #abefc6
 }
+.payment-box{margin:15px 0;padding:18px;border:2px solid #dbe7ff;border-radius:14px;background:#f8fbff}
+.payment-price{font-size:28px;font-weight:900;color:var(--primary);margin:5px 0}
+.payment-step{display:flex;gap:10px;align-items:flex-start;margin:9px 0;font-size:14px}
+.payment-ref{margin-top:10px}
 
-/* MODALS */
+
+.notice{padding:13px;border-radius:10px;background:#eff8ff;color:#175cd3;font-size:14px;margin:12px 0}
+.warning{padding:13px;border-radius:10px;background:#fffaeb;color:#b54708;font-size:14px;margin:12px 0}
+.error{padding:13px;border-radius:10px;background:#fef2f2;color:#b42318;font-size:14px;margin:12px 0}
 
 .modal{
-  position:fixed;
-  inset:0;
-  background:rgba(16,24,40,.65);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  z-index:3000;
+  position:fixed;inset:0;background:rgba(16,24,40,.65);display:none;align-items:center;
+  justify-content:center;padding:20px;z-index:3000
 }
-
-.modal.show{
-  display:flex;
-}
-
+.modal.show{display:flex}
 .modal-card{
-  width:min(720px,100%);
-  max-height:92vh;
-  overflow:auto;
-  background:#fff;
-  border-radius:20px;
-  padding:26px;
-  position:relative;
-  box-shadow:0 30px 80px rgba(0,0,0,.2);
+  width:min(760px,100%);max-height:92vh;overflow:auto;background:#fff;border-radius:20px;
+  padding:26px;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.2)
 }
-
 .close{
-  position:absolute;
-  top:10px;
-  right:13px;
-  width:38px;
-  height:38px;
-  border:0;
-  border-radius:50%;
-  background:#f2f4f7;
-  font-size:25px;
+  position:absolute;top:10px;right:13px;width:38px;height:38px;border:0;
+  border-radius:50%;background:#f2f4f7;font-size:25px
 }
+.modal-sub{color:var(--muted);margin-bottom:18px}
 
-.modal-sub{
-  color:var(--muted);
-  margin-bottom:18px;
-}
-
-.notice{
-  padding:13px;
-  border-radius:10px;
-  background:#eff8ff;
-  color:#175cd3;
-  font-size:14px;
-  margin:12px 0;
-}
-
-.warning{
-  padding:13px;
-  border-radius:10px;
-  background:#fffaeb;
-  color:#b54708;
-  font-size:14px;
-  margin:12px 0;
-}
-
-/* STAFF PANEL */
-
-.staff-panel{
-  background:#101828;
-  color:#fff;
-}
-
-.staff-login{
-  max-width:520px;
-  margin:auto;
-  background:#fff;
-  color:var(--text);
-  padding:25px;
-  border-radius:18px;
-}
-
-.staff-dashboard{
-  display:none;
-}
-
-.dashboard-grid{
-  display:grid;
-  grid-template-columns:230px 1fr;
-  gap:20px;
-}
-
-.sidebar{
-  background:#fff;
-  border-radius:15px;
-  padding:15px;
-  color:var(--text);
-}
-
+.staff-panel{background:#101828;color:#fff}
+.staff-login{max-width:520px;margin:auto;background:#fff;color:var(--text);padding:25px;border-radius:18px}
+.staff-dashboard{display:none}
+.dashboard-grid{display:grid;grid-template-columns:230px 1fr;gap:20px}
+.sidebar{background:#fff;border-radius:15px;padding:15px;color:var(--text)}
 .sidebar button{
-  display:block;
-  width:100%;
-  border:0;
-  background:#fff;
-  padding:11px;
-  text-align:left;
-  border-radius:9px;
-  font-weight:800;
-  margin-bottom:5px;
+  display:block;width:100%;border:0;background:#fff;padding:11px;text-align:left;
+  border-radius:9px;font-weight:800;margin-bottom:5px
 }
-
-.sidebar button:hover{
-  background:#eef4ff;
-  color:var(--primary);
+.sidebar button:hover{background:#eef4ff;color:var(--primary)}
+.dashboard-content{background:#fff;color:var(--text);border-radius:15px;padding:20px}
+.dashboard-section{display:none}
+.dashboard-section.active{display:block}
+.request-card{
+  border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:12px;background:#fff
 }
-
-.dashboard-content{
-  background:#fff;
-  color:var(--text);
-  border-radius:15px;
-  padding:20px;
+.request-top{display:flex;justify-content:space-between;gap:10px;align-items:start}
+.status{
+  padding:5px 9px;border-radius:20px;background:#eef4ff;color:#175cd3;
+  font-size:11px;font-weight:900;white-space:nowrap
 }
-
-.dashboard-section{
-  display:none;
-}
-
-.dashboard-section.active{
-  display:block;
-}
+.status.done{background:#ecfdf3;color:#067647}
+.status.progress{background:#fff7ed;color:#b54708}
+.staff-tools{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+.small{font-size:12px;color:var(--muted)}
 
 .toast{
-  position:fixed;
-  right:18px;
-  bottom:18px;
-  background:#101828;
-  color:#fff;
-  padding:14px 18px;
-  border-radius:12px;
-  box-shadow:var(--shadow);
-  display:none;
-  z-index:5000;
+  position:fixed;right:18px;bottom:18px;background:#101828;color:#fff;padding:14px 18px;
+  border-radius:12px;box-shadow:var(--shadow);display:none;z-index:5000
 }
+.toast.show{display:block}
 
-.toast.show{
-  display:block;
+footer{background:#101828;color:#cbd5e1;padding:45px 0 20px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}
+.footer-brand{color:#fff;font-size:22px;font-weight:900;margin-bottom:10px}
+footer h4{color:#fff;margin-bottom:10px}
+footer a{display:block;margin:7px 0}
+.copyright{border-top:1px solid #344054;margin-top:30px;padding-top:18px;font-size:13px}
+
+@media(max-width:1050px){
+  .hero-grid,.cv-box{grid-template-columns:1fr}
+  .portal-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .category-wrap{grid-template-columns:1fr 1fr}
+  .filters{grid-template-columns:1fr 1fr}
 }
-
-/* FOOTER */
-
-footer{
-  background:#101828;
-  color:#cbd5e1;
-  padding:45px 0 20px;
-}
-
-.footer-grid{
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr 1fr;
-  gap:30px;
-}
-
-.footer-brand{
-  color:#fff;
-  font-size:22px;
-  font-weight:900;
-  margin-bottom:10px;
-}
-
-footer h4{
-  color:#fff;
-  margin-bottom:10px;
-}
-
-footer a{
-  display:block;
-  margin:7px 0;
-}
-
-.copyright{
-  border-top:1px solid #344054;
-  margin-top:30px;
-  padding-top:18px;
-  font-size:13px;
-}
-
-/* RESPONSIVE */
-
-@media(max-width:1000px){
-  .hero-grid,
-  .cv-box{
-    grid-template-columns:1fr;
-  }
-  .portal-grid,
-  .job-grid{
-    grid-template-columns:1fr 1fr;
-  }
-  .footer-grid{
-    grid-template-columns:1fr 1fr;
-  }
-}
-
 @media(max-width:760px){
-  .navlinks,
-  .nav-actions{
-    display:none;
-  }
-  .menu{
-    display:block;
-  }
-  .hero h1{
-    font-size:38px;
-  }
-  .search-box{
-    grid-template-columns:1fr;
-  }
-  .stats{
-    grid-template-columns:1fr 1fr;
-  }
-  .portal-grid,
-  .job-grid,
-  .footer-grid{
-    grid-template-columns:1fr;
-  }
-  .form-grid{
-    grid-template-columns:1fr;
-  }
-  .dashboard-grid{
-    grid-template-columns:1fr;
-  }
+  .navlinks,.nav-actions{display:none}
+  .menu{display:block}
+  .hero h1{font-size:38px}
+  .search-box{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .portal-grid,.footer-grid,.category-wrap{grid-template-columns:1fr}
+  .form-grid,.filters{grid-template-columns:1fr}
+  .dashboard-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
-
 <header>
 <div class="container nav">
-
-<a href="#home" class="brand">
-Mustafa <span>Elevate</span>
-</a>
+<a href="#home" class="brand">Mustafa <span>Elevate</span></a>
 
 <nav class="navlinks">
-<a href="#directory">Verified Directory</a>
-<a href="#kenya">Kenya Portal</a>
-<a href="#military">Military & Defence</a>
-<a href="#cruise">Cruise Ships</a>
+<a href="#directory">Career Directory</a>
+<a href="#categories">Job Categories</a>
+<a href="#kenya">Kenya</a>
+<a href="#middleeast">Middle East</a>
+<a href="#military">Military</a>
+<a href="#cruise">Cruise</a>
 <a href="#airlines">Airlines</a>
 <a href="#cv">Human CV Expert</a>
 </nav>
 
 <div class="nav-actions">
-<button class="btn btn-outline" onclick="openModal('staffLoginModal')">
-Staff Login
-</button>
-<button class="btn btn-primary" onclick="openModal('humanModal')">
-👤 Human CV Expert
-</button>
+<button class="btn btn-outline" onclick="openModal('staffLoginModal')">Staff Login</button>
+<button class="btn btn-primary" onclick="openModal('humanModal')">👤 Human CV Expert</button>
 </div>
 
 <button class="menu" onclick="toggleMobileMenu()">☰</button>
-
 </div>
 </header>
 
-<!-- ================= MAIN ================= -->
-
 <main>
-
-<!-- HERO -->
 
 <section class="hero" id="home">
 <div class="container hero-grid">
-
 <div>
-<div class="badge">
-🌍 WORLDWIDE VERIFIED CAREERS DIRECTORY
-</div>
-
-<h1>
-Official career portals.<br>
-<span>Real Human CV Expert support.</span>
-</h1>
-
+<div class="badge">🌍 WORLDWIDE VERIFIED CAREERS DIRECTORY</div>
+<h1>Official career portals.<br><span>Real Human CV Expert support.</span></h1>
 <p>
-Explore official government recruitment systems, international defence forces, cruise lines, airlines, and global job banks. No AI job builder—work directly with real human experts to review your old CV and prepare your application.
+Find official government and employer career portals, major job platforms, Middle East opportunities,
+airlines, cruise ships, military/defence recruitment and verified Kenya sources.
+<strong>No AI CV builder.</strong> Human experts handle CV review and preparation.
 </p>
 
 <div class="search-box">
-<input id="heroKeyword" class="field" placeholder="Search portals, country, or profession...">
-<input id="heroLocation" class="field" placeholder="Country (e.g. USA, Canada, Kenya)">
-<button class="btn btn-primary" onclick="searchDirectory()">🔎 Search Directory</button>
+<input id="heroKeyword" class="field" placeholder="Search company, job, category, portal...">
+<input id="heroLocation" class="field" placeholder="Country / region e.g. Qatar, Kenya, USA">
+<button class="btn btn-primary" onclick="searchDirectory()">🔎 Search</button>
 </div>
 
 <div class="quick">
-<button onclick="quickFilter('USA')">🇺🇸 USA</button>
-<button onclick="quickFilter('Canada')">🇨🇦 Canada</button>
-<button onclick="quickFilter('Europe')">🇪🇺 Europe</button>
-<button onclick="quickFilter('Kenya')">🇰🇪 Kenya</button>
-<button onclick="quickFilter('Military')">🪖 Military</button>
-<button onclick="quickFilter('Cruise')">🚢 Cruise Ships</button>
-<button onclick="quickFilter('Airlines')">✈️ Airlines</button>
+<button onclick="quickFilter('usa')">🇺🇸 USA</button>
+<button onclick="quickFilter('canada')">🇨🇦 Canada</button>
+<button onclick="quickFilter('europe')">🇪🇺 Europe</button>
+<button onclick="quickFilter('kenya')">🇰🇪 Kenya</button>
+<button onclick="quickFilter('middleeast')">🌙 Middle East</button>
+<button onclick="quickFilter('military')">🪖 Military</button>
+<button onclick="quickFilter('cruise')">🚢 Cruise</button>
+<button onclick="quickFilter('airlines')">✈️ Airlines</button>
 </div>
 </div>
 
 <div class="hero-card">
 <h3>Why Mustafa Elevate?</h3>
 <div class="trust-list">
-<div class="trust-item">
-<div class="trust-icon">🟢</div>
-<div>
-<strong>Verified Official Sources</strong>
-<p>Clear distinction between official government/employer portals and general listings.</p>
+<div class="trust-item"><div class="trust-icon">🟢</div><div><strong>Source-labelled portals</strong><p>Official government/employer portals are separated from job boards and information sources.</p></div></div>
+<div class="trust-item"><div class="trust-icon">👤</div><div><strong>100% Human CV service</strong><p>Your CV is reviewed and prepared by real Customer Care and Human CV Expert staff.</p></div></div>
+<div class="trust-item"><div class="trust-icon">🌐</div><div><strong>Worldwide coverage</strong><p>USA, Canada, Europe, Africa, Kenya, Middle East, airlines, cruise and defence sources.</p></div></div>
+<div class="trust-item"><div class="trust-icon">🔒</div><div><strong>Secure Firebase workflow</strong><p>Requests and uploaded documents are sent to the authorized staff workspace.</p></div></div>
 </div>
+<button class="btn btn-success" style="width:100%;margin-top:18px" onclick="openModal('humanModal')">Request Human CV Help</button>
 </div>
-<div class="trust-item">
-<div class="trust-icon">👤</div>
-<div>
-<strong>100% Human CV Experts</strong>
-<p>Your old CV is reviewed and prepared by real staff members, not automated AI.</p>
-</div>
-</div>
-<div class="trust-item">
-<div class="trust-icon">🌐</div>
-<div>
-<strong>Worldwide Coverage</strong>
-<p>Access official portals across North America, Europe, Africa, and the Middle East.</p>
-</div>
-</div>
-</div>
-
-<button class="btn btn-success" style="width:100%;margin-top:18px" onclick="openModal('humanModal')">
-Request Human CV Help
-</button>
-</div>
-
 </div>
 </section>
-
-<!-- STATS -->
 
 <div class="container">
 <div class="stats">
-<div class="stat">
-<strong id="statPortalsCount">50+</strong>
-Verified Portals
-</div>
-<div class="stat">
-<strong>🌍</strong>
-Worldwide Regions
-</div>
-<div class="stat">
-<strong>👤</strong>
-Real Human Experts
-</div>
-<div class="stat">
-<strong>✓</strong>
-Official & Secure
+<div class="stat"><strong id="statPortalsCount">0</strong> Career Sources</div>
+<div class="stat"><strong>🌍</strong> Worldwide</div>
+<div class="stat"><strong>👤</strong> Human Experts</div>
+<div class="stat"><strong>✓</strong> Source Labelled</div>
 </div>
 </div>
-</div>
-
-<!-- WORLDWIDE DIRECTORY SECTION -->
 
 <section id="directory">
 <div class="container">
-
 <div class="section-head">
-<div>
-<h2>Worldwide Verified Careers Directory</h2>
-<p>Select a region or category below to access official employment portals.</p>
+<div><h2>Worldwide Career Directory</h2><p>Search and filter official portals, job platforms and career sources.</p></div>
 </div>
+
+<div class="filters">
+<input id="directorySearch" class="field" placeholder="Search portal/company/category...">
+<select id="directoryRegion" class="field" onchange="applyDirectoryFilters()">
+<option value="all">All regions</option>
+<option value="usa">USA</option>
+<option value="canada">Canada</option>
+<option value="europe">Europe</option>
+<option value="africa">Africa</option>
+<option value="kenya">Kenya</option>
+<option value="middleeast">Middle East</option>
+<option value="asia">Asia-Pacific</option>
+<option value="military">Military & Defence</option>
+<option value="cruise">Cruise Ships</option>
+<option value="airlines">Airlines</option>
+<option value="jobs">Global Job Platforms</option>
+</select>
+<select id="directoryCategory" class="field" onchange="applyDirectoryFilters()">
+<option value="all">All job categories</option>
+</select>
+<button class="btn btn-light" onclick="clearDirectoryFilters()">Clear</button>
 </div>
 
 <div class="region-tabs">
-<button class="region-tab active" onclick="switchRegion('all')">All Regions</button>
-<button class="region-tab" onclick="switchRegion('usa')">🇺🇸 USA</button>
-<button class="region-tab" onclick="switchRegion('canada')">🇨🇦 Canada</button>
-<button class="region-tab" onclick="switchRegion('europe')">🇪🇺 Europe</button>
-<button class="region-tab" onclick="switchRegion('africa')">🌍 Africa</button>
-<button class="region-tab" onclick="switchRegion('kenya')">🇰🇪 Kenya</button>
-<button class="region-tab" onclick="switchRegion('military')">🪖 Military & Defence</button>
-<button class="region-tab" onclick="switchRegion('cruise')">🚢 Cruise Ships</button>
-<button class="region-tab" onclick="switchRegion('airlines')">✈️ Airlines</button>
+<button class="region-tab active" data-region="all" onclick="switchRegion('all',this)">All</button>
+<button class="region-tab" data-region="usa" onclick="switchRegion('usa',this)">🇺🇸 USA</button>
+<button class="region-tab" data-region="canada" onclick="switchRegion('canada',this)">🇨🇦 Canada</button>
+<button class="region-tab" data-region="europe" onclick="switchRegion('europe',this)">🇪🇺 Europe</button>
+<button class="region-tab" data-region="africa" onclick="switchRegion('africa',this)">🌍 Africa</button>
+<button class="region-tab" data-region="kenya" onclick="switchRegion('kenya',this)">🇰🇪 Kenya</button>
+<button class="region-tab" data-region="middleeast" onclick="switchRegion('middleeast',this)">🌙 Middle East</button>
+<button class="region-tab" data-region="military" onclick="switchRegion('military',this)">🪖 Military</button>
+<button class="region-tab" data-region="cruise" onclick="switchRegion('cruise',this)">🚢 Cruise</button>
+<button class="region-tab" data-region="airlines" onclick="switchRegion('airlines',this)">✈️ Airlines</button>
+<button class="region-tab" data-region="jobs" onclick="switchRegion('jobs',this)">💼 Job Platforms</button>
 </div>
 
-<div class="portal-grid" id="directoryGrid">
-<!-- Populated dynamically via script -->
-</div>
-
+<div class="portal-grid" id="directoryGrid"></div>
 </div>
 </section>
 
-<!-- KENYA SPOTLIGHT SECTION -->
-
-<section id="kenya" style="background:#f8fafc">
+<section id="categories" style="background:#f8fafc">
 <div class="container">
-<div class="section-head">
-<div>
-<h2>🇰🇪 Kenya Verified Career Sources</h2>
-<p>Official public service commissions, disciplined services, UN agencies, and leading employers in Kenya.</p>
+<div class="section-head"><div><h2>💼 Job Categories</h2><p>Use a category to find relevant career sources quickly.</p></div></div>
+<div class="category-wrap" id="categoryGrid"></div>
 </div>
-</div>
+</section>
+
+<section id="kenya">
+<div class="container">
+<div class="section-head"><div><h2>🇰🇪 Kenya Verified Career Sources</h2><p>Government, public institutions, major employers and international organizations.</p></div></div>
 <div class="portal-grid" id="kenyaGrid"></div>
 </div>
 </section>
 
-<!-- MILITARY & DEFENCE SECTION -->
+<section id="middleeast" style="background:#f8fafc">
+<div class="container">
+<div class="section-head"><div><h2>🌙 Middle East Careers</h2><p>Qatar, UAE, Saudi Arabia, Kuwait, Bahrain and Oman career sources.</p></div></div>
+<div class="portal-grid" id="middleeastGrid"></div>
+</div>
+</section>
 
 <section id="military">
 <div class="container">
-<div class="section-head">
-<div>
-<h2>🪖 Military & Defence Careers</h2>
-<p>Official armed forces and national security recruitment portals around the world.</p>
-</div>
-</div>
+<div class="section-head"><div><h2>🪖 Military & Defence Careers</h2><p>Official recruitment portals and defence career sources. Eligibility rules vary by country.</p></div></div>
 <div class="portal-grid" id="militaryGrid"></div>
 </div>
 </section>
 
-<!-- CRUISE SHIPS SECTION -->
-
 <section id="cruise" style="background:#f8fafc">
 <div class="container">
-<div class="section-head">
-<div>
-<h2>🚢 Cruise Ship Careers</h2>
-<p>Top international cruise lines hiring chefs, waiters, housekeepers, deck crew, technicians, and hospitality staff.</p>
-</div>
-</div>
+<div class="section-head"><div><h2>🚢 Cruise Ship Careers</h2><p>Official cruise-line career sources for hospitality, marine, culinary, technical and guest-services roles.</p></div></div>
 <div class="portal-grid" id="cruiseGrid"></div>
 </div>
 </section>
 
-<!-- AIRLINES SECTION -->
-
 <section id="airlines">
 <div class="container">
-<div class="section-head">
-<div>
-<h2>✈️ Worldwide Airline Careers</h2>
-<p>Official airline recruitment portals for cabin crew, pilots, engineering, and ground operations.</p>
-</div>
-</div>
+<div class="section-head"><div><h2>✈️ Worldwide Airline Careers</h2><p>Official airline recruitment portals for cabin crew, pilots, engineering, airport and ground operations.</p></div></div>
 <div class="portal-grid" id="airlinesGrid"></div>
 </div>
 </section>
 
-<!-- HUMAN CV EXPERT SECTION -->
-
-<section class="cv-section" id="cv">
+<section id="cv" class="cv-section">
 <div class="container">
 <div class="cv-box">
-
 <div>
-<div class="badge">
-👤 HUMAN CV EXPERT SERVICE
-</div>
-<h2 style="font-size:34px;line-height:1.15">
-Your CV is prepared by a real human expert.
-</h2>
+<div class="badge">👤 HUMAN CV EXPERT SERVICE</div>
+<h2 style="font-size:34px;line-height:1.15">Your CV is prepared by a real human expert.</h2>
 <p style="color:var(--muted);margin-top:12px">
-Submit your information and optionally upload your existing CV. A real Customer Care specialist will assign your request to a professional Human CV Expert for review and preparation.
+Submit your information and optionally upload your old CV. Customer Care will receive the request,
+review the documents and assign the work to a Human CV Expert.
 </p>
-
 <div class="cv-list">
-<div><span class="check">✓</span> 100% Human CV review & rewrite</div>
-<div><span class="check">✓</span> Old CV / Document upload via secure Firebase Storage</div>
-<div><span class="check">✓</span> Targeted application formatting</div>
-<div><span class="check">✓</span> Direct support from Customer Care</div>
+<div><span class="check">✓</span> Human CV review and rewriting</div>
+<div><span class="check">✓</span> Old CV / existing document upload</div>
+<div><span class="check">✓</span> Target-job focused formatting</div>
+<div><span class="check">✓</span> Customer Care follow-up</div>
+<div><span class="check">✓</span> Final CV can be returned as PDF/DOC/DOCX</div>
 </div>
-
-<div class="human-notice">
-<strong>Verified Human Process</strong><br>
-No automated AI resume generators. Your career success is guided by professional human expertise.
-</div>
-
-<button class="btn btn-success" style="margin-top:20px" onclick="openModal('humanModal')">
-👤 Request Human CV Expert
-</button>
+<div class="human-notice"><strong>Human-only service</strong><br>No automated AI resume builder is used in this workflow.</div>
+<button class="btn btn-success" style="margin-top:20px" onclick="openModal('humanModal')">👤 Request Human CV Expert</button>
 </div>
 
 <div class="cv-form">
 <h3>Start Your Human CV Request</h3>
-<p class="modal-sub">Fill out your details below to get started instantly.</p>
+<p class="modal-sub">Fill in your details, then attach your old CV if you have one.</p>
 <div class="form-grid">
 <input id="cvName" class="field" placeholder="Full name *">
 <input id="cvEmail" class="field" type="email" placeholder="Email *">
 <input id="cvPhone" class="field" placeholder="Phone / WhatsApp *">
 <input id="cvCountry" class="field" placeholder="Country">
 <input id="cvRole" class="field full" placeholder="Target job / position / industry">
-<textarea id="cvExperience" class="field full" rows="4" placeholder="Briefly describe your work experience and background"></textarea>
-<button class="btn btn-success full" onclick="openModal('humanModal')">
-Continue in Human CV Modal →
-</button>
+<textarea id="cvExperience" class="field full" rows="4" placeholder="Brief work experience / education"></textarea>
+<button class="btn btn-success full" onclick="copyCVFormToModal()">Continue →</button>
 </div>
 </div>
-
 </div>
 </div>
 </section>
 
-<!-- STAFF CENTER -->
-
 <section class="staff-panel" id="staff">
 <div class="container">
 <div class="section-head">
-<div>
-<h2 style="color:#fff">Customer Care / Staff Portal</h2>
-<p style="color:#98a2b3">Secure staff area for managing human CV requests and portal directories.</p>
-</div>
+<div><h2 style="color:#fff">Customer Care / Human CV Expert Center</h2><p style="color:#98a2b3">Authorized staff only. Firebase Authentication and Firestore rules must protect this area.</p></div>
 </div>
 
 <div id="staffLoginInline" class="staff-login">
 <h3>Secure Staff Login</h3>
-<p class="modal-sub">Authorized Customer Care & CV Experts only.</p>
+<p class="modal-sub">Use an authorized Firebase staff account.</p>
 <input id="staffEmailInline" class="field" type="email" placeholder="Staff email">
 <input id="staffPasswordInline" class="field" type="password" placeholder="Firebase password">
-<button class="btn btn-primary" style="width:100%;margin-top:8px" onclick="staffLogin('inline')">
-🔐 Secure Staff Login
-</button>
+<button class="btn btn-primary" style="width:100%;margin-top:8px" onclick="staffLogin('inline')">🔐 Secure Staff Login</button>
 <div id="staffLoginMessageInline" class="notice" style="display:none"></div>
 </div>
 
 <div id="staffDashboard" class="staff-dashboard">
 <div class="dashboard-grid">
 <div class="sidebar">
-<button onclick="showStaffSection('requests')">📥 CV Requests</button>
+<button onclick="showStaffSection('requests')">📥 CV Requests <span id="requestCount"></span></button>
 <button onclick="showStaffSection('portalsAdmin')">🌍 Manage Portals</button>
+<button onclick="showStaffSection('notifications')">🔔 Notifications</button>
 <button onclick="staffLogout()" class="btn-danger">🚪 Logout</button>
 </div>
+
 <div class="dashboard-content">
 <div id="requestsSection" class="dashboard-section active">
-<h3>Human CV Requests & Uploaded Files</h3>
-<p class="modal-sub">Requests submitted by customers with attached old CV files in Storage.</p>
+<h3>Human CV Requests</h3>
+<p class="modal-sub">Review customer requests, download old CVs and upload completed documents.</p>
 <div id="requestsList">Loading requests...</div>
 </div>
+
 <div id="portalsAdminSection" class="dashboard-section">
-<h3>Add New Verified Portal</h3>
+<h3>Add / Manage Career Portal</h3>
+<div class="notice">Only add a portal after checking that the destination belongs to the stated employer, government body or job platform.</div>
 <div class="form-grid">
 <input id="adminPortalName" class="field" placeholder="Portal / Company Name">
 <input id="adminPortalCountry" class="field" placeholder="Country / Region">
-<input id="adminPortalCategory" class="field" placeholder="Category (e.g. USA, Military, Cruise)">
-<input id="adminPortalLogo" class="field" placeholder="Favicon / Logo URL">
-<input id="adminPortalUrl" class="field full" placeholder="Official Careers URL">
+<input id="adminPortalRegion" class="field" placeholder="Region key e.g. middleeast, kenya">
+<input id="adminPortalCategory" class="field" placeholder="Category e.g. Engineering">
+<input id="adminPortalLogo" class="field" placeholder="Logo / favicon URL">
+<select id="adminPortalType" class="field">
+<option value="official">Official employer/government</option>
+<option value="jobs">Job platform</option>
+<option value="information">Information source</option>
+</select>
+<input id="adminPortalUrl" class="field full" placeholder="Official careers/job URL">
 <textarea id="adminPortalDesc" class="field full" rows="3" placeholder="Description"></textarea>
 <button class="btn btn-success full" onclick="addNewPortal()">➕ Add Portal</button>
 </div>
 </div>
-</div>
-</div>
-</div>
 
+<div id="notificationsSection" class="dashboard-section">
+<h3>Staff Notifications</h3>
+<div id="notificationList" class="notice">Notifications will appear here.</div>
+</div>
+</div>
+</div>
 </div>
 </section>
 
 </main>
 
-<!-- FOOTER -->
-
 <footer>
 <div class="container footer-grid">
 <div>
 <div class="footer-brand">Mustafa Elevate</div>
-<p>Worldwide verified career directory and Human CV Expert support platform.</p>
+<p>Worldwide career directory and real Human CV Expert support.</p>
 </div>
-<div>
-<h4>Regions</h4>
-<a href="#directory" onclick="switchRegion('usa')">USA Portals</a>
-<a href="#directory" onclick="switchRegion('canada')">Canada Portals</a>
-<a href="#directory" onclick="switchRegion('europe')">Europe Portals</a>
-<a href="#directory" onclick="switchRegion('kenya')">Kenya Sources</a>
+<div><h4>Regions</h4><a href="#directory" onclick="quickFilter('usa')">USA</a><a href="#directory" onclick="quickFilter('canada')">Canada</a><a href="#directory" onclick="quickFilter('europe')">Europe</a><a href="#kenya">Kenya</a><a href="#middleeast">Middle East</a></div>
+<div><h4>Categories</h4><a href="#categories">Job Categories</a><a href="#military">Military</a><a href="#cruise">Cruise Ships</a><a href="#airlines">Airlines</a></div>
+<div><h4>Support</h4><a href="#cv">Human CV Expert</a><a href="#staff">Customer Care Center</a><a href="#" onclick="openModal('staffLoginModal');return false">Staff Login</a></div>
 </div>
-<div>
-<h4>Categories</h4>
-<a href="#military">Military & Defence</a>
-<a href="#cruise">Cruise Ship Careers</a>
-<a href="#airlines">Airlines</a>
-<a href="#cv">Human CV Expert</a>
-</div>
-<div>
-<h4>Staff</h4>
-<a href="#staff">Customer Care Center</a>
-<a href="#" onclick="openModal('staffLoginModal');return false">Staff Login</a>
-</div>
-</div>
-<div class="container copyright">
-© <span id="year"></span> Mustafa Elevate. All rights reserved.
-</div>
+<div class="container copyright">© <span id="year"></span> Mustafa Elevate. All rights reserved. Always verify the final vacancy on the destination website.</div>
 </footer>
 
-<!-- ================= MODALS ================= -->
-
-<!-- HUMAN CV MODAL -->
 <div class="modal" id="humanModal">
 <div class="modal-card">
 <button class="close" onclick="closeModal('humanModal')">×</button>
 <h2>👤 Human CV Expert Request</h2>
-<p class="modal-sub">Real Human CV Expert service. No AI generation.</p>
-
-<div class="notice">
-<strong>Secure Upload:</strong> Your old CV file will be safely stored in your private Firebase storage path.
-</div>
-
+<p class="modal-sub">A real human specialist will review your request. No AI CV generation.</p>
+<div class="notice"><strong>Secure upload:</strong> Documents are uploaded to Firebase Storage and linked to your request.</div>
 <div class="form-grid">
 <input id="hName" class="field" placeholder="Full name *">
 <input id="hEmail" class="field" type="email" placeholder="Email *">
 <input id="hPhone" class="field" placeholder="Phone / WhatsApp *">
 <input id="hCountry" class="field" placeholder="Country">
 <input id="hRole" class="field full" placeholder="Target job / position">
+<textarea id="hExperience" class="field full" rows="3" placeholder="Experience / education"></textarea>
 <textarea id="hMessage" class="field full" rows="3" placeholder="Tell the Human CV Expert what you need"></textarea>
 
-<label class="full">
-Upload Old CV / Existing CV (PDF, DOC, DOCX)
-<input id="hOldCV" class="field" type="file" accept=".pdf,.doc,.docx">
-</label>
+<label class="full">Old CV / Existing CV (PDF, DOC, DOCX)
+<input id="hOldCV" class="field" type="file" accept=".pdf,.doc,.docx"></label>
 
-<label class="full">
-Supporting Document (Optional)
-<input id="hDocument" class="field" type="file" accept=".pdf,.doc,.docx,.jpg,.png">
-</label>
+<label class="full">Supporting Document (optional)
+<input id="hDocument" class="field" type="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"></label>
 
-<button class="btn btn-success full" onclick="submitHumanRequest()">
-📤 Submit Human CV Request
-</button>
+<div class="payment-box full">
+  <strong>💳 Human CV Expert Service Fee</strong>
+  <div class="payment-price">KSh ${HUMAN_CV_FEE.toLocaleString()}</div>
+  <div class="payment-step"><span>1️⃣</span><span>Payment must be completed before your Human CV request is submitted.</span></div>
+  <div class="payment-step"><span>2️⃣</span><span><strong>Payment Method: M-Pesa → Send Money</strong><br>Open M-Pesa, choose <strong>Send Money</strong>, and send <strong>KSh ${HUMAN_CV_FEE.toLocaleString()}</strong> to <strong id="mpesaPaymentNumber">${MPESA_PAYMENT_NUMBER}</strong>.</span></div>
+  <div class="payment-step"><span>3️⃣</span><span>Enter the M-Pesa transaction code below. Customer Care will verify the payment.</span></div>
+  <div class="notice" style="margin-top:12px"><strong>Why KSh 1,000?</strong><br>The KSh 1,000 fee covers professional human CV review and preparation by a real Human CV Expert, including reviewing your existing CV, improving your presentation and wording, tailoring it toward your target role, and preparing a professional final CV document. This is a human service — no AI-generated CV is used.</div>
+  <input id="paymentReference" class="field payment-ref" placeholder="M-Pesa transaction code / payment reference *">
+  <label style="display:flex;gap:8px;align-items:flex-start;margin-top:12px;font-size:13px;font-weight:800">
+    <input id="paymentConfirmed" type="checkbox" style="margin-top:4px">
+    <span>I confirm that I have paid the KSh ${HUMAN_CV_FEE.toLocaleString()} Human CV Expert service fee.</span>
+  </label>
+</div>
+
+<button class="btn btn-success full" onclick="submitHumanRequest()">📤 Submit Paid Human CV Request</button>
 </div>
 <div id="humanMessage"></div>
 </div>
 </div>
 
-<!-- STAFF LOGIN MODAL -->
 <div class="modal" id="staffLoginModal">
 <div class="modal-card">
 <button class="close" onclick="closeModal('staffLoginModal')">×</button>
 <h2>🔐 Secure Staff Login</h2>
-<p class="modal-sub">Customer Care & Human CV Expert staff login.</p>
+<p class="modal-sub">Customer Care & Human CV Expert staff only.</p>
 <input id="staffEmail" class="field" type="email" placeholder="Staff email">
 <input id="staffPassword" class="field" type="password" placeholder="Firebase password">
-<button class="btn btn-primary" style="width:100%;margin-top:10px" onclick="staffLogin('modal')">
-🔐 Login
-</button>
+<button class="btn btn-primary" style="width:100%;margin-top:10px" onclick="staffLogin('modal')">🔐 Login</button>
 <div id="staffLoginMessage" class="notice" style="display:none"></div>
 </div>
 </div>
 
-<!-- ================= FIREBASE SCRIPT ================= -->
-
 <script type="module">
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, signInAnonymously, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-import { getFirestore, collection, addDoc, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-storage.js";
+import {
+  getAuth, signInWithEmailAndPassword, signInAnonymously, signOut,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+import {
+  getFirestore, collection, addDoc, getDocs, getDoc, doc,
+  updateDoc, serverTimestamp, query, orderBy, limit
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+import {
+  getStorage, ref, uploadBytes, getDownloadURL
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-storage.js";
 
 const firebaseConfig = {
   apiKey: "YOUR_FIREBASE_API_KEY",
@@ -1202,764 +610,587 @@ window.firebaseAuth = auth;
 window.firebaseDB = db;
 
 let staffUser = null;
+let currentRegion = "all";
 
-/* =========================================================
-   COMPREHENSIVE WORLDWIDE VERIFIED DIRECTORY DATA
-========================================================= */
+// HUMAN CV EXPERT PAYMENT SETTINGS
+// Replace the placeholder with your real M-Pesa Till/PayBill before publishing.
+const HUMAN_CV_FEE = 1000;
+const MPESA_PAYMENT_NUMBER = "0798 811471";
+const HUMAN_EXPERT_WHATSAPP = "YOUR_WHATSAPP_NUMBER";
 
-const worldwidePortals = [
-
-  // --- USA ---
-  {
-    name: "USAJOBS",
-    country: "USA",
-    region: "usa",
-    category: "Government",
-    badge: "🟢 VERIFIED GOVERNMENT SOURCE",
-    badgeClass: "gov-badge",
-    logo: "https://www.google.com/s2/favicons?domain=usajobs.gov&sz=128",
-    url: "https://www.usajobs.gov/",
-    description: "Official U.S. federal government employment portal supporting resume-based applications."
-  },
-  {
-    name: "U.S. Army Careers",
-    country: "USA",
-    region: "military",
-    category: "Military",
-    badge: "🟢 VERIFIED OFFICIAL SOURCE",
-    badgeClass: "",
-    logo: "https://www.google.com/s2/favicons?domain=goarmy.com&sz=128",
-    url: "https://www.goarmy.com/",
-    description: "Official recruitment portal for the United States Army."
-  },
-  {
-    name: "U.S. Navy Careers",
-    country: "USA",
-    region: "military",
-    category: "Military",
-    badge: "🟢 VERIFIED OFFICIAL SOURCE",
-    badgeClass: "",
-    logo: "https://www.google.com/s2/favicons?domain=navy.com&sz=128",
-    url: "https://www.navy.com/",
-    description: "Official careers and enlistment portal for the United States Navy."
-  },
-  {
-    name: "U.S. Air Force Careers",
-    country: "USA",
-    region: "military",
-    category: "Military",
-    badge: "🟢 VERIFIED OFFICIAL SOURCE",
-    badgeClass: "",
-    logo: "https://www.google.com/s2/favicons?domain=airforce.com&sz=128",
-    url: "https://www.airforce.com/",
-    description: "Official United States Air Force recruitment system."
-  },
-  {
-    name: "U.S. Marine Corps",
-    country: "USA",
-    region: "military",
-    category: "Military",
-    badge: "🟢 VERIFIED OFFICIAL SOURCE",
-    badgeClass: "",
-    logo: "https://www.google.com/s2/favicons?domain=marines.com&sz=128",
-    url: "https://www.marines.com/",
-    description: "Official United States Marine Corps careers portal."
-  },
-  {
-    name: "U.S. Coast Guard",
-    country: "USA",
-    region: "military",
-    category: "Military",
-    badge: "🟢 VERIFIED OFFICIAL SOURCE",
-    badgeClass: "",
-    logo: "https://www.google.com/s2/favicons?domain=gocoastguard.com&sz=128",
-    url: "https://www.gocoastguard.com/",
-    description: "Official U.S. Coast Guard recruitment portal."
-  },
-  {
-    name: "United Airlines Careers",
-    country: "USA",
-    region: "airlines",
-    category: "Airlines",
-    badge: "🟢 VERIFIED OFFICIAL SOURCE",
-    badgeClass: "",
-    logo: "https://www.google.com/s2/favicons?domain=united.com&sz=128",
-    url: "https://careers.united.com/",
-    description: "Official career opportunities with United Airlines."
-  },
-  {
-    name: "Delta Air Lines Careers",
-    country: "USA",
-    region: "airlines",
-    category: "Airlines",
-    badge: "🟢 VERIFIED OFFICIAL SOURCE",
-    badgeClass: "",
-    logo: "https://www.google.com/s2/favicons?domain=delta.com&sz=128",
-    url: "https://www.delta.com/us/en/careers/index",
-    description: "Official career portal for Delta Air Lines."
-  },
-  {
-    name: "American Airlines Careers",
-    country: "USA",
-    region: "airlines",
-    category: "Airlines",
-    badge: "🟢 VERIFIED OFFICIAL SOURCE",
-    badgeClass: "",
-    logo: "https://www.google.com/s2/favicons?domain=aa.com&sz=128",
-    url: "https://jobs.aa.com/",
-    description: "Official American Airlines global recruitment portal."
-  },
-
-  // --- CANADA ---
-  {
-    name: "Government of Canada Jobs",
-    country: "Canada",
-    region: "canada",
-    category: "Government",
-    badge: "🟢 VERIFIED GOVERNMENT SOURCE",
-    badgeClass: "gov-badge",
-    logo: "https://www.google.com/s2/favicons?domain=canada.ca&sz=128",
-    url: "https://www.canada.ca/en/services/jobs/opportunities.html",
-    description: "Official federal public service employment opportunities in Canada."
-  },
-  {
-    name: "Canada Job Bank",
-    country: "Canada",
-    region: "canada",
-    category: "Jobs",
-    badge: "🟢 VERIFIED GOVERNMENT SOURCE",
-    badgeClass: "gov-badge",
-    logo: "https://www.google.com/s2/favicons?domain=jobbank.gc.ca&sz=128",
-    url: "https://www.jobbank.gc.ca/",
-    description: "Official Government of Canada job search engine supporting domestic and international candidates."
-  },
-  {
-    name: "Canadian Armed Forces",
-    country: "Canada",
-    region: "military",
-    category: "Military",
-    badge: "🟢 VERIFIED OFFICIAL SOURCE",
-    badgeClass: "",
-    logo: "https://www.google.com/s2/favicons?domain=forces.ca&sz=128",
-    url: "https://forces.ca/",
-    description: "Official recruitment portal for the Canadian Army, Navy, and Air Force."
-  },
-  {
-    name: "RCMP Careers",
-    country: "Canada",
-    region: "canada",
-    category: "Security",
-    badge: "🟢 VERIFIED GOVERNMENT SOURCE",
-    badgeClass: "gov-badge",
-    logo: "https://www.google.com/s2/favicons?domain=rcmp-grc.gc.ca&sz=128",
-    url: "https://www.rcmp-grc.gc.ca/en/careers",
-    description: "Royal Canadian Mounted Police official career portal."
-  },
-  {
-    name: "Air Canada Careers",
-    country: "Canada",
-    region: "airlines",
-    category: "Airlines",
-    badge: "🟢 VERIFIED OFFICIAL SOURCE",
-    badgeClass: "",
-    logo: "https://www.google.com/s2/favicons?domain=aircanada.com&sz=128",
-    url: "https://careers.aircanada.com/",
-    description: "Official Air Canada global careers and aviation portal."
-  },
-
-  // --- EUROPE ---
-  {
-    name: "EURES (European Job Mobility)",
-    country: "Europe",
-    region: "europe",
-    category: "Employment Network",
-    badge: "🟢 VERIFIED GOVERNMENT SOURCE",
-    badgeClass: "gov-badge",
-    logo: "https://www.google.com/s2/favicons?domain=eures.europa.eu&sz=128",
-    url: "https://eures.europa.eu/",
-    description: "The official European employment-services network connecting jobseekers across EU/EEA countries."
-  },
-  {
-    name: "British Army Careers",
-    country: "United Kingdom",
-    region: "military",
-    category: "Military",
-    badge: "🟢 VERIFIED OFFICIAL SOURCE",
-    badgeClass: "",
-    logo: "https://www.google.com/s2/favicons?domain=army.mod.uk&sz=128",
-    url: "https://jobs.army.mod.uk/",
-    description: "Official British Army recruitment and career opportunities."
-  },
-  {
-    name: "NHS Jobs (UK)",
-    country: "United Kingdom",
-    region: "europe",
-    category: "Healthcare",
-    badge: "🟢 VERIFIED GOVERNMENT SOURCE",
-    badgeClass: "gov-badge",
-    logo: "https://www.google.com/s2/favicons?domain=jobs.nhs.uk&sz=128",
-    url: "https://www.jobs.nhs.uk/",
-    description: "The official recruitment portal for the United Kingdom's National Health Service."
-  },
-  {
-    name: "Lufthansa Group Careers",
-    country: "Germany",
-    region: "airlines",
-    category: "Airlines",
-    badge: "🟢 VERIFIED OFFICIAL SOURCE",
-    badgeClass: "",
-    logo: "https://www.google.com/s2/favicons?domain=lufthansagroup.com&sz=128",
-    url: "https://www.lufthansagroup.com/en/careers.html",
-    description: "Official career portal for Lufthansa and affiliated European airlines."
-  },
-  {
-    name: "British Airways Careers",
-    country: "United Kingdom",
-    region: "airlines",
-    category: "Airlines",
-    badge: "🟢 VERIFIED OFFICIAL SOURCE",
-    badgeClass: "",
-    logo: "https://www.google.com/s2/favicons?domain=britishairways.com&sz=128",
-    url: "https://www.britishairways.com/en-gb/information/about-ba/careers",
-    description: "Official British Airways career portal."
-  },
-
-  // --- AFRICA & KENYA ---
-  {
-    name: "Public Service Commission of Kenya",
-    country: "Kenya",
-    region: "kenya",
-    category: "Government",
-    badge: "🟢 VERIFIED GOVERNMENT SOURCE",
-    badgeClass: "gov-badge",
-    logo: "https://www.google.com/s2/favicons?domain=publicservice.go.ke&sz=128",
-    url: "https://www.psckjobs.go.ke/",
-    description: "Official recruitment portal for Kenyan Government ministries and public service offices."
-  },
-  {
-    name: "Kenya Public Universities Recruitment",
-    country: "Kenya",
-    region: "kenya",
-    category: "Government",
-    badge: "🟢 VERIFIED GOVERNMENT SOURCE",
-    badgeClass: "gov-badge",
-    logo: "https://www.google.com/s2/favicons?domain=publicservice.go.ke&sz=128",
-    url: "https://pscims.publicservice.go.ke/puio/",
-    description: "Official portal for public universities and independent government offices in Kenya."
-  },
-  {
-    name: "United Nations in Kenya Careers",
-    country: "Kenya",
-    region: "kenya",
-    category: "International",
-    badge: "🟢 VERIFIED OFFICIAL SOURCE",
-    badgeClass: "",
-    logo: "https://www.google.com/s2/favicons?domain=careers.un.org&sz=128",
-    url: "https://careers.un.org/",
-    description: "Official UN career opportunities based in Nairobi and worldwide offices."
-  },
-  {
-    name: "Kenya Airways Careers",
-    country: "Kenya",
-    region: "kenya",
-    category: "Airlines",
-    badge: "🟢 VERIFIED OFFICIAL SOURCE",
-    badgeClass: "",
-    logo: "https://www.google.com/s2/favicons?domain=kenya-airways.com&sz=128",
-    url: "https://www.kenya-airways.com/en/about-us/careers/",
-    description: "Official career portal for Kenya Airways ('The Pride of Africa')."
-  },
-
-  // --- CRUISE SHIPS ---
-  {
-    name: "Royal Caribbean Group",
-    country: "Worldwide",
-    region: "cruise",
-    category: "Cruise",
-    badge: "🟢 VERIFIED OFFICIAL SOURCE",
-    badgeClass: "",
-    logo: "https://www.google.com/s2/favicons?domain=royalcaribbeangroup.com&sz=128",
-    url: "https://careers.royalcaribbeangroup.com/",
-    description: "Hiring chefs, waiters, housekeeping, deck crew, marine officers, IT, and guest services."
-  },
-  {
-    name: "Carnival Cruise Line",
-    country: "Worldwide",
-    region: "cruise",
-    category: "Cruise",
-    badge: "🟢 VERIFIED OFFICIAL SOURCE",
-    badgeClass: "",
-    logo: "https://www.google.com/s2/favicons?domain=carnival.com&sz=128",
-    url: "https://www.carnival.com/careers",
-    description: "Global cruise ship employment for culinary, hospitality, and engineering professionals."
-  },
-  {
-    name: "MSC Cruises Careers",
-    country: "Worldwide",
-    region: "cruise",
-    category: "Cruise",
-    badge: "🟢 VERIFIED OFFICIAL SOURCE",
-    badgeClass: "",
-    logo: "https://www.google.com/s2/favicons?domain=msccruises.com&sz=128",
-    url: "https://www.msccruises.com/",
-    description: "Official MSC Cruises onboard and shore-side career opportunities."
-  },
-  {
-    name: "Norwegian Cruise Line",
-    country: "Worldwide",
-    region: "cruise",
-    category: "Cruise",
-    badge: "🟢 VERIFIED OFFICIAL SOURCE",
-    badgeClass: "",
-    logo: "https://www.google.com/s2/favicons?domain=ncl.com&sz=128",
-    url: "https://www.ncl.com/about/careers",
-    description: "Explore global career opportunities across Norwegian Cruise Line ships."
-  },
-  {
-    name: "Disney Cruise Line",
-    country: "Worldwide",
-    region: "cruise",
-    category: "Cruise",
-    badge: "🟢 VERIFIED OFFICIAL SOURCE",
-    badgeClass: "",
-    logo: "https://www.google.com/s2/favicons?domain=disneycruiseline.com&sz=128",
-    url: "https://dcljobs.com/",
-    description: "Official Disney Cruise Line entertainment, hospitality, and culinary careers."
-  },
-
-  // --- AIRLINES ---
-  {
-    name: "Qatar Airways",
-    country: "Qatar",
-    region: "airlines",
-    category: "Airlines",
-    badge: "🟢 VERIFIED OFFICIAL SOURCE",
-    badgeClass: "",
-    logo: "https://www.google.com/s2/favicons?domain=qatarairways.com&sz=128",
-    url: "https://careers.qatarairways.com/",
-    description: "Official Qatar Airways global airline careers and cabin crew recruitment portal."
-  },
-  {
-    name: "Emirates Group Careers",
-    country: "UAE",
-    region: "airlines",
-    category: "Airlines",
-    badge: "🟢 VERIFIED OFFICIAL SOURCE",
-    badgeClass: "",
-    logo: "https://www.google.com/s2/favicons?domain=emirates.com&sz=128",
-    url: "https://www.emiratesgroupcareers.com/",
-    description: "Official Emirates Airline and Dnata recruitment portal based in Dubai."
-  },
-  {
-    name: "Etihad Airways",
-    country: "UAE",
-    region: "airlines",
-    category: "Airlines",
-    badge: "🟢 VERIFIED OFFICIAL SOURCE",
-    badgeClass: "",
-    logo: "https://www.google.com/s2/favicons?domain=etihad.com&sz=128",
-    url: "https://careers.etihad.com/",
-    description: "Official Etihad Airways aviation careers portal."
-  },
-  {
-    name: "Saudia Careers",
-    country: "Saudi Arabia",
-    region: "airlines",
-    category: "Airlines",
-    badge: "🟢 VERIFIED OFFICIAL SOURCE",
-    badgeClass: "",
-    logo: "https://www.google.com/s2/favicons?domain=saudia.com&sz=128",
-    url: "https://careers.saudia.com/",
-    description: "Official Saudi Arabian Airlines recruitment portal."
-  },
-  {
-    name: "Turkish Airlines",
-    country: "Turkey",
-    region: "airlines",
-    category: "Airlines",
-    badge: "🟢 VERIFIED OFFICIAL SOURCE",
-    badgeClass: "",
-    logo: "https://www.google.com/s2/favicons?domain=turkishairlines.com&sz=128",
-    url: "https://careers.turkishairlines.com/",
-    description: "Official Turkish Airlines career opportunities."
-  }
-
+const categories = [
+  ["👷","Construction & Skilled Trades","Construction, electricians, plumbers, welders, technicians"],
+  ["⚙️","Engineering","Civil, mechanical, electrical, petroleum, chemical and industrial"],
+  ["💻","IT & Technology","Software, cybersecurity, cloud, data, networks and support"],
+  ["🏥","Healthcare","Nurses, doctors, caregivers, laboratory and medical support"],
+  ["🏨","Hospitality","Hotels, restaurants, housekeeping, chefs and guest services"],
+  ["✈️","Aviation","Cabin crew, pilots, airport, ground operations and aviation security"],
+  ["🚢","Maritime & Cruise","Deck, engine, hospitality, culinary and cruise operations"],
+  ["🚛","Driving & Logistics","Drivers, fleet, warehouse, supply chain and transport"],
+  ["🛡️","Security & Safety","Security, HSE, safety officers and emergency response"],
+  ["📚","Education","Teachers, lecturers, trainers and education support"],
+  ["💼","Business & Administration","HR, administration, management, customer service and sales"],
+  ["💰","Finance & Accounting","Accounting, banking, audit, insurance and finance"],
+  ["🛢️","Oil, Gas & Energy","Energy, drilling, geoscience, maintenance and utilities"],
+  ["🌾","Agriculture","Farming, agribusiness, food production and environmental work"],
+  ["🧹","Cleaning & Facilities","Cleaning, facilities, maintenance and support services"],
+  ["🪖","Military & Defence","Armed forces and defence career sources"],
+  ["⚓","Government & Public Service","Civil service, public agencies and government recruitment"],
+  ["🌐","International Organizations","UN and other international organization careers"]
 ];
 
-/* =========================================================
-   RENDER DIRECTORY & SECTIONS
-========================================================= */
-
-function renderPortals(filterRegion = 'all') {
-  const grid = document.getElementById("directoryGrid");
-  let filtered = worldwidePortals;
-
-  if (filterRegion !== 'all') {
-    filtered = worldwidePortals.filter(p => p.region === filterRegion);
-  }
-
-  grid.innerHTML = filtered.map(portal => `
-    <div class="portal-card">
-      <div>
-        <div class="portal-head">
-          <img src="${portal.logo}" alt="${portal.name} logo" onerror="this.style.display='none'">
-          <div>
-            <h3>${portal.name}</h3>
-            <span class="verified-badge ${portal.badgeClass}">${portal.badge}</span>
-          </div>
-        </div>
-        <p>${portal.description}</p>
-      </div>
-      <div>
-        <div class="portal-tags">
-          <span class="tag">📍 ${portal.country}</span>
-          <span class="tag">💼 ${portal.category}</span>
-        </div>
-        <a class="btn btn-primary" href="${portal.url}" target="_blank" rel="noopener noreferrer" style="width:100%">
-          Official Careers →
-        </a>
-      </div>
-    </div>
-  `).join("");
-
-  document.getElementById("statPortalsCount").textContent = worldwidePortals.length + "+";
+function favicon(domain){
+  return "https://www.google.com/s2/favicons?domain=" + domain + "&sz=128";
 }
 
-function renderDedicatedSections() {
-  // Kenya Section
-  const kenyaGrid = document.getElementById("kenyaGrid");
-  const kenyaPortals = worldwidePortals.filter(p => p.region === 'kenya');
-  kenyaGrid.innerHTML = kenyaPortals.map(portal => `
-    <div class="portal-card">
-      <div>
-        <div class="portal-head">
-          <img src="${portal.logo}" alt="${portal.name} logo" onerror="this.style.display='none'">
-          <div>
-            <h3>${portal.name}</h3>
-            <span class="verified-badge ${portal.badgeClass}">${portal.badge}</span>
-          </div>
-        </div>
-        <p>${portal.description}</p>
-      </div>
-      <div>
-        <div class="portal-tags">
-          <span class="tag">📍 ${portal.country}</span>
-          <span class="tag">💼 ${portal.category}</span>
-        </div>
-        <a class="btn btn-primary" href="${portal.url}" target="_blank" rel="noopener noreferrer" style="width:100%">
-          Official Careers →
-        </a>
-      </div>
-    </div>
-  `).join("");
+const worldwidePortals = [
+/* USA */
+{name:"USAJOBS",country:"USA",region:"usa",category:"Government",type:"official",badge:"🟢 VERIFIED GOVERNMENT SOURCE",badgeClass:"gov-badge",logo:favicon("usajobs.gov"),url:"https://www.usajobs.gov/",description:"Official U.S. federal government employment portal."},
+{name:"U.S. Army Careers",country:"USA",region:"military",category:"Military & Defence",type:"official",badge:"🟢 OFFICIAL SOURCE",badgeClass:"",logo:favicon("goarmy.com"),url:"https://www.goarmy.com/",description:"Official U.S. Army recruiting and careers."},
+{name:"U.S. Navy Careers",country:"USA",region:"military",category:"Military & Defence",type:"official",badge:"🟢 OFFICIAL SOURCE",badgeClass:"",logo:favicon("navy.com"),url:"https://www.navy.com/",description:"Official U.S. Navy recruiting and careers."},
+{name:"U.S. Air Force Careers",country:"USA",region:"military",category:"Military & Defence",type:"official",badge:"🟢 OFFICIAL SOURCE",badgeClass:"",logo:favicon("airforce.com"),url:"https://www.airforce.com/",description:"Official U.S. Air Force careers."},
+{name:"U.S. Marine Corps",country:"USA",region:"military",category:"Military & Defence",type:"official",badge:"🟢 OFFICIAL SOURCE",badgeClass:"",logo:favicon("marines.com"),url:"https://www.marines.com/",description:"Official U.S. Marine Corps recruiting."},
+{name:"U.S. Coast Guard",country:"USA",region:"military",category:"Military & Defence",type:"official",badge:"🟢 OFFICIAL SOURCE",badgeClass:"",logo:favicon("gocoastguard.com"),url:"https://www.gocoastguard.com/",description:"Official U.S. Coast Guard recruiting."},
+{name:"United Airlines Careers",country:"USA",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("united.com"),url:"https://careers.united.com/",description:"Official United Airlines careers."},
+{name:"Delta Air Lines Careers",country:"USA",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("delta.com"),url:"https://www.delta.com/us/en/careers/index",description:"Official Delta Air Lines careers."},
+{name:"American Airlines Careers",country:"USA",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("aa.com"),url:"https://jobs.aa.com/",description:"Official American Airlines jobs."},
+{name:"Boeing Careers",country:"USA",region:"usa",category:"Engineering",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("boeing.com"),url:"https://jobs.boeing.com/",description:"Official Boeing careers."},
+{name:"Amazon Jobs",country:"USA",region:"usa",category:"Business & Administration",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("amazon.jobs"),url:"https://www.amazon.jobs/",description:"Official Amazon jobs worldwide."},
 
-  // Military Section
-  const militaryGrid = document.getElementById("militaryGrid");
-  const militaryPortals = worldwidePortals.filter(p => p.region === 'military');
-  militaryGrid.innerHTML = militaryPortals.map(portal => `
-    <div class="portal-card">
-      <div>
-        <div class="portal-head">
-          <img src="${portal.logo}" alt="${portal.name} logo" onerror="this.style.display='none'">
-          <div>
-            <h3>${portal.name}</h3>
-            <span class="verified-badge ${portal.badgeClass}">${portal.badge}</span>
-          </div>
-        </div>
-        <p>${portal.description}</p>
-      </div>
-      <div>
-        <div class="portal-tags">
-          <span class="tag">📍 ${portal.country}</span>
-          <span class="tag">💼 ${portal.category}</span>
-        </div>
-        <a class="btn btn-primary" href="${portal.url}" target="_blank" rel="noopener noreferrer" style="width:100%">
-          Official Careers →
-        </a>
-      </div>
-    </div>
-  `).join("");
+/* CANADA */
+{name:"Government of Canada Jobs",country:"Canada",region:"canada",category:"Government",type:"official",badge:"🟢 VERIFIED GOVERNMENT SOURCE",badgeClass:"gov-badge",logo:favicon("canada.ca"),url:"https://www.canada.ca/en/services/jobs/opportunities.html",description:"Official Government of Canada jobs and opportunities."},
+{name:"Canada Job Bank",country:"Canada",region:"canada",category:"Government",type:"official",badge:"🟢 GOVERNMENT JOB PLATFORM",badgeClass:"gov-badge",logo:favicon("jobbank.gc.ca"),url:"https://www.jobbank.gc.ca/",description:"Official Government of Canada Job Bank."},
+{name:"Canadian Armed Forces",country:"Canada",region:"military",category:"Military & Defence",type:"official",badge:"🟢 OFFICIAL SOURCE",badgeClass:"",logo:favicon("forces.ca"),url:"https://forces.ca/",description:"Official Canadian Armed Forces recruitment."},
+{name:"RCMP Careers",country:"Canada",region:"canada",category:"Government",type:"official",badge:"🟢 GOVERNMENT SOURCE",badgeClass:"gov-badge",logo:favicon("rcmp-grc.gc.ca"),url:"https://www.rcmp-grc.gc.ca/en/careers",description:"Royal Canadian Mounted Police careers."},
+{name:"Air Canada Careers",country:"Canada",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("aircanada.com"),url:"https://careers.aircanada.com/",description:"Official Air Canada careers."},
 
-  // Cruise Section
-  const cruiseGrid = document.getElementById("cruiseGrid");
-  const cruisePortals = worldwidePortals.filter(p => p.region === 'cruise');
-  cruiseGrid.innerHTML = cruisePortals.map(portal => `
-    <div class="portal-card">
-      <div>
-        <div class="portal-head">
-          <img src="${portal.logo}" alt="${portal.name} logo" onerror="this.style.display='none'">
-          <div>
-            <h3>${portal.name}</h3>
-            <span class="verified-badge ${portal.badgeClass}">${portal.badge}</span>
-          </div>
-        </div>
-        <p>${portal.description}</p>
-      </div>
-      <div>
-        <div class="portal-tags">
-          <span class="tag">📍 ${portal.country}</span>
-          <span class="tag">💼 ${portal.category}</span>
-        </div>
-        <a class="btn btn-primary" href="${portal.url}" target="_blank" rel="noopener noreferrer" style="width:100%">
-          Official Careers →
-        </a>
-      </div>
-    </div>
-  `).join("");
+/* EUROPE */
+{name:"EURES",country:"Europe",region:"europe",category:"Government",type:"official",badge:"🟢 EU EMPLOYMENT NETWORK",badgeClass:"gov-badge",logo:favicon("eures.europa.eu"),url:"https://eures.europa.eu/",description:"Official European employment services network."},
+{name:"NHS Jobs",country:"United Kingdom",region:"europe",category:"Healthcare",type:"official",badge:"🟢 OFFICIAL PUBLIC SERVICE SOURCE",badgeClass:"gov-badge",logo:favicon("jobs.nhs.uk"),url:"https://www.jobs.nhs.uk/",description:"Official UK National Health Service recruitment portal."},
+{name:"British Army Careers",country:"United Kingdom",region:"military",category:"Military & Defence",type:"official",badge:"🟢 OFFICIAL SOURCE",badgeClass:"",logo:favicon("army.mod.uk"),url:"https://jobs.army.mod.uk/",description:"Official British Army recruitment."},
+{name:"Royal Navy Careers",country:"United Kingdom",region:"military",category:"Military & Defence",type:"official",badge:"🟢 OFFICIAL SOURCE",badgeClass:"",logo:favicon("royalnavy.mod.uk"),url:"https://www.royalnavy.mod.uk/careers",description:"Official Royal Navy careers."},
+{name:"RAF Careers",country:"United Kingdom",region:"military",category:"Military & Defence",type:"official",badge:"🟢 OFFICIAL SOURCE",badgeClass:"",logo:favicon("raf.mod.uk"),url:"https://recruitment.raf.mod.uk/",description:"Official Royal Air Force recruitment."},
+{name:"Lufthansa Group Careers",country:"Germany",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("lufthansagroup.com"),url:"https://www.lufthansagroup.com/en/careers.html",description:"Official Lufthansa Group careers."},
+{name:"British Airways Careers",country:"United Kingdom",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("britishairways.com"),url:"https://careers.ba.com/",description:"Official British Airways careers."},
+{name:"Air France-KLM Careers",country:"France / Netherlands",region:"europe",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("airfranceklm.com"),url:"https://recrutement.airfrance.com/",description:"Air France recruitment source."},
+{name:"IKEA Careers",country:"Europe / Worldwide",region:"europe",category:"Business & Administration",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("ikea.com"),url:"https://jobs.ikea.com/",description:"Official IKEA jobs worldwide."},
 
-  // Airlines Section
-  const airlinesGrid = document.getElementById("airlinesGrid");
-  const airlinesPortals = worldwidePortals.filter(p => p.region === 'airlines');
-  airlinesGrid.innerHTML = airlinesPortals.map(portal => `
-    <div class="portal-card">
-      <div>
-        <div class="portal-head">
-          <img src="${portal.logo}" alt="${portal.name} logo" onerror="this.style.display='none'">
-          <div>
-            <h3>${portal.name}</h3>
-            <span class="verified-badge ${portal.badgeClass}">${portal.badge}</span>
-          </div>
-        </div>
-        <p>${portal.description}</p>
-      </div>
-      <div>
-        <div class="portal-tags">
-          <span class="tag">📍 ${portal.country}</span>
-          <span class="tag">💼 ${portal.category}</span>
-        </div>
-        <a class="btn btn-primary" href="${portal.url}" target="_blank" rel="noopener noreferrer" style="width:100%">
-          Official Careers →
-        </a>
-      </div>
-    </div>
-  `).join("");
-}
+/* KENYA / AFRICA */
+{name:"Public Service Commission of Kenya",country:"Kenya",region:"kenya",category:"Government",type:"official",badge:"🟢 VERIFIED GOVERNMENT SOURCE",badgeClass:"gov-badge",logo:favicon("psckjobs.go.ke"),url:"https://www.psckjobs.go.ke/",description:"Official Kenya Public Service Commission recruitment system."},
+{name:"Kenya Public Universities / Independent Offices",country:"Kenya",region:"kenya",category:"Government",type:"official",badge:"🟢 GOVERNMENT SOURCE",badgeClass:"gov-badge",logo:favicon("publicservice.go.ke"),url:"https://pscims.publicservice.go.ke/puio/",description:"Public universities and independent offices recruitment source."},
+{name:"Kenya Defence Forces",country:"Kenya",region:"military",category:"Military & Defence",type:"official",badge:"🟢 OFFICIAL SOURCE",badgeClass:"",logo:favicon("mod.go.ke"),url:"https://www.mod.go.ke/",description:"Official Ministry of Defence source. Check current KDF recruitment notices there."},
+{name:"National Police Service Kenya",country:"Kenya",region:"kenya",category:"Government",type:"official",badge:"🟢 OFFICIAL GOVERNMENT SOURCE",badgeClass:"gov-badge",logo:favicon("nationalpolice.go.ke"),url:"https://nationalpolice.go.ke/",description:"Official Kenya National Police Service source."},
+{name:"Kenya Airways Careers",country:"Kenya",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("kenya-airways.com"),url:"https://www.kenya-airways.com/en/about-us/careers/",description:"Official Kenya Airways careers."},
+{name:"UN Careers",country:"Kenya / Worldwide",region:"kenya",category:"International Organizations",type:"official",badge:"🟢 OFFICIAL UN SOURCE",badgeClass:"",logo:favicon("careers.un.org"),url:"https://careers.un.org/",description:"Official United Nations careers worldwide, including Nairobi opportunities."},
+{name:"UNON Jobs",country:"Kenya",region:"kenya",category:"International Organizations",type:"official",badge:"🟢 OFFICIAL UN SOURCE",badgeClass:"",logo:favicon("unon.org"),url:"https://www.unon.org/",description:"United Nations Office at Nairobi information source."},
+{name:"Kenya Revenue Authority Careers",country:"Kenya",region:"kenya",category:"Government",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"gov-badge",logo:favicon("kra.go.ke"),url:"https://www.kra.go.ke/careers",description:"KRA careers and recruitment information."},
+{name:"Kenya Ports Authority Careers",country:"Kenya",region:"kenya",category:"Maritime & Cruise",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("kpa.co.ke"),url:"https://www.kpa.co.ke/",description:"Official Kenya Ports Authority source."},
+{name:"Kenya Airports Authority",country:"Kenya",region:"kenya",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("kaa.go.ke"),url:"https://www.kaa.go.ke/",description:"Official Kenya Airports Authority source."},
 
-window.switchRegion = function(region) {
-  document.querySelectorAll(".region-tab").forEach(tab => tab.classList.remove("active"));
-  event.target.classList.add("active");
-  renderPortals(region);
-};
+/* MIDDLE EAST */
+{name:"Qatar Airways Careers",country:"Qatar",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("qatarairways.com"),url:"https://careers.qatarairways.com/",description:"Official Qatar Airways careers and cabin crew recruitment."},
+{name:"QatarEnergy Careers",country:"Qatar",region:"middleeast",category:"Oil, Gas & Energy",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("qatarenergy.qa"),url:"https://www.qatarenergy.qa/en/Careers",description:"Official QatarEnergy careers source."},
+{name:"Qatar Government",country:"Qatar",region:"middleeast",category:"Government",type:"official",badge:"🟢 GOVERNMENT SOURCE",badgeClass:"gov-badge",logo:favicon("gov.qa"),url:"https://www.gov.qa/",description:"Official Qatar government services and information."},
+{name:"Emirates Group Careers",country:"UAE",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("emiratesgroupcareers.com"),url:"https://www.emiratesgroupcareers.com/",description:"Official Emirates Group careers."},
+{name:"Etihad Airways Careers",country:"UAE",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("etihad.com"),url:"https://careers.etihad.com/",description:"Official Etihad Airways careers."},
+{name:"UAE Government Jobs",country:"UAE",region:"middleeast",category:"Government",type:"official",badge:"🟢 GOVERNMENT SOURCE",badgeClass:"gov-badge",logo:favicon("u.ae"),url:"https://u.ae/en/information-and-services/jobs",description:"Official UAE government jobs and employment information."},
+{name:"Saudi Aramco Careers",country:"Saudi Arabia",region:"middleeast",category:"Oil, Gas & Energy",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("aramco.com"),url:"https://careers.aramco.com/",description:"Official Saudi Aramco careers, including international opportunities."},
+{name:"Saudi Government",country:"Saudi Arabia",region:"middleeast",category:"Government",type:"official",badge:"🟢 GOVERNMENT SOURCE",badgeClass:"gov-badge",logo:favicon("gov.sa"),url:"https://www.my.gov.sa/",description:"Saudi government services and information."},
+{name:"Saudia Careers",country:"Saudi Arabia",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("saudia.com"),url:"https://careers.saudia.com/",description:"Official Saudia airline careers."},
+{name:"Saudi Airlines / flyadeal Careers",country:"Saudi Arabia",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("flyadeal.com"),url:"https://careers.flyadeal.com/",description:"Official flyadeal careers where available."},
+{name:"Kuwait Government",country:"Kuwait",region:"middleeast",category:"Government",type:"official",badge:"🟢 GOVERNMENT SOURCE",badgeClass:"gov-badge",logo:favicon("e.gov.kw"),url:"https://e.gov.kw/",description:"Official Kuwait government portal."},
+{name:"Kuwait Airways Careers",country:"Kuwait",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("kuwaitairways.com"),url:"https://www.kuwaitairways.com/en/careers",description:"Official Kuwait Airways careers source."},
+{name:"Bahrain Government",country:"Bahrain",region:"middleeast",category:"Government",type:"official",badge:"🟢 GOVERNMENT SOURCE",badgeClass:"gov-badge",logo:favicon("bahrain.bh"),url:"https://www.bahrain.bh/",description:"Official Bahrain government portal."},
+{name:"Gulf Air Careers",country:"Bahrain",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("gulfair.com"),url:"https://www.gulfair.com/careers",description:"Official Gulf Air careers source."},
+{name:"Oman Government",country:"Oman",region:"middleeast",category:"Government",type:"official",badge:"🟢 GOVERNMENT SOURCE",badgeClass:"gov-badge",logo:favicon("gov.om"),url:"https://www.gov.om/",description:"Official Oman government portal."},
+{name:"Oman Air Careers",country:"Oman",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("omanair.com"),url:"https://www.omanair.com/careers",description:"Official Oman Air careers source."},
 
-window.quickFilter = function(regionKey) {
-  document.getElementById("directory").scrollIntoView({behavior:"smooth"});
-  const mapKey = regionKey.toLowerCase().includes('usa') ? 'usa' :
-                 regionKey.toLowerCase().includes('canada') ? 'canada' :
-                 regionKey.toLowerCase().includes('europe') ? 'europe' :
-                 regionKey.toLowerCase().includes('kenya') ? 'kenya' :
-                 regionKey.toLowerCase().includes('military') ? 'military' :
-                 regionKey.toLowerCase().includes('cruise') ? 'cruise' :
-                 regionKey.toLowerCase().includes('airlines') ? 'airlines' : 'all';
-  renderPortals(mapKey);
-};
+/* GLOBAL EMPLOYERS */
+{name:"Marriott Careers",country:"Worldwide",region:"jobs",category:"Hospitality",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("marriott.com"),url:"https://careers.marriott.com/",description:"Official Marriott International careers."},
+{name:"Accor Careers",country:"Worldwide",region:"jobs",category:"Hospitality",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("accor.com"),url:"https://careers.accor.com/global/en/",description:"Official Accor careers across hospitality and corporate roles."},
+{name:"Hilton Careers",country:"Worldwide",region:"jobs",category:"Hospitality",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("hilton.com"),url:"https://jobs.hilton.com/",description:"Official Hilton careers."},
+{name:"Hyatt Careers",country:"Worldwide",region:"jobs",category:"Hospitality",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("hyatt.com"),url:"https://careers.hyatt.com/",description:"Official Hyatt careers."},
+{name:"Microsoft Careers",country:"Worldwide",region:"jobs",category:"IT & Technology",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("microsoft.com"),url:"https://careers.microsoft.com/",description:"Official Microsoft careers."},
+{name:"Google Careers",country:"Worldwide",region:"jobs",category:"IT & Technology",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("google.com"),url:"https://www.google.com/about/careers/applications/",description:"Official Google careers."},
+{name:"DHL Careers",country:"Worldwide",region:"jobs",category:"Driving & Logistics",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("dhl.com"),url:"https://careers.dhl.com/",description:"Official DHL careers worldwide."},
+{name:"Siemens Careers",country:"Worldwide",region:"jobs",category:"Engineering",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("siemens.com"),url:"https://www.siemens.com/global/en/company/jobs.html",description:"Official Siemens careers."},
+{name:"Shell Careers",country:"Worldwide",region:"jobs",category:"Oil, Gas & Energy",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("shell.com"),url:"https://www.shell.com/careers.html",description:"Official Shell careers."},
 
-window.searchDirectory = function() {
-  const kw = document.getElementById("heroKeyword").value.toLowerCase();
-  const loc = document.getElementById("heroLocation").value.toLowerCase();
-  const grid = document.getElementById("directoryGrid");
+/* CRUISE */
+{name:"Royal Caribbean Group Careers",country:"Worldwide",region:"cruise",category:"Maritime & Cruise",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("royalcaribbeangroup.com"),url:"https://careers.royalcaribbeangroup.com/",description:"Official Royal Caribbean Group careers."},
+{name:"Carnival Cruise Line Careers",country:"Worldwide",region:"cruise",category:"Maritime & Cruise",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("carnival.com"),url:"https://www.carnival.com/careers",description:"Official Carnival careers."},
+{name:"MSC Cruises Careers",country:"Worldwide",region:"cruise",category:"Maritime & Cruise",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("msccruises.com"),url:"https://www.msccruises.com/int/about-us/careers",description:"MSC Cruises career information and opportunities."},
+{name:"Norwegian Cruise Line Careers",country:"Worldwide",region:"cruise",category:"Maritime & Cruise",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("ncl.com"),url:"https://www.ncl.com/about/careers",description:"Official Norwegian Cruise Line careers."},
+{name:"Disney Cruise Line Careers",country:"Worldwide",region:"cruise",category:"Maritime & Cruise",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("dcljobs.com"),url:"https://dcljobs.com/",description:"Official Disney Cruise Line careers."},
+{name:"Princess Cruises Careers",country:"Worldwide",region:"cruise",category:"Maritime & Cruise",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("princess.com"),url:"https://www.princess.com/en-us/careers",description:"Official Princess Cruises career information."},
+{name:"Holland America Line Careers",country:"Worldwide",region:"cruise",category:"Maritime & Cruise",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("hollandamerica.com"),url:"https://www.hollandamerica.com/en/us/about-us/careers",description:"Official Holland America Line career information."},
 
-  const filtered = worldwidePortals.filter(p => {
-    const text = (p.name + " " + p.country + " " + p.category + " " + p.description).toLowerCase();
-    return (!kw || text.includes(kw)) && (!loc || text.includes(loc));
-  });
+/* MORE AIRLINES */
+{name:"Emirates Group",country:"UAE",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("emiratesgroupcareers.com"),url:"https://www.emiratesgroupcareers.com/",description:"Emirates and dnata careers."},
+{name:"Qatar Airways",country:"Qatar",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("qatarairways.com"),url:"https://careers.qatarairways.com/",description:"Qatar Airways global careers."},
+{name:"Turkish Airlines Careers",country:"Türkiye",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("turkishairlines.com"),url:"https://careers.turkishairlines.com/",description:"Official Turkish Airlines careers."},
+{name:"Ryanair Careers",country:"Europe",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("ryanair.com"),url:"https://careers.ryanair.com/",description:"Official Ryanair careers."},
+{name:"Singapore Airlines Careers",country:"Singapore",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("singaporeair.com"),url:"https://www.singaporeair.com/en_UK/sg/careers/",description:"Official Singapore Airlines careers."},
+{name:"Emirates Cabin Crew",country:"UAE / Worldwide",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("emirates.com"),url:"https://www.emiratesgroupcareers.com/cabin-crew/",description:"Official Emirates cabin crew recruitment."},
 
-  document.getElementById("directory").scrollIntoView({behavior:"smooth"});
-  
-  grid.innerHTML = filtered.map(portal => `
-    <div class="portal-card">
-      <div>
-        <div class="portal-head">
-          <img src="${portal.logo}" alt="${portal.name} logo" onerror="this.style.display='none'">
-          <div>
-            <h3>${portal.name}</h3>
-            <span class="verified-badge ${portal.badgeClass}">${portal.badge}</span>
-          </div>
-        </div>
-        <p>${portal.description}</p>
-      </div>
-      <div>
-        <div class="portal-tags">
-          <span class="tag">📍 ${portal.country}</span>
-          <span class="tag">💼 ${portal.category}</span>
-        </div>
-        <a class="btn btn-primary" href="${portal.url}" target="_blank" rel="noopener noreferrer" style="width:100%">
-          Official Careers →
-        </a>
-      </div>
-    </div>
-  `).join("");
-};
+/* JOB PLATFORMS */
+{name:"LinkedIn Jobs",country:"Worldwide",region:"jobs",category:"Global Job Platform",type:"jobs",badge:"🔵 JOB PLATFORM",badgeClass:"job-badge",logo:favicon("linkedin.com"),url:"https://www.linkedin.com/jobs/",description:"Global professional network and job marketplace. Verify the employer and vacancy before applying."},
+{name:"Indeed",country:"Worldwide",region:"jobs",category:"Global Job Platform",type:"jobs",badge:"🔵 JOB PLATFORM",badgeClass:"job-badge",logo:favicon("indeed.com"),url:"https://www.indeed.com/",description:"Large global job-search platform."},
+{name:"Glassdoor Jobs",country:"Worldwide",region:"jobs",category:"Global Job Platform",type:"jobs",badge:"🔵 JOB PLATFORM",badgeClass:"job-badge",logo:favicon("glassdoor.com"),url:"https://www.glassdoor.com/Job/",description:"Jobs, employer information and workplace reviews."},
+{name:"GulfTalent",country:"Middle East",region:"jobs",category:"Global Job Platform",type:"jobs",badge:"🔵 MIDDLE EAST JOB PLATFORM",badgeClass:"job-badge",logo:favicon("gulftalent.com"),url:"https://www.gulftalent.com/jobs",description:"Major Middle East job platform covering Gulf countries."},
+{name:"Bayt.com",country:"Middle East",region:"jobs",category:"Global Job Platform",type:"jobs",badge:"🔵 MIDDLE EAST JOB PLATFORM",badgeClass:"job-badge",logo:favicon("bayt.com"),url:"https://www.bayt.com/",description:"Major Middle East job-search platform."},
+{name:"Jooble",country:"Worldwide",region:"jobs",category:"Global Job Platform",type:"jobs",badge:"🔵 JOB PLATFORM",badgeClass:"job-badge",logo:favicon("jooble.org"),url:"https://jooble.org/",description:"Global job-search aggregator."},
+{name:"CareerJet",country:"Worldwide",region:"jobs",category:"Global Job Platform",type:"jobs",badge:"🔵 JOB PLATFORM",badgeClass:"job-badge",logo:favicon("careerjet.com"),url:"https://www.careerjet.com/",description:"International job-search engine."},
+{name:"ReliefWeb Jobs",country:"Worldwide",region:"jobs",category:"International Organizations",type:"information",badge:"🟣 INTERNATIONAL JOB SOURCE",badgeClass:"info-badge",logo:favicon("reliefweb.int"),url:"https://reliefweb.int/jobs",description:"Humanitarian and international development job listings."}
+];
 
-
-/* =========================================================
-   HUMAN CV EXPERT & STORAGE UPLOAD
-========================================================= */
-
-const auth = getAuth(app);
-const db = getFirestore(app);
-const storage = getStorage(app);
-
-onAuthStateChanged(auth, user => {
-  if (!user) {
-    signInAnonymously(auth).catch(err => console.error("Anonymous auth error:", err));
-  } else if (!user.isAnonymous) {
-    staffUser = user;
-    document.getElementById("staffLoginInline").style.display = "none";
-    document.getElementById("staffDashboard").style.display = "block";
-    loadStaffRequests();
-  }
+/* Add a few regional aliases so region filters work naturally. */
+worldwidePortals.forEach(p=>{
+  if(["Qatar","UAE","Saudi Arabia","Kuwait","Bahrain","Oman"].includes(p.country) && p.region!=="airlines" && p.region!=="military") p.middleEast=true;
+  if(p.region==="airlines" && ["Qatar","UAE","Saudi Arabia","Kuwait","Bahrain","Oman"].includes(p.country)) p.middleEast=true;
 });
 
-window.submitHumanRequest = async function() {
-  const name = document.getElementById("hName").value.trim();
-  const email = document.getElementById("hEmail").value.trim();
-  const phone = document.getElementById("hPhone").value.trim();
-  const country = document.getElementById("hCountry").value.trim();
-  const role = document.getElementById("hRole").value.trim();
-  const message = document.getElementById("hMessage").value.trim();
-  const oldCV = document.getElementById("hOldCV").files[0];
-  const documentFile = document.getElementById("hDocument").files[0];
+function renderCard(p){
+  return `
+  <div class="portal-card">
+    <div>
+      <div class="portal-head">
+        <img src="${escapeHtml(p.logo)}" alt="${escapeHtml(p.name)} logo"
+             onerror="this.onerror=null;this.src='${favicon("google.com")}';">
+        <div>
+          <h3>${escapeHtml(p.name)}</h3>
+          <span class="verified-badge ${p.badgeClass||''}">${escapeHtml(p.badge||"SOURCE")}</span>
+        </div>
+      </div>
+      <p>${escapeHtml(p.description)}</p>
+    </div>
+    <div>
+      <div class="portal-tags">
+        <span class="tag">📍 ${escapeHtml(p.country)}</span>
+        <span class="tag">💼 ${escapeHtml(p.category)}</span>
+      </div>
+      <a class="btn btn-primary" href="${escapeHtml(p.url)}" target="_blank" rel="noopener noreferrer" style="width:100%">
+        ${p.type==="official" ? "Official Careers →" : "Open Source →"}
+      </a>
+    </div>
+  </div>`;
+}
 
-  if (!name || !email || !phone) {
-    document.getElementById("humanMessage").innerHTML = `<div class="warning">Please enter your full name, email, and phone/WhatsApp number.</div>`;
+function renderPortals(list){
+  const grid=document.getElementById("directoryGrid");
+  grid.innerHTML=list.length ? list.map(renderCard).join("") :
+    `<div class="empty"><strong>No matching career sources found.</strong><br>Try another country, company, category or job platform.</div>`;
+  document.getElementById("statPortalsCount").textContent=worldwidePortals.length;
+}
+
+function renderDedicated(){
+  document.getElementById("kenyaGrid").innerHTML=worldwidePortals.filter(p=>p.region==="kenya").map(renderCard).join("");
+  document.getElementById("middleeastGrid").innerHTML=worldwidePortals.filter(p=>p.middleEast || ["Qatar","UAE","Saudi Arabia","Kuwait","Bahrain","Oman"].includes(p.country)).map(renderCard).join("");
+  document.getElementById("militaryGrid").innerHTML=worldwidePortals.filter(p=>p.region==="military").map(renderCard).join("");
+  document.getElementById("cruiseGrid").innerHTML=worldwidePortals.filter(p=>p.region==="cruise").map(renderCard).join("");
+  document.getElementById("airlinesGrid").innerHTML=worldwidePortals.filter(p=>p.region==="airlines").map(renderCard).join("");
+}
+
+function renderCategories(){
+  document.getElementById("categoryGrid").innerHTML=categories.map(c=>`
+    <button class="category-card" onclick="filterCategory('${escapeAttr(c[1])}')">
+      <span>${c[0]}</span>${escapeHtml(c[1])}<small>${escapeHtml(c[2])}</small>
+    </button>
+  `).join("");
+
+  const select=document.getElementById("directoryCategory");
+  const vals=[...new Set(worldwidePortals.map(p=>p.category))].sort();
+  vals.forEach(v=>{
+    const opt=document.createElement("option");
+    opt.value=v;opt.textContent=v;select.appendChild(opt);
+  });
+}
+
+window.filterCategory=function(category){
+  document.getElementById("directoryCategory").value=category;
+  document.getElementById("directory").scrollIntoView({behavior:"smooth"});
+  applyDirectoryFilters();
+};
+
+window.switchRegion=function(region,btn){
+  currentRegion=region;
+  document.getElementById("directoryRegion").value=region;
+  document.querySelectorAll(".region-tab").forEach(x=>x.classList.remove("active"));
+  if(btn) btn.classList.add("active");
+  else document.querySelector(`.region-tab[data-region="${region}"]`)?.classList.add("active");
+  applyDirectoryFilters();
+};
+
+window.quickFilter=function(region){
+  document.getElementById("directory").scrollIntoView({behavior:"smooth"});
+  switchRegion(region);
+};
+
+window.applyDirectoryFilters=function(){
+  const q=document.getElementById("directorySearch").value.trim().toLowerCase();
+  const region=document.getElementById("directoryRegion").value;
+  const cat=document.getElementById("directoryCategory").value;
+
+  const list=worldwidePortals.filter(p=>{
+    const text=[p.name,p.country,p.category,p.description,p.region].join(" ").toLowerCase();
+    const regionMatch=region==="all" || p.region===region ||
+      (region==="middleeast" && (p.middleEast || ["Qatar","UAE","Saudi Arabia","Kuwait","Bahrain","Oman"].includes(p.country)));
+    const catMatch=cat==="all" || p.category===cat;
+    return (!q || text.includes(q)) && regionMatch && catMatch;
+  });
+  renderPortals(list);
+};
+
+window.searchDirectory=function(){
+  document.getElementById("directorySearch").value=document.getElementById("heroKeyword").value.trim();
+  const loc=document.getElementById("heroLocation").value.trim().toLowerCase();
+  document.getElementById("directoryRegion").value="all";
+  document.getElementById("directoryCategory").value="all";
+  let list=worldwidePortals;
+  if(loc) list=list.filter(p=>[p.country,p.region,p.name,p.description].join(" ").toLowerCase().includes(loc));
+  const q=document.getElementById("directorySearch").value.trim().toLowerCase();
+  if(q) list=list.filter(p=>[p.name,p.country,p.category,p.description,p.region].join(" ").toLowerCase().includes(q));
+  renderPortals(list);
+  document.getElementById("directory").scrollIntoView({behavior:"smooth"});
+};
+
+window.clearDirectoryFilters=function(){
+  document.getElementById("directorySearch").value="";
+  document.getElementById("directoryRegion").value="all";
+  document.getElementById("directoryCategory").value="all";
+  currentRegion="all";
+  document.querySelectorAll(".region-tab").forEach(x=>x.classList.remove("active"));
+  document.querySelector('.region-tab[data-region="all"]').classList.add("active");
+  renderPortals(worldwidePortals);
+};
+
+document.getElementById("directorySearch").addEventListener("input",applyDirectoryFilters);
+
+window.openModal=function(id){document.getElementById(id)?.classList.add("show")};
+window.closeModal=function(id){document.getElementById(id)?.classList.remove("show")};
+
+window.toggleMobileMenu=function(){
+  const nav=document.querySelector(".navlinks");
+  nav.style.display=nav.style.display==="flex"?"none":"flex";
+  nav.style.position="absolute";nav.style.top="72px";nav.style.left="0";nav.style.right="0";
+  nav.style.background="#fff";nav.style.padding="15px";nav.style.flexDirection="column";
+  nav.style.borderBottom="1px solid var(--border)";
+};
+
+window.copyCVFormToModal=function(){
+  document.getElementById("hName").value=document.getElementById("cvName").value;
+  document.getElementById("hEmail").value=document.getElementById("cvEmail").value;
+  document.getElementById("hPhone").value=document.getElementById("cvPhone").value;
+  document.getElementById("hCountry").value=document.getElementById("cvCountry").value;
+  document.getElementById("hRole").value=document.getElementById("cvRole").value;
+  document.getElementById("hExperience").value=document.getElementById("cvExperience").value;
+  openModal("humanModal");
+};
+
+async function ensureAnonymous(){
+  if(auth.currentUser) return auth.currentUser;
+  const cred=await signInAnonymously(auth);
+  return cred.user;
+}
+
+function validFile(file,allowed,maxMB){
+  if(!file) return true;
+  const ext="."+file.name.split(".").pop().toLowerCase();
+  if(!allowed.includes(ext)) throw new Error("Unsupported file type: "+ext);
+  if(file.size>maxMB*1024*1024) throw new Error("File must be under "+maxMB+"MB.");
+  return true;
+}
+
+window.submitHumanRequest=async function(){
+  const messageEl=document.getElementById("humanMessage");
+  const name=document.getElementById("hName").value.trim();
+  const email=document.getElementById("hEmail").value.trim();
+  const phone=document.getElementById("hPhone").value.trim();
+  const country=document.getElementById("hCountry").value.trim();
+  const role=document.getElementById("hRole").value.trim();
+  const experience=document.getElementById("hExperience").value.trim();
+  const message=document.getElementById("hMessage").value.trim();
+  const oldCV=document.getElementById("hOldCV").files[0];
+  const supporting=document.getElementById("hDocument").files[0];
+  const paymentReference=document.getElementById("paymentReference").value.trim();
+  const paymentConfirmed=document.getElementById("paymentConfirmed").checked;
+
+  if(!name || !email || !phone){
+    messageEl.innerHTML='<div class="warning">Full name, email and phone/WhatsApp are required.</div>';
     return;
   }
 
-  try {
-    const user = auth.currentUser;
-    if (!user) throw new Error("Authentication session not ready.");
+  if(!paymentReference || !paymentConfirmed){
+    messageEl.innerHTML='<div class="warning"><strong>Payment required.</strong><br>Please complete the KSh '+HUMAN_CV_FEE.toLocaleString()+' payment and enter the M-Pesa transaction code before submitting your request.</div>';
+    return;
+  }
 
-    let oldCVUrl = "";
-    let oldCVName = "";
+  if(MPESA_PAYMENT_NUMBER === "YOUR_MPESA_TILL_OR_PAYBILL"){
+    messageEl.innerHTML='<div class="warning"><strong>Payment destination not configured.</strong><br>The site owner must replace YOUR_MPESA_TILL_OR_PAYBILL with the real M-Pesa Till/PayBill number before accepting payments.</div>';
+    return;
+  }
 
-    if (oldCV) {
-      if (oldCV.size > 10 * 1024 * 1024) throw new Error("File size must be under 10MB.");
-      oldCVName = oldCV.name;
-      const sRef = ref(storage, `cvFiles/${user.uid}/original/${Date.now()}_${oldCV.name}`);
-      const snap = await uploadBytes(sRef, oldCV);
-      oldCVUrl = await getDownloadURL(snap.ref);
+  try{
+    validFile(oldCV,[".pdf",".doc",".docx"],10);
+    validFile(supporting,[".pdf",".doc",".docx",".jpg",".jpeg",".png"],10);
+
+    const user=await ensureAnonymous();
+    let oldCVUrl="",oldCVName="",supportingUrl="",supportingName="";
+
+    if(oldCV){
+      oldCVName=oldCV.name;
+      const r=ref(storage,`cvFiles/${user.uid}/original/${Date.now()}_${safeFileName(oldCV.name)}`);
+      const snap=await uploadBytes(r,oldCV);
+      oldCVUrl=await getDownloadURL(snap.ref);
     }
 
-    await addDoc(collection(db, "humanCVRequests"), {
-      name, email, phone, country, targetRole: role, message,
-      oldCVName, oldCVUrl, userId: user.uid,
-      supportingDoc: documentFile ? documentFile.name : "",
-      status: "New",
-      createdAt: serverTimestamp()
+    if(supporting){
+      supportingName=supporting.name;
+      const r=ref(storage,`cvFiles/${user.uid}/supporting/${Date.now()}_${safeFileName(supporting.name)}`);
+      const snap=await uploadBytes(r,supporting);
+      supportingUrl=await getDownloadURL(snap.ref);
+    }
+
+    const docRef=await addDoc(collection(db,"humanCVRequests"),{
+      name,email,phone,country,targetRole:role,experience,message,
+      oldCVName,oldCVUrl,supportingName,supportingUrl,
+      paymentAmount:HUMAN_CV_FEE,
+      paymentMethod:"M-Pesa",
+      paymentReference,
+      paymentStatus:"pending_verification",
+      userId:user.uid,status:"Paid - Awaiting Verification",createdAt:serverTimestamp()
     });
 
-    document.getElementById("humanMessage").innerHTML = `
-      <div class="human-notice">
-        <strong>Request Submitted Successfully!</strong><br><br>
-        Your Human CV Expert request and file have been securely sent to Customer Care.
-      </div>`;
-  } catch (err) {
-    document.getElementById("humanMessage").innerHTML = `<div class="warning">${err.message}</div>`;
+    await addDoc(collection(db,"staffNotifications"),{
+      type:"new_cv_request",
+      requestId:docRef.id,
+      title:"New Human CV Request",
+      message:`${name} submitted a KSh ${HUMAN_CV_FEE} Human CV Expert request. Payment reference: ${paymentReference}. Verify payment before starting the CV work.`,
+      read:false,
+      createdAt:serverTimestamp()
+    });
+
+    const connectButton = HUMAN_EXPERT_WHATSAPP !== "YOUR_WHATSAPP_NUMBER"
+      ? `<br><a class="btn btn-success" style="margin-top:12px" target="_blank" rel="noopener" href="https://wa.me/${HUMAN_EXPERT_WHATSAPP.replace(/\D/g,"")}">💬 Connect with Mustafa / Human CV Expert on WhatsApp</a>`
+      : "";
+    messageEl.innerHTML='<div class="human-notice"><strong>Request submitted successfully!</strong><br><br>Your KSh '+HUMAN_CV_FEE.toLocaleString()+' payment reference has been received for verification. Customer Care will verify the payment and assign your request to the Human CV Expert.'+connectButton+'</div>';
+    document.getElementById("hOldCV").value="";
+    document.getElementById("hDocument").value="";
+    document.getElementById("paymentReference").value="";
+    document.getElementById("paymentConfirmed").checked=false;
+  }catch(err){
+    console.error(err);
+    messageEl.innerHTML='<div class="error">'+escapeHtml(err.message||"Unable to submit request.")+'</div>';
   }
 };
 
+window.staffLogin=async function(source){
+  const email=document.getElementById(source==="modal"?"staffEmail":"staffEmailInline").value.trim();
+  const password=document.getElementById(source==="modal"?"staffPassword":"staffPasswordInline").value;
+  const msg=document.getElementById(source==="modal"?"staffLoginMessage":"staffLoginMessageInline");
+  msg.style.display="block";
 
-/* =========================================================
-   STAFF LOGIN & MANAGEMENT
-========================================================= */
+  if(!email || !password){
+    msg.textContent="Enter staff email and password.";
+    return;
+  }
 
-window.staffLogin = async function(source) {
-  const email = document.getElementById(source === 'modal' ? 'staffEmail' : 'staffEmailInline').value.trim();
-  const password = document.getElementById(source === 'modal' ? 'staffPassword' : 'staffPasswordInline').value;
-  const msgEl = document.getElementById(source === 'modal' ? 'staffLoginMessage' : 'staffLoginMessageInline');
+  try{
+    const cred=await signInWithEmailAndPassword(auth,email,password);
+    const staffRef=doc(db,"staffUsers",cred.user.uid);
+    const staffSnap=await getDoc(staffRef);
 
-  try {
-    await signInWithEmailAndPassword(auth, email, password);
-    closeModal('staffLoginModal');
+    if(!staffSnap.exists() || staffSnap.data().active!==true){
+      await signOut(auth);
+      throw new Error("This Firebase account is not authorized as active staff.");
+    }
+
+    staffUser=cred.user;
+    document.getElementById("staffLoginInline").style.display="none";
+    document.getElementById("staffDashboard").style.display="block";
+    closeModal("staffLoginModal");
+    msg.textContent="";
+    msg.style.display="none";
+    await loadStaffRequests();
+    await loadNotifications();
     showToast("Staff login successful.");
-  } catch (err) {
-    msgEl.style.display = "block";
-    msgEl.textContent = "Login failed: " + err.message;
+  }catch(err){
+    console.error(err);
+    msg.textContent="Login failed: "+(err.message||"Unknown error");
   }
 };
 
-window.staffLogout = async function() {
-  await signOut(auth);
-  document.getElementById("staffDashboard").style.display = "none";
-  document.getElementById("staffLoginInline").style.display = "block";
+window.staffLogout=async function(){
+  try{await signOut(auth)}catch(e){}
+  staffUser=null;
+  document.getElementById("staffDashboard").style.display="none";
+  document.getElementById("staffLoginInline").style.display="block";
   showToast("Logged out successfully.");
 };
 
-window.showStaffSection = function(secId) {
-  document.querySelectorAll(".dashboard-section").forEach(s => s.classList.remove("active"));
-  document.getElementById(secId + "Section").classList.add("active");
+window.showStaffSection=function(id){
+  document.querySelectorAll(".dashboard-section").forEach(s=>s.classList.remove("active"));
+  document.getElementById(id+"Section")?.classList.add("active");
 };
 
-async function loadStaffRequests() {
-  const listEl = document.getElementById("requestsList");
-  try {
-    const snap = await getDocs(collection(db, "humanCVRequests"));
-    if (snap.empty) {
-      listEl.innerHTML = "<p>No Human CV requests found.</p>";
-      return;
-    }
-    listEl.innerHTML = snap.docs.map(docSnap => {
-      const d = docSnap.data();
+async function loadStaffRequests(){
+  const el=document.getElementById("requestsList");
+  try{
+    const snap=await getDocs(query(collection(db,"humanCVRequests"),orderBy("createdAt","desc"),limit(100)));
+    document.getElementById("requestCount").textContent=snap.size?`(${snap.size})`:"";
+    if(snap.empty){el.innerHTML='<div class="empty">No Human CV requests yet.</div>';return;}
+
+    el.innerHTML=snap.docs.map(ds=>{
+      const d=ds.data(),id=ds.id,status=(d.status||"New");
+      const statusClass=status.toLowerCase().includes("complete")?"done":status.toLowerCase().includes("progress")?"progress":"";
       return `
-        <div class="portal-card" style="margin-bottom:12px">
-          <h4>${d.name} (${d.targetRole || 'General CV'})</h4>
-          <p>📧 ${d.email} | 📱 ${d.phone} | 📍 ${d.country || 'N/A'}</p>
-          <p>${d.message || ''}</p>
-          ${d.oldCVUrl ? `<a class="tag" href="${d.oldCVUrl}" target="_blank">📎 Download Old CV (${d.oldCVName})</a>` : ''}
-          <span class="tag" style="margin-top:8px">Status: ${d.status || 'New'}</span>
+      <div class="request-card">
+        <div class="request-top">
+          <div><h4>${escapeHtml(d.name||"Unknown")} — ${escapeHtml(d.targetRole||"General CV")}</h4>
+          <div class="small">📧 ${escapeHtml(d.email||"")} &nbsp; 📱 ${escapeHtml(d.phone||"")} &nbsp; 📍 ${escapeHtml(d.country||"N/A")}</div></div>
+          <span class="status ${statusClass}">${escapeHtml(status)}</span>
         </div>
-      `;
+        <p style="margin-top:10px">${escapeHtml(d.message||"No message provided.")}</p>
+        <p class="small">Experience: ${escapeHtml(d.experience||"Not provided")}</p>
+        <div class="notice" style="margin:10px 0"><strong>Payment:</strong> KSh ${escapeHtml(d.paymentAmount||HUMAN_CV_FEE)} · ${escapeHtml(d.paymentMethod||"M-Pesa")} · Ref: ${escapeHtml(d.paymentReference||"Not provided")} · Status: ${escapeHtml(d.paymentStatus||"Not recorded")}</div>
+        <div class="staff-tools">
+          ${d.oldCVUrl?`<a class="btn btn-light" href="${escapeHtml(d.oldCVUrl)}" target="_blank" rel="noopener">📎 Old CV</a>`:""}
+          ${d.supportingUrl?`<a class="btn btn-light" href="${escapeHtml(d.supportingUrl)}" target="_blank" rel="noopener">📎 Supporting Doc</a>`:""}
+          ${d.paymentStatus==="pending_verification"?`<button class="btn btn-primary" onclick="verifyPayment('${id}')">✓ Verify Payment</button>`:""}
+          <button class="btn btn-outline" onclick="changeRequestStatus('${id}','In Progress')">In Progress</button>
+          <button class="btn btn-success" onclick="openCompletedUpload('${id}')">Upload Completed CV</button>
+        </div>
+      </div>`;
     }).join("");
-  } catch (err) {
-    listEl.innerHTML = "<p>Error loading requests.</p>";
+  }catch(err){
+    console.error(err);
+    el.innerHTML='<div class="error">Unable to load requests. Check Firestore rules and staff authorization.</div>';
   }
 }
 
-window.addNewPortal = async function() {
-  const name = document.getElementById("adminPortalName").value.trim();
-  const country = document.getElementById("adminPortalCountry").value.trim();
-  const category = document.getElementById("adminPortalCategory").value.trim();
-  const logo = document.getElementById("adminPortalLogo").value.trim();
-  const url = document.getElementById("adminPortalUrl").value.trim();
-  const description = document.getElementById("adminPortalDesc").value.trim();
+window.verifyPayment=async function(id){
+  try{
+    if(!staffUser) throw new Error("Staff login required.");
+    await updateDoc(doc(db,"humanCVRequests",id),{
+      paymentStatus:"verified",
+      status:"New",
+      paymentVerifiedAt:serverTimestamp(),
+      paymentVerifiedBy:staffUser.uid,
+      updatedAt:serverTimestamp(),
+      updatedBy:staffUser.uid
+    });
+    await addDoc(collection(db,"staffNotifications"),{
+      type:"payment_verified",requestId:id,title:"CV Payment Verified",
+      message:"KSh 1,000 payment verified. Human CV Expert can begin the request.",
+      read:false,createdAt:serverTimestamp()
+    });
+    showToast("Payment verified. Human CV Expert can start the work.");
+    loadStaffRequests();
+  }catch(err){showToast("Payment verification failed: "+err.message)}
+};
 
-  if (!name || !url) {
-    showToast("Portal name and URL are required.");
-    return;
+window.changeRequestStatus=async function(id,status){
+  try{
+    await updateDoc(doc(db,"humanCVRequests",id),{status,updatedAt:serverTimestamp(),updatedBy:auth.currentUser?.uid||""});
+    showToast("Request status updated.");
+    loadStaffRequests();
+  }catch(err){showToast("Update failed: "+err.message)}
+};
+
+window.openCompletedUpload=function(requestId){
+  const input=document.createElement("input");
+  input.type="file";input.accept=".pdf,.doc,.docx";
+  input.onchange=()=>uploadCompletedCV(requestId,input.files[0]);
+  input.click();
+};
+
+async function uploadCompletedCV(requestId,file){
+  try{
+    if(!file) return;
+    validFile(file,[".pdf",".doc",".docx"],15);
+    if(!staffUser) throw new Error("Staff login required.");
+    const r=ref(storage,`completedCVs/${requestId}/${Date.now()}_${safeFileName(file.name)}`);
+    const snap=await uploadBytes(r,file);
+    const url=await getDownloadURL(snap.ref);
+    await updateDoc(doc(db,"humanCVRequests",requestId),{
+      completedCVUrl:url,completedCVName:file.name,status:"Completed",
+      completedAt:serverTimestamp(),updatedBy:staffUser.uid
+    });
+    await addDoc(collection(db,"staffNotifications"),{
+      type:"cv_completed",requestId,
+      title:"CV Completed",
+      message:"A completed CV was uploaded.",
+      read:false,createdAt:serverTimestamp()
+    });
+    showToast("Completed CV uploaded.");
+    loadStaffRequests();
+  }catch(err){showToast("Upload failed: "+err.message)}
+}
+
+async function loadNotifications(){
+  const el=document.getElementById("notificationList");
+  try{
+    const snap=await getDocs(query(collection(db,"staffNotifications"),orderBy("createdAt","desc"),limit(50)));
+    if(snap.empty){el.innerHTML="No notifications.";return;}
+    el.innerHTML=snap.docs.map(d=>{
+      const n=d.data();
+      return `<div class="request-card"><strong>${escapeHtml(n.title||"Notification")}</strong><p>${escapeHtml(n.message||"")}</p></div>`;
+    }).join("");
+  }catch(err){
+    el.innerHTML="Notifications unavailable. Check Firestore rules.";
   }
+}
 
-  try {
-    await addDoc(collection(db, "careerPortals"), {
-      name, country, category, logo, url, description,
-      verified: true,
-      createdAt: serverTimestamp()
+window.addNewPortal=async function(){
+  if(!staffUser){showToast("Staff login required.");return}
+  const name=document.getElementById("adminPortalName").value.trim();
+  const country=document.getElementById("adminPortalCountry").value.trim();
+  const region=document.getElementById("adminPortalRegion").value.trim().toLowerCase();
+  const category=document.getElementById("adminPortalCategory").value.trim();
+  const logo=document.getElementById("adminPortalLogo").value.trim();
+  const type=document.getElementById("adminPortalType").value;
+  const url=document.getElementById("adminPortalUrl").value.trim();
+  const description=document.getElementById("adminPortalDesc").value.trim();
+
+  if(!name||!url){showToast("Portal name and URL are required.");return}
+  try{
+    await addDoc(collection(db,"careerPortals"),{
+      name,country,region,category,logo,url,description,type,
+      verified:type==="official",createdAt:serverTimestamp(),createdBy:staffUser.uid
     });
     worldwidePortals.push({
-      name, country, region: 'all', category, badge: "🟢 VERIFIED OFFICIAL SOURCE", badgeClass: "", logo, url, description
+      name,country,region:region||"jobs",category,type,
+      badge:type==="official"?"🟢 OFFICIAL SOURCE":type==="jobs"?"🔵 JOB PLATFORM":"🟣 INFORMATION SOURCE",
+      badgeClass:type==="official"?"":type==="jobs"?"job-badge":"info-badge",
+      logo:logo||favicon(new URL(url).hostname),url,description
     });
-    renderPortals('all');
-    showToast("Portal added successfully!");
-  } catch (err) {
-    showToast("Error adding portal: " + err.message);
-  }
+    renderPortals(worldwidePortals);
+    renderDedicated();
+    showToast("Portal added successfully.");
+  }catch(err){showToast("Unable to add portal: "+err.message)}
 };
 
-window.openModal = function(id) { document.getElementById(id)?.classList.add("show"); };
-window.closeModal = function(id) { document.getElementById(id)?.classList.remove("show"); };
+function safeFileName(name){return name.replace(/[^a-zA-Z0-9._-]/g,"_")}
+function escapeHtml(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function escapeAttr(s){return escapeHtml(s)}
 
-function showToast(msg) {
-  const t = document.createElement("div");
-  t.className = "toast show";
-  t.textContent = msg;
-  document.body.appendChild(t);
-  setTimeout(() => t.remove(), 3500);
+function showToast(msg){
+  const t=document.createElement("div");t.className="toast show";t.textContent=msg;
+  document.body.appendChild(t);setTimeout(()=>t.remove(),3500);
 }
+window.showToast=showToast;
 
-document.getElementById("year").textContent = new Date().getFullYear();
-renderPortals('all');
-renderDedicatedSections();
+onAuthStateChanged(auth,user=>{
+  if(user && !user.isAnonymous){
+    // Do not automatically trust a signed-in account as staff.
+    // staffLogin() checks staffUsers/{uid}.active.
+  }
+});
 
+document.getElementById("year").textContent=new Date().getFullYear();
+renderCategories();
+renderPortals(worldwidePortals);
+renderDedicated();
 </script>
-
 </body>
 </html>
