@@ -166,7 +166,6 @@ section{padding:70px 0}
 .payment-step{display:flex;gap:10px;align-items:flex-start;margin:9px 0;font-size:14px}
 .payment-ref{margin-top:10px}
 
-
 .notice{padding:13px;border-radius:10px;background:#eff8ff;color:#175cd3;font-size:14px;margin:12px 0}
 .warning{padding:13px;border-radius:10px;background:#fffaeb;color:#b54708;font-size:14px;margin:12px 0}
 .error{padding:13px;border-radius:10px;background:#fef2f2;color:#b42318;font-size:14px;margin:12px 0}
@@ -548,15 +547,15 @@ review the documents and assign the work to a Human CV Expert.
 
 <div class="payment-box full">
   <strong>💳 Human CV Expert Service Fee</strong>
-  <div class="payment-price">KSh ${HUMAN_CV_FEE.toLocaleString()}</div>
+  <div class="payment-price">KSh 1,000</div>
   <div class="payment-step"><span>1️⃣</span><span>Payment must be completed before your Human CV request is submitted.</span></div>
-  <div class="payment-step"><span>2️⃣</span><span><strong>Payment Method: M-Pesa → Send Money</strong><br>Open M-Pesa, choose <strong>Send Money</strong>, and send <strong>KSh ${HUMAN_CV_FEE.toLocaleString()}</strong> to <strong id="mpesaPaymentNumber">${MPESA_PAYMENT_NUMBER}</strong>.</span></div>
+  <div class="payment-step"><span>2️⃣</span><span><strong>Payment Method: M-Pesa → Send Money</strong><br>Open M-Pesa, choose <strong>Send Money</strong>, and send <strong>KSh 1,000</strong> to <strong id="mpesaPaymentNumber">0798 811471</strong>.</span></div>
   <div class="payment-step"><span>3️⃣</span><span>Enter the M-Pesa transaction code below. Customer Care will verify the payment.</span></div>
   <div class="notice" style="margin-top:12px"><strong>Why KSh 1,000?</strong><br>The KSh 1,000 fee covers professional human CV review and preparation by a real Human CV Expert, including reviewing your existing CV, improving your presentation and wording, tailoring it toward your target role, and preparing a professional final CV document. This is a human service — no AI-generated CV is used.</div>
   <input id="paymentReference" class="field payment-ref" placeholder="M-Pesa transaction code / payment reference *">
   <label style="display:flex;gap:8px;align-items:flex-start;margin-top:12px;font-size:13px;font-weight:800">
     <input id="paymentConfirmed" type="checkbox" style="margin-top:4px">
-    <span>I confirm that I have paid the KSh ${HUMAN_CV_FEE.toLocaleString()} Human CV Expert service fee.</span>
+    <span>I confirm that I have paid the KSh 1,000 Human CV Expert service fee.</span>
   </label>
 </div>
 
@@ -593,12 +592,13 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-storage.js";
 
 const firebaseConfig = {
-  apiKey: "YOUR_FIREBASE_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT.firebasestorage.app",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_FIREBASE_APP_ID"
+  apiKey: "AIzaSyCFbbD5kYuCgi9TiXcBwo3f1X1pYu0vr08",
+  authDomain: "mustafa-elevet.firebaseapp.com",
+  projectId: "mustafa-elevet",
+  storageBucket: "mustafa-elevet.firebasestorage.app",
+  messagingSenderId: "402223404471",
+  appId: "1:402223404471:web:c37faabbe358d5e3ea0432",
+  measurementId: "G-35ZSF2MMLJ"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -613,7 +613,6 @@ let staffUser = null;
 let currentRegion = "all";
 
 // HUMAN CV EXPERT PAYMENT SETTINGS
-// Replace the placeholder with your real M-Pesa Till/PayBill before publishing.
 const HUMAN_CV_FEE = 1000;
 const MPESA_PAYMENT_NUMBER = "0798 811471";
 const HUMAN_EXPERT_WHATSAPP = "YOUR_WHATSAPP_NUMBER";
@@ -744,7 +743,6 @@ const worldwidePortals = [
 {name:"ReliefWeb Jobs",country:"Worldwide",region:"jobs",category:"International Organizations",type:"information",badge:"🟣 INTERNATIONAL JOB SOURCE",badgeClass:"info-badge",logo:favicon("reliefweb.int"),url:"https://reliefweb.int/jobs",description:"Humanitarian and international development job listings."}
 ];
 
-/* Add a few regional aliases so region filters work naturally. */
 worldwidePortals.forEach(p=>{
   if(["Qatar","UAE","Saudi Arabia","Kuwait","Bahrain","Oman"].includes(p.country) && p.region!=="airlines" && p.region!=="military") p.middleEast=true;
   if(p.region==="airlines" && ["Qatar","UAE","Saudi Arabia","Kuwait","Bahrain","Oman"].includes(p.country)) p.middleEast=true;
@@ -925,11 +923,6 @@ window.submitHumanRequest=async function(){
     return;
   }
 
-  if(MPESA_PAYMENT_NUMBER === "YOUR_MPESA_TILL_OR_PAYBILL"){
-    messageEl.innerHTML='<div class="warning"><strong>Payment destination not configured.</strong><br>The site owner must replace YOUR_MPESA_TILL_OR_PAYBILL with the real M-Pesa Till/PayBill number before accepting payments.</div>';
-    return;
-  }
-
   try{
     validFile(oldCV,[".pdf",".doc",".docx"],10);
     validFile(supporting,[".pdf",".doc",".docx",".jpg",".jpeg",".png"],10);
@@ -1060,7 +1053,7 @@ async function loadStaffRequests(){
           <button class="btn btn-outline" onclick="changeRequestStatus('${id}','In Progress')">In Progress</button>
           <button class="btn btn-success" onclick="openCompletedUpload('${id}')">Upload Completed CV</button>
         </div>
-      </div>`;
+      `;
     }).join("");
   }catch(err){
     console.error(err);
