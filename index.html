@@ -4,14 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#155eef">
-<meta name="description" content="Mustafa Elevate - Human CV Experts and verified worldwide career opportunities.">
-<title>Mustafa Elevate | Human CV Experts & Global Careers</title>
+<meta name="description" content="Mustafa Elevate - Worldwide Verified Careers Directory and Human CV Expert Support.">
+<title>Mustafa Elevate | Worldwide Verified Careers & Human CV Experts</title>
 
 <style>
 :root{
   --primary:#155eef;
   --primary-dark:#0d47c7;
   --success:#16a34a;
+  --success-bg:#ecfdf3;
   --danger:#dc2626;
   --warning:#f59e0b;
   --dark:#101828;
@@ -96,13 +97,13 @@ header{
 .navlinks{
   display:flex;
   align-items:center;
-  gap:22px;
+  gap:18px;
 }
 
 .navlinks a{
   color:#344054;
   font-weight:700;
-  font-size:14px;
+  font-size:13px;
 }
 
 .navlinks a:hover{
@@ -209,9 +210,9 @@ header{
 }
 
 .hero h1{
-  font-size:54px;
-  line-height:1.05;
-  letter-spacing:-2px;
+  font-size:50px;
+  line-height:1.08;
+  letter-spacing:-1.5px;
   color:var(--dark);
 }
 
@@ -221,7 +222,7 @@ header{
 
 .hero p{
   color:var(--muted);
-  font-size:18px;
+  font-size:17px;
   margin:18px 0 25px;
   max-width:720px;
 }
@@ -323,7 +324,7 @@ textarea.field{
 
 .stat strong{
   display:block;
-  font-size:28px;
+  font-size:26px;
   color:var(--primary);
 }
 
@@ -343,7 +344,7 @@ section{
 
 .section-head h2{
   color:var(--dark);
-  font-size:35px;
+  font-size:33px;
   line-height:1.15;
 }
 
@@ -352,222 +353,106 @@ section{
   margin-top:7px;
 }
 
-/* SERVICES */
+/* DIRECTORY TABS / REGIONS */
 
-.services{
-  background:#f8fafc;
+.region-tabs{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:25px;
 }
 
-.service-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:16px;
-}
-
-.service{
-  background:#fff;
+.region-tab{
+  padding:10px 18px;
+  border-radius:10px;
   border:1px solid var(--border);
-  border-radius:16px;
-  padding:22px;
-  box-shadow:0 5px 18px rgba(16,24,40,.04);
-}
-
-.service .icon{
-  font-size:32px;
-  margin-bottom:12px;
-}
-
-.service h3{
-  margin-bottom:8px;
-}
-
-.service p{
-  color:var(--muted);
-  font-size:14px;
-}
-
-.service a{
-  display:inline-block;
-  margin-top:14px;
-  color:var(--primary);
+  background:#fff;
   font-weight:800;
-}
-
-/* CAREER DIRECTORY */
-
-.directory{
-  background:#fff;
-}
-
-.category-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
-}
-
-.category{
-  border:1px solid var(--border);
-  background:#fff;
-  border-radius:15px;
-  padding:17px;
-  display:flex;
-  gap:12px;
-  align-items:center;
-  transition:.2s;
   cursor:pointer;
+  color:var(--text);
+  transition:.2s;
 }
 
-.category:hover{
-  transform:translateY(-2px);
-  box-shadow:var(--shadow);
-  border-color:#b2ccff;
+.region-tab.active,
+.region-tab:hover{
+  background:var(--primary);
+  color:#fff;
+  border-color:var(--primary);
 }
 
-.category-icon{
-  width:48px;
-  height:48px;
-  border-radius:12px;
-  background:#eef4ff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:25px;
+.directory-section{
+  display:none;
 }
 
-.category strong{
+.directory-section.active{
   display:block;
 }
 
-.category small{
-  color:var(--muted);
-}
+/* CARDS GRID */
 
-/* JOB FILTERS */
-
-.filters{
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr 1fr;
-  gap:10px;
-  margin-bottom:22px;
-}
-
+.portal-grid,
 .job-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:16px;
-}
-
-.job-card{
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:19px;
-  background:#fff;
-  box-shadow:0 5px 18px rgba(16,24,40,.04);
-}
-
-.job-top{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-}
-
-.company-logo{
-  width:52px;
-  height:52px;
-  border-radius:12px;
-  border:1px solid var(--border);
-  background:#fff;
-  object-fit:contain;
-  padding:7px;
-}
-
-.job-card h3{
-  margin-top:13px;
-  font-size:18px;
-}
-
-.company{
-  color:#475467;
-  font-weight:800;
-  margin-top:4px;
-}
-
-.job-meta{
-  display:flex;
-  gap:7px;
-  flex-wrap:wrap;
-  margin:13px 0;
-}
-
-.tag{
-  display:inline-flex;
-  padding:5px 8px;
-  background:#f2f4f7;
-  border-radius:20px;
-  font-size:12px;
-  font-weight:800;
-}
-
-.verified{
-  background:#ecfdf3;
-  color:#067647;
-}
-
-.external{
-  background:#eff8ff;
-  color:#175cd3;
-}
-
-.job-description{
-  color:var(--muted);
-  font-size:14px;
-}
-
-.job-buttons{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-top:16px;
-}
-
-/* CAREER PORTALS */
-
-.portal-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
+  gap:18px;
 }
 
 .portal-card{
   border:1px solid var(--border);
-  border-radius:17px;
-  padding:20px;
+  border-radius:18px;
+  padding:22px;
   background:#fff;
+  box-shadow:0 5px 18px rgba(16,24,40,.04);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
 }
 
 .portal-head{
   display:flex;
-  gap:13px;
-  align-items:center;
+  gap:12px;
+  align-items:flex-start;
 }
 
 .portal-head img{
-  width:58px;
-  height:58px;
+  width:48px;
+  height:48px;
   object-fit:contain;
-  padding:7px;
+  padding:6px;
   border:1px solid var(--border);
-  border-radius:13px;
+  border-radius:12px;
+  background:#fff;
 }
 
 .portal-card h3{
-  font-size:18px;
+  font-size:17px;
+  margin-bottom:4px;
 }
 
 .portal-card p{
   color:var(--muted);
-  margin:13px 0;
+  margin:12px 0;
   font-size:14px;
+}
+
+.verified-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  padding:4px 9px;
+  background:var(--success-bg);
+  color:#067647;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:900;
+  margin-bottom:8px;
+  border:1px solid #abefc6;
+}
+
+.gov-badge{
+  background:#eff8ff;
+  color:#175cd3;
+  border-color:#b2ccff;
 }
 
 .portal-tags{
@@ -577,7 +462,16 @@ section{
   margin-bottom:15px;
 }
 
-/* HUMAN CV */
+.tag{
+  display:inline-flex;
+  padding:4px 8px;
+  background:#f2f4f7;
+  border-radius:15px;
+  font-size:12px;
+  font-weight:800;
+}
+
+/* HUMAN CV SECTION */
 
 .cv-section{
   background:#f5f9ff;
@@ -626,18 +520,16 @@ section{
   margin-top:4px;
 }
 
-/* HUMAN REQUEST NOTICE */
-
 .human-notice{
   margin-top:20px;
   padding:16px;
   border-radius:12px;
-  background:#ecfdf3;
+  background:var(--success-bg);
   color:#067647;
   border:1px solid #abefc6;
 }
 
-/* MODAL */
+/* MODALS */
 
 .modal{
   position:fixed;
@@ -700,7 +592,7 @@ section{
   margin:12px 0;
 }
 
-/* STAFF */
+/* STAFF PANEL */
 
 .staff-panel{
   background:#101828;
@@ -765,22 +657,6 @@ section{
   display:block;
 }
 
-.admin-table{
-  width:100%;
-  border-collapse:collapse;
-  margin-top:15px;
-}
-
-.admin-table th,
-.admin-table td{
-  padding:11px;
-  border-bottom:1px solid var(--border);
-  text-align:left;
-  font-size:13px;
-}
-
-/* TOAST */
-
 .toast{
   position:fixed;
   right:18px;
@@ -843,20 +719,10 @@ footer a{
   .cv-box{
     grid-template-columns:1fr;
   }
-
-  .service-grid{
+  .portal-grid,
+  .job-grid{
     grid-template-columns:1fr 1fr;
   }
-
-  .category-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .job-grid,
-  .portal-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
   .footer-grid{
     grid-template-columns:1fr 1fr;
   }
@@ -867,67 +733,28 @@ footer a{
   .nav-actions{
     display:none;
   }
-
   .menu{
     display:block;
   }
-
-  .hero{
-    padding:55px 0;
-  }
-
   .hero h1{
-    font-size:40px;
+    font-size:38px;
   }
-
   .search-box{
     grid-template-columns:1fr;
   }
-
   .stats{
     grid-template-columns:1fr 1fr;
   }
-
-  .filters{
-    grid-template-columns:1fr;
-  }
-
-  .service-grid,
-  .category-grid,
-  .job-grid,
   .portal-grid,
+  .job-grid,
   .footer-grid{
     grid-template-columns:1fr;
   }
-
   .form-grid{
     grid-template-columns:1fr;
   }
-
   .dashboard-grid{
     grid-template-columns:1fr;
-  }
-}
-
-@media(max-width:500px){
-  .stats{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .stats .stat{
-    padding:13px;
-  }
-
-  .hero h1{
-    font-size:34px;
-  }
-
-  section{
-    padding:50px 0;
-  }
-
-  .section-head h2{
-    font-size:29px;
   }
 }
 </style>
@@ -945,18 +772,18 @@ Mustafa <span>Elevate</span>
 </a>
 
 <nav class="navlinks">
-<a href="#jobs">Find Jobs</a>
-<a href="#categories">Categories</a>
-<a href="#portals">Career Portals</a>
+<a href="#directory">Verified Directory</a>
+<a href="#kenya">Kenya Portal</a>
+<a href="#military">Military & Defence</a>
+<a href="#cruise">Cruise Ships</a>
+<a href="#airlines">Airlines</a>
 <a href="#cv">Human CV Expert</a>
-<a href="#about">About</a>
 </nav>
 
 <div class="nav-actions">
 <button class="btn btn-outline" onclick="openModal('staffLoginModal')">
 Staff Login
 </button>
-
 <button class="btn btn-primary" onclick="openModal('humanModal')">
 👤 Human CV Expert
 </button>
@@ -966,7 +793,6 @@ Staff Login
 
 </div>
 </header>
-
 
 <!-- ================= MAIN ================= -->
 
@@ -978,885 +804,283 @@ Staff Login
 <div class="container hero-grid">
 
 <div>
-
 <div class="badge">
-🌍 WORLDWIDE VERIFIED CAREERS
+🌍 WORLDWIDE VERIFIED CAREERS DIRECTORY
 </div>
 
 <h1>
-Find opportunities.<br>
-<span>Get human CV support.</span>
+Official career portals.<br>
+<span>Real Human CV Expert support.</span>
 </h1>
 
 <p>
-Discover career opportunities from Kenya, the Middle East,
-USA, Canada, Europe and around the world. Then work directly
-with a real Human CV Expert to prepare your application.
+Explore official government recruitment systems, international defence forces, cruise lines, airlines, and global job banks. No AI job builder—work directly with real human experts to review your old CV and prepare your application.
 </p>
 
 <div class="search-box">
-
-<input
-id="heroKeyword"
-class="field"
-placeholder="Job title, company or career portal">
-
-<input
-id="heroLocation"
-class="field"
-placeholder="Country or city">
-
-<button
-class="btn btn-primary"
-onclick="searchJobs()">
-🔎 Search
-</button>
-
+<input id="heroKeyword" class="field" placeholder="Search portals, country, or profession...">
+<input id="heroLocation" class="field" placeholder="Country (e.g. USA, Canada, Kenya)">
+<button class="btn btn-primary" onclick="searchDirectory()">🔎 Search Directory</button>
 </div>
 
 <div class="quick">
-
-<button onclick="quickSearch('Driver')">🚗 Driver</button>
-<button onclick="quickSearch('Security')">🛡 Security</button>
-<button onclick="quickSearch('Aviation')">✈ Aviation</button>
-<button onclick="quickSearch('Cruise')">🚢 Cruise</button>
-<button onclick="quickSearch('Construction')">🏗 Construction</button>
-<button onclick="quickSearch('Healthcare')">🏥 Healthcare</button>
-
+<button onclick="quickFilter('USA')">🇺🇸 USA</button>
+<button onclick="quickFilter('Canada')">🇨🇦 Canada</button>
+<button onclick="quickFilter('Europe')">🇪🇺 Europe</button>
+<button onclick="quickFilter('Kenya')">🇰🇪 Kenya</button>
+<button onclick="quickFilter('Military')">🪖 Military</button>
+<button onclick="quickFilter('Cruise')">🚢 Cruise Ships</button>
+<button onclick="quickFilter('Airlines')">✈️ Airlines</button>
 </div>
-
 </div>
-
 
 <div class="hero-card">
-
-<h3>Why use Mustafa Elevate?</h3>
-
+<h3>Why Mustafa Elevate?</h3>
 <div class="trust-list">
-
+<div class="trust-item">
+<div class="trust-icon">🟢</div>
+<div>
+<strong>Verified Official Sources</strong>
+<p>Clear distinction between official government/employer portals and general listings.</p>
+</div>
+</div>
 <div class="trust-item">
 <div class="trust-icon">👤</div>
 <div>
-<strong>Real Human CV Experts</strong>
-<p>No AI CV builder. A human reviews your information.</p>
+<strong>100% Human CV Experts</strong>
+<p>Your old CV is reviewed and prepared by real staff members, not automated AI.</p>
 </div>
 </div>
-
 <div class="trust-item">
-<div class="trust-icon">📄</div>
+<div class="trust-icon">🌐</div>
 <div>
-<strong>Old CV Upload</strong>
-<p>Send your existing CV for the Human Expert to review.</p>
+<strong>Worldwide Coverage</strong>
+<p>Access official portals across North America, Europe, Africa, and the Middle East.</p>
 </div>
-</div>
-
-<div class="trust-item">
-<div class="trust-icon">🌍</div>
-<div>
-<strong>Worldwide Careers</strong>
-<p>Find official career portals from many countries.</p>
 </div>
 </div>
 
-<div class="trust-item">
-<div class="trust-icon">🔐</div>
-<div>
-<strong>Staff Controlled</strong>
-<p>Customer Care manages requests, jobs and applications.</p>
-</div>
-</div>
-
-</div>
-
-<button
-class="btn btn-success"
-style="width:100%;margin-top:18px"
-onclick="openModal('humanModal')">
+<button class="btn btn-success" style="width:100%;margin-top:18px" onclick="openModal('humanModal')">
 Request Human CV Help
 </button>
-
 </div>
 
 </div>
 </section>
-
 
 <!-- STATS -->
 
 <div class="container">
 <div class="stats">
-
 <div class="stat">
-<strong id="jobCount">0</strong>
-Career Sources
+<strong id="statPortalsCount">50+</strong>
+Verified Portals
 </div>
-
 <div class="stat">
 <strong>🌍</strong>
-Global
+Worldwide Regions
 </div>
-
 <div class="stat">
 <strong>👤</strong>
-Human
-CV Experts
+Real Human Experts
 </div>
-
 <div class="stat">
 <strong>✓</strong>
-Verified
-Sources
-</div>
-
+Official & Secure
 </div>
 </div>
+</div>
 
+<!-- WORLDWIDE DIRECTORY SECTION -->
 
-<!-- SERVICES -->
-
-<section class="services" id="services">
+<section id="directory">
 <div class="container">
 
 <div class="section-head">
 <div>
-<h2>Human Career Support</h2>
-<p>
-Everything is designed around real human assistance.
-</p>
+<h2>Worldwide Verified Careers Directory</h2>
+<p>Select a region or category below to access official employment portals.</p>
 </div>
 </div>
 
-<div class="service-grid">
-
-<div class="service">
-<div class="icon">👤</div>
-<h3>Human CV Expert</h3>
-<p>
-A real staff member reviews your information and prepares
-your professional CV.
-</p>
-<a href="#" onclick="openModal('humanModal');return false">
-Request Human Help →
-</a>
+<div class="region-tabs">
+<button class="region-tab active" onclick="switchRegion('all')">All Regions</button>
+<button class="region-tab" onclick="switchRegion('usa')">🇺🇸 USA</button>
+<button class="region-tab" onclick="switchRegion('canada')">🇨🇦 Canada</button>
+<button class="region-tab" onclick="switchRegion('europe')">🇪🇺 Europe</button>
+<button class="region-tab" onclick="switchRegion('africa')">🌍 Africa</button>
+<button class="region-tab" onclick="switchRegion('kenya')">🇰🇪 Kenya</button>
+<button class="region-tab" onclick="switchRegion('military')">🪖 Military & Defence</button>
+<button class="region-tab" onclick="switchRegion('cruise')">🚢 Cruise Ships</button>
+<button class="region-tab" onclick="switchRegion('airlines')">✈️ Airlines</button>
 </div>
 
-<div class="service">
-<div class="icon">📎</div>
-<h3>Old CV Review</h3>
-<p>
-Upload your existing CV so the Human CV Expert can review
-and improve it.
-</p>
-<a href="#" onclick="openModal('humanModal');return false">
-Upload Old CV →
-</a>
+<div class="portal-grid" id="directoryGrid">
+<!-- Populated dynamically via script -->
 </div>
 
-<div class="service">
-<div class="icon">🎯</div>
-<h3>Job Application Support</h3>
-<p>
-Get help preparing your application for a selected
-career opportunity.
-</p>
-<a href="#jobs">
-Find Jobs →
-</a>
-</div>
-
-<div class="service">
-<div class="icon">📥</div>
-<h3>Receive Your CV</h3>
-<p>
-After the human expert completes your CV, staff can send
-the finished document/PDF to you.
-</p>
-<a href="#" onclick="openModal('humanModal');return false">
-Start Request →
-</a>
-</div>
-
-</div>
 </div>
 </section>
 
+<!-- KENYA SPOTLIGHT SECTION -->
 
-<!-- CATEGORIES -->
-
-<section id="categories">
+<section id="kenya" style="background:#f8fafc">
 <div class="container">
-
 <div class="section-head">
 <div>
-<h2>All Job Categories</h2>
-<p>
-Search careers by profession, industry or country.
-</p>
+<h2>🇰🇪 Kenya Verified Career Sources</h2>
+<p>Official public service commissions, disciplined services, UN agencies, and leading employers in Kenya.</p>
 </div>
 </div>
-
-<div class="category-grid">
-
-<div class="category" onclick="filterCategory('Aviation')">
-<div class="category-icon">✈️</div>
-<div>
-<strong>Airlines & Aviation</strong>
-<small>Airports, airlines, cabin crew</small>
-</div>
-</div>
-
-<div class="category" onclick="filterCategory('Hospitality')">
-<div class="category-icon">🏨</div>
-<div>
-<strong>Hotels & Hospitality</strong>
-<small>Hotels, resorts, restaurants</small>
-</div>
-</div>
-
-<div class="category" onclick="filterCategory('Cruise')">
-<div class="category-icon">🚢</div>
-<div>
-<strong>Cruise Ships</strong>
-<small>Ship and onboard careers</small>
-</div>
-</div>
-
-<div class="category" onclick="filterCategory('Construction')">
-<div class="category-icon">🏗️</div>
-<div>
-<strong>Construction</strong>
-<small>Building and infrastructure</small>
-</div>
-</div>
-
-<div class="category" onclick="filterCategory('Driving')">
-<div class="category-icon">🚗</div>
-<div>
-<strong>Driving & Transport</strong>
-<small>Drivers, logistics, transport</small>
-</div>
-</div>
-
-<div class="category" onclick="filterCategory('Security')">
-<div class="category-icon">🛡️</div>
-<div>
-<strong>Security</strong>
-<small>Security and protection</small>
-</div>
-</div>
-
-<div class="category" onclick="filterCategory('Engineering')">
-<div class="category-icon">⚙️</div>
-<div>
-<strong>Engineering</strong>
-<small>Technical and engineering</small>
-</div>
-</div>
-
-<div class="category" onclick="filterCategory('Healthcare')">
-<div class="category-icon">🏥</div>
-<div>
-<strong>Healthcare</strong>
-<small>Medical and health services</small>
-</div>
-</div>
-
-<div class="category" onclick="filterCategory('Technology')">
-<div class="category-icon">💻</div>
-<div>
-<strong>IT & Technology</strong>
-<small>Software, IT, data</small>
-</div>
-</div>
-
-<div class="category" onclick="filterCategory('Finance')">
-<div class="category-icon">💰</div>
-<div>
-<strong>Finance & Accounting</strong>
-<small>Banking and accounting</small>
-</div>
-</div>
-
-<div class="category" onclick="filterCategory('Education')">
-<div class="category-icon">👨‍🏫</div>
-<div>
-<strong>Education</strong>
-<small>Teaching and academic jobs</small>
-</div>
-</div>
-
-<div class="category" onclick="filterCategory('Oil & Gas')">
-<div class="category-icon">🛢️</div>
-<div>
-<strong>Oil & Gas</strong>
-<small>Energy and petroleum</small>
-</div>
-</div>
-
-<div class="category" onclick="filterCategory('Manufacturing')">
-<div class="category-icon">🏭</div>
-<div>
-<strong>Manufacturing</strong>
-<small>Factories and production</small>
-</div>
-</div>
-
-<div class="category" onclick="filterCategory('Warehouse')">
-<div class="category-icon">📦</div>
-<div>
-<strong>Warehouse & Logistics</strong>
-<small>Supply chain and warehouse</small>
-</div>
-</div>
-
-<div class="category" onclick="filterCategory('General Labour')">
-<div class="category-icon">👷</div>
-<div>
-<strong>General Labour</strong>
-<small>General workers and labour</small>
-</div>
-</div>
-
-<div class="category" onclick="filterCategory('Government')">
-<div class="category-icon">🏛️</div>
-<div>
-<strong>Government</strong>
-<small>Public service opportunities</small>
-</div>
-</div>
-
-</div>
+<div class="portal-grid" id="kenyaGrid"></div>
 </div>
 </section>
 
+<!-- MILITARY & DEFENCE SECTION -->
 
-<!-- JOBS -->
-
-<section id="jobs" style="background:#f8fafc">
+<section id="military">
 <div class="container">
-
 <div class="section-head">
 <div>
-<h2>Worldwide Career Opportunities</h2>
-<p>
-Official career portals and Human CV Expert-supported
-job listings.
-</p>
+<h2>🪖 Military & Defence Careers</h2>
+<p>Official armed forces and national security recruitment portals around the world.</p>
 </div>
-
-<button
-class="btn btn-outline"
-onclick="openModal('staffLoginModal')">
-Staff: Post Job
-</button>
 </div>
-
-
-<div class="filters">
-
-<input
-id="keyword"
-class="field"
-placeholder="Search jobs..."
-oninput="renderJobs()">
-
-<select
-id="country"
-class="field"
-onchange="renderJobs()">
-<option value="">All countries</option>
-</select>
-
-<select
-id="categoryFilter"
-class="field"
-onchange="renderJobs()">
-<option value="">All categories</option>
-</select>
-
-<select
-id="jobType"
-class="field"
-onchange="renderJobs()">
-<option value="">All types</option>
-<option>Full Time</option>
-<option>Part Time</option>
-<option>Contract</option>
-<option>Remote</option>
-<option>External Portal</option>
-</select>
-
-</div>
-
-<div id="jobGrid" class="job-grid"></div>
-
+<div class="portal-grid" id="militaryGrid"></div>
 </div>
 </section>
 
+<!-- CRUISE SHIPS SECTION -->
 
-<!-- CAREER PORTALS -->
-
-<section id="portals">
+<section id="cruise" style="background:#f8fafc">
 <div class="container">
-
 <div class="section-head">
 <div>
-<h2>Verified Career Portals</h2>
-<p>
-Recognizable companies and official employment portals.
-Use the official portal to complete the employer application.
-</p>
+<h2>🚢 Cruise Ship Careers</h2>
+<p>Top international cruise lines hiring chefs, waiters, housekeepers, deck crew, technicians, and hospitality staff.</p>
 </div>
 </div>
-
-<div class="portal-grid" id="portalGrid"></div>
-
+<div class="portal-grid" id="cruiseGrid"></div>
 </div>
 </section>
 
+<!-- AIRLINES SECTION -->
 
-<!-- HUMAN CV -->
+<section id="airlines">
+<div class="container">
+<div class="section-head">
+<div>
+<h2>✈️ Worldwide Airline Careers</h2>
+<p>Official airline recruitment portals for cabin crew, pilots, engineering, and ground operations.</p>
+</div>
+</div>
+<div class="portal-grid" id="airlinesGrid"></div>
+</div>
+</section>
+
+<!-- HUMAN CV EXPERT SECTION -->
 
 <section class="cv-section" id="cv">
 <div class="container">
-
 <div class="cv-box">
 
 <div>
-
 <div class="badge">
 👤 HUMAN CV EXPERT SERVICE
 </div>
-
-<h2 style="font-size:36px;line-height:1.15">
-Your CV is prepared by a real person.
+<h2 style="font-size:34px;line-height:1.15">
+Your CV is prepared by a real human expert.
 </h2>
-
 <p style="color:var(--muted);margin-top:12px">
-Submit your information and, if you have one, upload your
-old CV. Customer Care will assign the request to a Human CV
-Expert for review and preparation.
+Submit your information and optionally upload your existing CV. A real Customer Care specialist will assign your request to a professional Human CV Expert for review and preparation.
 </p>
 
 <div class="cv-list">
-
-<div>
-<span class="check">✓</span>
-Human review
-</div>
-
-<div>
-<span class="check">✓</span>
-Old CV upload
-</div>
-
-<div>
-<span class="check">✓</span>
-Professional CV preparation
-</div>
-
-<div>
-<span class="check">✓</span>
-Application-focused CV
-</div>
-
-<div>
-<span class="check">✓</span>
-Finished document/PDF sent by staff
-</div>
-
+<div><span class="check">✓</span> 100% Human CV review & rewrite</div>
+<div><span class="check">✓</span> Old CV / Document upload via secure Firebase Storage</div>
+<div><span class="check">✓</span> Targeted application formatting</div>
+<div><span class="check">✓</span> Direct support from Customer Care</div>
 </div>
 
 <div class="human-notice">
-<strong>100% Human CV Service</strong><br>
-There is no AI CV builder on this platform.
-Your request is handled by a Human CV Expert.
+<strong>Verified Human Process</strong><br>
+No automated AI resume generators. Your career success is guided by professional human expertise.
 </div>
 
-<button
-class="btn btn-success"
-style="margin-top:20px"
-onclick="openModal('humanModal')">
+<button class="btn btn-success" style="margin-top:20px" onclick="openModal('humanModal')">
 👤 Request Human CV Expert
 </button>
-
 </div>
-
 
 <div class="cv-form">
-
 <h3>Start Your Human CV Request</h3>
-
-<p class="modal-sub">
-Fill in your details. A Human CV Expert will review the request.
-</p>
-
+<p class="modal-sub">Fill out your details below to get started instantly.</p>
 <div class="form-grid">
-
-<input
-id="cvName"
-class="field"
-placeholder="Full name *">
-
-<input
-id="cvEmail"
-class="field"
-type="email"
-placeholder="Email *">
-
-<input
-id="cvPhone"
-class="field"
-placeholder="Phone / WhatsApp *">
-
-<input
-id="cvCountry"
-class="field"
-placeholder="Country">
-
-<input
-id="cvRole"
-class="field full"
-placeholder="Target job / position">
-
-<textarea
-id="cvExperience"
-class="field full"
-rows="4"
-placeholder="Briefly describe your work experience"></textarea>
-
-<textarea
-id="cvSkills"
-class="field full"
-rows="3"
-placeholder="Skills and qualifications"></textarea>
-
-<button
-class="btn btn-success full"
-onclick="openModal('humanModal')">
-Continue Human CV Request
+<input id="cvName" class="field" placeholder="Full name *">
+<input id="cvEmail" class="field" type="email" placeholder="Email *">
+<input id="cvPhone" class="field" placeholder="Phone / WhatsApp *">
+<input id="cvCountry" class="field" placeholder="Country">
+<input id="cvRole" class="field full" placeholder="Target job / position / industry">
+<textarea id="cvExperience" class="field full" rows="4" placeholder="Briefly describe your work experience and background"></textarea>
+<button class="btn btn-success full" onclick="openModal('humanModal')">
+Continue in Human CV Modal →
 </button>
-
 </div>
-
 </div>
 
 </div>
 </div>
 </section>
-
-
-<!-- ABOUT -->
-
-<section id="about">
-<div class="container">
-
-<div class="section-head">
-<div>
-<h2>About Mustafa Elevate</h2>
-<p>
-A global career-support platform connecting job seekers
-with verified career sources and real Human CV Experts.
-</p>
-</div>
-</div>
-
-<div class="service">
-
-<h3>Important Safety Information</h3>
-
-<p style="margin-top:10px;color:var(--muted)">
-Mustafa Elevate is a career-support platform. External
-career portals belong to their respective organizations.
-Always confirm the vacancy on the official employer or
-government website before submitting personal information
-or making any payment.
-</p>
-
-<p style="margin-top:10px;color:var(--muted)">
-Mustafa Elevate does not guarantee employment. Never pay an
-unknown person simply because they claim they can guarantee
-a job, visa or employment.
-</p>
-
-</div>
-
-</div>
-</section>
-
 
 <!-- STAFF CENTER -->
 
 <section class="staff-panel" id="staff">
-
 <div class="container">
-
 <div class="section-head">
 <div>
-<h2 style="color:#fff">
-Customer Care / Human CV Expert Center
-</h2>
-<p style="color:#98a2b3">
-Secure staff area for managing customer requests,
-applications and jobs.
-</p>
+<h2 style="color:#fff">Customer Care / Staff Portal</h2>
+<p style="color:#98a2b3">Secure staff area for managing human CV requests and portal directories.</p>
 </div>
 </div>
-
 
 <div id="staffLoginInline" class="staff-login">
-
 <h3>Secure Staff Login</h3>
-
-<p class="modal-sub">
-Authorized Customer Care and Human CV Expert staff only.
-</p>
-
-<input
-id="staffEmailInline"
-class="field"
-type="email"
-placeholder="Staff email">
-
-<input
-id="staffPasswordInline"
-class="field"
-type="password"
-placeholder="Firebase password">
-
-<button
-class="btn btn-primary"
-style="width:100%;margin-top:8px"
-onclick="staffLogin('inline')">
+<p class="modal-sub">Authorized Customer Care & CV Experts only.</p>
+<input id="staffEmailInline" class="field" type="email" placeholder="Staff email">
+<input id="staffPasswordInline" class="field" type="password" placeholder="Firebase password">
+<button class="btn btn-primary" style="width:100%;margin-top:8px" onclick="staffLogin('inline')">
 🔐 Secure Staff Login
 </button>
-
-<div id="staffLoginMessageInline"
-class="notice"
-style="display:none">
+<div id="staffLoginMessageInline" class="notice" style="display:none"></div>
 </div>
-
-</div>
-
 
 <div id="staffDashboard" class="staff-dashboard">
-
 <div class="dashboard-grid">
-
 <div class="sidebar">
-
-<button onclick="showStaffSection('requests')">
-📥 CV Requests
-</button>
-
-<button onclick="showStaffSection('applications')">
-📨 Applications
-</button>
-
-<button onclick="showStaffSection('jobsAdmin')">
-💼 Manage Jobs
-</button>
-
-<button onclick="showStaffSection('portalsAdmin')">
-🌍 Career Portals
-</button>
-
-<button onclick="showStaffSection('messages')">
-🔔 Notifications
-</button>
-
-<button onclick="staffLogout()" class="btn-danger">
-🚪 Logout
-</button>
-
+<button onclick="showStaffSection('requests')">📥 CV Requests</button>
+<button onclick="showStaffSection('portalsAdmin')">🌍 Manage Portals</button>
+<button onclick="staffLogout()" class="btn-danger">🚪 Logout</button>
 </div>
-
-
 <div class="dashboard-content">
-
 <div id="requestsSection" class="dashboard-section active">
-
-<h3>Human CV Requests</h3>
-
-<p class="modal-sub">
-New customer requests submitted for Human CV Experts.
-</p>
-
-<div id="requestsList">
-Loading requests...
+<h3>Human CV Requests & Uploaded Files</h3>
+<p class="modal-sub">Requests submitted by customers with attached old CV files in Storage.</p>
+<div id="requestsList">Loading requests...</div>
 </div>
-
-</div>
-
-
-<div id="applicationsSection" class="dashboard-section">
-
-<h3>Job Applications</h3>
-
-<p class="modal-sub">
-Customer application requests.
-</p>
-
-<div id="applicationsList">
-Loading applications...
-</div>
-
-</div>
-
-
-<div id="jobsAdminSection" class="dashboard-section">
-
-<h3>Manage Jobs</h3>
-
-<div class="form-grid">
-
-<input
-id="adminJobTitle"
-class="field"
-placeholder="Job title">
-
-<input
-id="adminJobCompany"
-class="field"
-placeholder="Company">
-
-<input
-id="adminJobLocation"
-class="field"
-placeholder="Country / city">
-
-<select
-id="adminJobCategory"
-class="field">
-<option>Aviation</option>
-<option>Driving</option>
-<option>Security</option>
-<option>Construction</option>
-<option>Hospitality</option>
-<option>Cruise</option>
-<option>Healthcare</option>
-<option>Technology</option>
-<option>Engineering</option>
-<option>Finance</option>
-<option>Education</option>
-<option>Oil & Gas</option>
-<option>Government</option>
-<option>General Labour</option>
-</select>
-
-<select
-id="adminJobType"
-class="field">
-<option>Full Time</option>
-<option>Part Time</option>
-<option>Contract</option>
-<option>Remote</option>
-</select>
-
-<input
-id="adminJobSalary"
-class="field"
-placeholder="Salary / Not specified">
-
-<input
-id="adminJobLogo"
-class="field"
-placeholder="Logo URL">
-
-<input
-id="adminJobApply"
-class="field full"
-placeholder="Official application URL">
-
-<textarea
-id="adminJobDescription"
-class="field full"
-rows="4"
-placeholder="Job description"></textarea>
-
-<button
-class="btn btn-success full"
-onclick="addStaffJob()">
-➕ Publish Job
-</button>
-
-</div>
-
-<hr>
-
-<div id="adminJobsList">
-Loading jobs...
-</div>
-
-</div>
-
-
 <div id="portalsAdminSection" class="dashboard-section">
-
-<h3>Manage Career Portals</h3>
-
-<p class="modal-sub">
-Staff can add verified employer or government career portals.
-</p>
-
+<h3>Add New Verified Portal</h3>
 <div class="form-grid">
-
-<input
-id="portalName"
-class="field"
-placeholder="Company / portal name">
-
-<input
-id="portalCountry"
-class="field"
-placeholder="Country">
-
-<input
-id="portalCategory"
-class="field"
-placeholder="Category">
-
-<input
-id="portalLogo"
-class="field"
-placeholder="Logo URL">
-
-<input
-id="portalUrl"
-class="field full"
-placeholder="Official careers URL">
-
-<textarea
-id="portalDescription"
-class="field full"
-rows="3"
-placeholder="Description"></textarea>
-
-<button
-class="btn btn-success full"
-onclick="addPortal()">
-➕ Add Career Portal
-</button>
-
+<input id="adminPortalName" class="field" placeholder="Portal / Company Name">
+<input id="adminPortalCountry" class="field" placeholder="Country / Region">
+<input id="adminPortalCategory" class="field" placeholder="Category (e.g. USA, Military, Cruise)">
+<input id="adminPortalLogo" class="field" placeholder="Favicon / Logo URL">
+<input id="adminPortalUrl" class="field full" placeholder="Official Careers URL">
+<textarea id="adminPortalDesc" class="field full" rows="3" placeholder="Description"></textarea>
+<button class="btn btn-success full" onclick="addNewPortal()">➕ Add Portal</button>
 </div>
-
 </div>
-
-
-<div id="messagesSection" class="dashboard-section">
-
-<h3>Staff Notifications</h3>
-
-<div id="notificationsList">
-Loading notifications...
 </div>
-
 </div>
-
-</div>
-
-</div>
-
 </div>
 
 </div>
@@ -1864,1169 +1088,878 @@ Loading notifications...
 
 </main>
 
-
 <!-- FOOTER -->
 
 <footer>
-
 <div class="container footer-grid">
-
 <div>
-
-<div class="footer-brand">
-Mustafa Elevate
+<div class="footer-brand">Mustafa Elevate</div>
+<p>Worldwide verified career directory and Human CV Expert support platform.</p>
 </div>
-
-<p>
-Worldwide career discovery and Human CV Expert support.
-</p>
-
-</div>
-
 <div>
-
-<h4>Careers</h4>
-
-<a href="#jobs">Find Jobs</a>
-<a href="#categories">Categories</a>
-<a href="#portals">Career Portals</a>
-<a href="#jobs">Middle East</a>
-
+<h4>Regions</h4>
+<a href="#directory" onclick="switchRegion('usa')">USA Portals</a>
+<a href="#directory" onclick="switchRegion('canada')">Canada Portals</a>
+<a href="#directory" onclick="switchRegion('europe')">Europe Portals</a>
+<a href="#directory" onclick="switchRegion('kenya')">Kenya Sources</a>
 </div>
-
 <div>
-
-<h4>Human Support</h4>
-
+<h4>Categories</h4>
+<a href="#military">Military & Defence</a>
+<a href="#cruise">Cruise Ship Careers</a>
+<a href="#airlines">Airlines</a>
 <a href="#cv">Human CV Expert</a>
-<a href="#" onclick="openModal('humanModal');return false">
-Upload Old CV
-</a>
-<a href="#" onclick="openModal('humanModal');return false">
-Application Support
-</a>
-
 </div>
-
 <div>
-
 <h4>Staff</h4>
-
 <a href="#staff">Customer Care Center</a>
-<a href="#" onclick="openModal('staffLoginModal');return false">
-Staff Login
-</a>
-
+<a href="#" onclick="openModal('staffLoginModal');return false">Staff Login</a>
 </div>
-
 </div>
-
 <div class="container copyright">
 © <span id="year"></span> Mustafa Elevate. All rights reserved.
 </div>
-
 </footer>
 
+<!-- ================= MODALS ================= -->
 
-<!-- ================= HUMAN CV MODAL ================= -->
-
+<!-- HUMAN CV MODAL -->
 <div class="modal" id="humanModal">
-
 <div class="modal-card">
-
-<button class="close" onclick="closeModal('humanModal')">
-×
-</button>
-
-<h2>👤 Human CV Expert</h2>
-
-<p class="modal-sub">
-A real Human CV Expert will handle your request.
-</p>
+<button class="close" onclick="closeModal('humanModal')">×</button>
+<h2>👤 Human CV Expert Request</h2>
+<p class="modal-sub">Real Human CV Expert service. No AI generation.</p>
 
 <div class="notice">
-<strong>Human service only.</strong>
-There is no AI CV builder here.
+<strong>Secure Upload:</strong> Your old CV file will be safely stored in your private Firebase storage path.
 </div>
 
 <div class="form-grid">
-
-<input
-id="hName"
-class="field"
-placeholder="Full name *">
-
-<input
-id="hEmail"
-class="field"
-type="email"
-placeholder="Email *">
-
-<input
-id="hPhone"
-class="field"
-placeholder="Phone / WhatsApp *">
-
-<input
-id="hCountry"
-class="field"
-placeholder="Country">
-
-<input
-id="hRole"
-class="field full"
-placeholder="Job you are targeting">
-
-<textarea
-id="hMessage"
-class="field full"
-rows="4"
-placeholder="Tell the Human CV Expert what you need"></textarea>
+<input id="hName" class="field" placeholder="Full name *">
+<input id="hEmail" class="field" type="email" placeholder="Email *">
+<input id="hPhone" class="field" placeholder="Phone / WhatsApp *">
+<input id="hCountry" class="field" placeholder="Country">
+<input id="hRole" class="field full" placeholder="Target job / position">
+<textarea id="hMessage" class="field full" rows="3" placeholder="Tell the Human CV Expert what you need"></textarea>
 
 <label class="full">
-Old CV / existing CV
-<input
-id="hOldCV"
-class="field"
-type="file"
-accept=".pdf,.doc,.docx">
+Upload Old CV / Existing CV (PDF, DOC, DOCX)
+<input id="hOldCV" class="field" type="file" accept=".pdf,.doc,.docx">
 </label>
 
 <label class="full">
-Other supporting document
-<input
-id="hDocument"
-class="field"
-type="file"
-accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+Supporting Document (Optional)
+<input id="hDocument" class="field" type="file" accept=".pdf,.doc,.docx,.jpg,.png">
 </label>
 
-<button
-class="btn btn-success full"
-onclick="submitHumanRequest()">
+<button class="btn btn-success full" onclick="submitHumanRequest()">
 📤 Submit Human CV Request
 </button>
-
 </div>
-
 <div id="humanMessage"></div>
-
 </div>
 </div>
 
-
-<!-- ================= JOB MODAL ================= -->
-
-<div class="modal" id="jobModal">
-
-<div class="modal-card">
-
-<button class="close" onclick="closeModal('jobModal')">
-×
-</button>
-
-<div id="jobDetails"></div>
-
-</div>
-</div>
-
-
-<!-- ================= STAFF LOGIN MODAL ================= -->
-
+<!-- STAFF LOGIN MODAL -->
 <div class="modal" id="staffLoginModal">
-
 <div class="modal-card">
-
-<button class="close" onclick="closeModal('staffLoginModal')">
-×
-</button>
-
+<button class="close" onclick="closeModal('staffLoginModal')">×</button>
 <h2>🔐 Secure Staff Login</h2>
-
-<p class="modal-sub">
-Customer Care / Human CV Expert staff only.
-</p>
-
-<div class="warning">
-Staff access uses Firebase Authentication.
-Do not use a frontend-only password.
-</div>
-
-<input
-id="staffEmail"
-class="field"
-type="email"
-placeholder="Staff email">
-
-<input
-id="staffPassword"
-class="field"
-type="password"
-placeholder="Firebase password">
-
-<button
-class="btn btn-primary"
-style="width:100%;margin-top:10px"
-onclick="staffLogin('modal')">
+<p class="modal-sub">Customer Care & Human CV Expert staff login.</p>
+<input id="staffEmail" class="field" type="email" placeholder="Staff email">
+<input id="staffPassword" class="field" type="password" placeholder="Firebase password">
+<button class="btn btn-primary" style="width:100%;margin-top:10px" onclick="staffLogin('modal')">
 🔐 Login
 </button>
-
-<div id="staffLoginMessage" class="notice" style="display:none">
-</div>
-
+<div id="staffLoginMessage" class="notice" style="display:none"></div>
 </div>
 </div>
 
-
-<!-- ================= FIREBASE ================= -->
+<!-- ================= FIREBASE SCRIPT ================= -->
 
 <script type="module">
 
-/*
-============================================================
-FIREBASE CONFIGURATION
-============================================================
-
-Replace ONLY the values below with the Web App configuration
-from your Firebase project.
-
-Do NOT put Firebase Admin SDK private keys here.
-
-============================================================
-*/
-
-import {
-  initializeApp
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  getDocs,
-  query,
-  orderBy,
-  serverTimestamp,
-  doc,
-  updateDoc,
-  deleteDoc
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, signInAnonymously, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+import { getFirestore, collection, addDoc, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-storage.js";
 
 const firebaseConfig = {
-
   apiKey: "YOUR_FIREBASE_API_KEY",
-
   authDomain: "YOUR_PROJECT.firebaseapp.com",
-
   projectId: "YOUR_PROJECT_ID",
-
   storageBucket: "YOUR_PROJECT.firebasestorage.app",
-
   messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-
   appId: "YOUR_FIREBASE_APP_ID"
-
 };
 
-
 const app = initializeApp(firebaseConfig);
-
 const auth = getAuth(app);
-
 const db = getFirestore(app);
-
-
-/* Make Firebase available to the rest of the page */
+const storage = getStorage(app);
 
 window.firebaseAuth = auth;
 window.firebaseDB = db;
 
-
-/* =========================================================
-   GLOBAL DATA
-========================================================= */
-
 let staffUser = null;
 
-let jobs = [];
-
-let portals = [];
-
-let applications = [];
-
-let humanRequests = [];
-
-
 /* =========================================================
-   VERIFIED CAREER PORTALS
-=========================================================
-
-These are DIRECTORY links.
-The user is sent to the organization's own career portal.
+   COMPREHENSIVE WORLDWIDE VERIFIED DIRECTORY DATA
 ========================================================= */
 
-const defaultPortals = [
+const worldwidePortals = [
 
-{
-name:"Qatar Airways",
-country:"Qatar",
-category:"Aviation",
-logo:"https://www.google.com/s2/favicons?domain=qatarairways.com&sz=128",
-url:"https://careers.qatarairways.com/",
-description:"Official Qatar Airways careers portal.",
-verified:true
-},
+  // --- USA ---
+  {
+    name: "USAJOBS",
+    country: "USA",
+    region: "usa",
+    category: "Government",
+    badge: "🟢 VERIFIED GOVERNMENT SOURCE",
+    badgeClass: "gov-badge",
+    logo: "https://www.google.com/s2/favicons?domain=usajobs.gov&sz=128",
+    url: "https://www.usajobs.gov/",
+    description: "Official U.S. federal government employment portal supporting resume-based applications."
+  },
+  {
+    name: "U.S. Army Careers",
+    country: "USA",
+    region: "military",
+    category: "Military",
+    badge: "🟢 VERIFIED OFFICIAL SOURCE",
+    badgeClass: "",
+    logo: "https://www.google.com/s2/favicons?domain=goarmy.com&sz=128",
+    url: "https://www.goarmy.com/",
+    description: "Official recruitment portal for the United States Army."
+  },
+  {
+    name: "U.S. Navy Careers",
+    country: "USA",
+    region: "military",
+    category: "Military",
+    badge: "🟢 VERIFIED OFFICIAL SOURCE",
+    badgeClass: "",
+    logo: "https://www.google.com/s2/favicons?domain=navy.com&sz=128",
+    url: "https://www.navy.com/",
+    description: "Official careers and enlistment portal for the United States Navy."
+  },
+  {
+    name: "U.S. Air Force Careers",
+    country: "USA",
+    region: "military",
+    category: "Military",
+    badge: "🟢 VERIFIED OFFICIAL SOURCE",
+    badgeClass: "",
+    logo: "https://www.google.com/s2/favicons?domain=airforce.com&sz=128",
+    url: "https://www.airforce.com/",
+    description: "Official United States Air Force recruitment system."
+  },
+  {
+    name: "U.S. Marine Corps",
+    country: "USA",
+    region: "military",
+    category: "Military",
+    badge: "🟢 VERIFIED OFFICIAL SOURCE",
+    badgeClass: "",
+    logo: "https://www.google.com/s2/favicons?domain=marines.com&sz=128",
+    url: "https://www.marines.com/",
+    description: "Official United States Marine Corps careers portal."
+  },
+  {
+    name: "U.S. Coast Guard",
+    country: "USA",
+    region: "military",
+    category: "Military",
+    badge: "🟢 VERIFIED OFFICIAL SOURCE",
+    badgeClass: "",
+    logo: "https://www.google.com/s2/favicons?domain=gocoastguard.com&sz=128",
+    url: "https://www.gocoastguard.com/",
+    description: "Official U.S. Coast Guard recruitment portal."
+  },
+  {
+    name: "United Airlines Careers",
+    country: "USA",
+    region: "airlines",
+    category: "Airlines",
+    badge: "🟢 VERIFIED OFFICIAL SOURCE",
+    badgeClass: "",
+    logo: "https://www.google.com/s2/favicons?domain=united.com&sz=128",
+    url: "https://careers.united.com/",
+    description: "Official career opportunities with United Airlines."
+  },
+  {
+    name: "Delta Air Lines Careers",
+    country: "USA",
+    region: "airlines",
+    category: "Airlines",
+    badge: "🟢 VERIFIED OFFICIAL SOURCE",
+    badgeClass: "",
+    logo: "https://www.google.com/s2/favicons?domain=delta.com&sz=128",
+    url: "https://www.delta.com/us/en/careers/index",
+    description: "Official career portal for Delta Air Lines."
+  },
+  {
+    name: "American Airlines Careers",
+    country: "USA",
+    region: "airlines",
+    category: "Airlines",
+    badge: "🟢 VERIFIED OFFICIAL SOURCE",
+    badgeClass: "",
+    logo: "https://www.google.com/s2/favicons?domain=aa.com&sz=128",
+    url: "https://jobs.aa.com/",
+    description: "Official American Airlines global recruitment portal."
+  },
 
-{
-name:"LinkedIn Jobs",
-country:"Worldwide",
-category:"Global Jobs",
-logo:"https://www.google.com/s2/favicons?domain=linkedin.com&sz=128",
-url:"https://www.linkedin.com/jobs/",
-description:"Worldwide professional job marketplace.",
-verified:true
-},
+  // --- CANADA ---
+  {
+    name: "Government of Canada Jobs",
+    country: "Canada",
+    region: "canada",
+    category: "Government",
+    badge: "🟢 VERIFIED GOVERNMENT SOURCE",
+    badgeClass: "gov-badge",
+    logo: "https://www.google.com/s2/favicons?domain=canada.ca&sz=128",
+    url: "https://www.canada.ca/en/services/jobs/opportunities.html",
+    description: "Official federal public service employment opportunities in Canada."
+  },
+  {
+    name: "Canada Job Bank",
+    country: "Canada",
+    region: "canada",
+    category: "Jobs",
+    badge: "🟢 VERIFIED GOVERNMENT SOURCE",
+    badgeClass: "gov-badge",
+    logo: "https://www.google.com/s2/favicons?domain=jobbank.gc.ca&sz=128",
+    url: "https://www.jobbank.gc.ca/",
+    description: "Official Government of Canada job search engine supporting domestic and international candidates."
+  },
+  {
+    name: "Canadian Armed Forces",
+    country: "Canada",
+    region: "military",
+    category: "Military",
+    badge: "🟢 VERIFIED OFFICIAL SOURCE",
+    badgeClass: "",
+    logo: "https://www.google.com/s2/favicons?domain=forces.ca&sz=128",
+    url: "https://forces.ca/",
+    description: "Official recruitment portal for the Canadian Army, Navy, and Air Force."
+  },
+  {
+    name: "RCMP Careers",
+    country: "Canada",
+    region: "canada",
+    category: "Security",
+    badge: "🟢 VERIFIED GOVERNMENT SOURCE",
+    badgeClass: "gov-badge",
+    logo: "https://www.google.com/s2/favicons?domain=rcmp-grc.gc.ca&sz=128",
+    url: "https://www.rcmp-grc.gc.ca/en/careers",
+    description: "Royal Canadian Mounted Police official career portal."
+  },
+  {
+    name: "Air Canada Careers",
+    country: "Canada",
+    region: "airlines",
+    category: "Airlines",
+    badge: "🟢 VERIFIED OFFICIAL SOURCE",
+    badgeClass: "",
+    logo: "https://www.google.com/s2/favicons?domain=aircanada.com&sz=128",
+    url: "https://careers.aircanada.com/",
+    description: "Official Air Canada global careers and aviation portal."
+  },
 
-{
-name:"USAJOBS",
-country:"USA",
-category:"Government",
-logo:"https://www.google.com/s2/favicons?domain=usajobs.gov&sz=128",
-url:"https://www.usajobs.gov/",
-description:"Official U.S. federal government jobs portal.",
-verified:true
-},
+  // --- EUROPE ---
+  {
+    name: "EURES (European Job Mobility)",
+    country: "Europe",
+    region: "europe",
+    category: "Employment Network",
+    badge: "🟢 VERIFIED GOVERNMENT SOURCE",
+    badgeClass: "gov-badge",
+    logo: "https://www.google.com/s2/favicons?domain=eures.europa.eu&sz=128",
+    url: "https://eures.europa.eu/",
+    description: "The official European employment-services network connecting jobseekers across EU/EEA countries."
+  },
+  {
+    name: "British Army Careers",
+    country: "United Kingdom",
+    region: "military",
+    category: "Military",
+    badge: "🟢 VERIFIED OFFICIAL SOURCE",
+    badgeClass: "",
+    logo: "https://www.google.com/s2/favicons?domain=army.mod.uk&sz=128",
+    url: "https://jobs.army.mod.uk/",
+    description: "Official British Army recruitment and career opportunities."
+  },
+  {
+    name: "NHS Jobs (UK)",
+    country: "United Kingdom",
+    region: "europe",
+    category: "Healthcare",
+    badge: "🟢 VERIFIED GOVERNMENT SOURCE",
+    badgeClass: "gov-badge",
+    logo: "https://www.google.com/s2/favicons?domain=jobs.nhs.uk&sz=128",
+    url: "https://www.jobs.nhs.uk/",
+    description: "The official recruitment portal for the United Kingdom's National Health Service."
+  },
+  {
+    name: "Lufthansa Group Careers",
+    country: "Germany",
+    region: "airlines",
+    category: "Airlines",
+    badge: "🟢 VERIFIED OFFICIAL SOURCE",
+    badgeClass: "",
+    logo: "https://www.google.com/s2/favicons?domain=lufthansagroup.com&sz=128",
+    url: "https://www.lufthansagroup.com/en/careers.html",
+    description: "Official career portal for Lufthansa and affiliated European airlines."
+  },
+  {
+    name: "British Airways Careers",
+    country: "United Kingdom",
+    region: "airlines",
+    category: "Airlines",
+    badge: "🟢 VERIFIED OFFICIAL SOURCE",
+    badgeClass: "",
+    logo: "https://www.google.com/s2/favicons?domain=britishairways.com&sz=128",
+    url: "https://www.britishairways.com/en-gb/information/about-ba/careers",
+    description: "Official British Airways career portal."
+  },
 
-{
-name:"Government of Canada Jobs",
-country:"Canada",
-category:"Government",
-logo:"https://www.google.com/s2/favicons?domain=canada.ca&sz=128",
-url:"https://www.canada.ca/en/services/jobs/opportunities.html",
-description:"Official Government of Canada employment opportunities.",
-verified:true
-},
+  // --- AFRICA & KENYA ---
+  {
+    name: "Public Service Commission of Kenya",
+    country: "Kenya",
+    region: "kenya",
+    category: "Government",
+    badge: "🟢 VERIFIED GOVERNMENT SOURCE",
+    badgeClass: "gov-badge",
+    logo: "https://www.google.com/s2/favicons?domain=publicservice.go.ke&sz=128",
+    url: "https://www.psckjobs.go.ke/",
+    description: "Official recruitment portal for Kenyan Government ministries and public service offices."
+  },
+  {
+    name: "Kenya Public Universities Recruitment",
+    country: "Kenya",
+    region: "kenya",
+    category: "Government",
+    badge: "🟢 VERIFIED GOVERNMENT SOURCE",
+    badgeClass: "gov-badge",
+    logo: "https://www.google.com/s2/favicons?domain=publicservice.go.ke&sz=128",
+    url: "https://pscims.publicservice.go.ke/puio/",
+    description: "Official portal for public universities and independent government offices in Kenya."
+  },
+  {
+    name: "United Nations in Kenya Careers",
+    country: "Kenya",
+    region: "kenya",
+    category: "International",
+    badge: "🟢 VERIFIED OFFICIAL SOURCE",
+    badgeClass: "",
+    logo: "https://www.google.com/s2/favicons?domain=careers.un.org&sz=128",
+    url: "https://careers.un.org/",
+    description: "Official UN career opportunities based in Nairobi and worldwide offices."
+  },
+  {
+    name: "Kenya Airways Careers",
+    country: "Kenya",
+    region: "kenya",
+    category: "Airlines",
+    badge: "🟢 VERIFIED OFFICIAL SOURCE",
+    badgeClass: "",
+    logo: "https://www.google.com/s2/favicons?domain=kenya-airways.com&sz=128",
+    url: "https://www.kenya-airways.com/en/about-us/careers/",
+    description: "Official career portal for Kenya Airways ('The Pride of Africa')."
+  },
 
-{
-name:"Canada Job Bank",
-country:"Canada",
-category:"Jobs",
-logo:"https://www.google.com/s2/favicons?domain=jobbank.gc.ca&sz=128",
-url:"https://www.jobbank.gc.ca/",
-description:"Government of Canada Job Bank.",
-verified:true
-},
+  // --- CRUISE SHIPS ---
+  {
+    name: "Royal Caribbean Group",
+    country: "Worldwide",
+    region: "cruise",
+    category: "Cruise",
+    badge: "🟢 VERIFIED OFFICIAL SOURCE",
+    badgeClass: "",
+    logo: "https://www.google.com/s2/favicons?domain=royalcaribbeangroup.com&sz=128",
+    url: "https://careers.royalcaribbeangroup.com/",
+    description: "Hiring chefs, waiters, housekeeping, deck crew, marine officers, IT, and guest services."
+  },
+  {
+    name: "Carnival Cruise Line",
+    country: "Worldwide",
+    region: "cruise",
+    category: "Cruise",
+    badge: "🟢 VERIFIED OFFICIAL SOURCE",
+    badgeClass: "",
+    logo: "https://www.google.com/s2/favicons?domain=carnival.com&sz=128",
+    url: "https://www.carnival.com/careers",
+    description: "Global cruise ship employment for culinary, hospitality, and engineering professionals."
+  },
+  {
+    name: "MSC Cruises Careers",
+    country: "Worldwide",
+    region: "cruise",
+    category: "Cruise",
+    badge: "🟢 VERIFIED OFFICIAL SOURCE",
+    badgeClass: "",
+    logo: "https://www.google.com/s2/favicons?domain=msccruises.com&sz=128",
+    url: "https://www.msccruises.com/",
+    description: "Official MSC Cruises onboard and shore-side career opportunities."
+  },
+  {
+    name: "Norwegian Cruise Line",
+    country: "Worldwide",
+    region: "cruise",
+    category: "Cruise",
+    badge: "🟢 VERIFIED OFFICIAL SOURCE",
+    badgeClass: "",
+    logo: "https://www.google.com/s2/favicons?domain=ncl.com&sz=128",
+    url: "https://www.ncl.com/about/careers",
+    description: "Explore global career opportunities across Norwegian Cruise Line ships."
+  },
+  {
+    name: "Disney Cruise Line",
+    country: "Worldwide",
+    region: "cruise",
+    category: "Cruise",
+    badge: "🟢 VERIFIED OFFICIAL SOURCE",
+    badgeClass: "",
+    logo: "https://www.google.com/s2/favicons?domain=disneycruiseline.com&sz=128",
+    url: "https://dcljobs.com/",
+    description: "Official Disney Cruise Line entertainment, hospitality, and culinary careers."
+  },
 
-{
-name:"EURES",
-country:"Europe",
-category:"European Jobs",
-logo:"https://www.google.com/s2/favicons?domain=eures.europa.eu&sz=128",
-url:"https://eures.europa.eu/",
-description:"European employment services network.",
-verified:true
-},
-
-{
-name:"Kenya Public Service Commission",
-country:"Kenya",
-category:"Government",
-logo:"https://www.google.com/s2/favicons?domain=publicservice.go.ke&sz=128",
-url:"https://www.psckjobs.go.ke/",
-description:"Kenya Public Service Commission recruitment portal.",
-verified:true
-},
-
-{
-name:"Kenya Public Universities & Independent Offices",
-country:"Kenya",
-category:"Government",
-logo:"https://www.google.com/s2/favicons?domain=publicservice.go.ke&sz=128",
-url:"https://pscims.publicservice.go.ke/puio/",
-description:"Official Kenyan public recruitment system.",
-verified:true
-},
-
-{
-name:"United Nations Careers",
-country:"Worldwide",
-category:"International",
-logo:"https://www.google.com/s2/favicons?domain=careers.un.org&sz=128",
-url:"https://careers.un.org/",
-description:"United Nations careers portal.",
-verified:true
-},
-
-{
-name:"Royal Caribbean Group",
-country:"Worldwide",
-category:"Cruise",
-logo:"https://www.google.com/s2/favicons?domain=royalcaribbeangroup.com&sz=128",
-url:"https://careers.royalcaribbeangroup.com/",
-description:"Cruise ship and shore careers.",
-verified:true
-},
-
-{
-name:"Carnival Cruise Line",
-country:"Worldwide",
-category:"Cruise",
-logo:"https://www.google.com/s2/favicons?domain=carnival.com&sz=128",
-url:"https://www.carnival.com/careers",
-description:"Cruise careers and employment opportunities.",
-verified:true
-},
-
-{
-name:"MSC Cruises Careers",
-country:"Worldwide",
-category:"Cruise",
-logo:"https://www.google.com/s2/favicons?domain=msccruises.com&sz=128",
-url:"https://www.msccruises.com/",
-description:"MSC Cruises career information.",
-verified:true
-},
-
-{
-name:"Emirates Careers",
-country:"UAE",
-category:"Aviation",
-logo:"https://www.google.com/s2/favicons?domain=emirates.com&sz=128",
-url:"https://www.emiratesgroupcareers.com/",
-description:"Emirates Group careers.",
-verified:true
-},
-
-{
-name:"Etihad Careers",
-country:"UAE",
-category:"Aviation",
-logo:"https://www.google.com/s2/favicons?domain=etihad.com&sz=128",
-url:"https://careers.etihad.com/",
-description:"Etihad Airways careers.",
-verified:true
-},
-
-{
-name:"Saudia Careers",
-country:"Saudi Arabia",
-category:"Aviation",
-logo:"https://www.google.com/s2/favicons?domain=saudia.com&sz=128",
-url:"https://careers.saudia.com/",
-description:"Saudia aviation careers.",
-verified:true
-},
-
-{
-name:"Qatar Government Careers",
-country:"Qatar",
-category:"Government",
-logo:"https://www.google.com/s2/favicons?domain=gov.qa&sz=128",
-url:"https://www.gov.qa/",
-description:"Qatar government information and services.",
-verified:true
-},
-
-{
-name:"NHS Jobs",
-country:"United Kingdom",
-category:"Healthcare",
-logo:"https://www.google.com/s2/favicons?domain=jobs.nhs.uk&sz=128",
-url:"https://www.jobs.nhs.uk/",
-description:"NHS employment portal.",
-verified:true
-},
-
-{
-name:"Australian Government Jobs",
-country:"Australia",
-category:"Government",
-logo:"https://www.google.com/s2/favicons?domain=apsjobs.gov.au&sz=128",
-url:"https://www.apsjobs.gov.au/",
-description:"Australian Public Service careers.",
-verified:true
-},
-
-{
-name:"New Zealand Government Jobs",
-country:"New Zealand",
-category:"Government",
-logo:"https://www.google.com/s2/favicons?domain=jobs.govt.nz&sz=128",
-url:"https://jobs.govt.nz/",
-description:"New Zealand government jobs.",
-verified:true
-}
+  // --- AIRLINES ---
+  {
+    name: "Qatar Airways",
+    country: "Qatar",
+    region: "airlines",
+    category: "Airlines",
+    badge: "🟢 VERIFIED OFFICIAL SOURCE",
+    badgeClass: "",
+    logo: "https://www.google.com/s2/favicons?domain=qatarairways.com&sz=128",
+    url: "https://careers.qatarairways.com/",
+    description: "Official Qatar Airways global airline careers and cabin crew recruitment portal."
+  },
+  {
+    name: "Emirates Group Careers",
+    country: "UAE",
+    region: "airlines",
+    category: "Airlines",
+    badge: "🟢 VERIFIED OFFICIAL SOURCE",
+    badgeClass: "",
+    logo: "https://www.google.com/s2/favicons?domain=emirates.com&sz=128",
+    url: "https://www.emiratesgroupcareers.com/",
+    description: "Official Emirates Airline and Dnata recruitment portal based in Dubai."
+  },
+  {
+    name: "Etihad Airways",
+    country: "UAE",
+    region: "airlines",
+    category: "Airlines",
+    badge: "🟢 VERIFIED OFFICIAL SOURCE",
+    badgeClass: "",
+    logo: "https://www.google.com/s2/favicons?domain=etihad.com&sz=128",
+    url: "https://careers.etihad.com/",
+    description: "Official Etihad Airways aviation careers portal."
+  },
+  {
+    name: "Saudia Careers",
+    country: "Saudi Arabia",
+    region: "airlines",
+    category: "Airlines",
+    badge: "🟢 VERIFIED OFFICIAL SOURCE",
+    badgeClass: "",
+    logo: "https://www.google.com/s2/favicons?domain=saudia.com&sz=128",
+    url: "https://careers.saudia.com/",
+    description: "Official Saudi Arabian Airlines recruitment portal."
+  },
+  {
+    name: "Turkish Airlines",
+    country: "Turkey",
+    region: "airlines",
+    category: "Airlines",
+    badge: "🟢 VERIFIED OFFICIAL SOURCE",
+    badgeClass: "",
+    logo: "https://www.google.com/s2/favicons?domain=turkishairlines.com&sz=128",
+    url: "https://careers.turkishairlines.com/",
+    description: "Official Turkish Airlines career opportunities."
+  }
 
 ];
 
-
 /* =========================================================
-   STARTER DIRECTORY JOBS
+   RENDER DIRECTORY & SECTIONS
 ========================================================= */
 
-const starterJobs = [
+function renderPortals(filterRegion = 'all') {
+  const grid = document.getElementById("directoryGrid");
+  let filtered = worldwidePortals;
 
-{
-id:"portal-qatar",
-title:"Qatar Airways Careers",
-company:"Qatar Airways",
-location:"Qatar",
-country:"Qatar",
-category:"Aviation",
-type:"External Portal",
-salary:"See official vacancy",
-logo:"https://www.google.com/s2/favicons?domain=qatarairways.com&sz=128",
-description:"Explore current Qatar Airways vacancies through the official careers portal.",
-apply:"https://careers.qatarairways.com/",
-verified:true,
-external:true
-},
+  if (filterRegion !== 'all') {
+    filtered = worldwidePortals.filter(p => p.region === filterRegion);
+  }
 
-{
-id:"portal-linkedin",
-title:"Worldwide Jobs",
-company:"LinkedIn Jobs",
-location:"Worldwide",
-country:"Worldwide",
-category:"Global Jobs",
-type:"External Portal",
-salary:"Varies",
-logo:"https://www.google.com/s2/favicons?domain=linkedin.com&sz=128",
-description:"Search professional opportunities worldwide on LinkedIn.",
-apply:"https://www.linkedin.com/jobs/",
-verified:true,
-external:true
-},
+  grid.innerHTML = filtered.map(portal => `
+    <div class="portal-card">
+      <div>
+        <div class="portal-head">
+          <img src="${portal.logo}" alt="${portal.name} logo" onerror="this.style.display='none'">
+          <div>
+            <h3>${portal.name}</h3>
+            <span class="verified-badge ${portal.badgeClass}">${portal.badge}</span>
+          </div>
+        </div>
+        <p>${portal.description}</p>
+      </div>
+      <div>
+        <div class="portal-tags">
+          <span class="tag">📍 ${portal.country}</span>
+          <span class="tag">💼 ${portal.category}</span>
+        </div>
+        <a class="btn btn-primary" href="${portal.url}" target="_blank" rel="noopener noreferrer" style="width:100%">
+          Official Careers →
+        </a>
+      </div>
+    </div>
+  `).join("");
 
-{
-id:"portal-usajobs",
-title:"U.S. Federal Government Jobs",
-company:"USAJOBS",
-location:"United States",
-country:"USA",
-category:"Government",
-type:"External Portal",
-salary:"See vacancy",
-logo:"https://www.google.com/s2/favicons?domain=usajobs.gov&sz=128",
-description:"Search official U.S. federal government employment opportunities.",
-apply:"https://www.usajobs.gov/",
-verified:true,
-external:true
-},
-
-{
-id:"portal-canada",
-title:"Government of Canada Jobs",
-company:"Government of Canada",
-location:"Canada",
-country:"Canada",
-category:"Government",
-type:"External Portal",
-salary:"See vacancy",
-logo:"https://www.google.com/s2/favicons?domain=canada.ca&sz=128",
-description:"Official Canadian government employment opportunities.",
-apply:"https://www.canada.ca/en/services/jobs/opportunities.html",
-verified:true,
-external:true
-},
-
-{
-id:"portal-jobbank",
-title:"Canada Job Bank",
-company:"Government of Canada",
-location:"Canada",
-country:"Canada",
-category:"Jobs",
-type:"External Portal",
-salary:"See vacancy",
-logo:"https://www.google.com/s2/favicons?domain=jobbank.gc.ca&sz=128",
-description:"Search jobs and apprenticeships across Canada.",
-apply:"https://www.jobbank.gc.ca/",
-verified:true,
-external:true
-},
-
-{
-id:"portal-eures",
-title:"European Jobs",
-company:"EURES",
-location:"Europe",
-country:"Europe",
-category:"European Jobs",
-type:"External Portal",
-salary:"See vacancy",
-logo:"https://www.google.com/s2/favicons?domain=eures.europa.eu&sz=128",
-description:"Explore employment opportunities across Europe.",
-apply:"https://eures.europa.eu/",
-verified:true,
-external:true
-},
-
-{
-id:"portal-kenya-psc",
-title:"Kenya Public Service Jobs",
-company:"Public Service Commission of Kenya",
-location:"Kenya",
-country:"Kenya",
-category:"Government",
-type:"External Portal",
-salary:"See vacancy",
-logo:"https://www.google.com/s2/favicons?domain=publicservice.go.ke&sz=128",
-description:"Official Kenyan Public Service Commission recruitment.",
-apply:"https://www.psckjobs.go.ke/",
-verified:true,
-external:true
-},
-
-{
-id:"portal-cruise",
-title:"Cruise Ship Careers",
-company:"Royal Caribbean Group",
-location:"Worldwide",
-country:"Worldwide",
-category:"Cruise",
-type:"External Portal",
-salary:"See vacancy",
-logo:"https://www.google.com/s2/favicons?domain=royalcaribbeangroup.com&sz=128",
-description:"Ship and shore careers including hospitality, marine, culinary and guest services.",
-apply:"https://careers.royalcaribbeangroup.com/",
-verified:true,
-external:true
+  document.getElementById("statPortalsCount").textContent = worldwidePortals.length + "+";
 }
 
-];
+function renderDedicatedSections() {
+  // Kenya Section
+  const kenyaGrid = document.getElementById("kenyaGrid");
+  const kenyaPortals = worldwidePortals.filter(p => p.region === 'kenya');
+  kenyaGrid.innerHTML = kenyaPortals.map(portal => `
+    <div class="portal-card">
+      <div>
+        <div class="portal-head">
+          <img src="${portal.logo}" alt="${portal.name} logo" onerror="this.style.display='none'">
+          <div>
+            <h3>${portal.name}</h3>
+            <span class="verified-badge ${portal.badgeClass}">${portal.badge}</span>
+          </div>
+        </div>
+        <p>${portal.description}</p>
+      </div>
+      <div>
+        <div class="portal-tags">
+          <span class="tag">📍 ${portal.country}</span>
+          <span class="tag">💼 ${portal.category}</span>
+        </div>
+        <a class="btn btn-primary" href="${portal.url}" target="_blank" rel="noopener noreferrer" style="width:100%">
+          Official Careers →
+        </a>
+      </div>
+    </div>
+  `).join("");
 
+  // Military Section
+  const militaryGrid = document.getElementById("militaryGrid");
+  const militaryPortals = worldwidePortals.filter(p => p.region === 'military');
+  militaryGrid.innerHTML = militaryPortals.map(portal => `
+    <div class="portal-card">
+      <div>
+        <div class="portal-head">
+          <img src="${portal.logo}" alt="${portal.name} logo" onerror="this.style.display='none'">
+          <div>
+            <h3>${portal.name}</h3>
+            <span class="verified-badge ${portal.badgeClass}">${portal.badge}</span>
+          </div>
+        </div>
+        <p>${portal.description}</p>
+      </div>
+      <div>
+        <div class="portal-tags">
+          <span class="tag">📍 ${portal.country}</span>
+          <span class="tag">💼 ${portal.category}</span>
+        </div>
+        <a class="btn btn-primary" href="${portal.url}" target="_blank" rel="noopener noreferrer" style="width:100%">
+          Official Careers →
+        </a>
+      </div>
+    </div>
+  `).join("");
 
-/* =========================================================
-   ESCAPE HTML
-========================================================= */
+  // Cruise Section
+  const cruiseGrid = document.getElementById("cruiseGrid");
+  const cruisePortals = worldwidePortals.filter(p => p.region === 'cruise');
+  cruiseGrid.innerHTML = cruisePortals.map(portal => `
+    <div class="portal-card">
+      <div>
+        <div class="portal-head">
+          <img src="${portal.logo}" alt="${portal.name} logo" onerror="this.style.display='none'">
+          <div>
+            <h3>${portal.name}</h3>
+            <span class="verified-badge ${portal.badgeClass}">${portal.badge}</span>
+          </div>
+        </div>
+        <p>${portal.description}</p>
+      </div>
+      <div>
+        <div class="portal-tags">
+          <span class="tag">📍 ${portal.country}</span>
+          <span class="tag">💼 ${portal.category}</span>
+        </div>
+        <a class="btn btn-primary" href="${portal.url}" target="_blank" rel="noopener noreferrer" style="width:100%">
+          Official Careers →
+        </a>
+      </div>
+    </div>
+  `).join("");
 
-function esc(value){
-
-return String(value ?? "")
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
-
+  // Airlines Section
+  const airlinesGrid = document.getElementById("airlinesGrid");
+  const airlinesPortals = worldwidePortals.filter(p => p.region === 'airlines');
+  airlinesGrid.innerHTML = airlinesPortals.map(portal => `
+    <div class="portal-card">
+      <div>
+        <div class="portal-head">
+          <img src="${portal.logo}" alt="${portal.name} logo" onerror="this.style.display='none'">
+          <div>
+            <h3>${portal.name}</h3>
+            <span class="verified-badge ${portal.badgeClass}">${portal.badge}</span>
+          </div>
+        </div>
+        <p>${portal.description}</p>
+      </div>
+      <div>
+        <div class="portal-tags">
+          <span class="tag">📍 ${portal.country}</span>
+          <span class="tag">💼 ${portal.category}</span>
+        </div>
+        <a class="btn btn-primary" href="${portal.url}" target="_blank" rel="noopener noreferrer" style="width:100%">
+          Official Careers →
+        </a>
+      </div>
+    </div>
+  `).join("");
 }
 
-
-/* =========================================================
-   MODALS
-========================================================= */
-
-window.openModal=function(id){
-
-document.getElementById(id)?.classList.add("show");
-
+window.switchRegion = function(region) {
+  document.querySelectorAll(".region-tab").forEach(tab => tab.classList.remove("active"));
+  event.target.classList.add("active");
+  renderPortals(region);
 };
 
-window.closeModal=function(id){
-
-document.getElementById(id)?.classList.remove("show");
-
+window.quickFilter = function(regionKey) {
+  document.getElementById("directory").scrollIntoView({behavior:"smooth"});
+  const mapKey = regionKey.toLowerCase().includes('usa') ? 'usa' :
+                 regionKey.toLowerCase().includes('canada') ? 'canada' :
+                 regionKey.toLowerCase().includes('europe') ? 'europe' :
+                 regionKey.toLowerCase().includes('kenya') ? 'kenya' :
+                 regionKey.toLowerCase().includes('military') ? 'military' :
+                 regionKey.toLowerCase().includes('cruise') ? 'cruise' :
+                 regionKey.toLowerCase().includes('airlines') ? 'airlines' : 'all';
+  renderPortals(mapKey);
 };
 
+window.searchDirectory = function() {
+  const kw = document.getElementById("heroKeyword").value.toLowerCase();
+  const loc = document.getElementById("heroLocation").value.toLowerCase();
+  const grid = document.getElementById("directoryGrid");
 
-/* Close modal when background clicked */
+  const filtered = worldwidePortals.filter(p => {
+    const text = (p.name + " " + p.country + " " + p.category + " " + p.description).toLowerCase();
+    return (!kw || text.includes(kw)) && (!loc || text.includes(loc));
+  });
 
-window.addEventListener("click",function(e){
-
-if(e.target.classList.contains("modal")){
-
-e.target.classList.remove("show");
-
-}
-
-});
-
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-function showToast(message){
-
-const toast=document.createElement("div");
-
-toast.className="toast show";
-
-toast.textContent=message;
-
-document.body.appendChild(toast);
-
-setTimeout(()=>toast.remove(),3500);
-
-}
-
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
-window.toggleMobileMenu=function(){
-
-const nav=document.querySelector(".navlinks");
-
-if(!nav)return;
-
-if(nav.style.display==="flex"){
-
-nav.style.display="none";
-
-}else{
-
-nav.style.display="flex";
-
-nav.style.position="absolute";
-
-nav.style.top="72px";
-
-nav.style.left="0";
-
-nav.style.right="0";
-
-nav.style.background="#fff";
-
-nav.style.padding="20px";
-
-nav.style.flexDirection="column";
-
-nav.style.borderBottom="1px solid #e4e7ec";
-
-}
-
+  document.getElementById("directory").scrollIntoView({behavior:"smooth"});
+  
+  grid.innerHTML = filtered.map(portal => `
+    <div class="portal-card">
+      <div>
+        <div class="portal-head">
+          <img src="${portal.logo}" alt="${portal.name} logo" onerror="this.style.display='none'">
+          <div>
+            <h3>${portal.name}</h3>
+            <span class="verified-badge ${portal.badgeClass}">${portal.badge}</span>
+          </div>
+        </div>
+        <p>${portal.description}</p>
+      </div>
+      <div>
+        <div class="portal-tags">
+          <span class="tag">📍 ${portal.country}</span>
+          <span class="tag">💼 ${portal.category}</span>
+        </div>
+        <a class="btn btn-primary" href="${portal.url}" target="_blank" rel="noopener noreferrer" style="width:100%">
+          Official Careers →
+        </a>
+      </div>
+    </div>
+  `).join("");
 };
 
 
 /* =========================================================
-   LOAD DEFAULT DATA
+   HUMAN CV EXPERT & STORAGE UPLOAD
 ========================================================= */
 
-async function loadData(){
+const auth = getAuth(app);
+const db = getFirestore(app);
+const storage = getStorage(app);
 
-jobs=[...starterJobs];
-
-portals=[...defaultPortals];
-
-try{
-
-const jobSnapshot=await getDocs(
-collection(db,"jobs")
-);
-
-jobSnapshot.forEach(item=>{
-
-jobs.push({
-id:item.id,
-...item.data()
+onAuthStateChanged(auth, user => {
+  if (!user) {
+    signInAnonymously(auth).catch(err => console.error("Anonymous auth error:", err));
+  } else if (!user.isAnonymous) {
+    staffUser = user;
+    document.getElementById("staffLoginInline").style.display = "none";
+    document.getElementById("staffDashboard").style.display = "block";
+    loadStaffRequests();
+  }
 });
 
-});
-
-}catch(error){
-
-console.warn("Could not load Firestore jobs:",error);
-
-}
-
-
-try{
-
-const portalSnapshot=await getDocs(
-collection(db,"careerPortals")
-);
-
-portalSnapshot.forEach(item=>{
-
-portals.push({
-id:item.id,
-...item.data()
-});
-
-});
-
-}catch(error){
-
-console.warn("Could not load career portals:",error);
-
-}
-
-
-renderCountries();
-
-renderCategories();
-
-renderJobs();
-
-renderPortals();
-
-document.getElementById("jobCount").textContent=
-String(portals.length);
-
-}
-
-
-/* =========================================================
-   RENDER COUNTRIES
-========================================================= */
-
-function renderCountries(){
-
-const select=document.getElementById("country");
-
-const countries=[
-
-...new Set(
-jobs
-.map(j=>j.country || j.location || "")
-.filter(Boolean)
-)
-
-].sort();
-
-select.innerHTML=
-'<option value="">All countries</option>';
-
-countries.forEach(country=>{
-
-select.innerHTML+=
-`<option value="${esc(country)}">${esc(country)}</option>`;
-
-});
-
-}
-
-
-/* =========================================================
-   RENDER CATEGORIES
-========================================================= */
-
-function renderCategories(){
-
-const select=document.getElementById("categoryFilter");
-
-const categories=[
-
-...new Set(
-jobs
-.map(j=>j.category)
-.filter(Boolean)
-)
-
-].sort();
-
-select.innerHTML=
-'<option value="">All categories</option>';
-
-categories.forEach(category=>{
-
-select.innerHTML+=
-`<option value="${esc(category)}">${esc(category)}</option>`;
-
-});
-
-}
-
-
-/* =========================================================
-   SEARCH
-========================================================= */
-
-window.searchJobs=function(){
-
-const keyword=
-document.getElementById("heroKeyword").value.trim();
-
-const location=
-document.getElementById("heroLocation").value.trim();
-
-document.getElementById("keyword").value=keyword;
-
-if(location){
-
-const countrySelect=document.getElementById("country");
-
-const option=[
-...countrySelect.options
-].find(
-x=>x.value.toLowerCase().includes(location.toLowerCase())
-);
-
-if(option){
-
-countrySelect.value=option.value;
-
-}
-
-}
-
-document.getElementById("jobs")
-.scrollIntoView({behavior:"smooth"});
-
-renderJobs();
-
-};
-
-
-window.quickSearch=function(value){
-
-document.getElementById("keyword").value=value;
-
-document.getElementById("jobs")
-.scrollIntoView({behavior:"smooth"});
-
-renderJobs();
-
-};
-
-
-window.filterCategory=function(category){
-
-document.getElementById("categoryFilter").value=category;
-
-document.getElementById("jobs")
-.scrollIntoView({behavior:"smooth"});
-
-renderJobs();
-
+window.submitHumanRequest = async function() {
+  const name = document.getElementById("hName").value.trim();
+  const email = document.getElementById("hEmail").value.trim();
+  const phone = document.getElementById("hPhone").value.trim();
+  const country = document.getElementById("hCountry").value.trim();
+  const role = document.getElementById("hRole").value.trim();
+  const message = document.getElementById("hMessage").value.trim();
+  const oldCV = document.getElementById("hOldCV").files[0];
+  const documentFile = document.getElementById("hDocument").files[0];
+
+  if (!name || !email || !phone) {
+    document.getElementById("humanMessage").innerHTML = `<div class="warning">Please enter your full name, email, and phone/WhatsApp number.</div>`;
+    return;
+  }
+
+  try {
+    const user = auth.currentUser;
+    if (!user) throw new Error("Authentication session not ready.");
+
+    let oldCVUrl = "";
+    let oldCVName = "";
+
+    if (oldCV) {
+      if (oldCV.size > 10 * 1024 * 1024) throw new Error("File size must be under 10MB.");
+      oldCVName = oldCV.name;
+      const sRef = ref(storage, `cvFiles/${user.uid}/original/${Date.now()}_${oldCV.name}`);
+      const snap = await uploadBytes(sRef, oldCV);
+      oldCVUrl = await getDownloadURL(snap.ref);
+    }
+
+    await addDoc(collection(db, "humanCVRequests"), {
+      name, email, phone, country, targetRole: role, message,
+      oldCVName, oldCVUrl, userId: user.uid,
+      supportingDoc: documentFile ? documentFile.name : "",
+      status: "New",
+      createdAt: serverTimestamp()
+    });
+
+    document.getElementById("humanMessage").innerHTML = `
+      <div class="human-notice">
+        <strong>Request Submitted Successfully!</strong><br><br>
+        Your Human CV Expert request and file have been securely sent to Customer Care.
+      </div>`;
+  } catch (err) {
+    document.getElementById("humanMessage").innerHTML = `<div class="warning">${err.message}</div>`;
+  }
 };
 
 
 /* =========================================================
-   RENDER JOBS
+   STAFF LOGIN & MANAGEMENT
 ========================================================= */
 
-function renderJobs(){
+window.staffLogin = async function(source) {
+  const email = document.getElementById(source === 'modal' ? 'staffEmail' : 'staffEmailInline').value.trim();
+  const password = document.getElementById(source === 'modal' ? 'staffPassword' : 'staffPasswordInline').value;
+  const msgEl = document.getElementById(source === 'modal' ? 'staffLoginMessage' : 'staffLoginMessageInline');
 
-const grid=document.getElementById("jobGrid");
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    closeModal('staffLoginModal');
+    showToast("Staff login successful.");
+  } catch (err) {
+    msgEl.style.display = "block";
+    msgEl.textContent = "Login failed: " + err.message;
+  }
+};
 
-const keyword=
-document.getElementById("keyword").value
-.trim()
-.toLowerCase();
+window.staffLogout = async function() {
+  await signOut(auth);
+  document.getElementById("staffDashboard").style.display = "none";
+  document.getElementById("staffLoginInline").style.display = "block";
+  showToast("Logged out successfully.");
+};
 
-const country=
-document.getElementById("country").value;
+window.showStaffSection = function(secId) {
+  document.querySelectorAll(".dashboard-section").forEach(s => s.classList.remove("active"));
+  document.getElementById(secId + "Section").classList.add("active");
+};
 
-const category=
-document.getElementById("categoryFilter").value;
-
-const type=
-document.getElementById("jobType").value;
-
-
-const filtered=jobs.filter(job=>{
-
-const text=[
-job.title,
-job.company,
-job.location,
-job.country,
-job.category,
-job.description
-]
-.join(" ")
-.toLowerCase();
-
-const keywordMatch=
-!keyword || text.includes(keyword);
-
-const countryMatch=
-!country ||
-job.country===country ||
-job.location===country;
-
-const categoryMatch=
-!category ||
-job.category===category;
-
-const typeMatch=
-!type ||
-job.type===type;
-
-return keywordMatch &&
-countryMatch &&
-categoryMatch &&
-typeMatch;
-
-});
-
-
-if(!filtered.length){
-
-grid.innerHTML=`
-
-<div class="service full">
-
-<h3>No matching opportunities found.</h3>
-
-<p style="color:var(--muted);margin-top:7px">
-Try another job title, country or category.
-</p>
-
-</div>
-
-`;
-
-return;
-
+async function loadStaffRequests() {
+  const listEl = document.getElementById("requestsList");
+  try {
+    const snap = await getDocs(collection(db, "humanCVRequests"));
+    if (snap.empty) {
+      listEl.innerHTML = "<p>No Human CV requests found.</p>";
+      return;
+    }
+    listEl.innerHTML = snap.docs.map(docSnap => {
+      const d = docSnap.data();
+      return `
+        <div class="portal-card" style="margin-bottom:12px">
+          <h4>${d.name} (${d.targetRole || 'General CV'})</h4>
+          <p>📧 ${d.email} | 📱 ${d.phone} | 📍 ${d.country || 'N/A'}</p>
+          <p>${d.message || ''}</p>
+          ${d.oldCVUrl ? `<a class="tag" href="${d.oldCVUrl}" target="_blank">📎 Download Old CV (${d.oldCVName})</a>` : ''}
+          <span class="tag" style="margin-top:8px">Status: ${d.status || 'New'}</span>
+        </div>
+      `;
+    }).join("");
+  } catch (err) {
+    listEl.innerHTML = "<p>Error loading requests.</p>";
+  }
 }
 
+window.addNewPortal = async function() {
+  const name = document.getElementById("adminPortalName").value.trim();
+  const country = document.getElementById("adminPortalCountry").value.trim();
+  const category = document.getElementById("adminPortalCategory").value.trim();
+  const logo = document.getElementById("adminPortalLogo").value.trim();
+  const url = document.getElementById("adminPortalUrl").value.trim();
+  const description = document.getElementById("adminPortalDesc").value.trim();
 
-grid.innerHTML=filtered.map(job=>`
+  if (!name || !url) {
+    showToast("Portal name and URL are required.");
+    return;
+  }
 
-<div class="job-card">
+  try {
+    await addDoc(collection(db, "careerPortals"), {
+      name, country, category, logo, url, description,
+      verified: true,
+      createdAt: serverTimestamp()
+    });
+    worldwidePortals.push({
+      name, country, region: 'all', category, badge: "🟢 VERIFIED OFFICIAL SOURCE", badgeClass: "", logo, url, description
+    });
+    renderPortals('all');
+    showToast("Portal added successfully!");
+  } catch (err) {
+    showToast("Error adding portal: " + err.message);
+  }
+};
 
-<div class="job-top">
+window.openModal = function(id) { document.getElementById(id)?.classList.add("show"); };
+window.closeModal = function(id) { document.getElementById(id)?.classList.remove("show"); };
 
-<img
-class="company-logo"
-src="${esc(job.logo || 'https://www.google.com/s2/favicons?domain=google.com&sz=128')}"
-alt="${esc(job.company || 'Company')} logo"
-onerror="this.style.display='none'">
-
-<div>
-
-${job.verified ? `
-<span class="tag verified">
-✓ Verified
-</span>
-`:""}
-
-${job.external ? `
-<span class="tag external">
-External Portal
-</span>
-`:""}
-
-</div>
-
-</div>
-
-<h3>${esc(job.title)}</h3>
-
-<div class="company">
-${esc(job.company)}
-</div>
-
-<div class="job-meta">
-
-<span class="tag">
-📍 ${esc(job.location || job.country || "Worldwide")}
-</span>
-
-<span class="tag">
-💼 ${esc(job.category || "General")}
-</span>
-
-<span class="tag">
-${esc(job.type || "Career")}
-</span>
-
-</div>
-
-<p class="job-description">
-${esc(job.description || "View the career source for current opportunities.")}
-</p>
-
-<p style="margin-top:10px;font-weight:800">
-💰 ${esc(job.salary || "See vacancy")}
-</p>
-
-<div class="job-buttons">
-
-<button
-class="btn btn-primary"
-onclick="showJob('${esc(job.id)}')">
-View Details
-</button>
-
-${
-job.apply
-?
-`<a
-class="btn btn-outline"
-href="${esc(job.apply)}"
-target="_blank"
-rel="noopener noreferrer">
-Official Apply →
-</a>`
-:""
+function showToast(msg) {
+  const t = document.createElement("div");
+  t.className = "toast show";
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 3500);
 }
 
-<button
-class="btn btn-success"
-onclick="requestApplication('${esc(job.id)}')">
-👤 Human Application Help
-</button>
+document.getElementById("year").textContent = new Date().getFullYear();
+renderPortals('all');
+renderDedicatedSections();
 
-</div>
+</script>
 
-</div>
-
-`).join("");
-
-}
-
-
-/* =========================================================
-   JOB DETAILS
-========================================================= */
-
-window.showJob=function(id){
-
-const job=jobs.find(x=>String(x.id)===String(id));
-
-if(!job)return;
-
-document.getElementById("jobDetails").innerHTML=`
-
-<h2>${esc(job.title)}</h2>
-
-<p class="modal-sub">
-${esc(job.company)}
-</p>
-
-<div class="job-meta">
-
-<span class="tag verified">
-${job.verified ? "✓ Verified Source":"Source"}
-</span>
-
-<span class="tag">
-📍 ${esc(job.location || job.country || "Worldwide")}
-</span>
-
-<span class="tag">
-💼 ${esc(job.category || "General")}
-</span>
-
-</div>
-
-<div class="detail">
-
-<div class="notice">
-<strong>Career source:</strong>
-${job.external
-?"This opportunity is handled through the external official career portal."
-:"This job was published by Mustafa Elevate staff."
-}
-</div>
-
-<p>
-<strong>Description</strong><br>
-${esc(job.description || "No description provided.")}
-</p>
-
-<p style="margin-top:10px">
+</body>
+</html>
