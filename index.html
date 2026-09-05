@@ -262,6 +262,7 @@ footer a{display:block;margin:7px 0}
 </nav>
 
 <div class="nav-actions">
+<button class="btn btn-outline" onclick="openModal('authModal')">👤 Sign In / Register</button>
 <button class="btn btn-outline" onclick="openModal('staffLoginModal')">Staff Login</button>
 <button class="btn btn-primary" onclick="openModal('humanModal')">👤 Human CV Expert</button>
 </div>
@@ -565,6 +566,24 @@ review the documents and assign the work to a Human CV Expert.
 </div>
 </div>
 
+<div class="modal" id="authModal">
+<div class="modal-card">
+<button class="close" onclick="closeModal('authModal')">×</button>
+<h2 id="authModalTitle">👤 Account Sign In</h2>
+<p class="modal-sub" id="authModalSub">Sign in to your account or create a new one to securely submit and track your CV requests.</p>
+
+<div class="form-grid">
+<input id="authEmail" class="field full" type="email" placeholder="Email address *">
+<input id="authPassword" class="field full" type="password" placeholder="Password (min 6 characters) *">
+
+<button id="authPrimaryBtn" class="btn btn-primary full" onclick="handleEmailAuth()">🔐 Sign In</button>
+<button id="authToggleBtn" class="btn btn-light full" onclick="toggleAuthMode()">Need an account? Register</button>
+</div>
+
+<div id="authMessage" style="margin-top:12px"></div>
+</div>
+</div>
+
 <div class="modal" id="staffLoginModal">
 <div class="modal-card">
 <button class="close" onclick="closeModal('staffLoginModal')">×</button>
@@ -580,7 +599,7 @@ review the documents and assign the work to a Human CV Expert.
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 import {
-  getAuth, signInWithEmailAndPassword, signInAnonymously, signOut,
+  getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInAnonymously, signOut,
   onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 import {
@@ -611,6 +630,7 @@ window.firebaseDB = db;
 
 let staffUser = null;
 let currentRegion = "all";
+let isRegisterMode = false;
 
 // HUMAN CV EXPERT PAYMENT SETTINGS
 const HUMAN_CV_FEE = 1000;
@@ -885,8 +905,46 @@ window.copyCVFormToModal=function(){
   openModal("humanModal");
 };
 
-async function ensureAnonymous(){
+// Toggle between Sign In and Register views
+window.toggleAuthMode=function(){
+  isRegisterMode = !isRegisterMode;
+  document.getElementById("authModalTitle").textContent = isRegisterMode ? "📝 Create Account" : "👤 Account Sign In";
+  document.getElementById("authModalSub").textContent = isRegisterMode ? "Register a new account to save and track your CV requests." : "Sign in to your account to securely submit and track your CV requests.";
+  document.getElementById("authPrimaryBtn").textContent = isRegisterMode ? "📝 Register Account" : "🔐 Sign In";
+  document.getElementById("authToggleBtn").textContent = isRegisterMode ? "Already have an account? Sign In" : "Need an account? Register";
+  document.getElementById("authMessage").innerHTML = "";
+};
+
+window.handleEmailAuth=async function(){
+  const email=document.getElementById("authEmail").value.trim();
+  const password=document.getElementById("authPassword").value;
+  const msgEl=document.getElementById("authMessage");
+
+  if(!email || !password){
+    msgEl.innerHTML='<div class="warning">Email and password are required.</div>';
+    return;
+  }
+
+  try{
+    if(isRegisterMode){
+      await createUserWithEmailAndPassword(auth, email, password);
+      showToast("Account created and signed in successfully!");
+    }else{
+      await signInWithEmailAndPassword(auth, email, password);
+      showToast("Signed in successfully!");
+    }
+    closeModal("authModal");
+    document.getElementById("authEmail").value="";
+    document.getElementById("authPassword").value="";
+  }catch(err){
+    console.error(err);
+    msgEl.innerHTML='<div class="error">'+escapeHtml(err.message)+'</div>';
+  }
+};
+
+async function ensureSignedInUser(){
   if(auth.currentUser) return auth.currentUser;
+  // If not signed in via email/password, fallback to anonymous sign-in to satisfy rule `signedIn()`
   const cred=await signInAnonymously(auth);
   return cred.user;
 }
@@ -927,7 +985,7 @@ window.submitHumanRequest=async function(){
     validFile(oldCV,[".pdf",".doc",".docx"],10);
     validFile(supporting,[".pdf",".doc",".docx",".jpg",".jpeg",".png"],10);
 
-    const user=await ensureAnonymous();
+    const user=await ensureSignedInUser();
     let oldCVUrl="",oldCVName="",supportingUrl="",supportingName="";
 
     if(oldCV){
@@ -1175,8 +1233,7 @@ window.showToast=showToast;
 
 onAuthStateChanged(auth,user=>{
   if(user && !user.isAnonymous){
-    // Do not automatically trust a signed-in account as staff.
-    // staffLogin() checks staffUsers/{uid}.active.
+    console.log("Signed in user:", user.email);
   }
 });
 
