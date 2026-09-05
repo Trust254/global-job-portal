@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#312e81">
     <meta name="description" content="Mustafa Elevate - Jobs, international careers, professional CV preparation and recruitment support.">
-    <title>Mustafa Elevate | Jobs & Career Hub</title>
+    <title>Mustafa Elevate | Career & Recruitment Hub</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -28,39 +28,33 @@
             display: block;
         }
 
-        .job-card {
-            transition: transform .2s ease, box-shadow .2s ease;
+        .modal {
+            display: none;
         }
 
-        .job-card:hover {
-            transform: translateY(-3px);
+        .modal.active {
+            display: flex;
+        }
+
+        .job-icon {
+            width: 48px;
+            height: 48px;
         }
 
         .notification-dot {
-            position: absolute;
-            top: -4px;
-            right: -4px;
-            width: 10px;
-            height: 10px;
-            border-radius: 9999px;
-            background: #ef4444;
-            border: 2px solid white;
+            width: 8px;
+            height: 8px;
         }
 
-        .status-badge {
-            font-size: 11px;
-            font-weight: 700;
-            padding: 4px 9px;
-            border-radius: 9999px;
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
-        .modal-backdrop {
-            background: rgba(15, 23, 42, .65);
-            backdrop-filter: blur(3px);
-        }
-
-        .hidden-force {
-            display: none !important;
+        .progress-bar {
+            transition: width 0.3s ease;
         }
     </style>
 </head>
@@ -70,30 +64,22 @@
 <!-- =========================================================
      HEADER
 ========================================================= -->
-<header class="bg-indigo-950 text-white shadow-lg sticky top-0 z-50">
+<header class="bg-indigo-900 text-white shadow-md sticky top-0 z-50">
 
     <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
 
         <div
-            class="flex items-center gap-2 cursor-pointer"
+            class="flex items-center space-x-2 cursor-pointer"
             onclick="switchTab('jobs')"
         >
-            <div class="bg-indigo-600 p-2 rounded-xl">
-                <i data-lucide="trending-up" class="w-6 h-6"></i>
-            </div>
+            <i data-lucide="trending-up" class="w-7 h-7 text-indigo-400"></i>
 
-            <div>
-                <div class="text-lg md:text-xl font-extrabold tracking-wide">
-                    Mustafa <span class="text-indigo-400">Elevate</span>
-                </div>
-                <div class="text-[10px] text-indigo-300 hidden sm:block">
-                    Jobs • Careers • CV Support
-                </div>
-            </div>
+            <span class="text-xl font-bold tracking-wide">
+                Mustafa <span class="text-indigo-400">Elevate</span>
+            </span>
         </div>
 
-        <!-- Desktop Navigation -->
-        <nav class="hidden lg:flex items-center gap-5 text-sm font-semibold">
+        <nav class="hidden md:flex space-x-5 text-sm font-medium items-center">
 
             <button
                 onclick="switchTab('jobs')"
@@ -104,19 +90,19 @@
             </button>
 
             <button
-                onclick="switchTab('careers')"
+                onclick="switchTab('sources')"
                 class="hover:text-indigo-300 transition flex items-center gap-1"
             >
-                <i data-lucide="compass" class="w-4 h-4"></i>
-                Careers
+                <i data-lucide="globe-2" class="w-4 h-4"></i>
+                International
             </button>
 
             <button
                 onclick="switchTab('cv-desk')"
                 class="hover:text-indigo-300 transition flex items-center gap-1"
             >
-                <i data-lucide="file-text" class="w-4 h-4"></i>
-                CV Expert
+                <i data-lucide="file-user" class="w-4 h-4"></i>
+                Human CV Expert
             </button>
 
             <button
@@ -124,84 +110,69 @@
                 class="hover:text-indigo-300 transition flex items-center gap-1"
             >
                 <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
-                My Account
+                My Dashboard
             </button>
 
             <button
-                onclick="openStaffPortal()"
-                class="text-amber-300 hover:text-amber-200 transition flex items-center gap-1"
+                onclick="switchTab('admin')"
+                class="hover:text-indigo-300 transition text-amber-300 flex items-center gap-1"
             >
                 <i data-lucide="shield-check" class="w-4 h-4"></i>
                 Staff
             </button>
         </nav>
 
-        <div class="flex items-center gap-2">
+        <div class="flex items-center space-x-3">
 
-            <!-- Notification -->
             <button
-                id="notificationBtn"
                 onclick="switchTab('dashboard')"
-                class="relative p-2 rounded-lg hover:bg-indigo-900 transition"
+                class="relative hidden sm:flex items-center"
                 title="Notifications"
             >
                 <i data-lucide="bell" class="w-5 h-5"></i>
-                <span id="notificationDot" class="notification-dot hidden"></span>
+                <span
+                    id="notificationDot"
+                    class="hidden absolute -top-1 -right-1 bg-red-500 rounded-full notification-dot"
+                ></span>
             </button>
 
-            <!-- Auth -->
             <button
                 id="authNavBtn"
                 onclick="switchTab('auth')"
-                class="bg-indigo-600 hover:bg-indigo-500 px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-bold transition flex items-center gap-1"
+                class="bg-indigo-600 hover:bg-indigo-500 px-4 py-2 rounded-lg text-sm font-semibold transition flex items-center gap-1"
             >
                 <i data-lucide="log-in" class="w-4 h-4"></i>
-                Login
+                Login / Register
             </button>
         </div>
     </div>
 
     <!-- Mobile Navigation -->
-    <div class="lg:hidden grid grid-cols-5 bg-indigo-900 border-t border-indigo-800">
+    <div class="md:hidden grid grid-cols-5 bg-indigo-950 py-2 text-xs border-t border-indigo-800">
 
-        <button
-            onclick="switchTab('jobs')"
-            class="py-2 flex flex-col items-center justify-center text-[10px]"
-        >
-            <i data-lucide="briefcase" class="w-4 h-4 mb-1"></i>
-            Jobs
+        <button onclick="switchTab('jobs')" class="flex flex-col items-center gap-1">
+            <i data-lucide="briefcase" class="w-4 h-4"></i>
+            <span>Jobs</span>
         </button>
 
-        <button
-            onclick="switchTab('careers')"
-            class="py-2 flex flex-col items-center justify-center text-[10px]"
-        >
-            <i data-lucide="globe" class="w-4 h-4 mb-1"></i>
-            Careers
+        <button onclick="switchTab('sources')" class="flex flex-col items-center gap-1">
+            <i data-lucide="globe-2" class="w-4 h-4"></i>
+            <span>Global</span>
         </button>
 
-        <button
-            onclick="switchTab('cv-desk')"
-            class="py-2 flex flex-col items-center justify-center text-[10px]"
-        >
-            <i data-lucide="file-text" class="w-4 h-4 mb-1"></i>
-            CV Expert
+        <button onclick="switchTab('cv-desk')" class="flex flex-col items-center gap-1">
+            <i data-lucide="file-user" class="w-4 h-4"></i>
+            <span>CV Expert</span>
         </button>
 
-        <button
-            onclick="switchTab('dashboard')"
-            class="py-2 flex flex-col items-center justify-center text-[10px]"
-        >
-            <i data-lucide="layout-dashboard" class="w-4 h-4 mb-1"></i>
-            Account
+        <button onclick="switchTab('dashboard')" class="flex flex-col items-center gap-1">
+            <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+            <span>Portal</span>
         </button>
 
-        <button
-            onclick="openStaffPortal()"
-            class="py-2 flex flex-col items-center justify-center text-[10px] text-amber-300"
-        >
-            <i data-lucide="shield-check" class="w-4 h-4 mb-1"></i>
-            Staff
+        <button onclick="switchTab('admin')" class="flex flex-col items-center gap-1 text-amber-300">
+            <i data-lucide="shield-check" class="w-4 h-4"></i>
+            <span>Staff</span>
         </button>
 
     </div>
@@ -213,152 +184,146 @@
 ========================================================= -->
 <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-6">
 
+
 <!-- =========================================================
-     JOBS TAB
+     TAB 1 — JOBS
 ========================================================= -->
 <section id="tab-jobs" class="tab-content active space-y-6">
 
-    <!-- Hero -->
-    <div class="bg-gradient-to-br from-indigo-800 via-indigo-900 to-slate-950 text-white rounded-3xl p-6 md:p-9 shadow-xl">
+    <div class="bg-gradient-to-r from-indigo-800 to-indigo-950 text-white rounded-2xl p-6 md:p-8 shadow-lg">
 
-        <div class="max-w-3xl">
-
-            <div class="inline-flex items-center gap-2 bg-white/10 border border-white/10 rounded-full px-3 py-1 text-xs font-semibold mb-4">
-                <i data-lucide="sparkles" class="w-4 h-4"></i>
-                Trusted Career Opportunities
-            </div>
-
-            <h1 class="text-3xl md:text-5xl font-black leading-tight mb-3">
-                Find Your Next Job or Dream Career
-            </h1>
-
-            <p class="text-indigo-200 text-sm md:text-base max-w-2xl">
-                Search local and international opportunities, request a professional CV,
-                and keep your career documents in one secure account.
-            </p>
-        </div>
-
-        <!-- Search -->
-        <div class="mt-7 bg-white rounded-2xl p-3 shadow-xl text-slate-800">
-
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
-
-                <div class="md:col-span-2 flex items-center bg-slate-100 rounded-xl px-3">
-                    <i data-lucide="search" class="w-5 h-5 text-slate-400 mr-2"></i>
-
-                    <input
-                        id="searchKeyword"
-                        type="text"
-                        placeholder="Job title, company, keyword..."
-                        class="w-full bg-transparent py-3 outline-none text-sm"
-                    >
-                </div>
-
-                <div class="flex items-center bg-slate-100 rounded-xl px-3">
-                    <i data-lucide="map-pin" class="w-5 h-5 text-slate-400 mr-2"></i>
-
-                    <select
-                        id="filterLocation"
-                        class="w-full bg-transparent py-3 outline-none text-sm"
-                    >
-                        <option value="">All Locations</option>
-                        <option value="Kenya">Kenya</option>
-                        <option value="Qatar">Qatar</option>
-                        <option value="UAE">UAE</option>
-                        <option value="International">International</option>
-                        <option value="Cruise">Cruise Ship</option>
-                    </select>
-                </div>
-
-                <button
-                    onclick="filterJobs()"
-                    class="bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl px-5 py-3 font-bold text-sm flex items-center justify-center gap-2"
-                >
-                    <i data-lucide="search" class="w-4 h-4"></i>
-                    Search Jobs
-                </button>
-
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Category Shortcuts -->
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-
-        <button onclick="filterByCategory('Local Jobs')" class="bg-white border rounded-2xl p-4 text-center hover:border-indigo-500 hover:shadow-md transition">
-            <div class="mx-auto mb-2 w-11 h-11 rounded-xl bg-green-50 text-green-600 flex items-center justify-center">
-                <i data-lucide="map-pin" class="w-6 h-6"></i>
-            </div>
-            <div class="font-bold text-xs">Local Jobs</div>
-        </button>
-
-        <button onclick="filterByCategory('International Jobs')" class="bg-white border rounded-2xl p-4 text-center hover:border-indigo-500 hover:shadow-md transition">
-            <div class="mx-auto mb-2 w-11 h-11 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
-                <i data-lucide="globe-2" class="w-6 h-6"></i>
-            </div>
-            <div class="font-bold text-xs">International</div>
-        </button>
-
-        <button onclick="filterByCategory('Careers')" class="bg-white border rounded-2xl p-4 text-center hover:border-indigo-500 hover:shadow-md transition">
-            <div class="mx-auto mb-2 w-11 h-11 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center">
-                <i data-lucide="compass" class="w-6 h-6"></i>
-            </div>
-            <div class="font-bold text-xs">Careers</div>
-        </button>
-
-        <button onclick="filterByCategory('Cruise Jobs')" class="bg-white border rounded-2xl p-4 text-center hover:border-indigo-500 hover:shadow-md transition">
-            <div class="mx-auto mb-2 w-11 h-11 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center">
-                <i data-lucide="ship" class="w-6 h-6"></i>
-            </div>
-            <div class="font-bold text-xs">Cruise Jobs</div>
-        </button>
-
-        <button onclick="filterByCategory('Aviation Jobs')" class="bg-white border rounded-2xl p-4 text-center hover:border-indigo-500 hover:shadow-md transition">
-            <div class="mx-auto mb-2 w-11 h-11 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center">
-                <i data-lucide="plane" class="w-6 h-6"></i>
-            </div>
-            <div class="font-bold text-xs">Aviation</div>
-        </button>
-
-        <button onclick="filterByCategory('Hospitality Jobs')" class="bg-white border rounded-2xl p-4 text-center hover:border-indigo-500 hover:shadow-md transition">
-            <div class="mx-auto mb-2 w-11 h-11 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center">
-                <i data-lucide="hotel" class="w-6 h-6"></i>
-            </div>
-            <div class="font-bold text-xs">Hospitality</div>
-        </button>
-
-    </div>
-
-
-    <!-- Job Listings -->
-    <div>
-
-        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
+        <div class="flex flex-col md:flex-row justify-between gap-6">
 
             <div>
-                <h2 class="text-xl font-black text-slate-900 flex items-center gap-2">
-                    <i data-lucide="briefcase-business" class="text-indigo-600"></i>
-                    Available Opportunities
-                </h2>
+                <div class="inline-flex items-center gap-2 bg-white/10 px-3 py-1 rounded-full text-xs mb-3">
+                    <i data-lucide="badge-check" class="w-4 h-4"></i>
+                    Career Opportunities
+                </div>
 
-                <p class="text-xs text-slate-500 mt-1">
-                    Check a job and request a professional CV specifically for that opportunity.
+                <h1 class="text-3xl md:text-4xl font-extrabold mb-3">
+                    Find Your Next Career
+                </h1>
+
+                <p class="text-indigo-200 max-w-2xl">
+                    Browse local, international, cruise, aviation, hospitality,
+                    logistics and other career opportunities.
                 </p>
             </div>
 
-            <button
-                onclick="renderJobs(jobs)"
-                class="text-xs font-bold text-indigo-600 hover:text-indigo-800"
-            >
-                Show All Jobs
-            </button>
+            <div class="bg-white/10 rounded-xl p-4 min-w-[190px]">
+                <p class="text-xs text-indigo-200">Professional CV Service</p>
+                <p class="text-2xl font-extrabold mt-1">KSh 1,000</p>
+                <p class="text-xs text-indigo-200 mt-1">
+                    Human CV Expert
+                </p>
+            </div>
 
         </div>
 
+        <!-- Search -->
+        <div class="bg-white p-3 rounded-xl shadow-md flex flex-col md:flex-row gap-3 text-slate-800 mt-6">
+
+            <div class="flex items-center flex-1 px-3 bg-slate-100 rounded-lg">
+                <i data-lucide="search" class="w-5 h-5 text-slate-400 mr-2"></i>
+
+                <input
+                    type="text"
+                    id="searchKeyword"
+                    placeholder="Job title, keyword, company..."
+                    class="w-full bg-transparent py-2 focus:outline-none text-sm"
+                    oninput="filterJobs()"
+                >
+            </div>
+
+            <div class="flex items-center px-3 bg-slate-100 rounded-lg md:w-1/4">
+                <i data-lucide="map-pin" class="w-5 h-5 text-slate-400 mr-2"></i>
+
+                <select
+                    id="filterLocation"
+                    class="w-full bg-transparent py-2 focus:outline-none text-sm"
+                    onchange="filterJobs()"
+                >
+                    <option value="">All Locations</option>
+                    <option value="Kenya">Kenya</option>
+                    <option value="Qatar">Qatar</option>
+                    <option value="UAE">UAE</option>
+                    <option value="USA">USA</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Europe">Europe</option>
+                    <option value="Cruise">Cruise Ship</option>
+                    <option value="International">International</option>
+                </select>
+            </div>
+
+            <button
+                onclick="filterJobs()"
+                class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-lg font-semibold text-sm transition flex items-center justify-center gap-2"
+            >
+                <i data-lucide="filter" class="w-4 h-4"></i>
+                Search
+            </button>
+
+        </div>
+    </div>
+
+
+    <!-- Job Categories -->
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+
+        <button onclick="filterByCategory('Local')" class="bg-white border p-4 rounded-xl hover:border-indigo-500 transition text-left">
+            <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center mb-2">
+                <i data-lucide="map-pin"></i>
+            </div>
+            <p class="font-bold text-sm">Local Jobs</p>
+            <p class="text-xs text-slate-500">Kenya</p>
+        </button>
+
+        <button onclick="filterByCategory('International')" class="bg-white border p-4 rounded-xl hover:border-indigo-500 transition text-left">
+            <div class="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-2">
+                <i data-lucide="globe-2"></i>
+            </div>
+            <p class="font-bold text-sm">International</p>
+            <p class="text-xs text-slate-500">Global careers</p>
+        </button>
+
+        <button onclick="filterByCategory('Cruise')" class="bg-white border p-4 rounded-xl hover:border-indigo-500 transition text-left">
+            <div class="w-10 h-10 rounded-lg bg-cyan-50 text-cyan-600 flex items-center justify-center mb-2">
+                <i data-lucide="ship"></i>
+            </div>
+            <p class="font-bold text-sm">Cruise Jobs</p>
+            <p class="text-xs text-slate-500">Maritime</p>
+        </button>
+
+        <button onclick="filterByCategory('Aviation')" class="bg-white border p-4 rounded-xl hover:border-indigo-500 transition text-left">
+            <div class="w-10 h-10 rounded-lg bg-violet-50 text-violet-600 flex items-center justify-center mb-2">
+                <i data-lucide="plane"></i>
+            </div>
+            <p class="font-bold text-sm">Aviation</p>
+            <p class="text-xs text-slate-500">Airlines</p>
+        </button>
+
+        <button onclick="filterByCategory('Hospitality')" class="bg-white border p-4 rounded-xl hover:border-indigo-500 transition text-left">
+            <div class="w-10 h-10 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center mb-2">
+                <i data-lucide="hotel"></i>
+            </div>
+            <p class="font-bold text-sm">Hospitality</p>
+            <p class="text-xs text-slate-500">Hotels & service</p>
+        </button>
+
+    </div>
+
+
+    <!-- Job Feed -->
+    <div>
+
+        <h2 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+            <i data-lucide="sparkles" class="text-indigo-600"></i>
+            Available Careers
+        </h2>
+
         <div
             id="jobListContainer"
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         ></div>
 
     </div>
@@ -367,180 +332,240 @@
 
 
 <!-- =========================================================
-     CAREERS / OFFICIAL SOURCES
+     TAB 2 — GLOBAL SOURCES
 ========================================================= -->
-<section id="tab-careers" class="tab-content space-y-6">
+<section id="tab-sources" class="tab-content space-y-6">
 
-    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border">
+    <div class="bg-white p-6 rounded-xl shadow-sm border">
 
         <div class="mb-6">
-
-            <div class="inline-flex items-center gap-2 bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full text-xs font-bold">
+            <span class="inline-flex items-center gap-2 bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs font-bold">
                 <i data-lucide="globe-2" class="w-4 h-4"></i>
-                International Career Sources
-            </div>
+                International Careers
+            </span>
 
-            <h2 class="text-2xl md:text-3xl font-black mt-3">
-                Official Career Pages
+            <h2 class="text-2xl font-bold text-slate-900 mt-3">
+                Global Career Portals
             </h2>
 
-            <p class="text-sm text-slate-600 mt-2">
-                Use official company career pages whenever possible. Never pay an unknown person
-                promising a guaranteed job.
+            <p class="text-slate-600 mt-1">
+                Use official employer career pages whenever possible.
             </p>
-
         </div>
-
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 
+
             <!-- Qatar Airways -->
             <a
-                href="https://careers.qatarairways.com/"
+                href="https://careers.qatarairways.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="p-5 border rounded-2xl hover:border-indigo-500 hover:shadow-md transition group"
+                class="p-4 border rounded-xl hover:border-indigo-600 hover:shadow-md transition flex items-center justify-between group"
             >
-                <div class="flex items-start gap-4">
-
-                    <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white transition">
-                        <i data-lucide="plane" class="w-6 h-6"></i>
+                <div class="flex items-center gap-3">
+                    <div class="p-3 bg-indigo-50 text-indigo-600 rounded-lg">
+                        <i data-lucide="plane"></i>
                     </div>
 
-                    <div class="flex-1">
-                        <h3 class="font-black">Qatar Airways Careers</h3>
-                        <p class="text-xs text-slate-500 mt-1">
-                            Aviation & international careers
+                    <div>
+                        <h3 class="font-bold text-slate-800">
+                            Qatar Airways Careers
+                        </h3>
+                        <p class="text-xs text-slate-500">
+                            Aviation & global offices
                         </p>
                     </div>
-
-                    <i data-lucide="external-link" class="w-4 h-4 text-slate-400"></i>
                 </div>
+
+                <i data-lucide="external-link" class="w-4 h-4 text-slate-400"></i>
             </a>
 
 
             <!-- Emirates -->
             <a
-                href="https://www.emiratesgroupcareers.com/"
+                href="https://www.emiratesgroupcareers.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="p-5 border rounded-2xl hover:border-indigo-500 hover:shadow-md transition group"
+                class="p-4 border rounded-xl hover:border-indigo-600 hover:shadow-md transition flex items-center justify-between group"
             >
-                <div class="flex items-start gap-4">
-
-                    <div class="w-12 h-12 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center group-hover:bg-orange-600 group-hover:text-white transition">
-                        <i data-lucide="plane-takeoff" class="w-6 h-6"></i>
+                <div class="flex items-center gap-3">
+                    <div class="p-3 bg-red-50 text-red-600 rounded-lg">
+                        <i data-lucide="plane-takeoff"></i>
                     </div>
 
-                    <div class="flex-1">
-                        <h3 class="font-black">Emirates Group Careers</h3>
-                        <p class="text-xs text-slate-500 mt-1">
-                            Aviation, airport & hospitality
+                    <div>
+                        <h3 class="font-bold text-slate-800">
+                            Emirates Group
+                        </h3>
+                        <p class="text-xs text-slate-500">
+                            Dubai aviation & hospitality
                         </p>
                     </div>
-
-                    <i data-lucide="external-link" class="w-4 h-4 text-slate-400"></i>
                 </div>
+
+                <i data-lucide="external-link" class="w-4 h-4 text-slate-400"></i>
             </a>
 
 
             <!-- Carnival -->
             <a
-                href="https://www.carnival.com/careers"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="p-5 border rounded-2xl hover:border-indigo-500 hover:shadow-md transition group"
-            >
-                <div class="flex items-start gap-4">
-
-                    <div class="w-12 h-12 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center group-hover:bg-cyan-600 group-hover:text-white transition">
-                        <i data-lucide="ship" class="w-6 h-6"></i>
-                    </div>
-
-                    <div class="flex-1">
-                        <h3 class="font-black">Carnival Cruise Line</h3>
-                        <p class="text-xs text-slate-500 mt-1">
-                            Cruise & maritime careers
-                        </p>
-                    </div>
-
-                    <i data-lucide="external-link" class="w-4 h-4 text-slate-400"></i>
-                </div>
-            </a>
-
-
-            <!-- Carnival Corporation -->
-            <a
                 href="https://www.carnivalcorp.com/careers"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="p-5 border rounded-2xl hover:border-indigo-500 hover:shadow-md transition group"
+                class="p-4 border rounded-xl hover:border-indigo-600 hover:shadow-md transition flex items-center justify-between group"
             >
-                <div class="flex items-start gap-4">
-
-                    <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
-                        <i data-lucide="anchor" class="w-6 h-6"></i>
+                <div class="flex items-center gap-3">
+                    <div class="p-3 bg-cyan-50 text-cyan-600 rounded-lg">
+                        <i data-lucide="ship"></i>
                     </div>
 
-                    <div class="flex-1">
-                        <h3 class="font-black">Carnival Corporation</h3>
-                        <p class="text-xs text-slate-500 mt-1">
-                            Global cruise opportunities
+                    <div>
+                        <h3 class="font-bold text-slate-800">
+                            Carnival Cruise Line
+                        </h3>
+                        <p class="text-xs text-slate-500">
+                            Cruise & maritime careers
                         </p>
                     </div>
-
-                    <i data-lucide="external-link" class="w-4 h-4 text-slate-400"></i>
                 </div>
+
+                <i data-lucide="external-link" class="w-4 h-4 text-slate-400"></i>
             </a>
 
-        </div>
 
+            <!-- International Jobs -->
+            <div
+                onclick="showInfo('International Jobs','International vacancies should always be checked carefully. Users should never pay an unknown recruiter simply to receive a job offer.')"
+                class="cursor-pointer p-4 border rounded-xl hover:border-indigo-600 hover:shadow-md transition flex items-center justify-between group"
+            >
+                <div class="flex items-center gap-3">
+                    <div class="p-3 bg-blue-50 text-blue-600 rounded-lg">
+                        <i data-lucide="globe-2"></i>
+                    </div>
+
+                    <div>
+                        <h3 class="font-bold text-slate-800">
+                            International Jobs
+                        </h3>
+                        <p class="text-xs text-slate-500">
+                            Global opportunities
+                        </p>
+                    </div>
+                </div>
+
+                <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400"></i>
+            </div>
+
+        </div>
     </div>
 
 </section>
 
 
 <!-- =========================================================
-     CV EXPERT DESK
+     TAB 3 — HUMAN CV EXPERT
 ========================================================= -->
 <section id="tab-cv-desk" class="tab-content space-y-6">
 
     <div class="max-w-4xl mx-auto">
 
-        <div class="bg-gradient-to-br from-indigo-900 to-slate-950 text-white rounded-3xl p-7 md:p-9 mb-6">
+        <div class="bg-gradient-to-r from-indigo-800 to-indigo-950 text-white p-6 md:p-8 rounded-2xl shadow-lg">
 
             <div class="flex items-start gap-4">
 
-                <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center">
-                    <i data-lucide="file-user" class="w-7 h-7"></i>
+                <div class="bg-white/10 p-4 rounded-xl">
+                    <i data-lucide="file-user" class="w-10 h-10"></i>
                 </div>
 
                 <div>
-                    <h2 class="text-2xl md:text-3xl font-black">
+                    <h2 class="text-2xl md:text-3xl font-extrabold">
                         Human CV Expert Service
                     </h2>
 
-                    <p class="text-indigo-200 text-sm mt-2">
-                        Our authorized human CV expert can review your existing CV and prepare
-                        a professional version targeted to the job you are interested in.
+                    <p class="text-indigo-200 mt-2">
+                        Get your CV professionally prepared for your desired job.
                     </p>
+
+                    <div class="mt-4 flex flex-wrap gap-2 text-xs">
+                        <span class="bg-white/10 px-3 py-1 rounded-full">
+                            Professional Review
+                        </span>
+
+                        <span class="bg-white/10 px-3 py-1 rounded-full">
+                            International CV
+                        </span>
+
+                        <span class="bg-white/10 px-3 py-1 rounded-full">
+                            Human Expert
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 mt-6">
+
+            <div class="mb-6">
+
+                <div class="flex items-center justify-between">
+
+                    <div>
+                        <h3 class="text-xl font-bold">
+                            Request Professional CV
+                        </h3>
+
+                        <p class="text-sm text-slate-500 mt-1">
+                            Service fee:
+                            <strong class="text-indigo-600">
+                                KSh 1,000
+                            </strong>
+                        </p>
+                    </div>
+
+                    <div class="text-right">
+                        <p class="text-xs text-slate-500">
+                            Human CV Expert
+                        </p>
+
+                        <p class="font-bold">
+                            0798 811471
+                        </p>
+                    </div>
+
                 </div>
 
             </div>
 
-        </div>
 
+            <!-- Payment Notice -->
+            <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6">
 
-        <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border">
+                <div class="flex gap-3">
 
-            <div class="mb-6">
-                <h3 class="text-xl font-black">
-                    Request a Professional CV
-                </h3>
+                    <i data-lucide="credit-card" class="text-amber-600 w-5 h-5"></i>
 
-                <p class="text-sm text-slate-500 mt-1">
-                    You must be logged in to submit a request.
-                </p>
+                    <div>
+                        <p class="font-bold text-amber-900 text-sm">
+                            Payment required before CV preparation
+                        </p>
+
+                        <p class="text-xs text-amber-800 mt-1">
+                            Pay KSh 1,000 to the Human CV Expert number
+                            <strong>0798 811471</strong>, then enter your
+                            M-Pesa transaction code below.
+                        </p>
+
+                        <p class="text-xs text-amber-800 mt-2">
+                            Your payment must be verified by authorized staff
+                            before the CV is marked as approved.
+                        </p>
+                    </div>
+
+                </div>
+
             </div>
 
 
@@ -553,144 +578,109 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                     <div>
-                        <label class="label-style">Full Name</label>
+                        <label class="block text-xs font-semibold uppercase mb-1">
+                            Full Name
+                        </label>
+
                         <input
-                            id="cvName"
                             type="text"
+                            id="cvName"
                             required
-                            class="input-style"
+                            class="w-full px-3 py-2.5 border rounded-lg text-sm"
                             placeholder="Your full name"
                         >
                     </div>
 
+
                     <div>
-                        <label class="label-style">Email Address</label>
+                        <label class="block text-xs font-semibold uppercase mb-1">
+                            Email Address
+                        </label>
+
                         <input
-                            id="cvEmail"
                             type="email"
+                            id="cvEmail"
                             required
-                            class="input-style"
+                            class="w-full px-3 py-2.5 border rounded-lg text-sm"
                             placeholder="you@example.com"
                         >
                     </div>
 
+
                     <div>
-                        <label class="label-style">Phone / WhatsApp</label>
+                        <label class="block text-xs font-semibold uppercase mb-1">
+                            Phone Number
+                        </label>
+
                         <input
-                            id="cvPhone"
                             type="tel"
+                            id="cvPhone"
                             required
-                            class="input-style"
-                            placeholder="+254..."
+                            class="w-full px-3 py-2.5 border rounded-lg text-sm"
+                            placeholder="07XXXXXXXX"
                         >
                     </div>
 
-                    <div>
-                        <label class="label-style">Years of Experience</label>
-                        <input
-                            id="cvExperience"
-                            type="text"
-                            class="input-style"
-                            placeholder="e.g. 4 years"
-                        >
-                    </div>
-
-                </div>
-
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                     <div>
-                        <label class="label-style">Target Job</label>
+                        <label class="block text-xs font-semibold uppercase mb-1">
+                            Desired Job
+                        </label>
+
                         <input
-                            id="cvTargetJob"
                             type="text"
+                            id="cvTarget"
                             required
-                            class="input-style"
+                            class="w-full px-3 py-2.5 border rounded-lg text-sm"
                             placeholder="e.g. Cruise Steward"
                         >
                     </div>
 
-                    <div>
-                        <label class="label-style">Target Company</label>
-                        <input
-                            id="cvTargetCompany"
-                            type="text"
-                            class="input-style"
-                            placeholder="e.g. Carnival Cruise Line"
-                        >
-                    </div>
-
-                    <div>
-                        <label class="label-style">Preferred Country</label>
-                        <input
-                            id="cvCountry"
-                            type="text"
-                            class="input-style"
-                            placeholder="e.g. Canada, Qatar, UAE"
-                        >
-                    </div>
-
-                    <div>
-                        <label class="label-style">Highest Education</label>
-                        <input
-                            id="cvEducation"
-                            type="text"
-                            class="input-style"
-                            placeholder="e.g. Diploma / High School"
-                        >
-                    </div>
-
                 </div>
 
 
                 <div>
-                    <label class="label-style">
-                        Skills
+
+                    <label class="block text-xs font-semibold uppercase mb-1">
+                        Job / Company Interested In
                     </label>
 
-                    <textarea
-                        id="cvSkills"
-                        rows="3"
-                        class="input-style"
-                        placeholder="List your main skills..."
-                    ></textarea>
+                    <input
+                        type="text"
+                        id="cvInterestedJob"
+                        class="w-full px-3 py-2.5 border rounded-lg text-sm"
+                        placeholder="Example: Carnival Cruise Line - Guest Services"
+                    >
+
                 </div>
 
 
-                <!-- Existing CV Upload -->
-                <div class="border-2 border-dashed border-indigo-200 rounded-2xl p-5 bg-indigo-50">
+                <!-- Existing CV -->
+                <div>
 
-                    <div class="flex items-start gap-3">
+                    <label class="block text-xs font-semibold uppercase mb-1">
+                        Upload Your Existing / Old CV
+                    </label>
 
-                        <div class="w-11 h-11 bg-indigo-600 text-white rounded-xl flex items-center justify-center shrink-0">
-                            <i data-lucide="upload-cloud" class="w-5 h-5"></i>
-                        </div>
+                    <div class="border-2 border-dashed border-slate-300 rounded-xl p-5 text-center">
 
-                        <div class="flex-1">
+                        <i data-lucide="file-up" class="w-8 h-8 mx-auto text-slate-400"></i>
 
-                            <h4 class="font-black text-slate-900">
-                                Upload Your Existing CV
-                            </h4>
+                        <p class="text-sm font-semibold mt-2">
+                            Upload your current CV
+                        </p>
 
-                            <p class="text-xs text-slate-500 mt-1 mb-3">
-                                Upload your old CV so the authorized Human CV Expert can
-                                understand your experience more accurately.
-                            </p>
+                        <p class="text-xs text-slate-500 mt-1">
+                            PDF, DOC, DOCX — maximum 10 MB
+                        </p>
 
-                            <input
-                                id="oldCvFile"
-                                type="file"
-                                required
-                                accept=".pdf,.doc,.docx"
-                                class="block w-full text-sm"
-                            >
-
-                            <p class="text-[11px] text-slate-500 mt-2">
-                                Accepted: PDF, DOC, DOCX. Keep your document reasonably sized.
-                            </p>
-
-                        </div>
+                        <input
+                            type="file"
+                            id="cvFile"
+                            accept=".pdf,.doc,.docx"
+                            required
+                            class="w-full mt-4 text-sm"
+                        >
 
                     </div>
 
@@ -698,23 +688,48 @@
 
 
                 <div>
-                    <label class="label-style">
-                        Additional Information / Instructions
+
+                    <label class="block text-xs font-semibold uppercase mb-1">
+                        Additional Information
                     </label>
 
                     <textarea
                         id="cvDetails"
-                        rows="4"
-                        class="input-style"
-                        placeholder="Tell the CV expert anything important about the job you want..."
+                        rows="5"
+                        class="w-full px-3 py-2.5 border rounded-lg text-sm"
+                        placeholder="Tell the CV Expert about your experience, education, skills, driving experience, certificates, target country, preferred job, etc."
                     ></textarea>
+
+                </div>
+
+
+                <!-- MPESA -->
+                <div>
+
+                    <label class="block text-xs font-semibold uppercase mb-1">
+                        M-Pesa Transaction Code
+                    </label>
+
+                    <input
+                        type="text"
+                        id="cvMpesa"
+                        required
+                        class="w-full px-3 py-2.5 border rounded-lg text-sm uppercase"
+                        placeholder="Example: QHX892PL10"
+                    >
+
+                    <p class="text-xs text-slate-500 mt-1">
+                        Enter the transaction code after paying
+                        KSh 1,000 to <strong>0798 811471</strong>.
+                    </p>
+
                 </div>
 
 
                 <button
                     type="submit"
                     id="cvSubmitBtn"
-                    class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3.5 rounded-xl font-black text-sm transition flex items-center justify-center gap-2"
+                    class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-lg font-bold text-sm transition flex items-center justify-center gap-2"
                 >
                     <i data-lucide="send" class="w-4 h-4"></i>
                     Submit CV Request
@@ -730,124 +745,156 @@
 
 
 <!-- =========================================================
-     USER DASHBOARD
+     TAB 4 — USER DASHBOARD
 ========================================================= -->
 <section id="tab-dashboard" class="tab-content space-y-6">
 
     <!-- Locked -->
     <div
         id="dashboardLocked"
-        class="bg-white p-10 md:p-14 rounded-3xl text-center shadow-sm border max-w-lg mx-auto"
+        class="bg-white p-12 rounded-2xl text-center shadow-sm border max-w-md mx-auto"
     >
 
-        <div class="w-16 h-16 mx-auto bg-slate-100 text-slate-400 rounded-2xl flex items-center justify-center mb-4">
-            <i data-lucide="lock" class="w-8 h-8"></i>
-        </div>
+        <i data-lucide="lock" class="w-12 h-12 text-slate-400 mx-auto mb-3"></i>
 
-        <h3 class="text-xl font-black">
-            Login Required
+        <h3 class="text-lg font-bold">
+            Account Access Required
         </h3>
 
-        <p class="text-sm text-slate-500 mt-2 mb-5">
-            Login or create an account to track your CV requests,
-            applications and completed documents.
+        <p class="text-sm text-slate-600 mt-1 mb-4">
+            Log in or register to manage your CV requests,
+            applications and prepared documents.
         </p>
 
         <button
             onclick="switchTab('auth')"
-            class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-xl font-bold text-sm"
+            class="bg-indigo-600 text-white px-6 py-2 rounded-lg text-sm font-semibold"
         >
-            Login / Register
+            Go to Login
         </button>
 
     </div>
 
 
     <!-- Unlocked -->
-    <div id="dashboardUnlocked" class="hidden space-y-6">
+    <div
+        id="dashboardUnlocked"
+        class="hidden space-y-6"
+    >
 
-        <!-- Welcome -->
-        <div class="bg-gradient-to-r from-indigo-900 to-indigo-700 text-white p-6 md:p-8 rounded-3xl">
+        <!-- Dashboard Header -->
+        <div class="bg-indigo-900 text-white p-6 rounded-2xl flex flex-col md:flex-row justify-between gap-4">
 
-            <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+            <div>
 
-                <div>
-                    <p class="text-indigo-300 text-xs font-bold uppercase">
-                        My Career Account
-                    </p>
+                <div class="flex items-center gap-2">
 
                     <h2
+                        class="text-2xl font-bold"
                         id="userWelcomeName"
-                        class="text-2xl md:text-3xl font-black mt-1"
                     >
-                        Welcome!
+                        Welcome back!
                     </h2>
 
-                    <p class="text-indigo-200 text-sm mt-1">
-                        Track your CV requests, applications and career documents.
-                    </p>
+                    <span
+                        id="userNotificationBadge"
+                        class="hidden bg-red-500 text-white text-xs px-2 py-0.5 rounded-full"
+                    >
+                        New
+                    </span>
+
                 </div>
 
-                <button
-                    onclick="logoutUser()"
-                    class="bg-white/10 hover:bg-white/20 px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2"
-                >
-                    <i data-lucide="log-out" class="w-4 h-4"></i>
-                    Logout
-                </button>
+                <p class="text-indigo-200 text-sm mt-1">
+                    Manage your career applications, CV requests and documents.
+                </p>
 
             </div>
+
+            <button
+                onclick="logoutUser()"
+                class="bg-indigo-800 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-xs font-semibold self-start"
+            >
+                Logout
+            </button>
 
         </div>
 
 
         <!-- Notifications -->
-        <div class="bg-white p-6 rounded-2xl border shadow-sm">
+        <div
+            id="dashboardNotifications"
+            class="hidden bg-emerald-50 border border-emerald-200 rounded-xl p-4"
+        >
+            <div class="flex gap-3">
 
-            <h3 class="font-black text-lg flex items-center gap-2 mb-4">
-                <i data-lucide="bell-ring" class="text-indigo-600"></i>
-                Notifications
-            </h3>
+                <i data-lucide="bell-ring" class="text-emerald-600"></i>
 
-            <div id="userNotificationsList" class="space-y-3">
+                <div>
+                    <h3 class="font-bold text-emerald-900">
+                        New Notification
+                    </h3>
+
+                    <p
+                        id="notificationText"
+                        class="text-sm text-emerald-800"
+                    ></p>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- CV Expert Status -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border">
+
+            <div class="flex justify-between items-center mb-4">
+
+                <h3 class="font-bold text-slate-900 flex items-center gap-2">
+                    <i data-lucide="file-user" class="text-indigo-600"></i>
+                    My Human CV Expert Requests
+                </h3>
+
+                <button
+                    onclick="switchTab('cv-desk')"
+                    class="text-xs bg-indigo-600 text-white px-3 py-2 rounded-lg"
+                >
+                    Request CV
+                </button>
+
+            </div>
+
+            <div
+                id="userCvRequestsList"
+                class="space-y-3"
+            >
                 <p class="text-sm text-slate-500">
-                    No notifications yet.
+                    No CV requests found.
                 </p>
             </div>
 
         </div>
 
 
-        <!-- CV Requests and Applications -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Prepared CV Documents -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border">
 
-            <div class="bg-white p-6 rounded-2xl border shadow-sm">
+            <h3 class="font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <i data-lucide="file-check-2" class="text-emerald-600"></i>
+                My Prepared CV
+            </h3>
 
-                <h3 class="font-black text-lg flex items-center gap-2 mb-4">
-                    <i data-lucide="file-check-2" class="text-indigo-600"></i>
-                    My CV Requests
-                </h3>
+            <div id="preparedCvContainer">
 
-                <div id="userCvRequestsList" class="space-y-3">
-                    <p class="text-sm text-slate-500">
-                        No CV requests yet.
+                <div class="bg-slate-50 border rounded-xl p-5 text-center">
+
+                    <i data-lucide="file-text" class="w-10 h-10 text-slate-300 mx-auto"></i>
+
+                    <p class="text-sm text-slate-500 mt-2">
+                        Your professionally prepared CV will appear here
+                        when the Human CV Expert uploads it.
                     </p>
-                </div>
 
-            </div>
-
-
-            <div class="bg-white p-6 rounded-2xl border shadow-sm">
-
-                <h3 class="font-black text-lg flex items-center gap-2 mb-4">
-                    <i data-lucide="send" class="text-indigo-600"></i>
-                    My Applications
-                </h3>
-
-                <div id="userApplicationsList" class="space-y-3">
-                    <p class="text-sm text-slate-500">
-                        No applications yet.
-                    </p>
                 </div>
 
             </div>
@@ -855,25 +902,41 @@
         </div>
 
 
-        <!-- Completed CV -->
-        <div class="bg-white p-6 rounded-2xl border shadow-sm">
+        <!-- Saved Applications -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-            <h3 class="font-black text-lg flex items-center gap-2 mb-4">
-                <i data-lucide="file-down" class="text-emerald-600"></i>
-                My Professional CV
-            </h3>
+            <div class="bg-white p-6 rounded-xl shadow-sm border">
 
-            <div id="completedCvList">
+                <h3 class="font-bold text-slate-900 mb-4 flex items-center gap-2">
+                    <i data-lucide="bookmark" class="text-indigo-600"></i>
+                    Saved / Interested Jobs
+                </h3>
 
-                <div class="p-5 rounded-2xl bg-slate-50 border text-center">
-                    <i data-lucide="file-text" class="w-9 h-9 mx-auto text-slate-300 mb-2"></i>
-
-                    <p class="font-bold text-slate-700">
-                        Your completed professional CV will appear here.
+                <div
+                    id="userApplicationsList"
+                    class="space-y-3"
+                >
+                    <p class="text-sm text-slate-500">
+                        No jobs saved yet.
                     </p>
+                </div>
 
-                    <p class="text-xs text-slate-500 mt-1">
-                        Once the Human CV Expert uploads it, you will receive a notification.
+            </div>
+
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border">
+
+                <h3 class="font-bold text-slate-900 mb-4 flex items-center gap-2">
+                    <i data-lucide="send" class="text-indigo-600"></i>
+                    Job Applications
+                </h3>
+
+                <div
+                    id="userSubmittedApplications"
+                    class="space-y-3"
+                >
+                    <p class="text-sm text-slate-500">
+                        No applications submitted yet.
                     </p>
                 </div>
 
@@ -887,18 +950,18 @@
 
 
 <!-- =========================================================
-     AUTH
+     TAB 5 — AUTH
 ========================================================= -->
-<section id="tab-auth" class="tab-content">
+<section id="tab-auth" class="tab-content space-y-6">
 
-    <div class="max-w-md mx-auto bg-white p-7 md:p-8 rounded-3xl shadow-sm border">
+    <div class="max-w-md mx-auto bg-white p-8 rounded-2xl shadow-sm border">
 
         <div class="flex border-b mb-6">
 
             <button
                 onclick="switchAuthMode('login')"
                 id="authTabLogin"
-                class="flex-1 pb-3 font-black text-indigo-600 border-b-2 border-indigo-600 text-sm"
+                class="flex-1 pb-3 font-bold text-indigo-600 border-b-2 border-indigo-600 text-sm"
             >
                 Login
             </button>
@@ -906,7 +969,7 @@
             <button
                 onclick="switchAuthMode('register')"
                 id="authTabRegister"
-                class="flex-1 pb-3 font-bold text-slate-400 text-sm"
+                class="flex-1 pb-3 font-semibold text-slate-400 text-sm"
             >
                 Register
             </button>
@@ -922,15 +985,15 @@
 
             <div id="registerFields" class="hidden">
 
-                <label class="label-style">
+                <label class="block text-xs font-semibold uppercase mb-1">
                     Full Name
                 </label>
 
                 <input
                     type="text"
                     id="authName"
-                    class="input-style"
-                    placeholder="Your full name"
+                    class="w-full px-3 py-2.5 border rounded-lg text-sm"
+                    placeholder="Full name"
                 >
 
             </div>
@@ -938,7 +1001,7 @@
 
             <div>
 
-                <label class="label-style">
+                <label class="block text-xs font-semibold uppercase mb-1">
                     Email Address
                 </label>
 
@@ -946,7 +1009,7 @@
                     type="email"
                     id="authEmail"
                     required
-                    class="input-style"
+                    class="w-full px-3 py-2.5 border rounded-lg text-sm"
                     placeholder="you@example.com"
                 >
 
@@ -955,7 +1018,7 @@
 
             <div>
 
-                <label class="label-style">
+                <label class="block text-xs font-semibold uppercase mb-1">
                     Password
                 </label>
 
@@ -964,7 +1027,7 @@
                     id="authPassword"
                     required
                     minlength="6"
-                    class="input-style"
+                    class="w-full px-3 py-2.5 border rounded-lg text-sm"
                     placeholder="Minimum 6 characters"
                 >
 
@@ -974,19 +1037,12 @@
             <button
                 type="submit"
                 id="authSubmitBtn"
-                class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3.5 rounded-xl font-black text-sm"
+                class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-lg font-bold text-sm"
             >
-                Login to My Account
+                Login to Portal
             </button>
 
         </form>
-
-        <button
-            onclick="resetPassword()"
-            class="w-full mt-4 text-xs font-bold text-indigo-600 hover:text-indigo-800"
-        >
-            Forgot Password?
-        </button>
 
     </div>
 
@@ -994,151 +1050,156 @@
 
 
 <!-- =========================================================
-     STAFF PORTAL
+     TAB 6 — STAFF / HUMAN CV EXPERT
 ========================================================= -->
-<section id="tab-staff" class="tab-content space-y-6">
+<section id="tab-admin" class="tab-content space-y-6">
 
-    <!-- Staff login -->
+    <!-- Staff Login -->
     <div
-        id="staffLoginGate"
-        class="max-w-md mx-auto bg-white p-8 rounded-3xl border shadow-sm text-center"
+        id="adminLoginGate"
+        class="max-w-md mx-auto bg-white p-8 rounded-2xl shadow-sm border text-center"
     >
 
-        <div class="w-16 h-16 mx-auto bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center mb-4">
+        <div class="w-16 h-16 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center mx-auto">
             <i data-lucide="shield-check" class="w-8 h-8"></i>
         </div>
 
-        <h2 class="text-xl font-black">
-            Authorized Staff Portal
-        </h2>
+        <h3 class="text-xl font-bold mt-4">
+            Authorized Staff / Human CV Expert
+        </h3>
 
-        <p class="text-xs text-slate-500 mt-2 mb-5">
-            This area is restricted to authorized Firebase accounts.
-            Human CV Experts must be assigned the correct staff role.
+        <p class="text-sm text-slate-500 mt-2 mb-6">
+            This area is restricted to authorized Human CV Experts and
+            Mustafa Elevate staff.
         </p>
 
-        <button
-            onclick="switchTab('auth')"
-            class="w-full bg-slate-900 text-white py-3 rounded-xl font-bold text-sm"
+        <input
+            type="email"
+            id="staffEmail"
+            placeholder="Authorized staff email"
+            class="w-full px-3 py-2.5 border rounded-lg text-sm mb-3"
         >
-            Login with Authorized Account
+
+        <input
+            type="password"
+            id="staffPassword"
+            placeholder="Staff password"
+            class="w-full px-3 py-2.5 border rounded-lg text-sm mb-3"
+        >
+
+        <button
+            onclick="staffLogin()"
+            class="w-full bg-slate-900 hover:bg-slate-800 text-white py-3 rounded-lg font-semibold text-sm"
+        >
+            Secure Staff Login
         </button>
+
+        <p
+            id="staffLoginMessage"
+            class="text-xs text-red-600 mt-3"
+        ></p>
 
     </div>
 
 
-    <!-- Staff dashboard -->
+    <!-- Staff Dashboard -->
     <div
-        id="staffDashboard"
+        id="adminDashboard"
         class="hidden space-y-6"
     >
 
-        <div class="bg-slate-950 text-white p-6 rounded-3xl">
+        <div class="bg-slate-900 text-white p-6 rounded-2xl flex flex-col md:flex-row justify-between gap-4">
 
-            <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+            <div>
+
+                <h2 class="text-xl font-bold flex items-center gap-2">
+                    <i data-lucide="shield-check" class="text-amber-400"></i>
+                    Human CV Expert Console
+                </h2>
+
+                <p class="text-slate-400 text-xs mt-1">
+                    Authorized staff workspace
+                </p>
+
+            </div>
+
+            <button
+                onclick="staffLogout()"
+                class="bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg text-xs"
+            >
+                Lock Staff Portal
+            </button>
+
+        </div>
+
+
+        <!-- Notification -->
+        <div
+            id="staffNotification"
+            class="hidden bg-indigo-50 border border-indigo-200 rounded-xl p-4"
+        >
+            <div class="flex gap-3">
+
+                <i data-lucide="bell-ring" class="text-indigo-600"></i>
 
                 <div>
-
-                    <div class="flex items-center gap-2">
-                        <i data-lucide="shield-check" class="text-amber-400"></i>
-
-                        <h2 class="text-xl md:text-2xl font-black">
-                            Human CV Expert Console
-                        </h2>
-                    </div>
+                    <p class="font-bold text-indigo-900">
+                        New CV Request
+                    </p>
 
                     <p
-                        id="staffRoleText"
-                        class="text-slate-400 text-xs mt-2"
-                    >
-                        Authorized staff
-                    </p>
-
-                </div>
-
-                <button
-                    onclick="lockStaffPortal()"
-                    class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-xl text-xs font-bold"
-                >
-                    Lock Portal
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- Staff notification -->
-        <div class="bg-amber-50 border border-amber-200 p-5 rounded-2xl">
-
-            <div class="flex items-start gap-3">
-
-                <div class="w-10 h-10 bg-amber-500 text-white rounded-xl flex items-center justify-center">
-                    <i data-lucide="bell-ring" class="w-5 h-5"></i>
-                </div>
-
-                <div>
-                    <h3 class="font-black">
-                        CV Expert Notifications
-                    </h3>
-
-                    <p class="text-xs text-slate-600 mt-1">
-                        New customer CV requests will appear below.
-                    </p>
+                        id="staffNotificationText"
+                        class="text-sm text-indigo-800"
+                    ></p>
                 </div>
 
             </div>
-
         </div>
 
 
-        <!-- CV requests -->
-        <div class="bg-white p-6 rounded-2xl border shadow-sm">
+        <!-- CV Requests -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border">
 
             <div class="flex justify-between items-center mb-5">
 
                 <div>
-                    <h3 class="font-black text-lg">
-                        Customer CV Requests
+                    <h3 class="font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="users" class="text-indigo-600"></i>
+                        Client CV Requests
                     </h3>
 
                     <p class="text-xs text-slate-500 mt-1">
-                        Review the old CV, prepare the professional version,
-                        then upload the completed document.
+                        Review payment, client details, old CV and prepare the professional CV.
                     </p>
                 </div>
 
-                <button
-                    onclick="loadStaffCvRequests()"
-                    class="p-2 rounded-lg bg-slate-100 hover:bg-slate-200"
-                    title="Refresh"
+                <span
+                    id="requestCount"
+                    class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs font-bold"
                 >
-                    <i data-lucide="refresh-cw" class="w-4 h-4"></i>
-                </button>
+                    0
+                </span>
 
             </div>
 
             <div
-                id="staffCvRequestsContainer"
+                id="adminCvRequestsContainer"
                 class="space-y-4"
             >
                 <p class="text-sm text-slate-500">
-                    Loading requests...
+                    No CV requests found.
                 </p>
             </div>
 
         </div>
 
 
-        <!-- Job management -->
-        <div
-            id="jobManagementSection"
-            class="bg-white p-6 rounded-2xl border shadow-sm"
-        >
+        <!-- Publish Job -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border">
 
-            <h3 class="font-black text-lg flex items-center gap-2 mb-5">
+            <h3 class="font-bold text-slate-900 mb-4 flex items-center gap-2">
                 <i data-lucide="plus-circle" class="text-indigo-600"></i>
-                Publish Job
+                Publish New Job
             </h3>
 
             <form
@@ -1147,101 +1208,122 @@
             >
 
                 <div>
-                    <label class="label-style">Job Title</label>
+                    <label class="block text-xs font-semibold mb-1">
+                        Job Title
+                    </label>
+
                     <input
+                        type="text"
                         id="adminJobTitle"
                         required
-                        class="input-style"
+                        class="w-full px-3 py-2 border rounded-lg text-sm"
                     >
                 </div>
 
+
                 <div>
-                    <label class="label-style">Company</label>
+                    <label class="block text-xs font-semibold mb-1">
+                        Company
+                    </label>
+
                     <input
+                        type="text"
                         id="adminJobCompany"
                         required
-                        class="input-style"
+                        class="w-full px-3 py-2 border rounded-lg text-sm"
                     >
                 </div>
 
+
                 <div>
-                    <label class="label-style">Category</label>
+                    <label class="block text-xs font-semibold mb-1">
+                        Location
+                    </label>
+
+                    <input
+                        type="text"
+                        id="adminJobLocation"
+                        required
+                        placeholder="Kenya, Qatar, USA, Cruise..."
+                        class="w-full px-3 py-2 border rounded-lg text-sm"
+                    >
+                </div>
+
+
+                <div>
+                    <label class="block text-xs font-semibold mb-1">
+                        Category
+                    </label>
 
                     <select
                         id="adminJobCategory"
-                        class="input-style"
+                        class="w-full px-3 py-2 border rounded-lg text-sm"
                     >
-                        <option value="Local Jobs">🇰🇪 Local Jobs</option>
-                        <option value="International Jobs">🌍 International Jobs</option>
-                        <option value="Careers">💼 Careers</option>
-                        <option value="Cruise Jobs">🚢 Cruise Jobs</option>
-                        <option value="Aviation Jobs">✈️ Aviation Jobs</option>
-                        <option value="Hospitality Jobs">🏨 Hospitality Jobs</option>
+                        <option value="Local">Local Jobs</option>
+                        <option value="International">International Jobs</option>
+                        <option value="Cruise">Cruise Jobs</option>
+                        <option value="Aviation">Aviation</option>
+                        <option value="Hospitality">Hospitality</option>
+                        <option value="Logistics">Logistics</option>
+                        <option value="Security">Security</option>
+                        <option value="Healthcare">Healthcare</option>
+                        <option value="Other">Other Careers</option>
                     </select>
-
                 </div>
 
-                <div>
-                    <label class="label-style">Location</label>
-
-                    <select
-                        id="adminJobLocation"
-                        class="input-style"
-                    >
-                        <option value="Kenya">Kenya</option>
-                        <option value="Qatar">Qatar</option>
-                        <option value="UAE">UAE</option>
-                        <option value="International">International</option>
-                        <option value="Cruise">Cruise Ship</option>
-                    </select>
-
-                </div>
 
                 <div>
-                    <label class="label-style">Salary / Package</label>
+                    <label class="block text-xs font-semibold mb-1">
+                        Salary / Package
+                    </label>
 
                     <input
+                        type="text"
                         id="adminJobSalary"
                         required
-                        class="input-style"
-                        placeholder="e.g. Competitive + Benefits"
+                        placeholder="e.g. USD 1,500 + Benefits"
+                        class="w-full px-3 py-2 border rounded-lg text-sm"
                     >
-
                 </div>
+
 
                 <div>
-                    <label class="label-style">Application URL</label>
+                    <label class="block text-xs font-semibold mb-1">
+                        Application Link
+                    </label>
 
                     <input
-                        id="adminJobUrl"
                         type="url"
-                        class="input-style"
+                        id="adminJobApplyUrl"
                         placeholder="https://..."
+                        class="w-full px-3 py-2 border rounded-lg text-sm"
                     >
-
                 </div>
+
 
                 <div class="md:col-span-2">
 
-                    <label class="label-style">
+                    <label class="block text-xs font-semibold mb-1">
                         Job Description
                     </label>
 
                     <textarea
                         id="adminJobDesc"
-                        required
                         rows="4"
-                        class="input-style"
+                        required
+                        class="w-full px-3 py-2 border rounded-lg text-sm"
                     ></textarea>
 
                 </div>
+
 
                 <div class="md:col-span-2">
 
                     <button
                         type="submit"
-                        class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-xl font-black text-sm"
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2.5 rounded-lg text-sm font-bold"
                     >
+                        <i data-lucide="upload" class="w-4 h-4 inline"></i>
                         Publish Job
                     </button>
 
@@ -1259,162 +1341,202 @@
 
 
 <!-- =========================================================
-     CV REQUEST MODAL
+     JOB APPLICATION MODAL
 ========================================================= -->
 <div
-    id="jobInterestModal"
-    class="fixed inset-0 modal-backdrop hidden items-center justify-center p-4 z-[100]"
+    id="jobModal"
+    class="modal fixed inset-0 bg-black/60 z-[100] items-center justify-center p-4"
 >
 
-    <div class="bg-white w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-3xl shadow-2xl">
+    <div class="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto">
 
-        <div class="p-6 border-b flex justify-between items-start">
+        <div class="p-6 border-b flex justify-between items-center">
 
             <div>
-
-                <div class="text-xs text-indigo-600 font-black uppercase">
-                    Job Interest
-                </div>
-
-                <h3
-                    id="modalJobTitle"
-                    class="text-xl font-black mt-1"
-                >
-                    Job Title
-                </h3>
+                <h2 class="text-xl font-bold">
+                    Job Interest / Application
+                </h2>
 
                 <p
-                    id="modalJobCompany"
+                    id="modalJobName"
                     class="text-sm text-slate-500 mt-1"
-                >
-                    Company
-                </p>
-
+                ></p>
             </div>
 
-            <button
-                onclick="closeJobInterestModal()"
-                class="p-2 rounded-lg hover:bg-slate-100"
-            >
-                <i data-lucide="x" class="w-5 h-5"></i>
+            <button onclick="closeJobModal()">
+                <i data-lucide="x"></i>
             </button>
 
         </div>
 
 
-        <form
-            id="jobInterestForm"
-            onsubmit="submitJobInterest(event)"
-            class="p-6 space-y-4"
-        >
+        <div class="p-6">
 
-            <input
-                type="hidden"
-                id="interestJobId"
+            <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-5">
+
+                <div class="flex gap-3">
+
+                    <i data-lucide="info" class="text-blue-600"></i>
+
+                    <div>
+                        <p class="font-bold text-blue-900 text-sm">
+                            Need a professional CV?
+                        </p>
+
+                        <p class="text-xs text-blue-800 mt-1">
+                            You can request the Human CV Expert service for
+                            KSh 1,000 before proceeding with your application.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <button
+                id="modalCvButton"
+                onclick="requestCvForSelectedJob()"
+                class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-lg font-bold text-sm flex items-center justify-center gap-2 mb-3"
             >
+                <i data-lucide="file-user"></i>
+                I Need a Professional CV — KSh 1,000
+            </button>
 
-            <input
-                type="hidden"
-                id="interestJobTitle"
+
+            <button
+                id="modalContinueButton"
+                onclick="continueJobApplication()"
+                class="w-full bg-slate-900 hover:bg-slate-800 text-white py-3 rounded-lg font-bold text-sm flex items-center justify-center gap-2"
             >
+                <i data-lucide="send"></i>
+                Continue With Job
+            </button>
 
-            <input
-                type="hidden"
-                id="interestJobCompany"
-            >
+        </div>
+
+    </div>
+
+</div>
 
 
-            <div class="bg-indigo-50 rounded-2xl p-4">
+<!-- =========================================================
+     STAFF CV REVIEW MODAL
+========================================================= -->
+<div
+    id="staffCvModal"
+    class="modal fixed inset-0 bg-black/60 z-[110] items-center justify-center p-4"
+>
 
-                <p class="text-xs text-indigo-800">
-                    You are requesting assistance for this job. You can also
-                    ask our authorized Human CV Expert to prepare a professional CV.
+    <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[92vh] overflow-y-auto">
+
+        <div class="p-6 border-b flex justify-between items-center">
+
+            <div>
+                <h2 class="text-xl font-bold">
+                    Client CV Request
+                </h2>
+
+                <p
+                    id="staffModalClientName"
+                    class="text-sm text-slate-500"
+                ></p>
+            </div>
+
+            <button onclick="closeStaffCvModal()">
+                <i data-lucide="x"></i>
+            </button>
+
+        </div>
+
+
+        <div class="p-6 space-y-5">
+
+            <div id="staffClientDetails"></div>
+
+
+            <div>
+
+                <label class="block text-xs font-semibold uppercase mb-2">
+                    Prepared Professional CV
+                </label>
+
+                <input
+                    type="file"
+                    id="preparedCvFile"
+                    accept=".pdf,.doc,.docx"
+                    class="w-full border rounded-lg p-3 text-sm"
+                >
+
+                <p class="text-xs text-slate-500 mt-1">
+                    Upload the completed CV prepared by the Human CV Expert.
+                    Maximum 10 MB.
                 </p>
 
             </div>
 
 
             <div>
-                <label class="label-style">Full Name</label>
 
-                <input
-                    id="interestName"
-                    required
-                    class="input-style"
-                >
-            </div>
-
-
-            <div>
-                <label class="label-style">Email</label>
-
-                <input
-                    id="interestEmail"
-                    type="email"
-                    required
-                    class="input-style"
-                >
-            </div>
-
-
-            <div>
-                <label class="label-style">Phone / WhatsApp</label>
-
-                <input
-                    id="interestPhone"
-                    type="tel"
-                    required
-                    class="input-style"
-                    placeholder="+254..."
-                >
-            </div>
-
-
-            <div>
-                <label class="label-style">
-                    Do you need a professional CV?
-                </label>
-
-                <select
-                    id="interestNeedsCv"
-                    required
-                    class="input-style"
-                >
-                    <option value="yes">
-                        Yes, I need the Human CV Expert
-                    </option>
-
-                    <option value="no">
-                        No, I already have a CV
-                    </option>
-                </select>
-
-            </div>
-
-
-            <div>
-                <label class="label-style">
-                    Additional Message
+                <label class="block text-xs font-semibold uppercase mb-2">
+                    Expert Message
                 </label>
 
                 <textarea
-                    id="interestMessage"
-                    rows="3"
-                    class="input-style"
-                    placeholder="Any additional information..."
+                    id="expertMessage"
+                    rows="4"
+                    class="w-full border rounded-lg p-3 text-sm"
+                    placeholder="Message to the client..."
                 ></textarea>
+
             </div>
 
 
             <button
-                type="submit"
-                id="interestSubmitBtn"
-                class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-black text-sm"
+                onclick="uploadPreparedCv()"
+                id="uploadPreparedCvBtn"
+                class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-lg font-bold text-sm flex items-center justify-center gap-2"
             >
-                Submit Job Interest
+                <i data-lucide="file-check"></i>
+                Upload CV & Notify Client
             </button>
 
-        </form>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     INFO MODAL
+========================================================= -->
+<div
+    id="infoModal"
+    class="modal fixed inset-0 bg-black/60 z-[120] items-center justify-center p-4"
+>
+
+    <div class="bg-white rounded-2xl max-w-md w-full p-6">
+
+        <div class="flex justify-between items-start">
+
+            <div>
+                <h2
+                    id="infoTitle"
+                    class="text-xl font-bold"
+                ></h2>
+
+                <p
+                    id="infoText"
+                    class="text-sm text-slate-600 mt-3"
+                ></p>
+            </div>
+
+            <button onclick="closeInfoModal()">
+                <i data-lucide="x"></i>
+            </button>
+
+        </div>
 
     </div>
 
@@ -1424,65 +1546,28 @@
 <!-- =========================================================
      FOOTER
 ========================================================= -->
-<footer class="bg-slate-950 text-slate-400 py-8 mt-12">
+<footer class="bg-slate-900 text-slate-400 py-8 mt-12 border-t border-slate-800">
 
-    <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
+    <div class="max-w-7xl mx-auto px-4 text-center text-xs space-y-2">
 
-        <p class="text-sm font-bold text-slate-300">
-            © 2026 Mustafa Elevate
+        <p>
+            &copy; 2026 Mustafa Elevate.
+            Career Guidance & Recruitment Support.
         </p>
 
-        <p class="text-xs">
-            Jobs • International Careers • Professional CV Support
+        <p class="text-slate-500">
+            Human CV Expert:
+            <strong>0798 811471</strong>
         </p>
 
-        <p class="text-xs text-slate-500">
-            Always verify job opportunities through official company sources.
+        <p class="text-slate-600">
+            Always verify recruitment opportunities and payment requests
+            before sending money.
         </p>
-
-        <div class="pt-3 text-xs">
-            M-Pesa Payments:
-            <strong class="text-slate-300">0792102645</strong>
-            &nbsp; | &nbsp;
-            CV Expert:
-            <strong class="text-slate-300">+254 798 811471</strong>
-        </div>
 
     </div>
 
 </footer>
-
-
-<!-- =========================================================
-     GLOBAL STYLES
-========================================================= -->
-<style>
-
-    .label-style {
-        display: block;
-        font-size: 11px;
-        font-weight: 800;
-        color: #334155;
-        text-transform: uppercase;
-        margin-bottom: 5px;
-    }
-
-    .input-style {
-        width: 100%;
-        padding: 11px 13px;
-        border: 1px solid #cbd5e1;
-        border-radius: 10px;
-        font-size: 14px;
-        outline: none;
-        background: white;
-    }
-
-    .input-style:focus {
-        border-color: #6366f1;
-        box-shadow: 0 0 0 3px rgba(99,102,241,.12);
-    }
-
-</style>
 
 
 <!-- =========================================================
@@ -1492,67 +1577,39 @@
 
 /* =========================================================
    FIREBASE CONFIGURATION
-   REPLACE THESE VALUES WITH YOUR REAL FIREBASE CONFIG
+   Replace these values with YOUR Firebase project values.
 ========================================================= */
 
 const firebaseConfig = {
-
     apiKey: "YOUR_FIREBASE_API_KEY",
-
-    authDomain:
-        "YOUR_PROJECT_ID.firebaseapp.com",
-
-    projectId:
-        "YOUR_PROJECT_ID",
-
-    storageBucket:
-        "YOUR_PROJECT_ID.appspot.com",
-
-    messagingSenderId:
-        "YOUR_SENDER_ID",
-
-    appId:
-        "YOUR_APP_ID"
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
 };
 
 
-/* =========================================================
-   FIREBASE INITIALIZATION
-========================================================= */
+/* Initialize Firebase */
 
-let firebaseReady = false;
-
-try {
-
-    if (!firebase.apps.length) {
-        firebase.initializeApp(firebaseConfig);
-    }
-
-    firebaseReady = true;
-
-} catch (error) {
-
-    console.error("Firebase initialization error:", error);
-
+if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
 }
 
-
-const auth = firebaseReady ? firebase.auth() : null;
-const db = firebaseReady ? firebase.firestore() : null;
-const storage = firebaseReady ? firebase.storage() : null;
+const auth = firebase.auth();
+const db = firebase.firestore();
+const storage = firebase.storage();
 
 
 /* =========================================================
-   APPLICATION STATE
+   GLOBAL VARIABLES
 ========================================================= */
 
 let currentUser = null;
-
-let currentUserProfile = null;
-
+let staffUser = null;
 let authMode = "login";
-
-let currentInterestJob = null;
+let selectedJob = null;
+let selectedCvRequest = null;
 
 let jobs = [
 
@@ -1560,193 +1617,127 @@ let jobs = [
         id: "job-001",
         title: "Guest Service Associate",
         company: "Katara Hospitality",
-        category: "Hospitality Jobs",
         location: "Qatar",
+        category: "Hospitality",
         salary: "QAR 3,500 + Benefits",
-        desc: "Hospitality opportunity for professional guest service staff in Doha.",
-        applicationUrl: ""
+        desc: "Hospitality opportunity for professional candidates interested in hotel and guest service operations.",
+        applyUrl: ""
     },
 
     {
         id: "job-002",
         title: "Retail Supervisor",
         company: "Dubai Duty Free",
-        category: "Aviation Jobs",
         location: "UAE",
+        category: "Aviation",
         salary: "AED 5,000 + Benefits",
-        desc: "Retail operations and customer service opportunity in an international airport environment.",
-        applicationUrl: ""
+        desc: "Retail operations and customer service opportunity in the aviation environment.",
+        applyUrl: ""
     },
 
     {
         id: "job-003",
         title: "Cruise Steward / Dining Attendant",
         company: "Carnival Cruise Line",
-        category: "Cruise Jobs",
         location: "Cruise",
-        salary: "Company Package",
-        desc: "International cruise hospitality opportunity. Applicants should review official Carnival career requirements.",
-        applicationUrl: "https://www.carnival.com/careers"
+        category: "Cruise",
+        salary: "$1,200 - $1,800 / month",
+        desc: "International cruise hospitality opportunity. Candidates should review the official employer requirements before applying.",
+        applyUrl: "https://www.carnivalcorp.com/careers"
     },
 
     {
         id: "job-004",
         title: "Remote Customer Support Executive",
-        company: "Global Outsourcing Ltd",
-        category: "International Jobs",
+        company: "Global Outsourcing",
         location: "Kenya",
+        category: "Local",
         salary: "KSh 60,000 / month",
-        desc: "Customer support opportunity serving international clients through online communication.",
-        applicationUrl: ""
+        desc: "Customer support role involving communication with clients through digital channels.",
+        applyUrl: ""
     },
 
     {
         id: "job-005",
-        title: "Cabin Steward",
-        company: "International Cruise Careers",
-        category: "Cruise Jobs",
-        location: "Cruise",
-        salary: "Company Package",
-        desc: "Cruise hospitality position requiring strong customer service and teamwork.",
-        applicationUrl: ""
+        title: "International Hospitality Staff",
+        company: "International Hospitality Employer",
+        location: "International",
+        category: "International",
+        salary: "Competitive",
+        desc: "International hospitality opportunity. Check eligibility, employer information and application requirements.",
+        applyUrl: ""
     },
 
     {
         id: "job-006",
-        title: "Customer Service Representative",
-        company: "Kenya Career Network",
-        category: "Local Jobs",
-        location: "Kenya",
+        title: "Airport Customer Service Agent",
+        company: "International Aviation Employer",
+        location: "International",
+        category: "Aviation",
         salary: "Competitive",
-        desc: "Customer service opportunity for candidates with communication and computer skills.",
-        applicationUrl: ""
+        desc: "Customer service position in an international airport environment.",
+        applyUrl: ""
+    },
+
+    {
+        id: "job-007",
+        title: "Logistics Assistant",
+        company: "Kenya Logistics Company",
+        location: "Kenya",
+        category: "Local",
+        salary: "KSh 35,000 - 55,000",
+        desc: "Assist with logistics operations, coordination and customer support.",
+        applyUrl: ""
+    },
+
+    {
+        id: "job-008",
+        title: "Hotel Front Office Agent",
+        company: "International Hotel Group",
+        location: "Europe",
+        category: "International",
+        salary: "Competitive + Benefits",
+        desc: "Front office opportunity for candidates with customer service and hospitality experience.",
+        applyUrl: ""
     }
 
 ];
 
+
 let cvRequests = [];
-
 let userApplications = [];
-
-let notifications = [];
-
-
-/* =========================================================
-   ICON HELPERS
-========================================================= */
-
-function refreshIcons() {
-
-    if (window.lucide) {
-        lucide.createIcons();
-    }
-
-}
+let userNotifications = [];
 
 
 /* =========================================================
-   CATEGORY ICON
-========================================================= */
-
-function getCategoryIcon(category) {
-
-    const icons = {
-
-        "Local Jobs": "map-pin",
-
-        "International Jobs": "globe-2",
-
-        "Careers": "compass",
-
-        "Cruise Jobs": "ship",
-
-        "Aviation Jobs": "plane",
-
-        "Hospitality Jobs": "hotel"
-
-    };
-
-    return icons[category] || "briefcase";
-
-}
-
-
-function getCategoryClasses(category) {
-
-    const styles = {
-
-        "Local Jobs":
-            "bg-green-50 text-green-700 border-green-100",
-
-        "International Jobs":
-            "bg-blue-50 text-blue-700 border-blue-100",
-
-        "Careers":
-            "bg-purple-50 text-purple-700 border-purple-100",
-
-        "Cruise Jobs":
-            "bg-cyan-50 text-cyan-700 border-cyan-100",
-
-        "Aviation Jobs":
-            "bg-orange-50 text-orange-700 border-orange-100",
-
-        "Hospitality Jobs":
-            "bg-rose-50 text-rose-700 border-rose-100"
-
-    };
-
-    return styles[category] ||
-        "bg-slate-50 text-slate-700 border-slate-100";
-
-}
-
-
-/* =========================================================
-   INITIALIZATION
+   START APPLICATION
 ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    refreshIcons();
+    lucide.createIcons();
 
     renderJobs(jobs);
 
-    updateAuthUI();
-
-    if (!firebaseReady) {
-
-        console.warn(
-            "Firebase is not configured. Replace the Firebase configuration."
-        );
-
-        return;
-
-    }
-
-
-    auth.onAuthStateChanged(async user => {
+    auth.onAuthStateChanged(async (user) => {
 
         if (user) {
 
-            currentUser = user;
-
-            await loadUserProfile(user);
+            currentUser = {
+                uid: user.uid,
+                email: user.email,
+                name: user.displayName || user.email.split("@")[0]
+            };
 
             updateAuthUI();
 
-            await loadUserDashboard();
-
-            await checkStaffAuthorization();
+            await loadUserData(user.uid);
 
         } else {
 
             currentUser = null;
 
-            currentUserProfile = null;
-
             updateAuthUI();
-
-            hideStaffDashboard();
 
         }
 
@@ -1761,356 +1752,61 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function switchTab(tabId) {
 
-    const target = document.getElementById("tab-" + tabId);
-
-    if (!target) return;
-
-    document
-        .querySelectorAll(".tab-content")
+    document.querySelectorAll(".tab-content")
         .forEach(el => el.classList.remove("active"));
 
-    target.classList.add("active");
+    const target = document.getElementById("tab-" + tabId);
+
+    if (target) {
+        target.classList.add("active");
+    }
 
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
 
-    refreshIcons();
-
+    lucide.createIcons();
 }
 
 
 /* =========================================================
-   AUTH UI
+   JOB ICON SYSTEM
 ========================================================= */
 
-function updateAuthUI() {
+function getJobIcon(category) {
 
-    const button =
-        document.getElementById("authNavBtn");
+    const icons = {
+        Local: "map-pin",
+        International: "globe-2",
+        Cruise: "ship",
+        Aviation: "plane",
+        Hospitality: "hotel",
+        Logistics: "truck",
+        Security: "shield",
+        Healthcare: "heart-pulse",
+        Other: "briefcase"
+    };
 
-    if (currentUser) {
-
-        const name =
-            currentUser.displayName ||
-            (currentUser.email || "Account").split("@")[0];
-
-        button.innerHTML = `
-            <i data-lucide="user-check" class="w-4 h-4"></i>
-            ${escapeHtml(name)}
-        `;
-
-        document
-            .getElementById("dashboardLocked")
-            .classList.add("hidden");
-
-        document
-            .getElementById("dashboardUnlocked")
-            .classList.remove("hidden");
-
-        document
-            .getElementById("userWelcomeName")
-            .textContent =
-            "Welcome back, " + name + "!";
-
-    } else {
-
-        button.innerHTML = `
-            <i data-lucide="log-in" class="w-4 h-4"></i>
-            Login
-        `;
-
-        document
-            .getElementById("dashboardLocked")
-            .classList.remove("hidden");
-
-        document
-            .getElementById("dashboardUnlocked")
-            .classList.add("hidden");
-
-    }
-
-    refreshIcons();
-
+    return icons[category] || "briefcase";
 }
 
 
-/* =========================================================
-   AUTH MODE
-========================================================= */
-
-function switchAuthMode(mode) {
-
-    authMode = mode;
-
-    const login =
-        document.getElementById("authTabLogin");
-
-    const register =
-        document.getElementById("authTabRegister");
-
-    const fields =
-        document.getElementById("registerFields");
-
-    const button =
-        document.getElementById("authSubmitBtn");
-
-
-    if (mode === "login") {
-
-        login.className =
-            "flex-1 pb-3 font-black text-indigo-600 border-b-2 border-indigo-600 text-sm";
-
-        register.className =
-            "flex-1 pb-3 font-bold text-slate-400 text-sm";
-
-        fields.classList.add("hidden");
-
-        button.textContent =
-            "Login to My Account";
-
-    } else {
-
-        register.className =
-            "flex-1 pb-3 font-black text-indigo-600 border-b-2 border-indigo-600 text-sm";
-
-        login.className =
-            "flex-1 pb-3 font-bold text-slate-400 text-sm";
-
-        fields.classList.remove("hidden");
-
-        button.textContent =
-            "Create My Account";
-
-    }
-
-}
-
-
-/* =========================================================
-   AUTH HANDLER
-========================================================= */
-
-async function handleAuth(event) {
-
-    event.preventDefault();
-
-    if (!auth) {
-
-        alert("Firebase is not configured yet.");
-
-        return;
-
-    }
-
-
-    const email =
-        document.getElementById("authEmail").value.trim();
-
-    const password =
-        document.getElementById("authPassword").value;
-
-    const name =
-        document.getElementById("authName").value.trim();
-
-
-    try {
-
-        if (authMode === "register") {
-
-            const credential =
-                await auth.createUserWithEmailAndPassword(
-                    email,
-                    password
-                );
-
-
-            if (name) {
-
-                await credential.user.updateProfile({
-                    displayName: name
-                });
-
-            }
-
-
-            await db.collection("users")
-                .doc(credential.user.uid)
-                .set({
-
-                    uid: credential.user.uid,
-
-                    name:
-                        name ||
-                        email.split("@")[0],
-
-                    email: email,
-
-                    role: "user",
-
-                    createdAt:
-                        firebase.firestore.FieldValue.serverTimestamp()
-
-                }, { merge: true });
-
-
-            alert(
-                "Your Mustafa Elevate account has been created."
-            );
-
-        } else {
-
-            await auth.signInWithEmailAndPassword(
-                email,
-                password
-            );
-
-            alert("Login successful.");
-
-        }
-
-
-        switchTab("dashboard");
-
-    } catch (error) {
-
-        console.error(error);
-
-        alert(
-            "Authentication error: " +
-            friendlyFirebaseError(error)
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   PASSWORD RESET
-========================================================= */
-
-async function resetPassword() {
-
-    if (!auth) {
-
-        alert("Firebase is not configured.");
-
-        return;
-
-    }
-
-
-    const email =
-        document.getElementById("authEmail").value.trim();
-
-
-    if (!email) {
-
-        alert(
-            "Enter your email address first."
-        );
-
-        return;
-
-    }
-
-
-    try {
-
-        await auth.sendPasswordResetEmail(email);
-
-        alert(
-            "Password reset instructions have been sent to your email."
-        );
-
-    } catch (error) {
-
-        alert(
-            "Unable to send reset email: " +
-            friendlyFirebaseError(error)
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   LOGOUT
-========================================================= */
-
-async function logoutUser() {
-
-    if (!auth) return;
-
-    try {
-
-        await auth.signOut();
-
-        switchTab("jobs");
-
-    } catch (error) {
-
-        console.error(error);
-
-    }
-
-}
-
-
-/* =========================================================
-   USER PROFILE
-========================================================= */
-
-async function loadUserProfile(user) {
-
-    if (!db) return;
-
-    try {
-
-        const snapshot =
-            await db.collection("users")
-                .doc(user.uid)
-                .get();
-
-        if (snapshot.exists) {
-
-            currentUserProfile =
-                snapshot.data();
-
-        } else {
-
-            currentUserProfile = {
-
-                uid: user.uid,
-
-                name:
-                    user.displayName ||
-                    user.email.split("@")[0],
-
-                email: user.email,
-
-                role: "user"
-
-            };
-
-        }
-
-    } catch (error) {
-
-        console.error(
-            "Profile error:",
-            error
-        );
-
-        currentUserProfile = {
-            role: "user"
-        };
-
-    }
-
+function getJobIconBackground(category) {
+
+    const backgrounds = {
+        Local: "bg-emerald-50 text-emerald-600",
+        International: "bg-blue-50 text-blue-600",
+        Cruise: "bg-cyan-50 text-cyan-600",
+        Aviation: "bg-violet-50 text-violet-600",
+        Hospitality: "bg-amber-50 text-amber-600",
+        Logistics: "bg-orange-50 text-orange-600",
+        Security: "bg-slate-100 text-slate-700",
+        Healthcare: "bg-rose-50 text-rose-600",
+        Other: "bg-indigo-50 text-indigo-600"
+    };
+
+    return backgrounds[category] || backgrounds.Other;
 }
 
 
@@ -2120,137 +1816,105 @@ async function loadUserProfile(user) {
 
 function renderJobs(jobList) {
 
-    const container =
-        document.getElementById(
-            "jobListContainer"
-        );
-
+    const container = document.getElementById("jobListContainer");
 
     if (!jobList.length) {
 
         container.innerHTML = `
-            <div class="col-span-full bg-white border rounded-2xl p-10 text-center">
-                <i data-lucide="search-x" class="w-10 h-10 mx-auto text-slate-300 mb-3"></i>
-                <p class="font-bold text-slate-700">
+            <div class="col-span-full bg-white border rounded-xl p-10 text-center">
+                <i data-lucide="search-x" class="w-10 h-10 text-slate-300 mx-auto"></i>
+                <p class="text-slate-500 mt-3">
                     No matching jobs found.
-                </p>
-                <p class="text-xs text-slate-500 mt-1">
-                    Try another keyword or category.
                 </p>
             </div>
         `;
 
-        refreshIcons();
+        lucide.createIcons();
 
         return;
-
     }
 
 
-    container.innerHTML =
-        jobList.map(job => {
+    container.innerHTML = jobList.map(job => {
 
-            const categoryIcon =
-                getCategoryIcon(job.category);
+        const icon = getJobIcon(job.category);
+        const iconBg = getJobIconBackground(job.category);
 
-            const categoryClass =
-                getCategoryClasses(job.category);
+        return `
+
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col justify-between hover:shadow-md transition">
+
+            <div>
+
+                <div class="flex justify-between items-start mb-4">
+
+                    <div class="job-icon rounded-xl ${iconBg} flex items-center justify-center">
+
+                        <i data-lucide="${icon}" class="w-6 h-6"></i>
+
+                    </div>
+
+                    <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-slate-100 text-slate-600">
+                        ${escapeHtml(job.category)}
+                    </span>
+
+                </div>
 
 
-            return `
+                <div class="flex flex-wrap gap-2 mb-3">
 
-            <article
-                class="job-card bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden"
+                    <span class="bg-indigo-50 text-indigo-700 text-xs font-semibold px-2.5 py-1 rounded-md flex items-center gap-1">
+                        <i data-lucide="map-pin" class="w-3 h-3"></i>
+                        ${escapeHtml(job.location)}
+                    </span>
+
+                    <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md flex items-center gap-1">
+                        <i data-lucide="wallet" class="w-3 h-3"></i>
+                        ${escapeHtml(job.salary)}
+                    </span>
+
+                </div>
+
+
+                <h3 class="text-lg font-bold text-slate-900">
+                    ${escapeHtml(job.title)}
+                </h3>
+
+
+                <p class="text-xs font-medium text-slate-500 mb-3 flex items-center gap-1">
+
+                    <i data-lucide="building-2" class="w-3.5 h-3.5"></i>
+
+                    ${escapeHtml(job.company)}
+
+                </p>
+
+
+                <p class="text-sm text-slate-600 line-clamp-3 mb-5">
+                    ${escapeHtml(job.desc)}
+                </p>
+
+            </div>
+
+
+            <button
+                onclick="openJobModal('${job.id}')"
+                class="w-full bg-slate-900 hover:bg-indigo-600 text-white py-2.5 rounded-lg text-xs font-bold transition flex items-center justify-center gap-2"
             >
 
-                <div class="p-5">
+                <i data-lucide="heart" class="w-4 h-4"></i>
 
-                    <div class="flex items-start justify-between gap-3 mb-4">
+                Interested / Apply
 
-                        <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0">
-                            <i data-lucide="${categoryIcon}" class="w-6 h-6"></i>
-                        </div>
+            </button>
 
-                        <span class="text-[10px] font-black px-2.5 py-1.5 rounded-lg border ${categoryClass}">
-                            ${escapeHtml(job.category || "Careers")}
-                        </span>
+        </div>
 
-                    </div>
+        `;
 
+    }).join("");
 
-                    <h3 class="text-lg font-black text-slate-900">
-                        ${escapeHtml(job.title)}
-                    </h3>
-
-
-                    <p class="text-xs font-bold text-slate-500 flex items-center gap-1 mt-1">
-                        <i data-lucide="building-2" class="w-3.5 h-3.5"></i>
-                        ${escapeHtml(job.company)}
-                    </p>
-
-
-                    <div class="flex flex-wrap gap-2 mt-3">
-
-                        <span class="text-[11px] font-bold bg-slate-100 text-slate-700 px-2.5 py-1 rounded-lg flex items-center gap-1">
-                            <i data-lucide="map-pin" class="w-3 h-3"></i>
-                            ${escapeHtml(job.location)}
-                        </span>
-
-                        <span class="text-[11px] font-bold bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-lg flex items-center gap-1">
-                            <i data-lucide="wallet" class="w-3 h-3"></i>
-                            ${escapeHtml(job.salary)}
-                        </span>
-
-                    </div>
-
-
-                    <p class="text-sm text-slate-600 mt-4 line-clamp-4">
-                        ${escapeHtml(job.desc)}
-                    </p>
-
-                </div>
-
-
-                <div class="p-4 bg-slate-50 border-t flex flex-col gap-2">
-
-                    <button
-                        onclick="openJobInterestModal('${escapeAttribute(job.id)}')"
-                        class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 rounded-xl text-xs font-black flex items-center justify-center gap-2"
-                    >
-                        <i data-lucide="heart-handshake" class="w-4 h-4"></i>
-                        I'm Interested / Request CV
-                    </button>
-
-
-                    ${
-                        job.applicationUrl
-                        ?
-                        `
-                        <a
-                            href="${escapeAttribute(job.applicationUrl)}"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="w-full bg-white border border-slate-200 hover:border-indigo-500 text-slate-700 py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2"
-                        >
-                            <i data-lucide="external-link" class="w-4 h-4"></i>
-                            Official Application
-                        </a>
-                        `
-                        :
-                        ""
-                    }
-
-                </div>
-
-            </article>
-
-            `;
-
-        }).join("");
-
-
-    refreshIcons();
-
+    lucide.createIcons();
 }
 
 
@@ -2261,333 +1925,206 @@ function renderJobs(jobList) {
 function filterJobs() {
 
     const keyword =
-        document.getElementById(
-            "searchKeyword"
-        ).value
-        .trim()
-        .toLowerCase();
+        document.getElementById("searchKeyword")
+        .value
+        .toLowerCase()
+        .trim();
 
     const location =
-        document.getElementById(
-            "filterLocation"
-        ).value;
+        document.getElementById("filterLocation")
+        .value;
 
 
-    const filtered =
-        jobs.filter(job => {
+    const filtered = jobs.filter(job => {
 
-            const text = [
-
-                job.title,
-
-                job.company,
-
-                job.category,
-
-                job.location,
-
-                job.desc
-
-            ].join(" ").toLowerCase();
+        const text = `
+            ${job.title}
+            ${job.company}
+            ${job.location}
+            ${job.category}
+            ${job.desc}
+        `.toLowerCase();
 
 
-            const matchesKeyword =
-                !keyword ||
-                text.includes(keyword);
+        const keywordMatch =
+            !keyword || text.includes(keyword);
 
 
-            const matchesLocation =
-                !location ||
-                job.location === location;
+        const locationMatch =
+            !location ||
+            job.location === location;
 
 
-            return (
-                matchesKeyword &&
-                matchesLocation
-            );
+        return keywordMatch && locationMatch;
 
-        });
+    });
 
 
     renderJobs(filtered);
-
 }
 
 
 function filterByCategory(category) {
 
-    const filtered =
-        jobs.filter(
-            job => job.category === category
-        );
+    document.getElementById("searchKeyword").value = "";
+
+    document.getElementById("filterLocation").value = "";
+
+    const filtered = jobs.filter(job => {
+
+        if (category === "Local") {
+            return job.category === "Local";
+        }
+
+        if (category === "International") {
+            return [
+                "International",
+                "Aviation",
+                "Hospitality"
+            ].includes(job.category);
+        }
+
+        return job.category === category;
+
+    });
 
     renderJobs(filtered);
-
-    switchTab("jobs");
-
 }
 
 
 /* =========================================================
-   JOB INTEREST MODAL
+   JOB MODAL
 ========================================================= */
 
-function openJobInterestModal(jobId) {
+function openJobModal(jobId) {
 
-    const job =
-        jobs.find(
-            item => String(item.id) === String(jobId)
-        );
+    const job = jobs.find(j => j.id === jobId);
+
+    if (!job) return;
+
+    selectedJob = job;
+
+    document.getElementById("modalJobName").innerText =
+        `${job.title} — ${job.company}`;
+
+    document.getElementById("jobModal")
+        .classList.add("active");
+
+    lucide.createIcons();
+}
 
 
-    if (!job) {
+function closeJobModal() {
 
-        alert("Job could not be found.");
+    document.getElementById("jobModal")
+        .classList.remove("active");
 
-        return;
+    selectedJob = null;
+}
 
-    }
 
+/* =========================================================
+   REQUEST CV FOR SELECTED JOB
+========================================================= */
+
+function requestCvForSelectedJob() {
+
+    if (!selectedJob) return;
+
+    closeJobModal();
 
     if (!currentUser) {
 
         alert(
-            "Please login or register before requesting a job."
+            "Please register or log in first. " +
+            "Your CV request must be connected to your user account."
         );
 
         switchTab("auth");
 
         return;
-
     }
 
 
-    currentInterestJob = job;
+    document.getElementById("cvTarget").value =
+        selectedJob.title;
+
+    document.getElementById("cvInterestedJob").value =
+        `${selectedJob.company} — ${selectedJob.title}`;
 
 
-    document.getElementById(
-        "modalJobTitle"
-    ).textContent = job.title;
+    switchTab("cv-desk");
 
-
-    document.getElementById(
-        "modalJobCompany"
-    ).textContent =
-        `${job.company} • ${job.location}`;
-
-
-    document.getElementById(
-        "interestJobId"
-    ).value = job.id;
-
-
-    document.getElementById(
-        "interestJobTitle"
-    ).value = job.title;
-
-
-    document.getElementById(
-        "interestJobCompany"
-    ).value = job.company;
-
-
-    document.getElementById(
-        "interestName"
-    ).value =
-        currentUser.displayName || "";
-
-
-    document.getElementById(
-        "interestEmail"
-    ).value =
-        currentUser.email || "";
-
-
-    const modal =
-        document.getElementById(
-            "jobInterestModal"
-        );
-
-
-    modal.classList.remove("hidden");
-
-    modal.classList.add("flex");
-
-    refreshIcons();
-
-}
-
-
-function closeJobInterestModal() {
-
-    const modal =
-        document.getElementById(
-            "jobInterestModal"
-        );
-
-    modal.classList.add("hidden");
-
-    modal.classList.remove("flex");
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 
 }
 
 
 /* =========================================================
-   SUBMIT JOB INTEREST
+   CONTINUE JOB APPLICATION
 ========================================================= */
 
-async function submitJobInterest(event) {
+async function continueJobApplication() {
 
-    event.preventDefault();
-
+    if (!selectedJob) return;
 
     if (!currentUser) {
 
-        alert("Please login first.");
+        closeJobModal();
+
+        alert("Please log in or register before applying.");
+
+        switchTab("auth");
 
         return;
-
     }
-
-
-    if (!db) {
-
-        alert("Firebase is not configured.");
-
-        return;
-
-    }
-
-
-    const button =
-        document.getElementById(
-            "interestSubmitBtn"
-        );
-
-
-    button.disabled = true;
-
-    button.textContent = "Submitting...";
-
-
-    const data = {
-
-        userId: currentUser.uid,
-
-        name:
-            document.getElementById(
-                "interestName"
-            ).value.trim(),
-
-        email:
-            document.getElementById(
-                "interestEmail"
-            ).value.trim(),
-
-        phone:
-            document.getElementById(
-                "interestPhone"
-            ).value.trim(),
-
-        jobId:
-            document.getElementById(
-                "interestJobId"
-            ).value,
-
-        jobTitle:
-            document.getElementById(
-                "interestJobTitle"
-            ).value,
-
-        company:
-            document.getElementById(
-                "interestJobCompany"
-            ).value,
-
-        needsProfessionalCv:
-            document.getElementById(
-                "interestNeedsCv"
-            ).value === "yes",
-
-        message:
-            document.getElementById(
-                "interestMessage"
-            ).value.trim(),
-
-        status: "New",
-
-        createdAt:
-            firebase.firestore.FieldValue.serverTimestamp()
-
-    };
 
 
     try {
 
-        await db.collection(
-            "jobInterests"
-        ).add(data);
+        await db.collection("jobApplications").add({
+
+            userId: currentUser.uid,
+
+            userName: currentUser.name,
+
+            userEmail: currentUser.email,
+
+            jobId: selectedJob.id,
+
+            jobTitle: selectedJob.title,
+
+            company: selectedJob.company,
+
+            location: selectedJob.location,
+
+            status: "Interested",
+
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+
+        });
 
 
-        await createNotification(
+        closeJobModal();
 
-            currentUser.uid,
-
-            "Job interest submitted",
-
-            `Your interest in ${data.jobTitle} at ${data.company} has been recorded.`,
-
-            "job-interest"
-
-        );
-
-
-        closeJobInterestModal();
-
-        event.target.reset();
+        await loadUserApplications();
 
         alert(
-            "Your job interest has been submitted successfully."
+            "Your interest in this job has been recorded in your dashboard."
         );
 
-
-        if (data.needsProfessionalCv) {
-
-            document.getElementById(
-                "cvTargetJob"
-            ).value = data.jobTitle;
-
-            document.getElementById(
-                "cvTargetCompany"
-            ).value = data.company;
-
-            switchTab("cv-desk");
-
-        } else {
-
-            switchTab("dashboard");
-
-        }
-
-
-        await loadUserDashboard();
-
+        switchTab("dashboard");
 
     } catch (error) {
 
         console.error(error);
 
         alert(
-            "Unable to submit your job interest: " +
-            friendlyFirebaseError(error)
+            "Unable to save your job interest. Please try again."
         );
-
-    } finally {
-
-        button.disabled = false;
-
-        button.textContent =
-            "Submit Job Interest";
 
     }
 
@@ -2606,64 +2143,76 @@ async function submitCVRequest(event) {
     if (!currentUser) {
 
         alert(
-            "Please login or register before requesting a CV."
+            "Please log in or register before submitting your CV request."
         );
 
         switchTab("auth");
 
         return;
-
-    }
-
-
-    if (!db || !storage) {
-
-        alert(
-            "Firebase Firestore and Storage must be configured."
-        );
-
-        return;
-
     }
 
 
     const file =
-        document.getElementById(
-            "oldCvFile"
-        ).files[0];
-
+        document.getElementById("cvFile").files[0];
 
     if (!file) {
 
-        alert(
-            "Please upload your existing CV."
-        );
+        alert("Please upload your existing CV.");
 
         return;
+    }
 
+
+    if (file.size > 10 * 1024 * 1024) {
+
+        alert("The CV file must be 10 MB or smaller.");
+
+        return;
+    }
+
+
+    const transactionCode =
+        document.getElementById("cvMpesa")
+        .value
+        .trim()
+        .toUpperCase();
+
+
+    if (!transactionCode) {
+
+        alert("Please enter your M-Pesa transaction code.");
+
+        return;
     }
 
 
     const submitButton =
-        document.getElementById(
-            "cvSubmitBtn"
-        );
+        document.getElementById("cvSubmitBtn");
 
 
     submitButton.disabled = true;
 
-    submitButton.innerHTML =
-        "Uploading CV...";
+    submitButton.innerHTML = `
+        <i data-lucide="loader-circle" class="w-4 h-4 animate-spin"></i>
+        Uploading request...
+    `;
+
+    lucide.createIcons();
 
 
     try {
 
-        const filePath =
-            `old-cvs/${currentUser.uid}/${Date.now()}_${safeFileName(file.name)}`;
+        /* Upload old CV */
+
+        const safeFileName =
+            file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+
+        const storagePath =
+            `client-cvs/${currentUser.uid}/${Date.now()}_${safeFileName}`;
 
 
         const storageRef =
-            storage.ref(filePath);
+            storage.ref(storagePath);
 
 
         const uploadTask =
@@ -2674,75 +2223,48 @@ async function submitCVRequest(event) {
             await uploadTask.ref.getDownloadURL();
 
 
+        /* Save request */
+
         const requestData = {
 
             userId: currentUser.uid,
 
             name:
-                document.getElementById(
-                    "cvName"
-                ).value.trim(),
+                document.getElementById("cvName").value.trim(),
 
             email:
-                document.getElementById(
-                    "cvEmail"
-                ).value.trim(),
+                document.getElementById("cvEmail").value.trim(),
 
             phone:
-                document.getElementById(
-                    "cvPhone"
-                ).value.trim(),
-
-            experience:
-                document.getElementById(
-                    "cvExperience"
-                ).value.trim(),
+                document.getElementById("cvPhone").value.trim(),
 
             targetJob:
-                document.getElementById(
-                    "cvTargetJob"
-                ).value.trim(),
+                document.getElementById("cvTarget").value.trim(),
 
-            targetCompany:
-                document.getElementById(
-                    "cvTargetCompany"
-                ).value.trim(),
-
-            country:
-                document.getElementById(
-                    "cvCountry"
-                ).value.trim(),
-
-            education:
-                document.getElementById(
-                    "cvEducation"
-                ).value.trim(),
-
-            skills:
-                document.getElementById(
-                    "cvSkills"
-                ).value.trim(),
+            interestedJob:
+                document.getElementById("cvInterestedJob").value.trim(),
 
             details:
-                document.getElementById(
-                    "cvDetails"
-                ).value.trim(),
+                document.getElementById("cvDetails").value.trim(),
 
-            oldCvUrl: oldCvUrl,
+            mpesaCode:
+                transactionCode,
 
-            oldCvPath: filePath,
+            paymentAmount: 1000,
+
+            paymentNumber: "0798811471",
 
             oldCvFileName: file.name,
 
-            status: "New",
+            oldCvUrl: oldCvUrl,
 
-            assignedExpert: null,
+            status: "Pending Payment Verification",
 
-            completedCvUrl: null,
+            expertMessage: "",
 
-            completedCvPath: null,
+            preparedCvUrl: "",
 
-            completedCvFileName: null,
+            preparedCvFileName: "",
 
             createdAt:
                 firebase.firestore.FieldValue.serverTimestamp(),
@@ -2753,47 +2275,33 @@ async function submitCVRequest(event) {
         };
 
 
-        const requestRef =
-            await db.collection(
-                "cvRequests"
-            ).add(requestData);
+        await db.collection("cvRequests")
+            .add(requestData);
 
 
-        await createNotification(
-
-            currentUser.uid,
-
-            "CV request received",
-
-            "Your professional CV request has been sent to the Human CV Expert.",
-
-            "cv-request"
-
-        );
+        document.getElementById("cvRequestForm")
+            .reset();
 
 
         alert(
-            "Your CV request has been submitted successfully. The authorized Human CV Expert can now review your CV."
+            "Your CV request has been submitted successfully. " +
+            "It is now visible in your dashboard. " +
+            "The Human CV Expert will receive it after payment verification."
         );
 
 
-        event.target.reset();
+        await loadUserCvRequests();
 
         switchTab("dashboard");
-
-        await loadUserDashboard();
 
 
     } catch (error) {
 
-        console.error(
-            "CV request error:",
-            error
-        );
+        console.error(error);
 
         alert(
-            "Unable to submit CV request: " +
-            friendlyFirebaseError(error)
+            "Could not submit your CV request: " +
+            error.message
         );
 
     } finally {
@@ -2805,7 +2313,7 @@ async function submitCVRequest(event) {
             Submit CV Request
         `;
 
-        refreshIcons();
+        lucide.createIcons();
 
     }
 
@@ -2813,23 +2321,234 @@ async function submitCVRequest(event) {
 
 
 /* =========================================================
-   USER DASHBOARD
+   AUTH MODE
 ========================================================= */
 
-async function loadUserDashboard() {
+function switchAuthMode(mode) {
 
-    if (!currentUser || !db) return;
+    authMode = mode;
 
 
-    await Promise.all([
+    const loginTab =
+        document.getElementById("authTabLogin");
 
-        loadUserCvRequests(),
+    const registerTab =
+        document.getElementById("authTabRegister");
 
-        loadUserApplications(),
 
-        loadUserNotifications()
+    if (mode === "login") {
 
-    ]);
+        loginTab.className =
+            "flex-1 pb-3 font-bold text-indigo-600 border-b-2 border-indigo-600 text-sm";
+
+        registerTab.className =
+            "flex-1 pb-3 font-semibold text-slate-400 text-sm";
+
+        document.getElementById("registerFields")
+            .classList.add("hidden");
+
+        document.getElementById("authSubmitBtn")
+            .innerText = "Login to Portal";
+
+    } else {
+
+        registerTab.className =
+            "flex-1 pb-3 font-bold text-indigo-600 border-b-2 border-indigo-600 text-sm";
+
+        loginTab.className =
+            "flex-1 pb-3 font-semibold text-slate-400 text-sm";
+
+        document.getElementById("registerFields")
+            .classList.remove("hidden");
+
+        document.getElementById("authSubmitBtn")
+            .innerText = "Register Account";
+
+    }
+
+}
+
+
+/* =========================================================
+   USER AUTH
+========================================================= */
+
+async function handleAuth(event) {
+
+    event.preventDefault();
+
+
+    const email =
+        document.getElementById("authEmail")
+        .value
+        .trim();
+
+    const password =
+        document.getElementById("authPassword")
+        .value;
+
+    const name =
+        document.getElementById("authName")
+        .value
+        .trim();
+
+
+    try {
+
+        if (authMode === "register") {
+
+            if (!name) {
+
+                alert("Please enter your full name.");
+
+                return;
+            }
+
+
+            const credential =
+                await auth.createUserWithEmailAndPassword(
+                    email,
+                    password
+                );
+
+
+            await credential.user.updateProfile({
+                displayName: name
+            });
+
+
+            await db.collection("users")
+                .doc(credential.user.uid)
+                .set({
+
+                    name: name,
+
+                    email: email,
+
+                    role: "user",
+
+                    createdAt:
+                        firebase.firestore.FieldValue.serverTimestamp()
+
+                }, { merge: true });
+
+
+            alert(
+                "Your account has been created successfully."
+            );
+
+        } else {
+
+            await auth.signInWithEmailAndPassword(
+                email,
+                password
+            );
+
+            alert("Login successful.");
+
+        }
+
+
+        switchTab("dashboard");
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Authentication error: " +
+            error.message
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   USER LOGOUT
+========================================================= */
+
+async function logoutUser() {
+
+    try {
+
+        await auth.signOut();
+
+        currentUser = null;
+
+        updateAuthUI();
+
+        switchTab("jobs");
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
+
+}
+
+
+/* =========================================================
+   AUTH UI
+========================================================= */
+
+function updateAuthUI() {
+
+    const button =
+        document.getElementById("authNavBtn");
+
+
+    if (currentUser) {
+
+        button.innerHTML = `
+            <i data-lucide="user-check" class="w-4 h-4"></i>
+            ${escapeHtml(currentUser.name)}
+        `;
+
+        document.getElementById("dashboardLocked")
+            .classList.add("hidden");
+
+        document.getElementById("dashboardUnlocked")
+            .classList.remove("hidden");
+
+        document.getElementById("userWelcomeName")
+            .innerText =
+            `Welcome back, ${currentUser.name}!`;
+
+    } else {
+
+        button.innerHTML = `
+            <i data-lucide="log-in" class="w-4 h-4"></i>
+            Login / Register
+        `;
+
+        document.getElementById("dashboardLocked")
+            .classList.remove("hidden");
+
+        document.getElementById("dashboardUnlocked")
+            .classList.add("hidden");
+
+    }
+
+
+    lucide.createIcons();
+}
+
+
+/* =========================================================
+   LOAD USER DATA
+========================================================= */
+
+async function loadUserData(uid) {
+
+    await loadUserCvRequests();
+
+    await loadUserApplications();
+
+    await loadUserNotifications();
 
 }
 
@@ -2840,46 +2559,45 @@ async function loadUserDashboard() {
 
 async function loadUserCvRequests() {
 
-    const container =
-        document.getElementById(
-            "userCvRequestsList"
-        );
-
-    const completedContainer =
-        document.getElementById(
-            "completedCvList"
-        );
+    if (!currentUser) return;
 
 
     try {
 
         const snapshot =
-            await db.collection(
-                "cvRequests"
-            )
-            .where(
-                "userId",
-                "==",
-                currentUser.uid
-            )
+            await db.collection("cvRequests")
+            .where("userId", "==", currentUser.uid)
             .get();
+
+
+        const container =
+            document.getElementById("userCvRequestsList");
 
 
         if (snapshot.empty) {
 
             container.innerHTML = `
-                <p class="text-sm text-slate-500">
-                    No CV requests yet.
-                </p>
+                <div class="bg-slate-50 border rounded-xl p-5 text-center">
+                    <i data-lucide="file-plus" class="w-8 h-8 text-slate-300 mx-auto"></i>
+                    <p class="text-sm text-slate-500 mt-2">
+                        No CV requests yet.
+                    </p>
+                    <button
+                        onclick="switchTab('cv-desk')"
+                        class="mt-3 text-xs bg-indigo-600 text-white px-4 py-2 rounded-lg"
+                    >
+                        Request Professional CV
+                    </button>
+                </div>
             `;
 
-            return;
+            lucide.createIcons();
 
+            return;
         }
 
 
-        let requests = [];
-
+        const requests = [];
 
         snapshot.forEach(doc => {
 
@@ -2891,84 +2609,103 @@ async function loadUserCvRequests() {
         });
 
 
-        requests.sort(
-            (a, b) =>
-                getTimestamp(b.createdAt) -
-                getTimestamp(a.createdAt)
-        );
+        requests.sort((a, b) => {
+
+            const aTime =
+                a.createdAt?.seconds || 0;
+
+            const bTime =
+                b.createdAt?.seconds || 0;
+
+            return bTime - aTime;
+
+        });
 
 
         container.innerHTML =
             requests.map(request => {
 
-                const completed =
-                    request.status === "CV Ready" ||
-                    !!request.completedCvUrl;
+                const ready =
+                    request.status === "CV Ready";
 
 
                 return `
 
-                <div class="p-4 border rounded-2xl bg-slate-50">
+                <div class="border rounded-xl p-4 ${ready ? "bg-emerald-50 border-emerald-200" : "bg-slate-50"}">
 
-                    <div class="flex justify-between items-start gap-3">
+                    <div class="flex flex-col md:flex-row justify-between gap-3">
 
                         <div>
 
-                            <p class="font-black text-sm">
+                            <p class="font-bold text-slate-900">
                                 ${escapeHtml(request.targetJob || "Professional CV")}
                             </p>
 
                             <p class="text-xs text-slate-500 mt-1">
-                                ${escapeHtml(request.targetCompany || "Career Support")}
+                                ${escapeHtml(request.interestedJob || "")}
+                            </p>
+
+                            <p class="text-xs text-slate-500 mt-1">
+                                Payment: KSh ${request.paymentAmount || 1000}
+                                |
+                                M-Pesa: ${escapeHtml(request.mpesaCode || "")}
                             </p>
 
                         </div>
 
-                        <span class="status-badge ${
-                            completed
-                            ? "bg-emerald-100 text-emerald-700"
-                            : "bg-amber-100 text-amber-700"
+
+                        <span class="self-start px-3 py-1 text-xs font-bold rounded-full ${
+                            ready
+                                ? "bg-emerald-100 text-emerald-700"
+                                : "bg-amber-100 text-amber-700"
                         }">
-                            ${escapeHtml(request.status || "New")}
+
+                            ${escapeHtml(request.status || "Pending")}
+
                         </span>
 
                     </div>
 
 
-                    <div class="mt-3 text-xs text-slate-500">
+                    ${
+                        ready
+                        ? `
+                        <div class="mt-4">
 
-                        ${
-                            request.oldCvFileName
-                            ?
-                            `
-                            <div class="flex items-center gap-1">
-                                <i data-lucide="file" class="w-3 h-3"></i>
-                                Existing CV uploaded
-                            </div>
-                            `
-                            :
-                            ""
-                        }
+                            <p class="text-xs text-emerald-800 font-semibold mb-2">
+                                Your professional CV is ready.
+                            </p>
 
-                    </div>
+                            <a
+                                href="${request.preparedCvUrl}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg text-xs font-bold"
+                            >
+                                <i data-lucide="download" class="w-4 h-4"></i>
+                                Open / Download CV
+                            </a>
+
+                        </div>
+                        `
+                        : ""
+                    }
 
 
                     ${
-                        completed && request.completedCvUrl
-                        ?
+                        request.expertMessage
+                        ? `
+                        <div class="mt-3 bg-white border rounded-lg p-3">
+                            <p class="text-xs font-bold text-slate-700">
+                                Human CV Expert:
+                            </p>
+
+                            <p class="text-sm text-slate-600 mt-1">
+                                ${escapeHtml(request.expertMessage)}
+                            </p>
+                        </div>
                         `
-                        <a
-                            href="${escapeAttribute(request.completedCvUrl)}"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="mt-3 w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 rounded-xl text-xs font-black flex items-center justify-center gap-2"
-                        >
-                            <i data-lucide="download" class="w-4 h-4"></i>
-                            Download Professional CV
-                        </a>
-                        `
-                        :
-                        ""
+                        : ""
                     }
 
                 </div>
@@ -2978,67 +2715,15 @@ async function loadUserCvRequests() {
             }).join("");
 
 
-        const completed =
-            requests.filter(
-                r => r.completedCvUrl
-            );
+        renderPreparedCv(requests);
 
+        lucide.createIcons();
 
-        if (completed.length) {
-
-            completedContainer.innerHTML =
-                completed.map(r => `
-
-                    <div class="p-5 border border-emerald-200 bg-emerald-50 rounded-2xl">
-
-                        <div class="flex items-start gap-4">
-
-                            <div class="w-12 h-12 bg-emerald-600 text-white rounded-xl flex items-center justify-center shrink-0">
-                                <i data-lucide="file-check-2" class="w-6 h-6"></i>
-                            </div>
-
-                            <div class="flex-1">
-
-                                <h4 class="font-black text-emerald-900">
-                                    Your CV is Ready!
-                                </h4>
-
-                                <p class="text-xs text-emerald-700 mt-1">
-                                    ${escapeHtml(r.targetJob || "Professional CV")}
-                                    ${
-                                        r.targetCompany
-                                        ? " • " + escapeHtml(r.targetCompany)
-                                        : ""
-                                    }
-                                </p>
-
-                                <a
-                                    href="${escapeAttribute(r.completedCvUrl)}"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="inline-flex mt-4 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-xl text-xs font-black items-center gap-2"
-                                >
-                                    <i data-lucide="download" class="w-4 h-4"></i>
-                                    Open / Download CV
-                                </a>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                `).join("");
-
-        }
-
-
-        refreshIcons();
 
     } catch (error) {
 
         console.error(
-            "User CV loading error:",
+            "User CV request error:",
             error
         );
 
@@ -3048,50 +2733,137 @@ async function loadUserCvRequests() {
 
 
 /* =========================================================
-   USER APPLICATIONS
+   PREPARED CV
+========================================================= */
+
+function renderPreparedCv(requests) {
+
+    const container =
+        document.getElementById("preparedCvContainer");
+
+
+    const readyRequest =
+        requests.find(
+            request =>
+                request.status === "CV Ready" &&
+                request.preparedCvUrl
+        );
+
+
+    if (!readyRequest) {
+
+        container.innerHTML = `
+            <div class="bg-slate-50 border rounded-xl p-6 text-center">
+                <i data-lucide="file-text" class="w-10 h-10 text-slate-300 mx-auto"></i>
+
+                <p class="text-sm text-slate-500 mt-2">
+                    Your professionally prepared CV will appear here
+                    when the Human CV Expert uploads it.
+                </p>
+            </div>
+        `;
+
+        lucide.createIcons();
+
+        return;
+    }
+
+
+    container.innerHTML = `
+
+        <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+
+            <div class="flex items-start gap-4">
+
+                <div class="bg-emerald-100 text-emerald-600 p-3 rounded-xl">
+                    <i data-lucide="file-check-2" class="w-7 h-7"></i>
+                </div>
+
+                <div class="flex-1">
+
+                    <p class="font-bold text-emerald-900">
+                        Your CV is ready!
+                    </p>
+
+                    <p class="text-xs text-emerald-800 mt-1">
+                        Prepared for:
+                        ${escapeHtml(readyRequest.targetJob || "Your desired job")}
+                    </p>
+
+                    <p class="text-xs text-slate-500 mt-1">
+                        ${escapeHtml(readyRequest.preparedCvFileName || "Prepared CV")}
+                    </p>
+
+
+                    <a
+                        href="${readyRequest.preparedCvUrl}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg text-xs font-bold mt-4"
+                    >
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        Use My Prepared CV
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+
+    lucide.createIcons();
+}
+
+
+/* =========================================================
+   JOB APPLICATIONS
 ========================================================= */
 
 async function loadUserApplications() {
 
-    const container =
-        document.getElementById(
-            "userApplicationsList"
-        );
+    if (!currentUser) return;
 
 
     try {
 
         const snapshot =
-            await db.collection(
-                "applications"
-            )
-            .where(
-                "userId",
-                "==",
-                currentUser.uid
-            )
+            await db.collection("jobApplications")
+            .where("userId", "==", currentUser.uid)
             .get();
+
+
+        const savedContainer =
+            document.getElementById("userApplicationsList");
+
+        const submittedContainer =
+            document.getElementById("userSubmittedApplications");
 
 
         if (snapshot.empty) {
 
-            container.innerHTML = `
+            savedContainer.innerHTML = `
                 <p class="text-sm text-slate-500">
-                    No applications yet.
+                    No jobs saved yet.
+                </p>
+            `;
+
+            submittedContainer.innerHTML = `
+                <p class="text-sm text-slate-500">
+                    No applications submitted yet.
                 </p>
             `;
 
             return;
-
         }
 
 
-        let records = [];
-
+        const applications = [];
 
         snapshot.forEach(doc => {
 
-            records.push({
+            applications.push({
                 id: doc.id,
                 ...doc.data()
             });
@@ -3099,44 +2871,49 @@ async function loadUserApplications() {
         });
 
 
-        records.sort(
-            (a, b) =>
-                getTimestamp(b.createdAt) -
-                getTimestamp(a.createdAt)
-        );
+        savedContainer.innerHTML =
+            applications.map(app => `
 
+                <div class="border rounded-lg p-3">
 
-        container.innerHTML =
-            records.map(application => `
-
-                <div class="p-4 border rounded-2xl bg-slate-50">
-
-                    <p class="font-black text-sm">
-                        ${escapeHtml(application.jobTitle)}
+                    <p class="font-bold text-sm">
+                        ${escapeHtml(app.jobTitle || "")}
                     </p>
 
-                    <p class="text-xs text-slate-500 mt-1">
-                        ${escapeHtml(application.company)}
+                    <p class="text-xs text-slate-500">
+                        ${escapeHtml(app.company || "")}
                     </p>
 
-                    <div class="mt-3 flex items-center justify-between">
-
-                        <span class="status-badge bg-blue-100 text-blue-700">
-                            ${escapeHtml(application.status || "Submitted")}
-                        </span>
-
-                        <span class="text-[10px] text-slate-400">
-                            Application recorded
-                        </span>
-
-                    </div>
+                    <span class="inline-block mt-2 bg-indigo-100 text-indigo-700 px-2 py-1 rounded text-xs">
+                        ${escapeHtml(app.status || "Interested")}
+                    </span>
 
                 </div>
 
             `).join("");
 
 
-        refreshIcons();
+        submittedContainer.innerHTML =
+            applications.map(app => `
+
+                <div class="border rounded-lg p-3">
+
+                    <p class="font-bold text-sm">
+                        ${escapeHtml(app.jobTitle || "")}
+                    </p>
+
+                    <p class="text-xs text-slate-500">
+                        ${escapeHtml(app.company || "")}
+                    </p>
+
+                    <p class="text-xs text-slate-500 mt-1">
+                        ${escapeHtml(app.location || "")}
+                    </p>
+
+                </div>
+
+            `).join("");
+
 
     } catch (error) {
 
@@ -3151,120 +2928,63 @@ async function loadUserApplications() {
 
 
 /* =========================================================
-   APPLY WITH CV
+   USER NOTIFICATIONS
 ========================================================= */
 
-async function applyToJob(job) {
+async function loadUserNotifications() {
 
-    if (!currentUser) {
-
-        alert("Please login first.");
-
-        switchTab("auth");
-
-        return;
-
-    }
-
-
-    if (!db) {
-
-        alert("Firebase is not configured.");
-
-        return;
-
-    }
+    if (!currentUser) return;
 
 
     try {
 
-        await db.collection(
-            "applications"
-        ).add({
+        const snapshot =
+            await db.collection("notifications")
+            .where("userId", "==", currentUser.uid)
+            .get();
 
-            userId: currentUser.uid,
 
-            jobId: job.id,
+        const notifications = [];
 
-            jobTitle: job.title,
+        snapshot.forEach(doc => {
 
-            company: job.company,
-
-            status: "Submitted",
-
-            createdAt:
-                firebase.firestore.FieldValue.serverTimestamp()
+            notifications.push({
+                id: doc.id,
+                ...doc.data()
+            });
 
         });
 
 
-        await createNotification(
+        if (!notifications.length) {
 
-            currentUser.uid,
+            document.getElementById("notificationDot")
+                .classList.add("hidden");
 
-            "Application recorded",
+            document.getElementById("dashboardNotifications")
+                .classList.add("hidden");
 
-            `Your application for ${job.title} at ${job.company} has been recorded.`,
-
-            "application"
-
-        );
-
-
-        alert(
-            "Your application has been recorded."
-        );
+            return;
+        }
 
 
-        await loadUserApplications();
-
-    } catch (error) {
-
-        console.error(error);
-
-        alert(
-            "Unable to record application: " +
-            friendlyFirebaseError(error)
-        );
-
-    }
-
-}
+        const latest =
+            notifications[notifications.length - 1];
 
 
-/* =========================================================
-   NOTIFICATIONS
-========================================================= */
+        document.getElementById("notificationDot")
+            .classList.remove("hidden");
 
-async function createNotification(
-    userId,
-    title,
-    message,
-    type
-) {
+        document.getElementById("userNotificationBadge")
+            .classList.remove("hidden");
 
-    if (!db) return;
+        document.getElementById("dashboardNotifications")
+            .classList.remove("hidden");
 
-    try {
+        document.getElementById("notificationText")
+            .innerText =
+            latest.message || "You have a new notification.";
 
-        await db.collection(
-            "notifications"
-        ).add({
-
-            userId,
-
-            title,
-
-            message,
-
-            type: type || "general",
-
-            read: false,
-
-            createdAt:
-                firebase.firestore.FieldValue.serverTimestamp()
-
-        });
 
     } catch (error) {
 
@@ -3278,152 +2998,168 @@ async function createNotification(
 }
 
 
-async function loadUserNotifications() {
+/* =========================================================
+   STAFF LOGIN
+   =========================================================
 
-    if (!currentUser || !db) return;
+   IMPORTANT:
+   Staff authorization should be controlled through Firestore.
+
+   Collection:
+       staff
+
+   Document:
+       STAFF FIREBASE UID
+
+   Example:
+       role: "human_cv_expert"
+       active: true
+
+   This prevents ordinary users from entering the CV Expert
+   workspace merely because they know a password.
+========================================================= */
+
+async function staffLogin() {
+
+    const email =
+        document.getElementById("staffEmail")
+        .value
+        .trim();
+
+    const password =
+        document.getElementById("staffPassword")
+        .value;
 
 
-    const container =
-        document.getElementById(
-            "userNotificationsList"
-        );
+    const message =
+        document.getElementById("staffLoginMessage");
+
+
+    message.innerText = "";
+
+
+    if (!email || !password) {
+
+        message.innerText =
+            "Enter the authorized staff email and password.";
+
+        return;
+    }
 
 
     try {
 
-        const snapshot =
-            await db.collection(
-                "notifications"
-            )
-            .where(
-                "userId",
-                "==",
-                currentUser.uid
-            )
+        const credential =
+            await auth.signInWithEmailAndPassword(
+                email,
+                password
+            );
+
+
+        const uid =
+            credential.user.uid;
+
+
+        const staffDoc =
+            await db.collection("staff")
+            .doc(uid)
             .get();
 
 
-        if (snapshot.empty) {
+        if (!staffDoc.exists) {
 
-            container.innerHTML = `
-                <p class="text-sm text-slate-500">
-                    No notifications yet.
-                </p>
-            `;
+            await auth.signOut();
 
-            document
-                .getElementById(
-                    "notificationDot"
-                )
-                .classList.add("hidden");
+            message.innerText =
+                "This account is not authorized for the Staff / Human CV Expert Portal.";
 
             return;
-
         }
 
 
-        let items = [];
+        const staffData =
+            staffDoc.data();
 
 
-        snapshot.forEach(doc => {
+        if (staffData.active !== true) {
 
-            items.push({
-                id: doc.id,
-                ...doc.data()
-            });
+            await auth.signOut();
 
-        });
+            message.innerText =
+                "This staff account has been disabled.";
 
-
-        items.sort(
-            (a, b) =>
-                getTimestamp(b.createdAt) -
-                getTimestamp(a.createdAt)
-        );
+            return;
+        }
 
 
-        const unread =
-            items.some(
-                item => item.read === false
-            );
+        staffUser = {
+
+            uid: uid,
+
+            email:
+                credential.user.email,
+
+            name:
+                staffData.name ||
+                credential.user.displayName ||
+                "Human CV Expert",
+
+            role:
+                staffData.role ||
+                "human_cv_expert"
+
+        };
 
 
-        document
-            .getElementById(
-                "notificationDot"
-            )
-            .classList.toggle(
-                "hidden",
-                !unread
-            );
+        document.getElementById("adminLoginGate")
+            .classList.add("hidden");
+
+        document.getElementById("adminDashboard")
+            .classList.remove("hidden");
 
 
-        container.innerHTML =
-            items.slice(0, 20).map(item => `
-
-                <div
-                    onclick="markNotificationRead('${escapeAttribute(item.id)}')"
-                    class="p-4 border rounded-2xl ${
-                        item.read
-                        ? "bg-white"
-                        : "bg-indigo-50 border-indigo-200"
-                    } cursor-pointer"
-                >
-
-                    <div class="flex gap-3">
-
-                        <div class="w-9 h-9 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center shrink-0">
-                            <i data-lucide="bell" class="w-4 h-4"></i>
-                        </div>
-
-                        <div>
-
-                            <p class="font-black text-sm">
-                                ${escapeHtml(item.title)}
-                            </p>
-
-                            <p class="text-xs text-slate-600 mt-1">
-                                ${escapeHtml(item.message)}
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            `).join("");
+        await loadAdminCvRequests();
 
 
-        refreshIcons();
+        lucide.createIcons();
+
 
     } catch (error) {
 
-        console.error(
-            "Notification loading error:",
-            error
-        );
+        console.error(error);
+
+        message.innerText =
+            "Staff login failed: " +
+            error.message;
 
     }
 
 }
 
 
-async function markNotificationRead(id) {
+/* =========================================================
+   STAFF LOGOUT
+========================================================= */
 
-    if (!db) return;
+async function staffLogout() {
+
+    staffUser = null;
+
+    document.getElementById("adminLoginGate")
+        .classList.remove("hidden");
+
+    document.getElementById("adminDashboard")
+        .classList.add("hidden");
+
+    document.getElementById("staffEmail")
+        .value = "";
+
+    document.getElementById("staffPassword")
+        .value = "";
 
     try {
 
-        await db.collection(
-            "notifications"
-        )
-        .doc(id)
-        .update({
-            read: true
-        });
-
-        await loadUserNotifications();
+        await auth.signOut();
 
     } catch (error) {
 
@@ -3435,226 +3171,26 @@ async function markNotificationRead(id) {
 
 
 /* =========================================================
-   STAFF PORTAL
+   LOAD ADMIN CV REQUESTS
 ========================================================= */
 
-function openStaffPortal() {
+async function loadAdminCvRequests() {
 
-    switchTab("staff");
-
-    if (!currentUser) {
-
-        showStaffLogin();
-
-        return;
-
-    }
-
-    checkStaffAuthorization();
-
-}
-
-
-async function checkStaffAuthorization() {
-
-    if (!currentUser || !db) {
-
-        showStaffLogin();
-
-        return;
-
-    }
+    if (!staffUser) return;
 
 
     try {
 
         const snapshot =
-            await db.collection(
-                "users"
-            )
-            .doc(currentUser.uid)
+            await db.collection("cvRequests")
             .get();
 
 
-        if (!snapshot.exists) {
+        const container =
+            document.getElementById("adminCvRequestsContainer");
 
-            showStaffLogin();
 
-            return;
-
-        }
-
-
-        const profile =
-            snapshot.data();
-
-
-        const role =
-            profile.role || "user";
-
-
-        const authorizedRoles = [
-
-            "human_cv_expert",
-
-            "cv_expert",
-
-            "customer_care",
-
-            "moderator",
-
-            "admin"
-
-        ];
-
-
-        if (
-            authorizedRoles.includes(role)
-        ) {
-
-            document
-                .getElementById(
-                    "staffLoginGate"
-                )
-                .classList.add("hidden");
-
-            document
-                .getElementById(
-                    "staffDashboard"
-                )
-                .classList.remove("hidden");
-
-
-            document
-                .getElementById(
-                    "staffRoleText"
-                )
-                .textContent =
-                "Authorized role: " + role;
-
-
-            const jobManagement =
-                document.getElementById(
-                    "jobManagementSection"
-                );
-
-
-            if (
-                role === "human_cv_expert" ||
-                role === "cv_expert"
-            ) {
-
-                jobManagement.classList.add(
-                    "hidden"
-                );
-
-            } else {
-
-                jobManagement.classList.remove(
-                    "hidden"
-                );
-
-            }
-
-
-            await loadStaffCvRequests();
-
-        } else {
-
-            showStaffLogin();
-
-        }
-
-    } catch (error) {
-
-        console.error(
-            "Staff authorization error:",
-            error
-        );
-
-        showStaffLogin();
-
-    }
-
-}
-
-
-function showStaffLogin() {
-
-    document
-        .getElementById(
-            "staffLoginGate"
-        )
-        .classList.remove("hidden");
-
-    document
-        .getElementById(
-            "staffDashboard"
-        )
-        .classList.add("hidden");
-
-}
-
-
-function hideStaffDashboard() {
-
-    showStaffLogin();
-
-}
-
-
-function lockStaffPortal() {
-
-    showStaffLogin();
-
-    switchTab("jobs");
-
-}
-
-
-/* =========================================================
-   STAFF CV REQUESTS
-========================================================= */
-
-async function loadStaffCvRequests() {
-
-    if (!currentUser || !db) return;
-
-
-    const container =
-        document.getElementById(
-            "staffCvRequestsContainer"
-        );
-
-
-    try {
-
-        const snapshot =
-            await db.collection(
-                "cvRequests"
-            )
-            .get();
-
-
-        if (snapshot.empty) {
-
-            container.innerHTML = `
-                <div class="p-8 text-center border rounded-2xl bg-slate-50">
-                    <i data-lucide="inbox" class="w-9 h-9 mx-auto text-slate-300 mb-2"></i>
-                    <p class="font-bold text-slate-700">
-                        No CV requests yet.
-                    </p>
-                </div>
-            `;
-
-            refreshIcons();
-
-            return;
-
-        }
-
-
-        let requests = [];
+        const requests = [];
 
 
         snapshot.forEach(doc => {
@@ -3667,253 +3203,162 @@ async function loadStaffCvRequests() {
         });
 
 
-        requests.sort(
-            (a, b) =>
-                getTimestamp(b.createdAt) -
-                getTimestamp(a.createdAt)
-        );
+        requests.sort((a, b) => {
+
+            const aTime =
+                a.createdAt?.seconds || 0;
+
+            const bTime =
+                b.createdAt?.seconds || 0;
+
+            return bTime - aTime;
+
+        });
+
+
+        document.getElementById("requestCount")
+            .innerText = requests.length;
+
+
+        if (!requests.length) {
+
+            container.innerHTML = `
+                <div class="text-center p-8 bg-slate-50 rounded-xl border">
+                    <i data-lucide="inbox" class="w-10 h-10 text-slate-300 mx-auto"></i>
+                    <p class="text-sm text-slate-500 mt-2">
+                        No client CV requests yet.
+                    </p>
+                </div>
+            `;
+
+            lucide.createIcons();
+
+            return;
+        }
 
 
         container.innerHTML =
-            requests.map(request => `
+            requests.map(request => {
 
-                <div class="border rounded-2xl overflow-hidden">
-
-                    <div class="p-5 bg-slate-50">
-
-                        <div class="flex flex-col md:flex-row md:justify-between gap-4">
-
-                            <div>
-
-                                <div class="flex items-center gap-2 flex-wrap">
-
-                                    <h4 class="font-black text-slate-900">
-                                        ${escapeHtml(request.name || "Customer")}
-                                    </h4>
-
-                                    <span class="status-badge bg-amber-100 text-amber-700">
-                                        ${escapeHtml(request.status || "New")}
-                                    </span>
-
-                                </div>
-
-                                <p class="text-xs text-slate-500 mt-1">
-                                    ${escapeHtml(request.email || "")}
-                                    •
-                                    ${escapeHtml(request.phone || "")}
-                                </p>
-
-                            </div>
-
-                            <div class="text-xs">
-
-                                <p class="font-bold">
-                                    Target Job
-                                </p>
-
-                                <p class="text-slate-500">
-                                    ${escapeHtml(request.targetJob || "Not specified")}
-                                </p>
-
-                                ${
-                                    request.targetCompany
-                                    ?
-                                    `
-                                    <p class="text-slate-500">
-                                        ${escapeHtml(request.targetCompany)}
-                                    </p>
-                                    `
-                                    :
-                                    ""
-                                }
-
-                            </div>
-
-                        </div>
+                const ready =
+                    request.status === "CV Ready";
 
 
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-4 text-xs">
+                return `
 
-                            <div class="bg-white border rounded-xl p-3">
-                                <strong>Experience</strong>
-                                <p class="text-slate-500 mt-1">
-                                    ${escapeHtml(request.experience || "Not provided")}
-                                </p>
-                            </div>
+                <div class="border rounded-xl p-5 bg-slate-50">
 
-                            <div class="bg-white border rounded-xl p-3">
-                                <strong>Education</strong>
-                                <p class="text-slate-500 mt-1">
-                                    ${escapeHtml(request.education || "Not provided")}
-                                </p>
-                            </div>
+                    <div class="flex flex-col lg:flex-row justify-between gap-4">
 
-                            <div class="bg-white border rounded-xl p-3">
-                                <strong>Country</strong>
-                                <p class="text-slate-500 mt-1">
-                                    ${escapeHtml(request.country || "Not provided")}
-                                </p>
-                            </div>
+                        <div class="flex-1">
 
-                        </div>
+                            <div class="flex flex-wrap items-center gap-2">
 
-
-                        ${
-                            request.skills
-                            ?
-                            `
-                            <div class="mt-3 text-xs">
-                                <strong>Skills:</strong>
-                                <span class="text-slate-500">
-                                    ${escapeHtml(request.skills)}
+                                <span class="font-bold text-slate-900">
+                                    ${escapeHtml(request.name || "Client")}
                                 </span>
+
+                                <span class="text-xs bg-indigo-100 text-indigo-700 px-2 py-1 rounded">
+                                    ${escapeHtml(request.phone || "")}
+                                </span>
+
                             </div>
-                            `
-                            :
-                            ""
-                        }
 
 
-                        ${
-                            request.details
-                            ?
-                            `
-                            <div class="mt-3 p-3 bg-white rounded-xl border text-xs">
-                                <strong>Customer message:</strong>
-                                <p class="text-slate-600 mt-1">
-                                    ${escapeHtml(request.details)}
-                                </p>
-                            </div>
-                            `
-                            :
-                            ""
-                        }
-
-                    </div>
+                            <p class="text-xs text-slate-600 mt-2">
+                                <strong>Email:</strong>
+                                ${escapeHtml(request.email || "")}
+                            </p>
 
 
-                    <div class="p-4 bg-white border-t">
+                            <p class="text-xs text-slate-600 mt-1">
+                                <strong>Target Job:</strong>
+                                ${escapeHtml(request.targetJob || "")}
+                            </p>
 
-                        <div class="flex flex-col md:flex-row gap-3">
+
+                            <p class="text-xs text-slate-600 mt-1">
+                                <strong>Interested Job:</strong>
+                                ${escapeHtml(request.interestedJob || "")}
+                            </p>
+
+
+                            <p class="text-xs text-slate-600 mt-1">
+                                <strong>M-Pesa:</strong>
+                                <span class="font-bold text-emerald-700">
+                                    ${escapeHtml(request.mpesaCode || "")}
+                                </span>
+                            </p>
+
+
+                            <p class="text-xs text-slate-500 mt-3">
+                                ${escapeHtml(request.details || "No additional details provided.")}
+                            </p>
+
+                        </div>
+
+
+                        <div class="flex flex-col gap-2 lg:w-48">
+
+                            <span class="text-xs font-bold px-3 py-2 rounded-lg text-center ${
+                                ready
+                                ? "bg-emerald-100 text-emerald-700"
+                                : "bg-amber-100 text-amber-800"
+                            }">
+
+                                ${escapeHtml(request.status || "Pending")}
+
+                            </span>
+
 
                             ${
                                 request.oldCvUrl
-                                ?
-                                `
+                                ? `
                                 <a
-                                    href="${escapeAttribute(request.oldCvUrl)}"
+                                    href="${request.oldCvUrl}"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    class="flex-1 bg-slate-900 hover:bg-slate-800 text-white py-2.5 rounded-xl text-xs font-black flex items-center justify-center gap-2"
+                                    class="bg-white border hover:bg-slate-100 text-slate-800 px-3 py-2 rounded-lg text-xs font-bold text-center"
                                 >
-                                    <i data-lucide="file-down" class="w-4 h-4"></i>
-                                    Open Existing CV
+                                    <i data-lucide="file-text" class="w-3 h-3 inline"></i>
+                                    Open Old CV
                                 </a>
                                 `
-                                :
-                                ""
+                                : ""
                             }
 
 
-                            <label
-                                class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 rounded-xl text-xs font-black flex items-center justify-center gap-2 cursor-pointer"
+                            <button
+                                onclick="openStaffCvRequest('${request.id}')"
+                                class="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-2 rounded-lg text-xs font-bold"
                             >
-                                <i data-lucide="upload" class="w-4 h-4"></i>
-                                Upload Completed CV
-
-                                <input
-                                    type="file"
-                                    accept=".pdf,.doc,.docx"
-                                    class="hidden"
-                                    onchange="uploadCompletedCv('${escapeAttribute(request.id)}', this)"
-                                >
-                            </label>
+                                ${
+                                    ready
+                                    ? "View Completed CV"
+                                    : "Review / Prepare CV"
+                                }
+                            </button>
 
                         </div>
-
-
-                        <div class="mt-3">
-
-                            <select
-                                onchange="updateCvStatus('${escapeAttribute(request.id)}', this.value)"
-                                class="w-full input-style text-xs"
-                            >
-
-                                <option value="New" ${request.status === "New" ? "selected" : ""}>
-                                    New
-                                </option>
-
-                                <option value="Reviewing" ${request.status === "Reviewing" ? "selected" : ""}>
-                                    Reviewing
-                                </option>
-
-                                <option value="CV In Progress" ${request.status === "CV In Progress" ? "selected" : ""}>
-                                    CV In Progress
-                                </option>
-
-                                <option value="CV Ready" ${request.status === "CV Ready" ? "selected" : ""}>
-                                    CV Ready
-                                </option>
-
-                            </select>
-
-                        </div>
-
-
-                        ${
-                            request.completedCvUrl
-                            ?
-                            `
-                            <div class="mt-3 p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-xs">
-
-                                <div class="flex items-center gap-2 text-emerald-800 font-black">
-                                    <i data-lucide="check-circle" class="w-4 h-4"></i>
-                                    Professional CV uploaded
-                                </div>
-
-                                <a
-                                    href="${escapeAttribute(request.completedCvUrl)}"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="inline-block mt-2 text-emerald-700 font-bold underline"
-                                >
-                                    Open completed CV
-                                </a>
-
-                            </div>
-                            `
-                            :
-                            ""
-                        }
 
                     </div>
 
                 </div>
 
-            `).join("");
+                `;
+
+            }).join("");
 
 
-        refreshIcons();
+        lucide.createIcons();
+
 
     } catch (error) {
 
         console.error(
-            "Staff request loading error:",
+            "Admin CV requests error:",
             error
         );
-
-
-        container.innerHTML = `
-            <div class="p-5 bg-red-50 border border-red-200 rounded-2xl">
-                <p class="text-sm font-bold text-red-700">
-                    Unable to load CV requests.
-                </p>
-
-                <p class="text-xs text-red-600 mt-1">
-                    Check your Firebase permissions and staff role.
-                </p>
-            </div>
-        `;
 
     }
 
@@ -3921,88 +3366,131 @@ async function loadStaffCvRequests() {
 
 
 /* =========================================================
-   UPDATE CV STATUS
+   OPEN STAFF CV REQUEST
 ========================================================= */
 
-async function updateCvStatus(
-    requestId,
-    status
-) {
-
-    if (!currentUser || !db) return;
-
+async function openStaffCvRequest(requestId) {
 
     try {
 
-        const requestRef =
-            db.collection(
-                "cvRequests"
-            ).doc(requestId);
+        const doc =
+            await db.collection("cvRequests")
+            .doc(requestId)
+            .get();
 
 
-        const requestSnapshot =
-            await requestRef.get();
+        if (!doc.exists) {
 
-
-        if (!requestSnapshot.exists) {
-
-            alert(
-                "CV request not found."
-            );
+            alert("CV request no longer exists.");
 
             return;
-
         }
+
+
+        selectedCvRequest = {
+
+            id: doc.id,
+
+            ...doc.data()
+
+        };
 
 
         const request =
-            requestSnapshot.data();
+            selectedCvRequest;
 
 
-        await requestRef.update({
-
-            status,
-
-            assignedExpert:
-                currentUser.uid,
-
-            updatedAt:
-                firebase.firestore.FieldValue.serverTimestamp()
-
-        });
+        document.getElementById("staffModalClientName")
+            .innerText =
+            `${request.name || "Client"} — ${request.email || ""}`;
 
 
-        if (request.userId) {
+        document.getElementById("staffClientDetails")
+            .innerHTML = `
 
-            await createNotification(
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
 
-                request.userId,
+                    <div class="bg-slate-50 border rounded-lg p-3">
+                        <p class="text-xs text-slate-500">Phone</p>
+                        <p class="font-semibold text-sm">
+                            ${escapeHtml(request.phone || "")}
+                        </p>
+                    </div>
 
-                "CV request updated",
+                    <div class="bg-slate-50 border rounded-lg p-3">
+                        <p class="text-xs text-slate-500">Target Job</p>
+                        <p class="font-semibold text-sm">
+                            ${escapeHtml(request.targetJob || "")}
+                        </p>
+                    </div>
 
-                `Your CV request for ${request.targetJob || "your target job"} is now "${status}".`,
+                    <div class="bg-slate-50 border rounded-lg p-3">
+                        <p class="text-xs text-slate-500">Interested Job</p>
+                        <p class="font-semibold text-sm">
+                            ${escapeHtml(request.interestedJob || "")}
+                        </p>
+                    </div>
 
-                "cv-status"
+                    <div class="bg-slate-50 border rounded-lg p-3">
+                        <p class="text-xs text-slate-500">M-Pesa Code</p>
+                        <p class="font-bold text-emerald-700 text-sm">
+                            ${escapeHtml(request.mpesaCode || "")}
+                        </p>
+                    </div>
 
-            );
-
-        }
-
-
-        alert(
-            "CV status updated."
-        );
+                </div>
 
 
-        await loadStaffCvRequests();
+                <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mt-4">
+
+                    <p class="text-xs font-bold text-blue-900">
+                        Client Information
+                    </p>
+
+                    <p class="text-sm text-blue-800 mt-2">
+                        ${escapeHtml(request.details || "No additional details provided.")}
+                    </p>
+
+                </div>
+
+
+                ${
+                    request.oldCvUrl
+                    ? `
+                    <a
+                        href="${request.oldCvUrl}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="mt-4 inline-flex items-center gap-2 bg-slate-900 text-white px-4 py-2 rounded-lg text-xs font-bold"
+                    >
+                        <i data-lucide="file-text"></i>
+                        Open Client's Old CV
+                    </a>
+                    `
+                    : ""
+                }
+
+            `;
+
+
+        document.getElementById("expertMessage")
+            .value =
+            request.expertMessage || "";
+
+
+        document.getElementById("staffCvModal")
+            .classList.add("active");
+
+
+        lucide.createIcons();
+
 
     } catch (error) {
 
         console.error(error);
 
         alert(
-            "Unable to update status: " +
-            friendlyFirebaseError(error)
+            "Unable to open this CV request."
         );
 
     }
@@ -4011,131 +3499,197 @@ async function updateCvStatus(
 
 
 /* =========================================================
-   UPLOAD COMPLETED CV
+   CLOSE STAFF MODAL
 ========================================================= */
 
-async function uploadCompletedCv(
-    requestId,
-    input
-) {
+function closeStaffCvModal() {
+
+    document.getElementById("staffCvModal")
+        .classList.remove("active");
+
+    selectedCvRequest = null;
+
+    document.getElementById("preparedCvFile")
+        .value = "";
+
+    document.getElementById("expertMessage")
+        .value = "";
+
+}
+
+
+/* =========================================================
+   UPLOAD PREPARED CV
+========================================================= */
+
+async function uploadPreparedCv() {
+
+    if (!staffUser) {
+
+        alert("Staff authorization required.");
+
+        return;
+    }
+
+
+    if (!selectedCvRequest) {
+
+        alert("No CV request selected.");
+
+        return;
+    }
+
 
     const file =
-        input.files[0];
+        document.getElementById("preparedCvFile")
+        .files[0];
 
 
-    if (!file) return;
+    const expertMessage =
+        document.getElementById("expertMessage")
+        .value
+        .trim();
 
 
-    if (!currentUser || !db || !storage) {
+    if (!file) {
 
         alert(
-            "You are not authorized or Firebase Storage is unavailable."
+            "Please upload the completed professional CV."
         );
 
         return;
-
     }
+
+
+    if (file.size > 10 * 1024 * 1024) {
+
+        alert(
+            "The prepared CV must be 10 MB or smaller."
+        );
+
+        return;
+    }
+
+
+    const button =
+        document.getElementById("uploadPreparedCvBtn");
+
+
+    button.disabled = true;
+
+    button.innerHTML = `
+        <i data-lucide="loader-circle" class="w-4 h-4 animate-spin"></i>
+        Uploading...
+    `;
+
+    lucide.createIcons();
 
 
     try {
 
-        const requestRef =
-            db.collection(
-                "cvRequests"
-            ).doc(requestId);
-
-
-        const snapshot =
-            await requestRef.get();
-
-
-        if (!snapshot.exists) {
-
-            alert(
-                "CV request not found."
+        const safeFileName =
+            file.name.replace(
+                /[^a-zA-Z0-9._-]/g,
+                "_"
             );
 
-            return;
 
-        }
-
-
-        const request =
-            snapshot.data();
-
-
-        const filePath =
-            `completed-cvs/${request.userId}/${Date.now()}_${safeFileName(file.name)}`;
+        const storagePath =
+            `prepared-cvs/${selectedCvRequest.userId}/${Date.now()}_${safeFileName}`;
 
 
         const storageRef =
-            storage.ref(filePath);
+            storage.ref(storagePath);
 
 
-        const uploadTask =
+        const upload =
             await storageRef.put(file);
 
 
-        const downloadUrl =
-            await uploadTask.ref.getDownloadURL();
+        const preparedUrl =
+            await upload.ref.getDownloadURL();
 
 
-        await requestRef.update({
+        await db.collection("cvRequests")
+            .doc(selectedCvRequest.id)
+            .update({
 
-            status: "CV Ready",
+                status: "CV Ready",
 
-            completedCvUrl:
-                downloadUrl,
+                preparedCvUrl: preparedUrl,
 
-            completedCvPath:
-                filePath,
+                preparedCvFileName: file.name,
 
-            completedCvFileName:
-                file.name,
+                expertMessage: expertMessage,
 
-            assignedExpert:
-                currentUser.uid,
+                preparedBy: staffUser.uid,
 
-            completedAt:
-                firebase.firestore.FieldValue.serverTimestamp(),
+                preparedByEmail: staffUser.email,
 
-            updatedAt:
-                firebase.firestore.FieldValue.serverTimestamp()
+                preparedAt:
+                    firebase.firestore.FieldValue.serverTimestamp(),
 
-        });
+                updatedAt:
+                    firebase.firestore.FieldValue.serverTimestamp()
+
+            });
 
 
-        await createNotification(
+        /* Create user notification */
 
-            request.userId,
+        await db.collection("notifications")
+            .add({
 
-            "🎉 Your professional CV is ready!",
+                userId: selectedCvRequest.userId,
 
-            `Your Human CV Expert has completed your CV for ${request.targetJob || "your target job"}. Open your account to access it.`,
+                type: "cv_ready",
 
-            "cv-ready"
+                title: "Your CV is Ready",
 
-        );
+                message:
+                    "Your professional CV has been prepared by the Human CV Expert and is now available in your dashboard.",
+
+                cvRequestId:
+                    selectedCvRequest.id,
+
+                read: false,
+
+                createdAt:
+                    firebase.firestore.FieldValue.serverTimestamp()
+
+            });
 
 
         alert(
-            "Completed CV uploaded successfully. The user has been notified."
+            "Prepared CV uploaded successfully. " +
+            "The client has been notified."
         );
 
 
-        await loadStaffCvRequests();
+        closeStaffCvModal();
+
+        await loadAdminCvRequests();
+
 
     } catch (error) {
 
-        console.error(
-            "Completed CV upload error:",
-            error
-        );
+        console.error(error);
 
         alert(
-            "Unable to upload completed CV: " +
-            friendlyFirebaseError(error)
+            "Could not upload the prepared CV: " +
+            error.message
         );
+
+    } finally {
+
+        button.disabled = false;
+
+        button.innerHTML = `
+            <i data-lucide="file-check"></i>
+            Upload CV & Notify Client
+        `;
+
+        lucide.createIcons();
 
     }
 
@@ -4143,7 +3697,7 @@ async function uploadCompletedCv(
 
 
 /* =========================================================
-   ADMIN / MODERATOR JOB PUBLISHING
+   ADMIN JOB PUBLISHING
 ========================================================= */
 
 async function adminAddJob(event) {
@@ -4151,99 +3705,71 @@ async function adminAddJob(event) {
     event.preventDefault();
 
 
-    if (!currentUser || !db) {
+    if (!staffUser) {
 
         alert(
-            "Authorized staff login is required."
+            "Only authorized staff can publish jobs."
         );
 
         return;
-
-    }
-
-
-    const role =
-        currentUserProfile?.role || "user";
-
-
-    const allowed =
-        [
-            "admin",
-            "moderator",
-            "customer_care"
-        ].includes(role);
-
-
-    if (!allowed) {
-
-        alert(
-            "Your account does not have permission to publish jobs."
-        );
-
-        return;
-
     }
 
 
     const newJob = {
 
         title:
-            document.getElementById(
-                "adminJobTitle"
-            ).value.trim(),
+            document.getElementById("adminJobTitle")
+            .value
+            .trim(),
 
         company:
-            document.getElementById(
-                "adminJobCompany"
-            ).value.trim(),
-
-        category:
-            document.getElementById(
-                "adminJobCategory"
-            ).value,
+            document.getElementById("adminJobCompany")
+            .value
+            .trim(),
 
         location:
-            document.getElementById(
-                "adminJobLocation"
-            ).value,
+            document.getElementById("adminJobLocation")
+            .value
+            .trim(),
+
+        category:
+            document.getElementById("adminJobCategory")
+            .value,
 
         salary:
-            document.getElementById(
-                "adminJobSalary"
-            ).value.trim(),
+            document.getElementById("adminJobSalary")
+            .value
+            .trim(),
 
-        applicationUrl:
-            document.getElementById(
-                "adminJobUrl"
-            ).value.trim(),
+        applyUrl:
+            document.getElementById("adminJobApplyUrl")
+            .value
+            .trim(),
 
         desc:
-            document.getElementById(
-                "adminJobDesc"
-            ).value.trim(),
+            document.getElementById("adminJobDesc")
+            .value
+            .trim(),
 
         createdBy:
-            currentUser.uid,
+            staffUser.uid,
 
         createdAt:
-            firebase.firestore.FieldValue.serverTimestamp(),
-
-        active: true
+            firebase.firestore.FieldValue.serverTimestamp()
 
     };
 
 
     try {
 
-        await db.collection(
-            "jobs"
-        ).add(newJob);
+        const doc =
+            await db.collection("jobs")
+            .add(newJob);
 
 
         jobs.unshift({
 
-            id:
-                "firebase-" + Date.now(),
+            id: doc.id,
 
             ...newJob
 
@@ -4252,21 +3778,25 @@ async function adminAddJob(event) {
 
         renderJobs(jobs);
 
+
         event.target.reset();
+
 
         alert(
             "Job published successfully."
         );
 
+
         switchTab("jobs");
+
 
     } catch (error) {
 
         console.error(error);
 
         alert(
-            "Unable to publish job: " +
-            friendlyFirebaseError(error)
+            "Could not publish the job: " +
+            error.message
         );
 
     }
@@ -4275,92 +3805,55 @@ async function adminAddJob(event) {
 
 
 /* =========================================================
-   LOAD FIREBASE JOBS
+   LOAD FIRESTORE JOBS
 ========================================================= */
 
-async function loadFirebaseJobs() {
-
-    if (!db) return;
-
+async function loadFirestoreJobs() {
 
     try {
 
         const snapshot =
-            await db.collection(
-                "jobs"
-            )
-            .where(
-                "active",
-                "==",
-                true
-            )
+            await db.collection("jobs")
             .get();
+
+
+        if (snapshot.empty) {
+
+            renderJobs(jobs);
+
+            return;
+        }
+
+
+        const firestoreJobs = [];
 
 
         snapshot.forEach(doc => {
 
-            const data =
-                doc.data();
-
-
-            const existingIndex =
-                jobs.findIndex(
-                    job =>
-                        String(job.id) ===
-                        String(doc.id)
-                );
-
-
-            const firebaseJob = {
+            firestoreJobs.push({
 
                 id: doc.id,
 
-                title:
-                    data.title || "",
+                ...doc.data()
 
-                company:
-                    data.company || "",
-
-                category:
-                    data.category || "Careers",
-
-                location:
-                    data.location || "International",
-
-                salary:
-                    data.salary || "Competitive",
-
-                desc:
-                    data.desc || "",
-
-                applicationUrl:
-                    data.applicationUrl || ""
-
-            };
-
-
-            if (existingIndex >= 0) {
-
-                jobs[existingIndex] =
-                    firebaseJob;
-
-            } else {
-
-                jobs.unshift(
-                    firebaseJob
-                );
-
-            }
+            });
 
         });
 
 
+        jobs = [
+            ...firestoreJobs,
+            ...jobs
+        ];
+
+
         renderJobs(jobs);
+
 
     } catch (error) {
 
-        console.error(
-            "Firebase jobs error:",
+        console.warn(
+            "Firestore jobs unavailable. Using built-in jobs.",
             error
         );
 
@@ -4370,30 +3863,36 @@ async function loadFirebaseJobs() {
 
 
 /* =========================================================
-   STAFF TAB LOAD
+   INFO MODAL
 ========================================================= */
 
-async function loadStaffData() {
+function showInfo(title, text) {
 
-    if (!currentUser) return;
+    document.getElementById("infoTitle")
+        .innerText = title;
 
-    await checkStaffAuthorization();
+    document.getElementById("infoText")
+        .innerText = text;
+
+    document.getElementById("infoModal")
+        .classList.add("active");
+
+    lucide.createIcons();
+
+}
+
+
+function closeInfoModal() {
+
+    document.getElementById("infoModal")
+        .classList.remove("active");
 
 }
 
 
 /* =========================================================
-   SECURITY HELPERS
+   ESCAPE HTML
 ========================================================= */
-
-function safeFileName(name) {
-
-    return name
-        .replace(/[^a-zA-Z0-9._-]/g, "_")
-        .substring(0, 100);
-
-}
-
 
 function escapeHtml(value) {
 
@@ -4411,99 +3910,45 @@ function escapeHtml(value) {
 }
 
 
-function escapeAttribute(value) {
+/* =========================================================
+   SECURITY NOTE
+=========================================================
 
-    return escapeHtml(value);
+   Firebase Firestore Security Rules are REQUIRED.
 
-}
+   Do not rely on this HTML page alone for authorization.
 
+   Recommended Firestore structure:
 
-function friendlyFirebaseError(error) {
+   staff/{UID}
+       name: "Human CV Expert"
+       role: "human_cv_expert"
+       active: true
 
-    const code =
-        error?.code || "";
+   users/{UID}
+       name: "Client Name"
+       email: "client@email.com"
+       role: "user"
 
+   cvRequests/{REQUEST_ID}
+       userId
+       status
+       oldCvUrl
+       preparedCvUrl
 
-    const messages = {
+   notifications/{NOTIFICATION_ID}
+       userId
+       type
+       message
 
-        "auth/invalid-email":
-            "Please enter a valid email address.",
-
-        "auth/user-not-found":
-            "No account was found with this email.",
-
-        "auth/wrong-password":
-            "Incorrect password.",
-
-        "auth/email-already-in-use":
-            "This email is already registered.",
-
-        "auth/weak-password":
-            "Password must contain at least 6 characters.",
-
-        "auth/too-many-requests":
-            "Too many attempts. Please try again later.",
-
-        "permission-denied":
-            "Firebase permissions denied.",
-
-        "storage/unauthorized":
-            "You are not authorized to access this document.",
-
-        "storage/canceled":
-            "Upload was cancelled.",
-
-        "storage/unknown":
-            "An unknown Storage error occurred."
-
-    };
-
-
-    return messages[code] ||
-        error?.message ||
-        "An unexpected error occurred.";
-
-}
-
-
-function getTimestamp(timestamp) {
-
-    if (!timestamp) return 0;
-
-    if (
-        typeof timestamp.toMillis ===
-        "function"
-    ) {
-
-        return timestamp.toMillis();
-
-    }
-
-    if (
-        timestamp.seconds !== undefined
-    ) {
-
-        return timestamp.seconds * 1000;
-
-    }
-
-    return new Date(timestamp).getTime() || 0;
-
-}
+========================================================= */
 
 
 /* =========================================================
-   START FIREBASE JOB LOAD
+   OPTIONAL: LOAD FIRESTORE JOBS
 ========================================================= */
 
-if (firebaseReady) {
-
-    setTimeout(
-        loadFirebaseJobs,
-        1000
-    );
-
-}
+loadFirestoreJobs();
 
 </script>
 
