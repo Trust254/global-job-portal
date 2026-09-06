@@ -261,10 +261,10 @@ footer a{display:block;margin:7px 0}
 <a href="#cv">Human CV Expert</a>
 </nav>
 
-<div class="nav-actions" id="navActions">
-<button class="btn btn-outline" id="authNavBtn" onclick="handleAuthNavClick()">👤 Sign In / Register</button>
+<div class="nav-actions">
+<button class="btn btn-primary" onclick="openModal('authModal')">👤 Sign In / Register</button>
 <button class="btn btn-outline" onclick="openModal('staffLoginModal')">Staff Login</button>
-<button class="btn btn-primary" onclick="openModal('humanModal')">👤 Human CV Expert</button>
+<button class="btn btn-outline" onclick="openModal('humanModal')">👤 Human CV Expert</button>
 </div>
 
 <button class="menu" onclick="toggleMobileMenu()">☰</button>
@@ -787,12 +787,22 @@ function renderCard(p){
         <span class="tag">📍 ${escapeHtml(p.country)}</span>
         <span class="tag">💼 ${escapeHtml(p.category)}</span>
       </div>
-      <a class="btn btn-primary" href="${escapeHtml(p.url)}" target="_blank" rel="noopener noreferrer" style="width:100%">
+      <button class="btn btn-primary" onclick="checkAuthAndOpen('${escapeHtml(p.url)}')" style="width:100%">
         ${p.type==="official" ? "Official Careers →" : "Open Source →"}
-      </a>
+      </button>
     </div>
   </div>`;
 }
+
+window.checkAuthAndOpen = function(url) {
+  const currentUser = auth.currentUser;
+  if (!currentUser || currentUser.isAnonymous) {
+    showToast("⚠️ Please sign in or register before applying for jobs.");
+    openModal('authModal');
+  } else {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  }
+};
 
 function renderPortals(list){
   const grid=document.getElementById("directoryGrid");
@@ -884,15 +894,7 @@ window.clearDirectoryFilters=function(){
 
 document.getElementById("directorySearch").addEventListener("input",applyDirectoryFilters);
 
-window.openModal=function(id){
-  // Check auth requirement for submitting CV requests if needed
-  if(id === 'humanModal' && !auth.currentUser){
-    showToast("Please sign in or register first to request Human CV support.");
-    openModal('authModal');
-    return;
-  }
-  document.getElementById(id)?.classList.add("show");
-};
+window.openModal=function(id){document.getElementById(id)?.classList.add("show")};
 window.closeModal=function(id){document.getElementById(id)?.classList.remove("show")};
 
 window.toggleMobileMenu=function(){
@@ -904,11 +906,6 @@ window.toggleMobileMenu=function(){
 };
 
 window.copyCVFormToModal=function(){
-  if(!auth.currentUser){
-    showToast("Please sign in or register first!");
-    openModal('authModal');
-    return;
-  }
   document.getElementById("hName").value=document.getElementById("cvName").value;
   document.getElementById("hEmail").value=document.getElementById("cvEmail").value;
   document.getElementById("hPhone").value=document.getElementById("cvPhone").value;
@@ -918,30 +915,14 @@ window.copyCVFormToModal=function(){
   openModal("humanModal");
 };
 
-window.handleAuthNavClick=function(){
-  if(auth.currentUser){
-    signOut(auth).then(()=>{
-      showToast("Signed out successfully.");
-    });
-  } else {
-    isRegisterMode = false;
-    updateAuthModalUI();
-    openModal('authModal');
-  }
-};
-
 window.toggleAuthMode=function(){
   isRegisterMode = !isRegisterMode;
-  updateAuthModalUI();
-};
-
-function updateAuthModalUI(){
   document.getElementById("authModalTitle").textContent = isRegisterMode ? "📝 Create Account" : "👤 Account Sign In";
   document.getElementById("authModalSub").textContent = isRegisterMode ? "Register a new account to save and track your CV requests." : "Sign in to your account to securely submit and track your CV requests.";
   document.getElementById("authPrimaryBtn").textContent = isRegisterMode ? "📝 Register Account" : "🔐 Sign In";
   document.getElementById("authToggleBtn").textContent = isRegisterMode ? "Already have an account? Sign In" : "Need an account? Register";
   document.getElementById("authMessage").innerHTML = "";
-}
+};
 
 window.handleEmailAuth=async function(){
   const email=document.getElementById("authEmail").value.trim();
@@ -966,17 +947,14 @@ window.handleEmailAuth=async function(){
     document.getElementById("authPassword").value="";
   }catch(err){
     console.error(err);
-    if(err.code === 'auth/email-already-in-use'){
-      msgEl.innerHTML='<div class="error">This account already exists. Please sign in instead or log in.</div>';
-    } else {
-      msgEl.innerHTML='<div class="error">'+escapeHtml(err.message)+'</div>';
-    }
+    msgEl.innerHTML='<div class="error">'+escapeHtml(err.message)+'</div>';
   }
 };
 
 async function ensureSignedInUser(){
   if(auth.currentUser) return auth.currentUser;
-  throw new Error("Authentication required. Please sign in or register first.");
+  const cred=await signInAnonymously(auth);
+  return cred.user;
 }
 
 function validFile(file,allowed,maxMB){
@@ -1001,12 +979,6 @@ window.submitHumanRequest=async function(){
   const paymentReference=document.getElementById("paymentReference").value.trim();
   const paymentConfirmed=document.getElementById("paymentConfirmed").checked;
 
-  if(!auth.currentUser){
-    showToast("Session expired or missing. Please sign in again.");
-    openModal("authModal");
-    return;
-  }
-
   if(!name || !email || !phone){
     messageEl.innerHTML='<div class="warning">Full name, email and phone/WhatsApp are required.</div>';
     return;
@@ -1021,7 +993,7 @@ window.submitHumanRequest=async function(){
     validFile(oldCV,[".pdf",".doc",".docx"],10);
     validFile(supporting,[".pdf",".doc",".docx",".jpg",".jpeg",".png"],10);
 
-    const user=auth.currentUser;
+    const user=await ensureSignedInUser();
     let oldCVUrl="",oldCVName="",supportingUrl="",supportingName="";
 
     if(oldCV){
@@ -1268,15 +1240,8 @@ function showToast(msg){
 window.showToast=showToast;
 
 onAuthStateChanged(auth,user=>{
-  const authNavBtn = document.getElementById("authNavBtn");
-  if(user){
-    // User is logged in: disable registering again, display email/logout option
-    authNavBtn.textContent = `👤 ${user.email || "Account Active"} (Log Out)`;
-    authNavBtn.className = "btn btn-danger";
-  } else {
-    // User is logged out: allow sign in or register
-    authNavBtn.textContent = "👤 Sign In / Register";
-    authNavBtn.className = "btn btn-outline";
+  if(user && !user.isAnonymous){
+    console.log("Signed in user:", user.email);
   }
 });
 
