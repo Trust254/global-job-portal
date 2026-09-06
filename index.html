@@ -142,7 +142,7 @@ section{padding:70px 0}
 .category-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .category-card{
   border:1px solid var(--border);background:#fff;border-radius:14px;padding:16px;
-  box-shadow:0 4px 14px rgba(16,24,40,.04);font-weight:800
+  box-shadow:0 4px 14px rgba(16,24,40,.04);font-weight:800;text-align:left;width:100%
 }
 .category-card span{display:block;font-size:24px;margin-bottom:7px}
 .category-card small{display:block;color:var(--muted);font-weight:500;margin-top:4px}
@@ -905,7 +905,6 @@ window.copyCVFormToModal=function(){
   openModal("humanModal");
 };
 
-// Toggle between Sign In and Register views
 window.toggleAuthMode=function(){
   isRegisterMode = !isRegisterMode;
   document.getElementById("authModalTitle").textContent = isRegisterMode ? "📝 Create Account" : "👤 Account Sign In";
@@ -944,7 +943,6 @@ window.handleEmailAuth=async function(){
 
 async function ensureSignedInUser(){
   if(auth.currentUser) return auth.currentUser;
-  // If not signed in via email/password, fallback to anonymous sign-in to satisfy rule `signedIn()`
   const cred=await signInAnonymously(auth);
   return cred.user;
 }
@@ -1111,7 +1109,7 @@ async function loadStaffRequests(){
           <button class="btn btn-outline" onclick="changeRequestStatus('${id}','In Progress')">In Progress</button>
           <button class="btn btn-success" onclick="openCompletedUpload('${id}')">Upload Completed CV</button>
         </div>
-      `;
+      </div>`;
     }).join("");
   }catch(err){
     console.error(err);
