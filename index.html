@@ -263,7 +263,9 @@ footer a{display:block;margin:7px 0}
 </nav>
 
 <div class="nav-actions">
-<button class="btn btn-primary" onclick="openModal('authModal')">👤 Sign In / Register</button>
+<button id="authNavBtn" class="btn btn-primary" onclick="openModal('authModal')">👤 Sign In / Register</button>
+<button id="userDashboardNavBtn" class="btn btn-success" style="display:none;" onclick="openModal('userDashboardModal')">📦 My Dashboard <span id="userNotifBadge" style="background:#dc2626;color:#fff;border-radius:50%;padding:2px 6px;font-size:10px;display:none;">0</span></button>
+<button id="userSignOutNavBtn" class="btn btn-outline" style="display:none;" onclick="handleUserSignOut()">Sign Out</button>
 <button class="btn btn-outline" onclick="openModal('staffLoginModal')">Staff Login</button>
 <button class="btn btn-outline" onclick="openModal('humanModal')">👤 Human CV Expert</button>
 </div>
@@ -585,6 +587,25 @@ review the documents and assign the work to a Human CV Expert.
 </div>
 </div>
 
+<div class="modal" id="userDashboardModal">
+<div class="modal-card" style="width:min(850px,100%);">
+<button class="close" onclick="closeModal('userDashboardModal')">×</button>
+<h2>📦 My User Dashboard</h2>
+<p class="modal-sub">View your Human CV requests, status updates, team notifications, and download your completed expert CV documents.</p>
+
+<div style="display:grid;grid-template-columns:1fr;gap:20px;">
+  <div>
+    <h3>🔔 My Notifications & Updates</h3>
+    <div id="userNotificationsList" class="notice" style="max-height:200px;overflow-y:auto;margin-top:8px;">Loading notifications...</div>
+  </div>
+  <div>
+    <h3>📂 My Human CV Requests & Completed Documents</h3>
+    <div id="userRequestsList" style="margin-top:8px;">Loading requests...</div>
+  </div>
+</div>
+</div>
+</div>
+
 <div class="modal" id="staffLoginModal">
 <div class="modal-card">
 <button class="close" onclick="closeModal('staffLoginModal')">×</button>
@@ -605,7 +626,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 import {
   getFirestore, collection, addDoc, getDocs, getDoc, doc,
-  updateDoc, serverTimestamp, query, orderBy, limit
+  updateDoc, serverTimestamp, query, orderBy, limit, where
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 import {
   getStorage, ref, uploadBytes, getDownloadURL
@@ -895,7 +916,12 @@ window.clearDirectoryFilters=function(){
 
 document.getElementById("directorySearch").addEventListener("input",applyDirectoryFilters);
 
-window.openModal=function(id){document.getElementById(id)?.classList.add("show")};
+window.openModal=function(id){
+  document.getElementById(id)?.classList.add("show");
+  if(id === 'userDashboardModal') {
+    loadUserDashboardData();
+  }
+};
 window.closeModal=function(id){document.getElementById(id)?.classList.remove("show")};
 
 window.toggleMobileMenu=function(){
@@ -949,6 +975,15 @@ window.handleEmailAuth=async function(){
   }catch(err){
     console.error(err);
     msgEl.innerHTML='<div class="error">'+escapeHtml(err.message)+'</div>';
+  }
+};
+
+window.handleUserSignOut = async function() {
+  try {
+    await signOut(auth);
+    showToast("Signed out successfully.");
+  } catch(e) {
+    console.error(e);
   }
 };
 
@@ -1028,6 +1063,15 @@ window.submitHumanRequest=async function(){
       message:`${name} submitted a KSh ${HUMAN_CV_FEE} Human CV Expert request. Payment reference: ${paymentReference}. Verify payment before starting the CV work.`,
       read:false,
       createdAt:serverTimestamp()
+    });
+
+    // Also send an initial notification to the user's specific inbox/notifications collection or sub-item
+    await addDoc(collection(db,"userNotifications"),{
+      userId: user.uid,
+      title: "CV Request Received",
+      message: `We have received your Human CV Expert request for '${role || "General CV"}'. Your payment reference (${paymentReference}) is pending verification.`,
+      createdAt: serverTimestamp(),
+      read: false
     });
 
     const connectButton = HUMAN_EXPERT_WHATSAPP !== "YOUR_WHATSAPP_NUMBER"
@@ -1131,19 +1175,35 @@ async function loadStaffRequests(){
 window.verifyPayment=async function(id){
   try{
     if(!staffUser) throw new Error("Staff login required.");
-    await updateDoc(doc(db,"humanCVRequests",id),{
+    const reqDocRef = doc(db, "humanCVRequests", id);
+    const reqSnap = await getDoc(reqDocRef);
+    const reqData = reqSnap.data();
+
+    await updateDoc(reqDocRef,{
       paymentStatus:"verified",
-      status:"New",
+      status:"In Progress",
       paymentVerifiedAt:serverTimestamp(),
       paymentVerifiedBy:staffUser.uid,
       updatedAt:serverTimestamp(),
       updatedBy:staffUser.uid
     });
+    
     await addDoc(collection(db,"staffNotifications"),{
       type:"payment_verified",requestId:id,title:"CV Payment Verified",
       message:"KSh 1,000 payment verified. Human CV Expert can begin the request.",
       read:false,createdAt:serverTimestamp()
     });
+
+    if(reqData && reqData.userId) {
+      await addDoc(collection(db,"userNotifications"),{
+        userId: reqData.userId,
+        title: "Payment Verified & CV In Progress",
+        message: `Your payment for '${reqData.targetRole || "General CV"}' has been verified. Our Human CV Expert is now working on your documents.`,
+        createdAt: serverTimestamp(),
+        read: false
+      });
+    }
+
     showToast("Payment verified. Human CV Expert can start the work.");
     loadStaffRequests();
   }catch(err){showToast("Payment verification failed: "+err.message)}
@@ -1151,7 +1211,22 @@ window.verifyPayment=async function(id){
 
 window.changeRequestStatus=async function(id,status){
   try{
-    await updateDoc(doc(db,"humanCVRequests",id),{status,updatedAt:serverTimestamp(),updatedBy:auth.currentUser?.uid||""});
+    const reqDocRef = doc(db, "humanCVRequests", id);
+    const reqSnap = await getDoc(reqDocRef);
+    const reqData = reqSnap.data();
+
+    await updateDoc(reqDocRef,{status,updatedAt:serverTimestamp(),updatedBy:auth.currentUser?.uid||""});
+    
+    if(reqData && reqData.userId) {
+      await addDoc(collection(db,"userNotifications"),{
+        userId: reqData.userId,
+        title: "CV Request Status Update",
+        message: `Your CV request status for '${reqData.targetRole || "General CV"}' has been updated to: ${status}`,
+        createdAt: serverTimestamp(),
+        read: false
+      });
+    }
+
     showToast("Request status updated.");
     loadStaffRequests();
   }catch(err){showToast("Update failed: "+err.message)}
@@ -1169,19 +1244,37 @@ async function uploadCompletedCV(requestId,file){
     if(!file) return;
     validFile(file,[".pdf",".doc",".docx"],15);
     if(!staffUser) throw new Error("Staff login required.");
+    
+    const reqDocRef = doc(db, "humanCVRequests", requestId);
+    const reqSnap = await getDoc(reqDocRef);
+    const reqData = reqSnap.data();
+
     const r=ref(storage,`completedCVs/${requestId}/${Date.now()}_${safeFileName(file.name)}`);
     const snap=await uploadBytes(r,file);
     const url=await getDownloadURL(snap.ref);
-    await updateDoc(doc(db,"humanCVRequests",requestId),{
+    
+    await updateDoc(reqDocRef,{
       completedCVUrl:url,completedCVName:file.name,status:"Completed",
       completedAt:serverTimestamp(),updatedBy:staffUser.uid
     });
+    
     await addDoc(collection(db,"staffNotifications"),{
       type:"cv_completed",requestId,
       title:"CV Completed",
       message:"A completed CV was uploaded.",
       read:false,createdAt:serverTimestamp()
     });
+
+    if(reqData && reqData.userId) {
+      await addDoc(collection(db,"userNotifications"),{
+        userId: reqData.userId,
+        title: "🎉 Your Expert CV is Ready!",
+        message: `The Human CV Expert has completed your CV for '${reqData.targetRole || "General CV"}'. You can now download your final document from your user dashboard.`,
+        createdAt: serverTimestamp(),
+        read: false
+      });
+    }
+
     showToast("Completed CV uploaded.");
     loadStaffRequests();
   }catch(err){showToast("Upload failed: "+err.message)}
@@ -1198,6 +1291,81 @@ async function loadNotifications(){
     }).join("");
   }catch(err){
     el.innerHTML="Notifications unavailable. Check Firestore rules.";
+  }
+}
+
+// User Dashboard Data Loader (Notifications & Requests/Completed Documents)
+async function loadUserDashboardData() {
+  const user = auth.currentUser;
+  const notifEl = document.getElementById("userNotificationsList");
+  const reqEl = document.getElementById("userRequestsList");
+
+  if (!user || user.isAnonymous) {
+    notifEl.innerHTML = '<div class="warning">Please sign in to view your notifications.</div>';
+    reqEl.innerHTML = '<div class="warning">Please sign in to view your CV requests and documents.</div>';
+    return;
+  }
+
+  // Load User Notifications
+  try {
+    const notifQuery = query(collection(db, "userNotifications"), where("userId", "==", user.uid));
+    const notifSnap = await getDocs(notifQuery);
+    if(notifSnap.empty) {
+      notifEl.innerHTML = '<div class="small" style="padding:10px;">No notifications yet.</div>';
+    } else {
+      notifEl.innerHTML = notifSnap.docs.map(d => {
+        const n = d.data();
+        return `<div class="request-card" style="padding:10px;margin-bottom:8px;">
+          <strong>${escapeHtml(n.title || "Update")}</strong>
+          <p style="font-size:13px;margin-top:4px;">${escapeHtml(n.message || "")}</p>
+        </div>`;
+      }).join("");
+    }
+  } catch(e) {
+    notifEl.innerHTML = '<div class="error">Could not load notifications.</div>';
+  }
+
+  // Load User CV Requests & Completed Document Downloads
+  try {
+    const reqQuery = query(collection(db, "humanCVRequests"), where("userId", "==", user.uid));
+    const reqSnap = await getDocs(reqQuery);
+    if(reqSnap.empty) {
+      reqEl.innerHTML = '<div class="empty">You have not submitted any Human CV requests yet.</div>';
+    } else {
+      reqEl.innerHTML = reqSnap.docs.map(ds => {
+        const d = ds.data();
+        const status = d.status || "Pending";
+        const statusClass = status.toLowerCase().includes("complete") ? "done" : status.toLowerCase().includes("progress") ? "progress" : "";
+        
+        let downloadSection = '';
+        if(d.completedCVUrl) {
+          downloadSection = `
+            <div style="margin-top:12px;padding:12px;background:#ecfdf3;border:1px solid #abefc6;border-radius:10px;">
+              <strong>🎉 Your Expert CV is Ready for Download!</strong><br>
+              <a class="btn btn-success" style="margin-top:8px;" href="${escapeHtml(d.completedCVUrl)}" target="_blank" rel="noopener">📥 Download Completed CV (${escapeHtml(d.completedCVName || "Document")})</a>
+            </div>
+          `;
+        } else {
+          downloadSection = `<div class="small" style="margin-top:8px;color:#b54708;">⏳ Document status: <strong>${escapeHtml(status)}</strong>. Your completed CV will appear here once ready.</div>`;
+        }
+
+        return `
+          <div class="request-card">
+            <div class="request-top">
+              <div>
+                <h4>Target Role: ${escapeHtml(d.targetRole || "General CV")}</h4>
+                <div class="small">Submitted: ${d.createdAt?.toDate ? d.createdAt.toDate().toLocaleString() : "Recent"} &nbsp; | &nbsp; Ref: ${escapeHtml(d.paymentReference || "N/A")}</div>
+              </div>
+              <span class="status ${statusClass}">${escapeHtml(status)}</span>
+            </div>
+            <p style="margin-top:8px;font-size:13px;">${escapeHtml(d.message || "No specific instructions provided.")}</p>
+            ${downloadSection}
+          </div>
+        `;
+      }).join("");
+    }
+  } catch(e) {
+    reqEl.innerHTML = '<div class="error">Could not load your CV requests.</div>';
   }
 }
 
@@ -1240,9 +1408,32 @@ function showToast(msg){
 }
 window.showToast=showToast;
 
-onAuthStateChanged(auth,user=>{
+// Listen to auth state to update navbar buttons & live notifications badge
+onAuthStateChanged(auth, async user => {
+  const authNavBtn = document.getElementById("authNavBtn");
+  const userDashboardNavBtn = document.getElementById("userDashboardNavBtn");
+  const userSignOutNavBtn = document.getElementById("userSignOutNavBtn");
+  const userNotifBadge = document.getElementById("userNotifBadge");
+
   if(user && !user.isAnonymous){
-    console.log("Signed in user:", user.email);
+    authNavBtn.style.display = "none";
+    userDashboardNavBtn.style.display = "inline-flex";
+    userSignOutNavBtn.style.display = "inline-flex";
+
+    // Fetch unread notifications count for badge
+    try {
+      const snap = await getDocs(query(collection(db, "userNotifications"), where("userId", "==", user.uid)));
+      if(!snap.empty) {
+        userNotifBadge.textContent = snap.size;
+        userNotifBadge.style.display = "inline-block";
+      } else {
+        userNotifBadge.style.display = "none";
+      }
+    } catch(e) {}
+  } else {
+    authNavBtn.style.display = "inline-flex";
+    userDashboardNavBtn.style.display = "none";
+    userSignOutNavBtn.style.display = "none";
   }
 });
 
