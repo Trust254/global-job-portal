@@ -73,8 +73,6 @@
     .modal.open{display:flex}
     .modal-box{background:#fff;width:min(500px,100%);max-height:90vh;overflow:auto;border-radius:14px;padding:22px}
     .close{float:right;border:0;background:#f1f5f9;border-radius:8px;padding:7px 10px}
-    .loading{opacity:.6;pointer-events:none}
-    .empty{padding:25px;text-align:center;border:1px dashed #cbd5e1;border-radius:11px;color:var(--muted)}
     @media(max-width:850px){.hero-grid,.grid,.two,.stats{grid-template-columns:1fr 1fr}.hero-grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:600px){.grid,.two,.form-grid,.stats{grid-template-columns:1fr}.nav{align-items:flex-start;padding:12px 0}.navlinks{justify-content:flex-end}.hero{padding:45px 0}}
   </style>
@@ -103,7 +101,7 @@
       <div class="hero-grid">
         <div>
           <h1>Worldwide Careers & Human CV Experts</h1>
-          <p class="lead">Find worldwide career opportunities and get professional human support to improve your CV for the jobs you want.</p>
+          <p class="lead">Find worldwide career opportunities, cruise lines, airlines, and get professional human support to improve your CV for the jobs you want.</p>
           <div class="actions">
             <button class="btn btn-primary" data-page="portals">Explore Career Portals</button>
             <button class="btn btn-secondary" data-page="human-cv">Human CV Expert</button>
@@ -122,7 +120,7 @@
     <div class="container">
       <div class="section-head">
         <h2>Worldwide Career Portals</h2>
-        <p class="muted">Search career portals by region, category, or name.</p>
+        <p class="muted">Search career portals by region, category, or name (Featuring Carnival, Cruise Ships, and Major Airlines).</p>
       </div>
       <div class="toolbar">
         <input id="portalSearch" placeholder="Search portals...">
@@ -315,9 +313,20 @@
   let allRequests = [];
   let allUserNotifications = [];
   let allStaffNotifications = [];
-  let authMode = "signin"; // "signin" or "register"
+  let authMode = "signin"; 
+  
+  // Prioritized list: Carnival, Cruise Ships, Airlines, and Worldwide Portals
   let portals = [
-    {name:"LinkedIn Jobs",region:"Worldwide",category:"Professional",url:"https://www.linkedin.com/jobs/"},
+    {name:"Carnival Cruise Line Careers",region:"Worldwide",category:"Cruise Ship Careers",url:"https://allportals.carnival.com/"},
+    {name:"Qatar Airways Careers",region:"Worldwide",category:"Airline Careers",url:"https://qatarairways.com/en/careers.html"},
+    {name:"Emirates Group Careers",region:"Worldwide",category:"Airline Careers",url:"https://www.emiratesgroupcareers.com/"},
+    {name:"Royal Caribbean Group Careers",region:"Worldwide",category:"Cruise Ship Careers",url:"https://www.rclcareers.com/"},
+    {name:"Norwegian Cruise Line Careers",region:"Worldwide",category:"Cruise Ship Careers",url:"https://www.nclhltd.com/careers"},
+    {name:"Disney Cruise Line Jobs",region:"Worldwide",category:"Cruise Ship Careers",url:"https://disneycruisejobs.com/"},
+    {name:"Princess Cruises Careers",region:"Worldwide",category:"Cruise Ship Careers",url:"https://www.princess.com/en-us/ships/employment"},
+    {name:"Etihad Airways Careers",region:"Worldwide",category:"Airline Careers",url:"https://www.etihad.com/en/careers"},
+    {name:"Kenya Airways Careers",region:"Africa",category:"Airline Careers",url:"https://www.kenya-airways.com/en/about-kq/careers/"},
+    {name:"LinkedIn Jobs",region:"Worldwide",category:"General Jobs",url:"https://www.linkedin.com/jobs/"},
     {name:"Indeed",region:"Worldwide",category:"General Jobs",url:"https://www.indeed.com/"},
     {name:"Glassdoor Jobs",region:"Worldwide",category:"General Jobs",url:"https://www.glassdoor.com/Job/"},
     {name:"EURES",region:"Europe",category:"Government / Public",url:"https://eures.europa.eu/"},
@@ -357,7 +366,6 @@
     if (btn) { e.preventDefault(); showPage(btn.dataset.page); }
   });
 
-  // Auth Modal Controls
   function openAuth(mode) {
     authMode = mode;
     $("authModalTitle").textContent = mode === "register" ? "Create an Account" : "Sign In";
