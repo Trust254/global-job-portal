@@ -312,7 +312,7 @@ airlines, cruise ships, military/defence recruitment and verified Kenya sources.
 <div class="trust-item"><div class="trust-icon">🟢</div><div><strong>Source-labelled portals</strong><p>Official government/employer portals are separated from job boards and information sources.</p></div></div>
 <div class="trust-item"><div class="trust-icon">👤</div><div><strong>100% Human CV service</strong><p>Your CV is reviewed and prepared by real Customer Care and Human CV Expert staff.</p></div></div>
 <div class="trust-item"><div class="trust-icon">🌐</div><div><strong>Worldwide coverage</strong><p>USA, Canada, Europe, Africa, Kenya, Middle East, airlines, cruise and defence sources.</p></div></div>
-<div class="trust-item"><div class="trust-icon">🔒</div><div><strong>Secure Firebase workflow</strong><p>Requests and uploaded documents are sent to the authorized staff workspace.</p></div></div>
+<div class="trust-item"><div class="trust-icon">🔒</div><div><strong>Secure workflow</strong><p>Requests and uploaded documents are securely managed within your dashboard workspace.</p></div></div>
 </div>
 <button class="btn btn-success" style="width:100%;margin-top:18px" onclick="openModal('humanModal')">Request Human CV Help</button>
 </div>
@@ -431,7 +431,7 @@ review the documents and assign the work to a Human CV Expert.
 <div><span class="check">✓</span> Old CV / existing document upload</div>
 <div><span class="check">✓</span> Target-job focused formatting</div>
 <div><span class="check">✓</span> Customer Care follow-up</div>
-<div><span class="check">✓</span> Final CV can be returned as PDF/DOC/DOCX</div>
+<div><span class="check">✓</span> Final CV returned for direct download in your User Dashboard</div>
 </div>
 <div class="human-notice"><strong>Human-only service</strong><br>No automated AI resume builder is used in this workflow.</div>
 <button class="btn btn-success" style="margin-top:20px" onclick="openModal('humanModal')">👤 Request Human CV Expert</button>
@@ -457,7 +457,7 @@ review the documents and assign the work to a Human CV Expert.
 <section class="staff-panel" id="staff">
 <div class="container">
 <div class="section-head">
-<div><h2 style="color:#fff">Customer Care / Human CV Expert Center</h2><p style="color:#98a2b3">Authorized staff only. Firebase Authentication and Firestore rules must protect this area.</p></div>
+<div><h2 style="color:#fff">Customer Care / Human CV Expert Portal</h2><p style="color:#98a2b3">Authorized staff only. Review submissions, send completed files to users, and clear temporary records directly from your dashboard.</p></div>
 </div>
 
 <div id="staffLoginInline" class="staff-login">
@@ -480,8 +480,8 @@ review the documents and assign the work to a Human CV Expert.
 
 <div class="dashboard-content">
 <div id="requestsSection" class="dashboard-section active">
-<h3>Human CV Requests</h3>
-<p class="modal-sub">Review customer requests, download old CVs and upload completed documents.</p>
+<h3>Human CV Expert Portal - Received Files & Submissions</h3>
+<p class="modal-sub">Review incoming customer submissions, download user files, upload completed review documents directly to the user dashboard, and safely clear temporary records when finished.</p>
 <div id="requestsList">Loading requests...</div>
 </div>
 
@@ -534,7 +534,7 @@ review the documents and assign the work to a Human CV Expert.
 <button class="close" onclick="closeModal('humanModal')">×</button>
 <h2>👤 Human CV Expert Request</h2>
 <p class="modal-sub">A real human specialist will review your request. No AI CV generation.</p>
-<div class="notice"><strong>Secure upload:</strong> Documents are uploaded to Firebase Storage and linked to your request.</div>
+<div class="notice"><strong>Secure upload:</strong> Documents are uploaded and linked directly to your user dashboard and the expert's portal.</div>
 <div class="form-grid">
 <input id="hName" class="field" placeholder="Full name *">
 <input id="hEmail" class="field" type="email" placeholder="Email *">
@@ -592,7 +592,7 @@ review the documents and assign the work to a Human CV Expert.
 <div class="modal-card" style="width:min(850px,100%);">
 <button class="close" onclick="closeModal('userDashboardModal')">×</button>
 <h2>📦 My User Dashboard</h2>
-<p class="modal-sub">View your Human CV requests, status updates, team notifications, and download your completed expert CV documents.</p>
+<p class="modal-sub">View your Human CV requests, received files sent by the human expert, download your finalized documents, and check status updates.</p>
 
 <div style="display:grid;grid-template-columns:1fr;gap:20px;">
   <div>
@@ -600,7 +600,7 @@ review the documents and assign the work to a Human CV Expert.
     <div id="userNotificationsList" class="notice" style="max-height:200px;overflow-y:auto;margin-top:8px;">Loading notifications...</div>
   </div>
   <div>
-    <h3>📂 My Human CV Requests & Completed Documents</h3>
+    <h3>📂 My Received Files & Completed Expert CVs</h3>
     <div id="userRequestsList" style="margin-top:8px;">Loading requests...</div>
   </div>
 </div>
@@ -627,7 +627,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 import {
   getFirestore, collection, addDoc, getDocs, getDoc, doc,
-  updateDoc, serverTimestamp, query, orderBy, limit, where
+  updateDoc, deleteDoc, serverTimestamp, query, orderBy, limit, where
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 import {
   getStorage, ref, uploadBytes, getDownloadURL
@@ -1157,12 +1157,14 @@ async function loadStaffRequests(){
         <p style="margin-top:10px">${escapeHtml(d.message||"No message provided.")}</p>
         <p class="small">Experience: ${escapeHtml(d.experience||"Not provided")}</p>
         <div class="notice" style="margin:10px 0"><strong>Payment:</strong> KSh ${escapeHtml(d.paymentAmount||HUMAN_CV_FEE)} · ${escapeHtml(d.paymentMethod||"M-Pesa")} · Ref: ${escapeHtml(d.paymentReference||"Not provided")} · Status: ${escapeHtml(d.paymentStatus||"Not recorded")}</div>
+        ${d.completedCVUrl ? `<div style="margin:8px 0;padding:8px;background:#ecfdf3;border-radius:6px;font-size:12px;"><strong>Sent File:</strong> <a href="${escapeHtml(d.completedCVUrl)}" target="_blank" rel="noopener">${escapeHtml(d.completedCVName || "View Completed CV")}</a></div>` : ''}
         <div class="staff-tools">
           ${d.oldCVUrl?`<a class="btn btn-light" href="${escapeHtml(d.oldCVUrl)}" target="_blank" rel="noopener">📎 Old CV</a>`:""}
           ${d.supportingUrl?`<a class="btn btn-light" href="${escapeHtml(d.supportingUrl)}" target="_blank" rel="noopener">📎 Supporting Doc</a>`:""}
           ${d.paymentStatus==="pending_verification"?`<button class="btn btn-primary" onclick="verifyPayment('${id}')">✓ Verify Payment</button>`:""}
           <button class="btn btn-outline" onclick="changeRequestStatus('${id}','In Progress')">In Progress</button>
-          <button class="btn btn-success" onclick="openCompletedUpload('${id}')">Upload Completed CV</button>
+          <button class="btn btn-success" onclick="openCompletedUpload('${id}')">📤 Send File to User</button>
+          <button class="btn btn-danger" onclick="deleteTempRequest('${id}')">🗑️ Delete Record</button>
         </div>
       </div>`;
     }).join("");
@@ -1261,7 +1263,7 @@ async function uploadCompletedCV(requestId,file){
     await addDoc(collection(db,"staffNotifications"),{
       type:"cv_completed",requestId,
       title:"CV Completed",
-      message:"A completed CV was uploaded.",
+      message:"A completed CV was uploaded and sent to the user.",
       read:false,createdAt:serverTimestamp()
     });
 
@@ -1269,16 +1271,28 @@ async function uploadCompletedCV(requestId,file){
       await addDoc(collection(db,"userNotifications"),{
         userId: reqData.userId,
         title: "🎉 Your Expert CV is Ready!",
-        message: `The Human CV Expert has completed your CV for '${reqData.targetRole || "General CV"}'. You can now download your final document from your user dashboard.`,
+        message: `The Human CV Expert has completed and sent your CV for '${reqData.targetRole || "General CV"}'. You can now download your final document from your user dashboard.`,
         createdAt: serverTimestamp(),
         read: false
       });
     }
 
-    showToast("Completed CV uploaded.");
+    showToast("Completed CV sent to user successfully.");
     loadStaffRequests();
   }catch(err){showToast("Upload failed: "+err.message)}
 }
+
+window.deleteTempRequest = async function(id) {
+  if(!confirm("Are you sure you want to delete this temporary request record from your expert portal?")) return;
+  try {
+    if(!staffUser) throw new Error("Staff login required.");
+    await deleteDoc(doc(db, "humanCVRequests", id));
+    showToast("Temporary request deleted successfully.");
+    loadStaffRequests();
+  } catch(err) {
+    showToast("Delete failed: " + err.message);
+  }
+};
 
 async function loadNotifications(){
   const el=document.getElementById("notificationList");
@@ -1301,7 +1315,7 @@ async function loadUserDashboardData() {
 
   if (!user || user.isAnonymous) {
     notifEl.innerHTML = '<div class="warning">Please sign in to view your notifications.</div>';
-    reqEl.innerHTML = '<div class="warning">Please sign in to view your CV requests and documents.</div>';
+    reqEl.innerHTML = '<div class="warning">Please sign in to view your CV requests and received files.</div>';
     return;
   }
 
@@ -1338,12 +1352,12 @@ async function loadUserDashboardData() {
         if(d.completedCVUrl) {
           downloadSection = `
             <div style="margin-top:12px;padding:12px;background:#ecfdf3;border:1px solid #abefc6;border-radius:10px;">
-              <strong>🎉 Your Expert CV is Ready for Download!</strong><br>
+              <strong>🎉 Received File from Human CV Expert!</strong><br>
               <a class="btn btn-success" style="margin-top:8px;" href="${escapeHtml(d.completedCVUrl)}" target="_blank" rel="noopener">📥 Download Completed CV (${escapeHtml(d.completedCVName || "Document")})</a>
             </div>
           `;
         } else {
-          downloadSection = `<div class="small" style="margin-top:8px;color:#b54708;">⏳ Document status: <strong>${escapeHtml(status)}</strong>. Your completed CV will appear here once ready.</div>`;
+          downloadSection = `<div class="small" style="margin-top:8px;color:#b54708;">⏳ Document status: <strong>${escapeHtml(status)}</strong>. Your completed expert CV will appear here for download once sent.</div>`;
         }
 
         return `
