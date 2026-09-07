@@ -23,6 +23,7 @@
     .navlinks{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
     .navlinks button{border:0;background:transparent;padding:9px 11px;border-radius:8px;color:#334155}
     .navlinks button:hover{background:#f1f5f9}
+    .nav-auth-group{display:flex;gap:6px;align-items:center;margin-left:6px}
     .hero{padding:70px 0;background:linear-gradient(135deg,#ecfeff,#fff7ed)}
     .hero-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:32px;align-items:center}
     h1{font-size:clamp(2rem,5vw,4rem);line-height:1.05;margin:0 0 18px}
@@ -70,7 +71,7 @@
     footer .brand{color:#5eead4}
     .modal{position:fixed;inset:0;background:rgba(15,23,42,.6);display:none;align-items:center;justify-content:center;padding:20px;z-index:50}
     .modal.open{display:flex}
-    .modal-box{background:#fff;width:min(900px,100%);max-height:90vh;overflow:auto;border-radius:14px;padding:22px}
+    .modal-box{background:#fff;width:min(500px,100%);max-height:90vh;overflow:auto;border-radius:14px;padding:22px}
     .close{float:right;border:0;background:#f1f5f9;border-radius:8px;padding:7px 10px}
     .loading{opacity:.6;pointer-events:none}
     .empty{padding:25px;text-align:center;border:1px dashed #cbd5e1;border-radius:11px;color:var(--muted)}
@@ -88,7 +89,10 @@
       <button data-page="human-cv">Human CV Expert</button>
       <button data-page="dashboard">My Dashboard</button>
       <button data-page="staff">Staff Portal</button>
-      <button id="authButton">Sign In</button>
+      <div class="nav-auth-group" id="authNavContainer">
+        <button id="navLoginBtn" class="btn btn-light" style="padding:7px 12px;font-size:.9rem;">Sign In</button>
+        <button id="navRegisterBtn" class="btn btn-primary" style="padding:7px 12px;font-size:.9rem;">Register</button>
+      </div>
     </nav>
   </div>
 </header>
@@ -238,10 +242,31 @@
   </div>
 </footer>
 
+<!-- Generic Modal (For Request Details / Staff Processing) -->
 <div id="requestModal" class="modal">
-  <div class="modal-box">
+  <div class="modal-box" style="width:min(900px,100%)">
     <button class="close" id="closeModal">Close</button>
     <div id="requestDetails"></div>
+  </div>
+</div>
+
+<!-- Authentication Modal (Sign In / Register) -->
+<div id="authModal" class="modal">
+  <div class="modal-box">
+    <button class="close" id="closeAuthModal">Close</button>
+    <h3 id="authModalTitle" style="margin-top:0;">Sign In</h3>
+    <form id="authModalForm">
+      <div>
+        <label for="authModalEmail">Email Address</label>
+        <input id="authModalEmail" type="email" required placeholder="name@example.com">
+      </div>
+      <div>
+        <label for="authModalPassword">Password</label>
+        <input id="authModalPassword" type="password" required placeholder="At least 6 characters">
+      </div>
+      <button class="btn btn-primary" type="submit" id="authSubmitBtn">Sign In</button>
+      <div id="authModalMessage"></div>
+    </form>
   </div>
 </div>
 
@@ -290,6 +315,7 @@
   let allRequests = [];
   let allUserNotifications = [];
   let allStaffNotifications = [];
+  let authMode = "signin"; // "signin" or "register"
   let portals = [
     {name:"LinkedIn Jobs",region:"Worldwide",category:"Professional",url:"https://www.linkedin.com/jobs/"},
     {name:"Indeed",region:"Worldwide",category:"General Jobs",url:"https://www.indeed.com/"},
@@ -331,29 +357,72 @@
     if (btn) { e.preventDefault(); showPage(btn.dataset.page); }
   });
 
-  $("authButton").addEventListener("click", async () => {
-    if (currentUser) await signOut(auth);
-    else openAuthModal();
+  // Auth Modal Controls
+  function openAuth(mode) {
+    authMode = mode;
+    $("authModalTitle").textContent = mode === "register" ? "Create an Account" : "Sign In";
+    $("authSubmitBtn").textContent = mode === "register" ? "Register" : "Sign In";
+    $("authModalMessage").innerHTML = "";
+    $("authModalForm").reset();
+    $("authModal").classList.add("open");
+  }
+
+  $("navLoginBtn").addEventListener("click", () => {
+    if (currentUser) {
+      signOut(auth);
+    } else {
+      openAuth("signin");
+    }
   });
 
-  function openAuthModal() {
-    const email = prompt("Enter your email. A sign-in window will be shown in the next step.");
-    if (!email) return;
-    const password = prompt("Enter your password:");
-    if (!password) return;
-    signInWithEmailAndPassword(auth,email,password).catch(async err => {
-      if (err.code === "auth/user-not-found" || err.code === "auth/invalid-credential") {
-        if (confirm("Account not found. Create a new account with this email?")) {
-          try { await createUserWithEmailAndPassword(auth,email,password); }
-          catch(e){ alert(e.message); }
-        }
-      } else alert(err.message);
-    });
-  }
+  $("navRegisterBtn").addEventListener("click", () => {
+    if (!currentUser) openAuth("register");
+  });
+
+  $("closeAuthModal").addEventListener("click", () => $("authModal").classList.remove("open"));
+  $("authModal").addEventListener("click", e => { if (e.target.id === "authModal") $("authModal").classList.remove("open"); });
+
+  $("authModalForm").addEventListener("submit", async e => {
+    e.preventDefault();
+    const email = $("authModalEmail").value.trim();
+    const password = $("authModalPassword").value;
+    const msg = $("authModalMessage");
+    msg.innerHTML = "";
+
+    try {
+      if (authMode === "register") {
+        await createUserWithEmailAndPassword(auth, email, password);
+        msg.innerHTML = `<div class="notice success">Account created successfully!</div>`;
+      } else {
+        await signInWithEmailAndPassword(auth, email, password);
+        msg.innerHTML = `<div class="notice success">Signed in successfully!</div>`;
+      }
+      setTimeout(() => {
+        $("authModal").classList.remove("open");
+      }, 700);
+    } catch (err) {
+      msg.innerHTML = `<div class="notice error">${esc(err.message)}</div>`;
+    }
+  });
 
   onAuthStateChanged(auth, async user => {
     currentUser = user;
-    $("authButton").textContent = user ? "Sign Out" : "Sign In";
+    const authGroup = $("authNavContainer");
+    if (user) {
+      authGroup.innerHTML = `
+        <span class="small muted" style="max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${esc(user.email)}">${esc(user.email)}</span>
+        <button id="navSignOutBtn" class="btn btn-danger" style="padding:6px 10px;font-size:.85rem;">Sign Out</button>
+      `;
+      $("navSignOutBtn").onclick = () => signOut(auth);
+    } else {
+      authGroup.innerHTML = `
+        <button id="navLoginBtn" class="btn btn-light" style="padding:7px 12px;font-size:.9rem;">Sign In</button>
+        <button id="navRegisterBtn" class="btn btn-primary" style="padding:7px 12px;font-size:.9rem;">Register</button>
+      `;
+      $("navLoginBtn").onclick = () => openAuth("signin");
+      $("navRegisterBtn").onclick = () => openAuth("register");
+    }
+
     if (!user) { isStaff = false; return; }
     isStaff = await checkStaff(user);
     if (isStaff && $("staffWorkspace")) openStaffWorkspace();
@@ -361,7 +430,7 @@
 
   async function checkStaff(user) {
     try {
-      const snap = await getDoc(doc(db,collections.staffUsers,user.uid));
+      const snap = await getDoc(doc(db, collections.staffUsers, user.uid));
       return snap.exists() && snap.data().active === true;
     } catch { return false; }
   }
@@ -369,7 +438,7 @@
   function requireUser() {
     if (!currentUser) {
       alert("Please sign in or create an account before using the CV service.");
-      showPage("home");
+      openAuth("signin");
       return false;
     }
     return true;
@@ -470,13 +539,6 @@
       submitBtn.textContent = "Submit CV Request";
     }
   });
-
-  async function deleteStoragePath(path) {
-    if (!path) return;
-    try { await deleteObject(ref(storage,path)); } catch(err) {
-      if (err.code !== "storage/object-not-found") console.warn("Storage cleanup:",err);
-    }
-  }
 
   async function deleteFolderContents(folderPath) {
     try {
