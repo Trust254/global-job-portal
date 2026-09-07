@@ -1065,7 +1065,6 @@ window.submitHumanRequest=async function(){
       createdAt:serverTimestamp()
     });
 
-    // Also send an initial notification to the user's specific inbox/notifications collection or sub-item
     await addDoc(collection(db,"userNotifications"),{
       userId: user.uid,
       title: "CV Request Received",
@@ -1294,7 +1293,6 @@ async function loadNotifications(){
   }
 }
 
-// User Dashboard Data Loader (Notifications & Requests/Completed Documents)
 async function loadUserDashboardData() {
   const user = auth.currentUser;
   const notifEl = document.getElementById("userNotificationsList");
@@ -1306,7 +1304,6 @@ async function loadUserDashboardData() {
     return;
   }
 
-  // Load User Notifications
   try {
     const notifQuery = query(collection(db, "userNotifications"), where("userId", "==", user.uid));
     const notifSnap = await getDocs(notifQuery);
@@ -1325,7 +1322,6 @@ async function loadUserDashboardData() {
     notifEl.innerHTML = '<div class="error">Could not load notifications.</div>';
   }
 
-  // Load User CV Requests & Completed Document Downloads
   try {
     const reqQuery = query(collection(db, "humanCVRequests"), where("userId", "==", user.uid));
     const reqSnap = await getDocs(reqQuery);
@@ -1408,7 +1404,6 @@ function showToast(msg){
 }
 window.showToast=showToast;
 
-// Listen to auth state to update navbar buttons & live notifications badge
 onAuthStateChanged(auth, async user => {
   const authNavBtn = document.getElementById("authNavBtn");
   const userDashboardNavBtn = document.getElementById("userDashboardNavBtn");
@@ -1420,7 +1415,6 @@ onAuthStateChanged(auth, async user => {
     userDashboardNavBtn.style.display = "inline-flex";
     userSignOutNavBtn.style.display = "inline-flex";
 
-    // Fetch unread notifications count for badge
     try {
       const snap = await getDocs(query(collection(db, "userNotifications"), where("userId", "==", user.uid)));
       if(!snap.empty) {
