@@ -424,12 +424,11 @@ airlines, cruise ships, military/defence recruitment and verified Kenya sources.
 <div class="badge">👤 HUMAN CV EXPERT SERVICE</div>
 <h2 style="font-size:34px;line-height:1.15">Your CV is prepared by a real human expert.</h2>
 <p style="color:var(--muted);margin-top:12px">
-Submit your information and optionally upload your old CV. Customer Care will receive the request,
-review the documents and assign the work to a Human CV Expert.
+Submit your information cleanly. Customer Care will receive the request,
+review your career targets and assign the work to a Human CV Expert.
 </p>
 <div class="cv-list">
 <div><span class="check">✓</span> Human CV review and rewriting</div>
-<div><span class="check">✓</span> Old CV / existing document upload</div>
 <div><span class="check">✓</span> Target-job focused formatting</div>
 <div><span class="check">✓</span> Customer Care follow-up</div>
 <div><span class="check">✓</span> Final CV returned for direct download in your User Dashboard</div>
@@ -440,7 +439,7 @@ review the documents and assign the work to a Human CV Expert.
 
 <div class="cv-form">
 <h3>Start Your Human CV Request</h3>
-<p class="modal-sub">Fill in your details, then attach your old CV if you have one.</p>
+<p class="modal-sub">Fill in your details quickly and securely.</p>
 <div class="form-grid">
 <input id="cvName" class="field" placeholder="Full name *">
 <input id="cvEmail" class="field" type="email" placeholder="Email *">
@@ -482,7 +481,7 @@ review the documents and assign the work to a Human CV Expert.
 <div class="dashboard-content">
 <div id="requestsSection" class="dashboard-section active">
 <h3>Human CV Expert Portal - Received Files & Submissions</h3>
-<p class="modal-sub">Review incoming customer submissions, download user files, upload completed review documents directly to the user dashboard, and safely clear temporary records when finished.</p>
+<p class="modal-sub">Review incoming customer submissions, upload completed review documents directly to the user dashboard, and safely clear temporary records when finished.</p>
 <div id="requestsList">Loading requests...</div>
 </div>
 
@@ -535,7 +534,7 @@ review the documents and assign the work to a Human CV Expert.
 <button class="close" onclick="closeModal('humanModal')">×</button>
 <h2>👤 Human CV Expert Request</h2>
 <p class="modal-sub">A real human specialist will review your request. No AI CV generation.</p>
-<div class="notice"><strong>Secure upload:</strong> Documents are uploaded and linked directly to your user dashboard and the expert's portal.</div>
+<div class="notice"><strong>Smooth Submission:</strong> No complicated file upload required to submit. Fill out your details cleanly and submit!</div>
 <div class="form-grid">
 <input id="hName" class="field" placeholder="Full name *">
 <input id="hEmail" class="field" type="email" placeholder="Email *">
@@ -545,19 +544,13 @@ review the documents and assign the work to a Human CV Expert.
 <textarea id="hExperience" class="field full" rows="3" placeholder="Experience / education"></textarea>
 <textarea id="hMessage" class="field full" rows="3" placeholder="Tell the Human CV Expert what you need"></textarea>
 
-<label class="full">Old CV / Existing CV (PDF, DOC, DOCX)
-<input id="hOldCV" class="field" type="file" accept=".pdf,.doc,.docx"></label>
-
-<label class="full">Supporting Document (optional)
-<input id="hDocument" class="field" type="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"></label>
-
 <div class="payment-box full">
   <strong>💳 Human CV Expert Service Fee</strong>
   <div class="payment-price">KSh 1,000</div>
   <div class="payment-step"><span>1️⃣</span><span>Payment must be completed before your Human CV request is submitted.</span></div>
-  <div class="payment-step"><span>2️⃣</span><span><strong>Payment Method: M-Pesa → Send Money</strong><br>Open M-Pesa, choose <strong>Send Money</strong>, and send <strong>KSh 1,000</strong> to <strong>0798 811471</strong> (Paybill: <strong>247247</strong>, Account: <strong>0798698299</strong>).</span></div>
+  <div class="payment-step"><span>2️⃣</span><span><strong>Payment Method: M-Pesa Paybill</strong><br>Go to Lipa na M-Pesa &gt; Paybill, Business Number: <strong>247247</strong>, Account Number: <strong>0798698299</strong>, Amount: <strong>KSh 1,000</strong>.</span></div>
   <div class="payment-step"><span>3️⃣</span><span>Enter the M-Pesa transaction code below. Customer Care will verify the payment.</span></div>
-  <div class="notice" style="margin-top:12px"><strong>Why KSh 1,000?</strong><br>The KSh 1,000 fee covers professional human CV review and preparation by a real Human CV Expert, including reviewing your existing CV, improving your presentation and wording, tailoring it toward your target role, and preparing a professional final CV document. This is a human service — no AI-generated CV is used.</div>
+  <div class="notice" style="margin-top:12px"><strong>Why KSh 1,000?</strong><br>The KSh 1,000 fee covers professional human CV review and preparation by a real Human CV Expert. This is a human service — no AI-generated CV is used.</div>
   <input id="paymentReference" class="field payment-ref" placeholder="M-Pesa transaction code / payment reference *">
   <label style="display:flex;gap:8px;align-items:flex-start;margin-top:12px;font-size:13px;font-weight:800">
     <input id="paymentConfirmed" type="checkbox" style="margin-top:4px">
@@ -606,19 +599,21 @@ review the documents and assign the work to a Human CV Expert.
 </div>
 
 <div class="modal" id="userDashboardModal">
-<div class="modal-card" style="width:min(850px,100%);">
+<div class="modal-card" style="width:min(900px,100%);">
 <button class="close" onclick="closeModal('userDashboardModal')">×</button>
 <h2>📦 My User Dashboard</h2>
-<p class="modal-sub">View your Human CV requests, received files sent by the human expert, download your finalized documents, and check status updates.</p>
+<p class="modal-sub">View your requests, check status updates, and download your finalized expert CV files.</p>
 
-<div style="display:grid;grid-template-columns:1fr;gap:20px;">
-  <div>
-    <h3>🔔 My Notifications & Updates</h3>
-    <div id="userNotificationsList" class="notice" style="max-height:200px;overflow-y:auto;margin-top:8px;">Loading notifications...</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+  <!-- Left Column: Notifications -->
+  <div style="background:#f8fafc;padding:15px;border-radius:12px;border:1px solid var(--border);">
+    <h3 style="font-size:16px;margin-bottom:10px;color:var(--dark);">🔔 Notifications & Status Updates</h3>
+    <div id="userNotificationsList" style="max-height:300px;overflow-y:auto;">Loading notifications...</div>
   </div>
-  <div>
-    <h3>📂 My Received Files & Completed Expert CVs</h3>
-    <div id="userRequestsList" style="margin-top:8px;">Loading requests...</div>
+  <!-- Right Column: Delivered Files -->
+  <div style="background:#ecfdf3;padding:15px;border-radius:12px;border:1px solid #abefc6;">
+    <h3 style="font-size:16px;margin-bottom:10px;color:#067647;">📁 Delivered Expert CV Files</h3>
+    <div id="userRequestsList" style="max-height:300px;overflow-y:auto;">Loading files...</div>
   </div>
 </div>
 </div>
@@ -673,7 +668,6 @@ let currentRegion = "all";
 
 // HUMAN CV EXPERT PAYMENT SETTINGS
 const HUMAN_CV_FEE = 1000;
-const MPESA_PAYMENT_NUMBER = "0798 811471";
 const HUMAN_EXPERT_WHATSAPP = "YOUR_WHATSAPP_NUMBER";
 
 const categories = [
@@ -702,104 +696,20 @@ function favicon(domain){
 }
 
 const worldwidePortals = [
-/* USA */
 {name:"USAJOBS",country:"USA",region:"usa",category:"Government",type:"official",badge:"🟢 VERIFIED GOVERNMENT SOURCE",badgeClass:"gov-badge",logo:favicon("usajobs.gov"),url:"https://www.usajobs.gov/",description:"Official U.S. federal government employment portal."},
 {name:"U.S. Army Careers",country:"USA",region:"military",category:"Military & Defence",type:"official",badge:"🟢 OFFICIAL SOURCE",badgeClass:"",logo:favicon("goarmy.com"),url:"https://www.goarmy.com/",description:"Official U.S. Army recruiting and careers."},
-{name:"U.S. Navy Careers",country:"USA",region:"military",category:"Military & Defence",type:"official",badge:"🟢 OFFICIAL SOURCE",badgeClass:"",logo:favicon("navy.com"),url:"https://www.navy.com/",description:"Official U.S. Navy recruiting and careers."},
-{name:"U.S. Air Force Careers",country:"USA",region:"military",category:"Military & Defence",type:"official",badge:"🟢 OFFICIAL SOURCE",badgeClass:"",logo:favicon("airforce.com"),url:"https://www.airforce.com/",description:"Official U.S. Air Force careers."},
-{name:"U.S. Marine Corps",country:"USA",region:"military",category:"Military & Defence",type:"official",badge:"🟢 OFFICIAL SOURCE",badgeClass:"",logo:favicon("marines.com"),url:"https://www.marines.com/",description:"Official U.S. Marine Corps recruiting."},
-{name:"U.S. Coast Guard",country:"USA",region:"military",category:"Military & Defence",type:"official",badge:"🟢 OFFICIAL SOURCE",badgeClass:"",logo:favicon("gocoastguard.com"),url:"https://www.gocoastguard.com/",description:"Official U.S. Coast Guard recruiting."},
-{name:"United Airlines Careers",country:"USA",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("united.com"),url:"https://careers.united.com/",description:"Official United Airlines careers."},
-{name:"Delta Air Lines Careers",country:"USA",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("delta.com"),url:"https://www.delta.com/us/en/careers/index",description:"Official Delta Air Lines careers."},
-{name:"American Airlines Careers",country:"USA",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("aa.com"),url:"https://jobs.aa.com/",description:"Official American Airlines jobs."},
-{name:"Boeing Careers",country:"USA",region:"usa",category:"Engineering",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("boeing.com"),url:"https://jobs.boeing.com/",description:"Official Boeing careers."},
-{name:"Amazon Jobs",country:"USA",region:"usa",category:"Business & Administration",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("amazon.jobs"),url:"https://www.amazon.jobs/",description:"Official Amazon jobs worldwide."},
-
-/* CANADA */
 {name:"Government of Canada Jobs",country:"Canada",region:"canada",category:"Government",type:"official",badge:"🟢 VERIFIED GOVERNMENT SOURCE",badgeClass:"gov-badge",logo:favicon("canada.ca"),url:"https://www.canada.ca/en/services/jobs/opportunities.html",description:"Official Government of Canada jobs and opportunities."},
 {name:"Canada Job Bank",country:"Canada",region:"canada",category:"Government",type:"official",badge:"🟢 GOVERNMENT JOB PLATFORM",badgeClass:"gov-badge",logo:favicon("jobbank.gc.ca"),url:"https://www.jobbank.gc.ca/",description:"Official Government of Canada Job Bank."},
-{name:"Canadian Armed Forces",country:"Canada",region:"military",category:"Military & Defence",type:"official",badge:"🟢 OFFICIAL SOURCE",badgeClass:"",logo:favicon("forces.ca"),url:"https://forces.ca/",description:"Official Canadian Armed Forces recruitment."},
-{name:"RCMP Careers",country:"Canada",region:"canada",category:"Government",type:"official",badge:"🟢 GOVERNMENT SOURCE",badgeClass:"gov-badge",logo:favicon("rcmp-grc.gc.ca"),url:"https://www.rcmp-grc.gc.ca/en/careers",description:"Royal Canadian Mounted Police careers."},
-{name:"Air Canada Careers",country:"Canada",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("aircanada.com"),url:"https://careers.aircanada.com/",description:"Official Air Canada careers."},
-
-/* EUROPE */
 {name:"EURES",country:"Europe",region:"europe",category:"Government",type:"official",badge:"🟢 EU EMPLOYMENT NETWORK",badgeClass:"gov-badge",logo:favicon("eures.europa.eu"),url:"https://eures.europa.eu/",description:"Official European employment services network."},
 {name:"NHS Jobs",country:"United Kingdom",region:"europe",category:"Healthcare",type:"official",badge:"🟢 OFFICIAL PUBLIC SERVICE SOURCE",badgeClass:"gov-badge",logo:favicon("jobs.nhs.uk"),url:"https://www.jobs.nhs.uk/",description:"Official UK National Health Service recruitment portal."},
-{name:"British Army Careers",country:"United Kingdom",region:"military",category:"Military & Defence",type:"official",badge:"🟢 OFFICIAL SOURCE",badgeClass:"",logo:favicon("army.mod.uk"),url:"https://jobs.army.mod.uk/",description:"Official British Army recruitment."},
-{name:"Royal Navy Careers",country:"United Kingdom",region:"military",category:"Military & Defence",type:"official",badge:"🟢 OFFICIAL SOURCE",badgeClass:"",logo:favicon("royalnavy.mod.uk"),url:"https://www.royalnavy.mod.uk/careers",description:"Official Royal Navy careers."},
-{name:"RAF Careers",country:"United Kingdom",region:"military",category:"Military & Defence",type:"official",badge:"🟢 OFFICIAL SOURCE",badgeClass:"",logo:favicon("raf.mod.uk"),url:"https://recruitment.raf.mod.uk/",description:"Official Royal Air Force recruitment."},
-{name:"Lufthansa Group Careers",country:"Germany",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("lufthansagroup.com"),url:"https://www.lufthansagroup.com/en/careers.html",description:"Official Lufthansa Group careers."},
-{name:"British Airways Careers",country:"United Kingdom",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("britishairways.com"),url:"https://careers.ba.com/",description:"Official British Airways careers."},
-{name:"Air France-KLM Careers",country:"France / Netherlands",region:"europe",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("airfranceklm.com"),url:"https://recrutement.airfrance.com/",description:"Air France recruitment source."},
-{name:"IKEA Careers",country:"Europe / Worldwide",region:"europe",category:"Business & Administration",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("ikea.com"),url:"https://jobs.ikea.com/",description:"Official IKEA jobs worldwide."},
-
-/* KENYA / AFRICA */
 {name:"Public Service Commission of Kenya",country:"Kenya",region:"kenya",category:"Government",type:"official",badge:"🟢 VERIFIED GOVERNMENT SOURCE",badgeClass:"gov-badge",logo:favicon("psckjobs.go.ke"),url:"https://www.psckjobs.go.ke/",description:"Official Kenya Public Service Commission recruitment system."},
-{name:"Kenya Public Universities / Independent Offices",country:"Kenya",region:"kenya",category:"Government",type:"official",badge:"🟢 GOVERNMENT SOURCE",badgeClass:"gov-badge",logo:favicon("publicservice.go.ke"),url:"https://pscims.publicservice.go.ke/puio/",description:"Public universities and independent offices recruitment source."},
-{name:"Kenya Defence Forces",country:"Kenya",region:"military",category:"Military & Defence",type:"official",badge:"🟢 OFFICIAL SOURCE",badgeClass:"",logo:favicon("mod.go.ke"),url:"https://www.mod.go.ke/",description:"Official Ministry of Defence source. Check current KDF recruitment notices there."},
-{name:"National Police Service Kenya",country:"Kenya",region:"kenya",category:"Government",type:"official",badge:"🟢 OFFICIAL GOVERNMENT SOURCE",badgeClass:"gov-badge",logo:favicon("nationalpolice.go.ke"),url:"https://nationalpolice.go.ke/",description:"Official Kenya National Police Service source."},
-{name:"Kenya Airways Careers",country:"Kenya",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("kenya-airways.com"),url:"https://www.kenya-airways.com/en/about-us/careers/",description:"Official Kenya Airways careers."},
-{name:"UN Careers",country:"Kenya / Worldwide",region:"kenya",category:"International Organizations",type:"official",badge:"🟢 OFFICIAL UN SOURCE",badgeClass:"",logo:favicon("careers.un.org"),url:"https://careers.un.org/",description:"Official United Nations careers worldwide, including Nairobi opportunities."},
-{name:"UNON Jobs",country:"Kenya",region:"kenya",category:"International Organizations",type:"official",badge:"🟢 OFFICIAL UN SOURCE",badgeClass:"",logo:favicon("unon.org"),url:"https://www.unon.org/",description:"United Nations Office at Nairobi information source."},
-{name:"Kenya Revenue Authority Careers",country:"Kenya",region:"kenya",category:"Government",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"gov-badge",logo:favicon("kra.go.ke"),url:"https://www.kra.go.ke/careers",description:"KRA careers and recruitment information."},
-{name:"Kenya Ports Authority Careers",country:"Kenya",region:"kenya",category:"Maritime & Cruise",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("kpa.co.ke"),url:"https://www.kpa.co.ke/",description:"Official Kenya Ports Authority source."},
-{name:"Kenya Airports Authority",country:"Kenya",region:"kenya",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("kaa.go.ke"),url:"https://www.kaa.go.ke/",description:"Official Kenya Airports Authority source."},
-
-/* MIDDLE EAST */
 {name:"Qatar Airways Careers",country:"Qatar",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("qatarairways.com"),url:"https://careers.qatarairways.com/",description:"Official Qatar Airways careers and cabin crew recruitment."},
 {name:"QatarEnergy Careers",country:"Qatar",region:"middleeast",category:"Oil, Gas & Energy",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("qatarenergy.qa"),url:"https://www.qatarenergy.qa/en/Careers",description:"Official QatarEnergy careers source."},
-{name:"Qatar Government",country:"Qatar",region:"middleeast",category:"Government",type:"official",badge:"🟢 GOVERNMENT SOURCE",badgeClass:"gov-badge",logo:favicon("gov.qa"),url:"https://www.gov.qa/",description:"Official Qatar government services and information."},
 {name:"Emirates Group Careers",country:"UAE",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("emiratesgroupcareers.com"),url:"https://www.emiratesgroupcareers.com/",description:"Official Emirates Group careers."},
-{name:"Etihad Airways Careers",country:"UAE",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("etihad.com"),url:"https://careers.etihad.com/",description:"Official Etihad Airways careers."},
-{name:"UAE Government Jobs",country:"UAE",region:"middleeast",category:"Government",type:"official",badge:"🟢 GOVERNMENT SOURCE",badgeClass:"gov-badge",logo:favicon("u.ae"),url:"https://u.ae/en/information-and-services/jobs",description:"Official UAE government jobs and employment information."},
-{name:"Saudi Aramco Careers",country:"Saudi Arabia",region:"middleeast",category:"Oil, Gas & Energy",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("aramco.com"),url:"https://careers.aramco.com/",description:"Official Saudi Aramco careers, including international opportunities."},
-{name:"Saudi Government",country:"Saudi Arabia",region:"middleeast",category:"Government",type:"official",badge:"🟢 GOVERNMENT SOURCE",badgeClass:"gov-badge",logo:favicon("gov.sa"),url:"https://www.my.gov.sa/",description:"Saudi government services and information."},
-{name:"Saudia Careers",country:"Saudi Arabia",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("saudia.com"),url:"https://careers.saudia.com/",description:"Official Saudia airline careers."},
-{name:"Saudi Airlines / flyadeal Careers",country:"Saudi Arabia",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("flyadeal.com"),url:"https://careers.flyadeal.com/",description:"Official flyadeal careers where available."},
-{name:"Kuwait Government",country:"Kuwait",region:"middleeast",category:"Government",type:"official",badge:"🟢 GOVERNMENT SOURCE",badgeClass:"gov-badge",logo:favicon("e.gov.kw"),url:"https://e.gov.kw/",description:"Official Kuwait government portal."},
-{name:"Kuwait Airways Careers",country:"Kuwait",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("kuwaitairways.com"),url:"https://www.kuwaitairways.com/en/careers",description:"Official Kuwait Airways careers source."},
-{name:"Bahrain Government",country:"Bahrain",region:"middleeast",category:"Government",type:"official",badge:"🟢 GOVERNMENT SOURCE",badgeClass:"gov-badge",logo:favicon("bahrain.bh"),url:"https://www.bahrain.bh/",description:"Official Bahrain government portal."},
-{name:"Gulf Air Careers",country:"Bahrain",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("gulfair.com"),url:"https://www.gulfair.com/careers",description:"Official Gulf Air careers source."},
-{name:"Oman Government",country:"Oman",region:"middleeast",category:"Government",type:"official",badge:"🟢 GOVERNMENT SOURCE",badgeClass:"gov-badge",logo:favicon("gov.om"),url:"https://www.gov.om/",description:"Official Oman government portal."},
-{name:"Oman Air Careers",country:"Oman",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("omanair.com"),url:"https://www.omanair.com/careers",description:"Official Oman Air careers source."},
-
-/* GLOBAL EMPLOYERS */
-{name:"Marriott Careers",country:"Worldwide",region:"jobs",category:"Hospitality",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("marriott.com"),url:"https://careers.marriott.com/",description:"Official Marriott International careers."},
-{name:"Accor Careers",country:"Worldwide",region:"jobs",category:"Hospitality",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("accor.com"),url:"https://careers.accor.com/global/en/",description:"Official Accor careers across hospitality and corporate roles."},
-{name:"Hilton Careers",country:"Worldwide",region:"jobs",category:"Hospitality",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("hilton.com"),url:"https://jobs.hilton.com/",description:"Official Hilton careers."},
-{name:"Hyatt Careers",country:"Worldwide",region:"jobs",category:"Hospitality",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("hyatt.com"),url:"https://careers.hyatt.com/",description:"Official Hyatt careers."},
-{name:"Microsoft Careers",country:"Worldwide",region:"jobs",category:"IT & Technology",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("microsoft.com"),url:"https://careers.microsoft.com/",description:"Official Microsoft careers."},
-{name:"Google Careers",country:"Worldwide",region:"jobs",category:"IT & Technology",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("google.com"),url:"https://www.google.com/about/careers/applications/",description:"Official Google careers."},
-{name:"DHL Careers",country:"Worldwide",region:"jobs",category:"Driving & Logistics",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("dhl.com"),url:"https://careers.dhl.com/",description:"Official DHL careers worldwide."},
-{name:"Siemens Careers",country:"Worldwide",region:"jobs",category:"Engineering",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("siemens.com"),url:"https://www.siemens.com/global/en/company/jobs.html",description:"Official Siemens careers."},
-{name:"Shell Careers",country:"Worldwide",region:"jobs",category:"Oil, Gas & Energy",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("shell.com"),url:"https://www.shell.com/careers.html",description:"Official Shell careers."},
-
-/* CRUISE */
-{name:"Royal Caribbean Group Careers",country:"Worldwide",region:"cruise",category:"Maritime & Cruise",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("royalcaribbeangroup.com"),url:"https://careers.royalcaribbeangroup.com/",description:"Official Royal Caribbean Group careers."},
-{name:"Carnival Cruise Line Careers",country:"Worldwide",region:"cruise",category:"Maritime & Cruise",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("carnival.com"),url:"https://www.carnival.com/careers",description:"Official Carnival careers."},
-{name:"MSC Cruises Careers",country:"Worldwide",region:"cruise",category:"Maritime & Cruise",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("msccruises.com"),url:"https://www.msccruises.com/int/about-us/careers",description:"MSC Cruises career information and opportunities."},
-{name:"Norwegian Cruise Line Careers",country:"Worldwide",region:"cruise",category:"Maritime & Cruise",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("ncl.com"),url:"https://www.ncl.com/about/careers",description:"Official Norwegian Cruise Line careers."},
-{name:"Disney Cruise Line Careers",country:"Worldwide",region:"cruise",category:"Maritime & Cruise",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("dcljobs.com"),url:"https://dcljobs.com/",description:"Official Disney Cruise Line careers."},
-{name:"Princess Cruises Careers",country:"Worldwide",region:"cruise",category:"Maritime & Cruise",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("princess.com"),url:"https://www.princess.com/en-us/careers",description:"Official Princess Cruises career information."},
-{name:"Holland America Line Careers",country:"Worldwide",region:"cruise",category:"Maritime & Cruise",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("hollandamerica.com"),url:"https://www.hollandamerica.com/en/us/about-us/careers",description:"Official Holland America Line career information."},
-
-/* MORE AIRLINES */
-{name:"Emirates Group",country:"UAE",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("emiratesgroupcareers.com"),url:"https://www.emiratesgroupcareers.com/",description:"Emirates and dnata careers."},
-{name:"Qatar Airways",country:"Qatar",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("qatarairways.com"),url:"https://careers.qatarairways.com/",description:"Qatar Airways global careers."},
-{name:"Turkish Airlines Careers",country:"Türkiye",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("turkishairlines.com"),url:"https://careers.turkishairlines.com/",description:"Official Turkish Airlines careers."},
-{name:"Ryanair Careers",country:"Europe",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("ryanair.com"),url:"https://careers.ryanair.com/",description:"Official Ryanair careers."},
-{name:"Singapore Airlines Careers",country:"Singapore",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("singaporeair.com"),url:"https://www.singaporeair.com/en_UK/sg/careers/",description:"Official Singapore Airlines careers."},
-{name:"Emirates Cabin Crew",country:"UAE / Worldwide",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("emirates.com"),url:"https://www.emiratesgroupcareers.com/cabin-crew/",description:"Official Emirates cabin crew recruitment."},
-
-/* JOB PLATFORMS */
-{name:"LinkedIn Jobs",country:"Worldwide",region:"jobs",category:"Global Job Platform",type:"jobs",badge:"🔵 JOB PLATFORM",badgeClass:"job-badge",logo:favicon("linkedin.com"),url:"https://www.linkedin.com/jobs/",description:"Global professional network and job marketplace. Verify the employer and vacancy before applying."},
+{name:"Saudi Aramco Careers",country:"Saudi Arabia",region:"middleeast",category:"Oil, Gas & Energy",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("aramco.com"),url:"https://careers.aramco.com/",description:"Official Saudi Aramco careers."},
+{name:"LinkedIn Jobs",country:"Worldwide",region:"jobs",category:"Global Job Platform",type:"jobs",badge:"🔵 JOB PLATFORM",badgeClass:"job-badge",logo:favicon("linkedin.com"),url:"https://www.linkedin.com/jobs/",description:"Global professional network and job marketplace."},
 {name:"Indeed",country:"Worldwide",region:"jobs",category:"Global Job Platform",type:"jobs",badge:"🔵 JOB PLATFORM",badgeClass:"job-badge",logo:favicon("indeed.com"),url:"https://www.indeed.com/",description:"Large global job-search platform."},
-{name:"Glassdoor Jobs",country:"Worldwide",region:"jobs",category:"Global Job Platform",type:"jobs",badge:"🔵 JOB PLATFORM",badgeClass:"job-badge",logo:favicon("glassdoor.com"),url:"https://www.glassdoor.com/Job/",description:"Jobs, employer information and workplace reviews."},
-{name:"GulfTalent",country:"Middle East",region:"jobs",category:"Global Job Platform",type:"jobs",badge:"🔵 MIDDLE EAST JOB PLATFORM",badgeClass:"job-badge",logo:favicon("gulftalent.com"),url:"https://www.gulftalent.com/jobs",description:"Major Middle East job platform covering Gulf countries."},
-{name:"Bayt.com",country:"Middle East",region:"jobs",category:"Global Job Platform",type:"jobs",badge:"🔵 MIDDLE EAST JOB PLATFORM",badgeClass:"job-badge",logo:favicon("bayt.com"),url:"https://www.bayt.com/",description:"Major Middle East job-search platform."},
-{name:"Jooble",country:"Worldwide",region:"jobs",category:"Global Job Platform",type:"jobs",badge:"🔵 JOB PLATFORM",badgeClass:"job-badge",logo:favicon("jooble.org"),url:"https://jooble.org/",description:"Global job-search aggregator."},
-{name:"CareerJet",country:"Worldwide",region:"jobs",category:"Global Job Platform",type:"jobs",badge:"🔵 JOB PLATFORM",badgeClass:"job-badge",logo:favicon("careerjet.com"),url:"https://www.careerjet.com/",description:"International job-search engine."},
-{name:"ReliefWeb Jobs",country:"Worldwide",region:"jobs",category:"International Organizations",type:"information",badge:"🟣 INTERNATIONAL JOB SOURCE",badgeClass:"info-badge",logo:favicon("reliefweb.int"),url:"https://reliefweb.int/jobs",description:"Humanitarian and international development job listings."}
+{name:"GulfTalent",country:"Middle East",region:"jobs",category:"Global Job Platform",type:"jobs",badge:"🔵 MIDDLE EAST JOB PLATFORM",badgeClass:"job-badge",logo:favicon("gulftalent.com"),url:"https://www.gulftalent.com/jobs",description:"Major Middle East job platform covering Gulf countries."}
 ];
 
 worldwidePortals.forEach(p=>{
@@ -1018,14 +928,6 @@ async function ensureSignedInUser(){
   return cred.user;
 }
 
-function validFile(file,allowed,maxMB){
-  if(!file) return true;
-  const ext="."+file.name.split(".").pop().toLowerCase();
-  if(!allowed.includes(ext)) throw new Error("Unsupported file type: "+ext);
-  if(file.size>maxMB*1024*1024) throw new Error("File must be under "+maxMB+"MB.");
-  return true;
-}
-
 window.submitHumanRequest=async function(){
   const messageEl=document.getElementById("humanMessage");
   const name=document.getElementById("hName").value.trim();
@@ -1035,8 +937,6 @@ window.submitHumanRequest=async function(){
   const role=document.getElementById("hRole").value.trim();
   const experience=document.getElementById("hExperience").value.trim();
   const message=document.getElementById("hMessage").value.trim();
-  const oldCV=document.getElementById("hOldCV").files[0];
-  const supporting=document.getElementById("hDocument").files[0];
   const paymentReference=document.getElementById("paymentReference").value.trim();
   const paymentConfirmed=document.getElementById("paymentConfirmed").checked;
 
@@ -1046,39 +946,22 @@ window.submitHumanRequest=async function(){
   }
 
   if(!paymentReference || !paymentConfirmed){
-    messageEl.innerHTML='<div class="warning"><strong>Payment required.</strong><br>Please complete the KSh '+HUMAN_CV_FEE.toLocaleString()+' payment and enter the M-Pesa transaction code before submitting your request.</div>';
+    messageEl.innerHTML='<div class="warning"><strong>Payment required.</strong><br>Please complete the KSh '+HUMAN_CV_FEE.toLocaleString()+' payment via Paybill 247247 (Acc: 0798698299) and enter the M-Pesa transaction code before submitting your request.</div>';
     return;
   }
 
   try{
-    validFile(oldCV,[".pdf",".doc",".docx"],10);
-    validFile(supporting,[".pdf",".doc",".docx",".jpg",".jpeg",".png"],10);
-
     const user=await ensureSignedInUser();
-    let oldCVUrl="",oldCVName="",supportingUrl="",supportingName="";
-
-    if(oldCV){
-      oldCVName=oldCV.name;
-      const r=ref(storage,`cvFiles/${user.uid}/original/${Date.now()}_${safeFileName(oldCV.name)}`);
-      const snap=await uploadBytes(r,oldCV);
-      oldCVUrl=await getDownloadURL(snap.ref);
-    }
-
-    if(supporting){
-      supportingName=supporting.name;
-      const r=ref(storage,`cvFiles/${user.uid}/supporting/${Date.now()}_${safeFileName(supporting.name)}`);
-      const snap=await uploadBytes(r,supporting);
-      supportingUrl=await getDownloadURL(snap.ref);
-    }
 
     const docRef=await addDoc(collection(db,"humanCVRequests"),{
       name,email,phone,country,targetRole:role,experience,message,
-      oldCVName,oldCVUrl,supportingName,supportingUrl,
       paymentAmount:HUMAN_CV_FEE,
-      paymentMethod:"M-Pesa",
+      paymentMethod:"M-Pesa Paybill",
       paymentReference,
       paymentStatus:"pending_verification",
-      userId:user.uid,status:"Paid - Awaiting Verification",createdAt:serverTimestamp()
+      userId:user.uid,status:"Paid - Awaiting Verification",createdAt:serverTimestamp(),
+      deliveredFileUrl: "",
+      deliveredFileName: ""
     });
 
     await addDoc(collection(db,"staffNotifications"),{
@@ -1102,8 +985,6 @@ window.submitHumanRequest=async function(){
       ? `<br><a class="btn btn-success" style="margin-top:12px" target="_blank" rel="noopener" href="https://wa.me/${HUMAN_EXPERT_WHATSAPP.replace(/\D/g,"")}">💬 Connect with Mustafa / Human CV Expert on WhatsApp</a>`
       : "";
     messageEl.innerHTML='<div class="human-notice"><strong>Request submitted successfully!</strong><br><br>Your KSh '+HUMAN_CV_FEE.toLocaleString()+' payment reference has been received for verification. Customer Care will verify the payment and assign your request to the Human CV Expert.'+connectButton+'</div>';
-    document.getElementById("hOldCV").value="";
-    document.getElementById("hDocument").value="";
     document.getElementById("paymentReference").value="";
     document.getElementById("paymentConfirmed").checked=false;
   }catch(err){
@@ -1180,14 +1061,19 @@ async function loadStaffRequests(){
         </div>
         <p style="margin-top:10px">${escapeHtml(d.message||"No message provided.")}</p>
         <p class="small">Experience: ${escapeHtml(d.experience||"Not provided")}</p>
-        <div class="notice" style="margin:10px 0"><strong>Payment:</strong> KSh ${escapeHtml(d.paymentAmount||HUMAN_CV_FEE)} · ${escapeHtml(d.paymentMethod||"M-Pesa")} · Ref: ${escapeHtml(d.paymentReference||"Not provided")} · Status: ${escapeHtml(d.paymentStatus||"Not recorded")}</div>
-        ${d.completedCVUrl ? `<div style="margin:8px 0;padding:8px;background:#ecfdf3;border-radius:6px;font-size:12px;"><strong>Sent File:</strong> <a href="${escapeHtml(d.completedCVUrl)}" target="_blank" rel="noopener">${escapeHtml(d.completedCVName || "View Completed CV")}</a></div>` : ''}
-        <div class="staff-tools">
-          ${d.oldCVUrl?`<a class="btn btn-light" href="${escapeHtml(d.oldCVUrl)}" target="_blank" rel="noopener">📎 Old CV</a>`:""}
-          ${d.supportingUrl?`<a class="btn btn-light" href="${escapeHtml(d.supportingUrl)}" target="_blank" rel="noopener">📎 Supporting Doc</a>`:""}
+        <div class="notice" style="margin:10px 0"><strong>Payment:</strong> KSh ${escapeHtml(d.paymentAmount||HUMAN_CV_FEE)} · Paybill 247247 (Acc: 0798698299) · Ref: ${escapeHtml(d.paymentReference||"Not provided")} · Status: ${escapeHtml(d.paymentStatus||"Not recorded")}</div>
+        
+        <div style="margin-top:12px;padding:12px;background:#f8fafc;border:1px solid var(--border);border-radius:10px;">
+            <label class="small font-weight-bold text-primary">Upload Completed Expert CV for User Dashboard:</label>
+            <input type="file" class="field" id="staffUploadFile_${id}" style="margin-top:5px;margin-bottom:8px;">
+            <button class="btn btn-primary btn-sm" onclick="staffDeliverCvFile('${id}')">Upload & Deliver to User Dashboard</button>
+        </div>
+
+        ${d.deliveredFileUrl ? `<div style="margin:8px 0;padding:8px;background:#ecfdf3;border-radius:6px;font-size:12px;"><strong>Delivered File:</strong> <a href="${escapeHtml(d.deliveredFileUrl)}" target="_blank" rel="noopener">${escapeHtml(d.deliveredFileName || "View Completed CV")}</a></div>` : ''}
+        
+        <div class="staff-tools" style="margin-top:10px;">
           ${d.paymentStatus==="pending_verification"?`<button class="btn btn-primary" onclick="verifyPayment('${id}')">✓ Verify Payment</button>`:""}
           <button class="btn btn-outline" onclick="changeRequestStatus('${id}','In Progress')">In Progress</button>
-          <button class="btn btn-success" onclick="openCompletedUpload('${id}')">📤 Send File to User</button>
           <button class="btn btn-danger" onclick="deleteTempRequest('${id}')">🗑️ Delete Record</button>
         </div>
       </div>`;
@@ -1258,53 +1144,48 @@ window.changeRequestStatus=async function(id,status){
   }catch(err){showToast("Update failed: "+err.message)}
 };
 
-window.openCompletedUpload=function(requestId){
-  const input=document.createElement("input");
-  input.type="file";input.accept=".pdf,.doc,.docx";
-  input.onchange=()=>uploadCompletedCV(requestId,input.files[0]);
-  input.click();
-};
-
-async function uploadCompletedCV(requestId,file){
-  try{
-    if(!file) return;
-    validFile(file,[".pdf",".doc",".docx"],15);
-    if(!staffUser) throw new Error("Staff login required.");
-    
-    const reqDocRef = doc(db, "humanCVRequests", requestId);
-    const reqSnap = await getDoc(reqDocRef);
-    const reqData = reqSnap.data();
-
-    const r=ref(storage,`completedCVs/${requestId}/${Date.now()}_${safeFileName(file.name)}`);
-    const snap=await uploadBytes(r,file);
-    const url=await getDownloadURL(snap.ref);
-    
-    await updateDoc(reqDocRef,{
-      completedCVUrl:url,completedCVName:file.name,status:"Completed",
-      completedAt:serverTimestamp(),updatedBy:staffUser.uid
-    });
-    
-    await addDoc(collection(db,"staffNotifications"),{
-      type:"cv_completed",requestId,
-      title:"CV Completed",
-      message:"A completed CV was uploaded and sent to the user.",
-      read:false,createdAt:serverTimestamp()
-    });
-
-    if(reqData && reqData.userId) {
-      await addDoc(collection(db,"userNotifications"),{
-        userId: reqData.userId,
-        title: "🎉 Your Expert CV is Ready!",
-        message: `The Human CV Expert has completed and sent your CV for '${reqData.targetRole || "General CV"}'. You can now download your final document from your user dashboard.`,
-        createdAt: serverTimestamp(),
-        read: false
-      });
+window.staffDeliverCvFile = async function(docId) {
+    const fileInput = document.getElementById(`staffUploadFile_${docId}`);
+    if (!fileInput || fileInput.files.length === 0) {
+        alert("Please select a file to upload.");
+        return;
     }
+    
+    const file = fileInput.files[0];
+    const storageRef = ref(storage, `expert_cvs/${docId}_${safeFileName(file.name)}`);
+    
+    try {
+        const snapshot = await uploadBytes(storageRef, file);
+        const downloadUrl = await getDownloadURL(snapshot.ref);
+        
+        const reqDocRef = doc(db, "humanCVRequests", docId);
+        const reqSnap = await getDoc(reqDocRef);
+        const reqData = reqSnap.data();
 
-    showToast("Completed CV sent to user successfully.");
-    loadStaffRequests();
-  }catch(err){showToast("Upload failed: "+err.message)}
-}
+        await updateDoc(reqDocRef, {
+            deliveredFileUrl: downloadUrl,
+            deliveredFileName: file.name,
+            status: "Completed",
+            updatedAt: serverTimestamp()
+        });
+
+        if(reqData && reqData.userId) {
+          await addDoc(collection(db, "userNotifications"), {
+            userId: reqData.userId,
+            title: "🎉 Your Expert CV is Ready!",
+            message: `The Human CV Expert has completed and delivered your CV file for '${reqData.targetRole || "General CV"}'. Check your 'Delivered Expert CV Files' section in your dashboard to download it.`,
+            createdAt: serverTimestamp(),
+            read: false
+          });
+        }
+        
+        showToast("File successfully delivered to user dashboard!");
+        loadStaffRequests();
+    } catch (error) {
+        console.error("Upload error:", error);
+        alert("Failed to upload file: " + error.message);
+    }
+};
 
 window.deleteTempRequest = async function(id) {
   if(!confirm("Are you sure you want to delete this temporary request record from your expert portal?")) return;
@@ -1335,11 +1216,11 @@ async function loadNotifications(){
 async function loadUserDashboardData() {
   const user = auth.currentUser;
   const notifEl = document.getElementById("userNotificationsList");
-  const reqEl = document.getElementById("userRequestsList");
+  const filesContainer = document.getElementById("userRequestsList");
 
   if (!user || user.isAnonymous) {
     notifEl.innerHTML = '<div class="warning">Please sign in to view your notifications.</div>';
-    reqEl.innerHTML = '<div class="warning">Please sign in to view your CV requests and received files.</div>';
+    filesContainer.innerHTML = '<div class="warning">Please sign in to view your delivered CV files.</div>';
     return;
   }
 
@@ -1347,7 +1228,7 @@ async function loadUserDashboardData() {
     const notifQuery = query(collection(db, "userNotifications"), where("userId", "==", user.uid));
     const notifSnap = await getDocs(notifQuery);
     if(notifSnap.empty) {
-      notifEl.innerHTML = '<div class="small" style="padding:10px;">No notifications yet.</div>';
+      notifEl.innerHTML = '<div class="small" style="padding:10px;">No new notifications yet.</div>';
     } else {
       notifEl.innerHTML = notifSnap.docs.map(d => {
         const n = d.data();
@@ -1365,42 +1246,35 @@ async function loadUserDashboardData() {
     const reqQuery = query(collection(db, "humanCVRequests"), where("userId", "==", user.uid));
     const reqSnap = await getDocs(reqQuery);
     if(reqSnap.empty) {
-      reqEl.innerHTML = '<div class="empty">You have not submitted any Human CV requests yet.</div>';
+      filesContainer.innerHTML = '<div class="empty">You have not submitted any CV requests yet.</div>';
     } else {
-      reqEl.innerHTML = reqSnap.docs.map(ds => {
+      let hasDeliveredFiles = false;
+      let filesHtml = "";
+
+      reqSnap.forEach(ds => {
         const d = ds.data();
-        const status = d.status || "Pending";
-        const statusClass = status.toLowerCase().includes("complete") ? "done" : status.toLowerCase().includes("progress") ? "progress" : "";
-        
-        let downloadSection = '';
-        if(d.completedCVUrl) {
-          downloadSection = `
-            <div style="margin-top:12px;padding:12px;background:#ecfdf3;border:1px solid #abefc6;border-radius:10px;">
-              <strong>🎉 Received File from Human CV Expert!</strong><br>
-              <a class="btn btn-success" style="margin-top:8px;" href="${escapeHtml(d.completedCVUrl)}" target="_blank" rel="noopener">📥 Download Completed CV (${escapeHtml(d.completedCVName || "Document")})</a>
+        if (d.deliveredFileUrl) {
+          hasDeliveredFiles = true;
+          filesHtml += `
+            <div class="card bg-light border-success p-3 mb-2" style="background:#fff;border:1px solid #16a34a;border-radius:10px;padding:12px;margin-bottom:10px;">
+              <h6 class="font-weight-bold text-success mb-1" style="color:#16a34a;font-size:14px;">📄 ${escapeHtml(d.deliveredFileName || 'Your Final Expert CV.pdf')}</h6>
+              <p class="small text-muted mb-2">Target Role: ${escapeHtml(d.targetRole)}</p>
+              <a href="${escapeHtml(d.deliveredFileUrl)}" target="_blank" class="btn btn-success btn-sm font-weight-bold" style="width:100%;text-align:center;">
+                  📥 Download Final Expert CV
+              </a>
             </div>
           `;
-        } else {
-          downloadSection = `<div class="small" style="margin-top:8px;color:#b54708;">⏳ Document status: <strong>${escapeHtml(status)}</strong>. Your completed expert CV will appear here for download once sent.</div>`;
         }
+      });
 
-        return `
-          <div class="request-card">
-            <div class="request-top">
-              <div>
-                <h4>Target Role: ${escapeHtml(d.targetRole || "General CV")}</h4>
-                <div class="small">Submitted: ${d.createdAt?.toDate ? d.createdAt.toDate().toLocaleString() : "Recent"} &nbsp; | &nbsp; Ref: ${escapeHtml(d.paymentReference || "N/A")}</div>
-              </div>
-              <span class="status ${statusClass}">${escapeHtml(status)}</span>
-            </div>
-            <p style="margin-top:8px;font-size:13px;">${escapeHtml(d.message || "No specific instructions provided.")}</p>
-            ${downloadSection}
-          </div>
-        `;
-      }).join("");
+      if (!hasDeliveredFiles) {
+        filesContainer.innerHTML = '<div class="small text-muted" style="padding:10px;">Your expert is currently working on your document. Your completed files will appear here instantly when ready for download.</div>';
+      } else {
+        filesContainer.innerHTML = filesHtml;
+      }
     }
   } catch(e) {
-    reqEl.innerHTML = '<div class="error">Could not load your CV requests.</div>';
+    filesContainer.innerHTML = '<div class="error">Could not load delivered files.</div>';
   }
 }
 
@@ -1478,7 +1352,6 @@ renderCategories();
 renderPortals(worldwidePortals);
 renderDedicated();
 </script>
-<script src="script.js"></script>
 
 </body>
 </html>
