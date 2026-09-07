@@ -1147,7 +1147,7 @@ window.changeRequestStatus=async function(id,status){
 window.staffDeliverCvFile = async function(docId) {
     const fileInput = document.getElementById(`staffUploadFile_${docId}`);
     if (!fileInput || fileInput.files.length === 0) {
-        alert("Please select a file to upload.");
+        alert("Please select a file to upload first.");
         return;
     }
     
@@ -1155,6 +1155,7 @@ window.staffDeliverCvFile = async function(docId) {
     const storageRef = ref(storage, `expert_cvs/${docId}_${safeFileName(file.name)}`);
     
     try {
+        showToast("Uploading file to storage...");
         const snapshot = await uploadBytes(storageRef, file);
         const downloadUrl = await getDownloadURL(snapshot.ref);
         
@@ -1173,7 +1174,7 @@ window.staffDeliverCvFile = async function(docId) {
           await addDoc(collection(db, "userNotifications"), {
             userId: reqData.userId,
             title: "🎉 Your Expert CV is Ready!",
-            message: `The Human CV Expert has completed and delivered your CV file for '${reqData.targetRole || "General CV"}'. Check your 'Delivered Expert CV Files' section in your dashboard to download it.`,
+            message: `The Human CV Expert has completed and delivered your CV file for '${reqData.targetRole || "General CV"}'. Check your dashboard to download it.`,
             createdAt: serverTimestamp(),
             read: false
           });
@@ -1182,8 +1183,8 @@ window.staffDeliverCvFile = async function(docId) {
         showToast("File successfully delivered to user dashboard!");
         loadStaffRequests();
     } catch (error) {
-        console.error("Upload error:", error);
-        alert("Failed to upload file: " + error.message);
+        console.error("Upload error details:", error);
+        alert("UPLOAD FAILED: " + error.message);
     }
 };
 
