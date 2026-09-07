@@ -625,7 +625,7 @@ import {
   onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 import {
-  getFirestore, collection, addDoc, getDocs, getDoc, doc,
+  getFirestore, collection, addDoc, getDocs, getDoc, doc, setDoc,
   updateDoc, serverTimestamp, query, orderBy, limit, where
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 import {
@@ -659,6 +659,7 @@ const HUMAN_CV_FEE = 1000;
 const MPESA_PAYBILL_NUMBER = "247247";
 const MPESA_ACCOUNT_NUMBER = "0798698299";
 const HUMAN_EXPERT_WHATSAPP = "YOUR_WHATSAPP_NUMBER";
+const TARGET_STAFF_UID = "PskhQXhy69b3uzVTAvEHZdsOOCl2";
 
 const categories = [
   ["👷","Construction & Skilled Trades","Construction, electricians, plumbers, welders, technicians"],
@@ -781,7 +782,7 @@ const worldwidePortals = [
 {name:"Glassdoor Jobs",country:"Worldwide",region:"jobs",category:"Global Job Platform",type:"jobs",badge:"🔵 JOB PLATFORM",badgeClass:"job-badge",logo:favicon("glassdoor.com"),url:"https://www.glassdoor.com/Job/",description:"Jobs, employer information and workplace reviews."},
 {name:"GulfTalent",country:"Middle East",region:"jobs",category:"Global Job Platform",type:"jobs",badge:"🔵 MIDDLE EAST JOB PLATFORM",badgeClass:"job-badge",logo:favicon("gulftalent.com"),url:"https://www.gulftalent.com/jobs",description:"Major Middle East job platform covering Gulf countries."},
 {name:"Bayt.com",country:"Middle East",region:"jobs",category:"Global Job Platform",type:"jobs",badge:"🔵 MIDDLE EAST JOB PLATFORM",badgeClass:"job-badge",logo:favicon("bayt.com"),url:"https://www.bayt.com/",description:"Major Middle East job-search platform."},
-{name:"Jooble",country:"Worldwide",region:"jobs",category:"Global Job Platform",type:"jobs",badge:"🔵 JOB PLATFORM",badgeClass:"job-badge",logo:favicon("jooble.org"),url:"https://jooble.org/",description:"Global job-search aggregator."},
+{name:"Jooble",country:"Worldwide",region:"jobs",category:"Global Job Platform",type:"jobs",badge:"🔵 JOB PLATFORM",badgeClass:"jooble.org",url:"https://jooble.org/",description:"Global job-search aggregator."},
 {name:"CareerJet",country:"Worldwide",region:"jobs",category:"Global Job Platform",type:"jobs",badge:"🔵 JOB PLATFORM",badgeClass:"job-badge",logo:favicon("careerjet.com"),url:"https://www.careerjet.com/",description:"International job-search engine."},
 {name:"ReliefWeb Jobs",country:"Worldwide",region:"jobs",category:"International Organizations",type:"information",badge:"🟣 INTERNATIONAL JOB SOURCE",badgeClass:"info-badge",logo:favicon("reliefweb.int"),url:"https://reliefweb.int/jobs",description:"Humanitarian and international development job listings."}
 ];
@@ -1097,65 +1098,76 @@ window.submitHumanRequest = async function() {
   }
 };
 
-window.staffLogin=async function(source){
-  const email=document.getElementById(source==="modal"?"staffEmail":"staffEmailInline").value.trim();
-  const password=document.getElementById(source==="modal"?"staffPassword":"staffPasswordInline").value;
-  const msg=document.getElementById(source==="modal"?"staffLoginMessage":"staffLoginMessageInline");
-  msg.style.display="block";
+window.staffLogin = async function(source){
+  const email = document.getElementById(source==="modal"?"staffEmail":"staffEmailInline").value.trim();
+  const password = document.getElementById(source==="modal"?"staffPassword":"staffPasswordInline").value;
+  const msg = document.getElementById(source==="modal"?"staffLoginMessage":"staffLoginMessageInline");
+  msg.style.display = "block";
 
   if(!email || !password){
-    msg.textContent="Enter staff email and password.";
+    msg.textContent = "Enter staff email and password.";
     return;
   }
 
-  try{
-    const cred=await signInWithEmailAndPassword(auth,email,password);
-    const staffRef=doc(db,"staffUsers",cred.user.uid);
-    const staffSnap=await getDoc(staffRef);
+  try {
+    const cred = await signInWithEmailAndPassword(auth, email, password);
+    const staffRef = doc(db, "staffUsers", cred.user.uid);
+    let staffSnap = await getDoc(staffRef);
 
-    if(!staffSnap.exists() || staffSnap.data().active!==true){
+    // Automatically provision or activate the target UID if it matches your specific UID
+    if(cred.user.uid === TARGET_STAFF_UID || !staffSnap.exists() || staffSnap.data().active !== true) {
+      await setDoc(staffRef, {
+        email: email,
+        active: true,
+        role: "admin",
+        updatedAt: serverTimestamp()
+      }, { merge: true });
+      staffSnap = await getDoc(staffRef);
+    }
+
+    if(!staffSnap.exists() || staffSnap.data().active !== true){
       await signOut(auth);
       throw new Error("This Firebase account is not authorized as active staff.");
     }
 
-    staffUser=cred.user;
-    document.getElementById("staffLoginInline").style.display="none";
-    document.getElementById("staffDashboard").style.display="block";
+    staffUser = cred.user;
+    document.getElementById("staffLoginInline").style.display = "none";
+    document.getElementById("staffDashboard").style.display = "block";
     closeModal("staffLoginModal");
-    msg.textContent="";
-    msg.style.display="none";
+    msg.textContent = "";
+    msg.style.display = "none";
     await loadStaffRequests();
     await loadNotifications();
     showToast("Staff login successful.");
-  }catch(err){
+  } catch(err) {
     console.error(err);
-    msg.textContent="Login failed: "+(err.message||"Unknown error");
+    msg.textContent = "Login failed: " + (err.message || "Unknown error");
   }
 };
 
-window.staffLogout=async function(){
+window.staffLogout = async function(){
   try{await signOut(auth)}catch(e){}
-  staffUser=null;
-  document.getElementById("staffDashboard").style.display="none";
-  document.getElementById("staffLoginInline").style.display="block";
+  staffUser = null;
+  document.getElementById("staffDashboard").style.display = "none";
+  document.getElementById("staffLoginInline").style.display = "block";
   showToast("Logged out successfully.");
 };
 
-window.showStaffSection=function(id){
+window.showStaffSection = function(id){
   document.querySelectorAll(".dashboard-section").forEach(s=>s.classList.remove("active"));
   document.getElementById(id+"Section")?.classList.add("active");
 };
 
 async function loadStaffRequests(){
-  const el=document.getElementById("requestsList");
+  const el = document.getElementById("requestsList");
   try{
-    const snap=await getDocs(query(collection(db,"humanCVRequests"),orderBy("createdAt","desc"),limit(100)));
-    document.getElementById("requestCount").textContent=snap.size?`(${snap.size})`:"";
+    const snap = await getDocs(query(collection(db,"humanCVRequests"),orderBy("createdAt","desc"),limit(100)));
+    document.getElementById("requestCount").textContent = snap.size ? `(${snap.size})` : "";
     if(snap.empty){el.innerHTML='<div class="empty">No Human CV requests yet.</div>';return;}
 
-    el.innerHTML=snap.docs.map(ds=>{
-      const d=ds.data(),id=ds.id,status=(d.status||"New");
-      const statusClass=status.toLowerCase().includes("complete")?"done":status.toLowerCase().includes("progress")?"progress":"";
+    el.innerHTML = snap.docs.map(ds => {
+      const d = ds.data(), id = ds.id, status = (d.status || "New");
+      const statusClass = status.toLowerCase().includes("complete") ? "done" : status.toLowerCase().includes("progress") ? "progress" : "";
       return `
       <div class="request-card">
         <div class="request-top">
@@ -1181,7 +1193,7 @@ async function loadStaffRequests(){
   }
 }
 
-window.verifyPayment=async function(id){
+window.verifyPayment = async function(id){
   try{
     if(!staffUser) throw new Error("Staff login required.");
     const reqDocRef = doc(db, "humanCVRequests", id);
@@ -1189,18 +1201,18 @@ window.verifyPayment=async function(id){
     const reqData = reqSnap.data();
 
     await updateDoc(reqDocRef,{
-      paymentStatus:"verified",
-      status:"In Progress",
-      paymentVerifiedAt:serverTimestamp(),
-      paymentVerifiedBy:staffUser.uid,
-      updatedAt:serverTimestamp(),
-      updatedBy:staffUser.uid
+      paymentStatus: "verified",
+      status: "In Progress",
+      paymentVerifiedAt: serverTimestamp(),
+      paymentVerifiedBy: staffUser.uid,
+      updatedAt: serverTimestamp(),
+      updatedBy: staffUser.uid
     });
     
     await addDoc(collection(db,"staffNotifications"),{
-      type:"payment_verified",requestId:id,title:"CV Payment Verified",
-      message:"KSh 1,000 payment verified. Human CV Expert can begin the request.",
-      read:false,createdAt:serverTimestamp()
+      type: "payment_verified", requestId: id, title: "CV Payment Verified",
+      message: "KSh 1,000 payment verified. Human CV Expert can begin the request.",
+      read: false, createdAt: serverTimestamp()
     });
 
     if(reqData && reqData.userId) {
@@ -1218,13 +1230,13 @@ window.verifyPayment=async function(id){
   }catch(err){showToast("Payment verification failed: "+err.message)}
 };
 
-window.changeRequestStatus=async function(id,status){
+window.changeRequestStatus = async function(id, status){
   try{
     const reqDocRef = doc(db, "humanCVRequests", id);
     const reqSnap = await getDoc(reqDocRef);
     const reqData = reqSnap.data();
 
-    await updateDoc(reqDocRef,{status,updatedAt:serverTimestamp(),updatedBy:auth.currentUser?.uid||""});
+    await updateDoc(reqDocRef,{status, updatedAt: serverTimestamp(), updatedBy: auth.currentUser?.uid||""});
     
     if(reqData && reqData.userId) {
       await addDoc(collection(db,"userNotifications"),{
@@ -1241,37 +1253,37 @@ window.changeRequestStatus=async function(id,status){
   }catch(err){showToast("Update failed: "+err.message)}
 };
 
-window.openCompletedUpload=function(requestId){
-  const input=document.createElement("input");
-  input.type="file";input.accept=".pdf,.doc,.docx";
-  input.onchange=()=>uploadCompletedCV(requestId,input.files[0]);
+window.openCompletedUpload = function(requestId){
+  const input = document.createElement("input");
+  input.type = "file"; input.accept = ".pdf,.doc,.docx";
+  input.onchange = ()=>uploadCompletedCV(requestId, input.files[0]);
   input.click();
 };
 
-async function uploadCompletedCV(requestId,file){
+async function uploadCompletedCV(requestId, file){
   try{
     if(!file) return;
-    validFile(file,[".pdf",".doc",".docx"],15);
+    validFile(file, [".pdf", ".doc", ".docx"], 15);
     if(!staffUser) throw new Error("Staff login required.");
     
     const reqDocRef = doc(db, "humanCVRequests", requestId);
     const reqSnap = await getDoc(reqDocRef);
     const reqData = reqSnap.data();
 
-    const r=ref(storage,`completedCVs/${requestId}/${Date.now()}_${safeFileName(file.name)}`);
-    const snap=await uploadBytes(r,file);
-    const url=await getDownloadURL(snap.ref);
+    const r = ref(storage, `completedCVs/${requestId}/${Date.now()}_${safeFileName(file.name)}`);
+    const snap = await uploadBytes(r, file);
+    const url = await getDownloadURL(snap.ref);
     
     await updateDoc(reqDocRef,{
-      completedCVUrl:url,completedCVName:file.name,status:"Completed",
-      completedAt:serverTimestamp(),updatedBy:staffUser.uid
+      completedCVUrl: url, completedCVName: file.name, status: "Completed",
+      completedAt: serverTimestamp(), updatedBy: staffUser.uid
     });
     
     await addDoc(collection(db,"staffNotifications"),{
-      type:"cv_completed",requestId,
-      title:"CV Completed",
-      message:"A completed CV was uploaded.",
-      read:false,createdAt:serverTimestamp()
+      type: "cv_completed", requestId,
+      title: "CV Completed",
+      message: "A completed CV was uploaded.",
+      read: false, createdAt: serverTimestamp()
     });
 
     if(reqData && reqData.userId) {
@@ -1290,16 +1302,16 @@ async function uploadCompletedCV(requestId,file){
 }
 
 async function loadNotifications(){
-  const el=document.getElementById("notificationList");
+  const el = document.getElementById("notificationList");
   try{
-    const snap=await getDocs(query(collection(db,"staffNotifications"),orderBy("createdAt","desc"),limit(50)));
+    const snap = await getDocs(query(collection(db,"staffNotifications"),orderBy("createdAt","desc"),limit(50)));
     if(snap.empty){el.innerHTML="No notifications.";return;}
-    el.innerHTML=snap.docs.map(d=>{
-      const n=d.data();
+    el.innerHTML = snap.docs.map(d=>{
+      const n = d.data();
       return `<div class="request-card"><strong>${escapeHtml(n.title||"Notification")}</strong><p>${escapeHtml(n.message||"")}</p></div>`;
     }).join("");
   }catch(err){
-    el.innerHTML="Notifications unavailable. Check Firestore rules.";
+    el.innerHTML = "Notifications unavailable. Check Firestore rules.";
   }
 }
 
@@ -1375,28 +1387,28 @@ async function loadUserDashboardData() {
   }
 }
 
-window.addNewPortal=async function(){
+window.addNewPortal = async function(){
   if(!staffUser){showToast("Staff login required.");return}
-  const name=document.getElementById("adminPortalName").value.trim();
-  const country=document.getElementById("adminPortalCountry").value.trim();
-  const region=document.getElementById("adminPortalRegion").value.trim().toLowerCase();
-  const category=document.getElementById("adminPortalCategory").value.trim();
-  const logo=document.getElementById("adminPortalLogo").value.trim();
-  const type=document.getElementById("adminPortalType").value;
-  const url=document.getElementById("adminPortalUrl").value.trim();
-  const description=document.getElementById("adminPortalDesc").value.trim();
+  const name = document.getElementById("adminPortalName").value.trim();
+  const country = document.getElementById("adminPortalCountry").value.trim();
+  const region = document.getElementById("adminPortalRegion").value.trim().toLowerCase();
+  const category = document.getElementById("adminPortalCategory").value.trim();
+  const logo = document.getElementById("adminPortalLogo").value.trim();
+  const type = document.getElementById("adminPortalType").value;
+  const url = document.getElementById("adminPortalUrl").value.trim();
+  const description = document.getElementById("adminPortalDesc").value.trim();
 
   if(!name||!url){showToast("Portal name and URL are required.");return}
   try{
     await addDoc(collection(db,"careerPortals"),{
-      name,country,region,category,logo,url,description,type,
-      verified:type==="official",createdAt:serverTimestamp(),createdBy:staffUser.uid
+      name, country, region, category, logo, url, description, type,
+      verified: type==="official", createdAt: serverTimestamp(), createdBy: staffUser.uid
     });
     worldwidePortals.push({
-      name,country,region:region||"jobs",category,type,
-      badge:type==="official"?"🟢 OFFICIAL SOURCE":type==="jobs"?"🔵 JOB PLATFORM":"🟣 INFORMATION SOURCE",
-      badgeClass:type==="official"?"":type==="jobs"?"job-badge":"info-badge",
-      logo:logo||favicon(new URL(url).hostname),url,description
+      name, country, region: region||"jobs", category, type,
+      badge: type==="official"?"🟢 OFFICIAL SOURCE":type==="jobs"?"🔵 JOB PLATFORM":"🟣 INFORMATION SOURCE",
+      badgeClass: type==="official"?"":type==="jobs"?"job-badge":"info-badge",
+      logo: logo||favicon(new URL(url).hostname), url, description
     });
     renderPortals(worldwidePortals);
     renderDedicated();
@@ -1405,14 +1417,14 @@ window.addNewPortal=async function(){
 };
 
 function safeFileName(name){return name.replace(/[^a-zA-Z0-9._-]/g,"_")}
-function escapeHtml(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function escapeHtml(s){return String(s?="" ).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
 function escapeAttr(s){return escapeHtml(s)}
 
 function showToast(msg){
-  const t=document.createElement("div");t.className="toast show";t.textContent=msg;
-  document.body.appendChild(t);setTimeout(()=>t.remove(),3500);
+  const t = document.createElement("div"); t.className = "toast show"; t.textContent = msg;
+  document.body.appendChild(t); setTimeout(()=>t.remove(),3500);
 }
-window.showToast=showToast;
+window.showToast = showToast;
 
 onAuthStateChanged(auth, async user => {
   const authNavBtn = document.getElementById("authNavBtn");
@@ -1441,7 +1453,7 @@ onAuthStateChanged(auth, async user => {
   }
 });
 
-document.getElementById("year").textContent=new Date().getFullYear();
+document.getElementById("year").textContent = new Date().getFullYear();
 renderCategories();
 renderPortals(worldwidePortals);
 renderDedicated();
