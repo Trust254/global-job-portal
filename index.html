@@ -37,18 +37,18 @@ header{
   position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.96);
   backdrop-filter:blur(12px);border-bottom:1px solid var(--border)
 }
-.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:15px}
-.brand{font-size:20px;font-weight:900;color:var(--dark);white-space:nowrap}
+.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.brand{font-size:18px;font-weight:900;color:var(--dark);white-space:nowrap}
 .brand span{color:var(--primary)}
 .navlinks{display:flex;align-items:center;gap:15px}
 .navlinks a{color:#344054;font-weight:800;font-size:12px}
 .navlinks a:hover{color:var(--primary)}
-.nav-actions{display:flex;gap:6px;align-items:center}
+.nav-actions{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
 .menu{display:none;border:0;background:none;font-size:26px}
 
 .btn{
-  border:0;border-radius:8px;padding:8px 12px;font-weight:800;transition:.2s;
-  display:inline-flex;align-items:center;justify-content:center;gap:5px;font-size:12px;
+  border:0;border-radius:8px;padding:8px 10px;font-weight:800;transition:.2s;
+  display:inline-flex;align-items:center;justify-content:center;gap:5px;font-size:11px;
   white-space:nowrap
 }
 .btn:hover{transform:translateY(-1px)}
@@ -173,16 +173,16 @@ section{padding:70px 0}
 
 .modal{
   position:fixed;inset:0;background:rgba(16,24,40,.65);display:none;align-items:center;
-  justify-content:center;padding:15px;z-index:3000
+  justify-content:center;padding:20px;z-index:3000
 }
 .modal.show{display:flex}
 .modal-card{
-  width:min(760px,100%);max-height:85vh;overflow-y:auto;-webkit-overflow-scrolling:touch;background:#fff;border-radius:20px;
-  padding:20px;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.2)
+  width:min(760px,100%);max-height:92vh;overflow:auto;background:#fff;border-radius:20px;
+  padding:26px;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.2)
 }
 .close{
   position:absolute;top:10px;right:13px;width:38px;height:38px;border:0;
-  border-radius:50%;background:#f2f4f7;font-size:25px;z-index:10;display:flex;align-items:center;justify-content:center
+  border-radius:50%;background:#f2f4f7;font-size:25px
 }
 .modal-sub{color:var(--muted);margin-bottom:18px}
 
@@ -241,6 +241,7 @@ footer a{display:block;margin:7px 0}
   .portal-grid,.footer-grid,.category-wrap{grid-template-columns:1fr}
   .form-grid,.filters{grid-template-columns:1fr}
   .dashboard-grid{grid-template-columns:1fr}
+  .nav-actions .btn { font-size: 10px; padding: 6px 8px; }
 }
 </style>
 </head>
@@ -263,11 +264,11 @@ footer a{display:block;margin:7px 0}
 </nav>
 
 <div class="nav-actions">
-<button id="authNavBtn" class="btn btn-primary" onclick="openModal('authModal')">👤 Sign In / Register</button>
-<button id="userDashboardNavBtn" class="btn btn-success" style="display:none;" onclick="openModal('userDashboardModal')">📦 My Dashboard <span id="userNotifBadge" style="background:#dc2626;color:#fff;border-radius:50%;padding:2px 6px;font-size:10px;display:none;">0</span></button>
+<button id="authNavBtn" class="btn btn-primary" onclick="openModal('authModal')">👤 Sign In</button>
+<button id="userDashboardNavBtn" class="btn btn-success" style="display:none;" onclick="openModal('userDashboardModal')">📦 Dashboard <span id="userNotifBadge" style="background:#dc2626;color:#fff;border-radius:50%;padding:2px 5px;font-size:9px;display:none;">0</span></button>
 <button id="userSignOutNavBtn" class="btn btn-outline" style="display:none;" onclick="handleUserSignOut()">Sign Out</button>
-<button class="btn btn-outline" onclick="openModal('staffLoginModal')">Staff Login</button>
-<button class="btn btn-outline" onclick="openModal('humanModal')">👤 Human CV Expert</button>
+<button class="btn btn-outline" onclick="openModal('staffLoginModal')">Staff</button>
+<button class="btn btn-outline" onclick="openModal('humanModal')">👤 CV Expert</button>
 </div>
 
 <button class="menu" onclick="toggleMobileMenu()">☰</button>
@@ -553,17 +554,17 @@ review the documents and assign the work to a Human CV Expert.
   <strong>💳 Human CV Expert Service Fee</strong>
   <div class="payment-price">KSh 1,000</div>
   <div class="payment-step"><span>1️⃣</span><span>Payment must be completed before your Human CV request is submitted.</span></div>
-  <div class="payment-step"><span>2️⃣</span><span><strong>Payment Method: M-Pesa → Paybill</strong><br>Open M-Pesa, choose <strong>Lipa Na M-Pesa</strong> > <strong>Paybill</strong>, enter Business No: <strong id="mpesaPaybill">247247</strong>, Account No: <strong id="mpesaAccountNumber">0798698299</strong>, and send <strong>KSh 1,000</strong>.</span></div>
-  <div class="payment-step"><span>3️⃣</span><span>Enter the M-Pesa transaction code below and click the submit button.</span></div>
+  <div class="payment-step"><span>2️⃣</span><span><strong>Payment Method: M-Pesa → Send Money</strong><br>Open M-Pesa, choose <strong>Send Money</strong>, and send <strong>KSh 1,000</strong> to <strong>0798 811471</strong> (Paybill: <strong>247247</strong>, Account: <strong>0798698299</strong>).</span></div>
+  <div class="payment-step"><span>3️⃣</span><span>Enter the M-Pesa transaction code below. Customer Care will verify the payment.</span></div>
   <div class="notice" style="margin-top:12px"><strong>Why KSh 1,000?</strong><br>The KSh 1,000 fee covers professional human CV review and preparation by a real Human CV Expert, including reviewing your existing CV, improving your presentation and wording, tailoring it toward your target role, and preparing a professional final CV document. This is a human service — no AI-generated CV is used.</div>
-  <input id="paymentReference" class="field payment-ref" placeholder="M-Pesa transaction code / payment reference *" required>
+  <input id="paymentReference" class="field payment-ref" placeholder="M-Pesa transaction code / payment reference *">
   <label style="display:flex;gap:8px;align-items:flex-start;margin-top:12px;font-size:13px;font-weight:800">
-    <input id="paymentConfirmed" type="checkbox" style="margin-top:4px" required>
-    <span>I confirm that I have paid the KSh 1,000 Human CV Expert service fee via Paybill 247247 (Account: 0798698299).</span>
+    <input id="paymentConfirmed" type="checkbox" style="margin-top:4px">
+    <span>I confirm that I have paid the KSh 1,000 Human CV Expert service fee.</span>
   </label>
 </div>
 
-<button id="submitHumanBtn" class="btn btn-success full" onclick="submitHumanRequest()">📤 Submit Paid Human CV Request</button>
+<button class="btn btn-success full" onclick="submitHumanRequest()">📤 Submit Paid Human CV Request</button>
 </div>
 <div id="humanMessage"></div>
 </div>
@@ -625,7 +626,7 @@ import {
   onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 import {
-  getFirestore, collection, addDoc, getDocs, getDoc, doc, setDoc,
+  getFirestore, collection, addDoc, getDocs, getDoc, doc,
   updateDoc, serverTimestamp, query, orderBy, limit, where
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 import {
@@ -656,10 +657,8 @@ let isRegisterMode = false;
 
 // HUMAN CV EXPERT PAYMENT SETTINGS
 const HUMAN_CV_FEE = 1000;
-const MPESA_PAYBILL_NUMBER = "247247";
-const MPESA_ACCOUNT_NUMBER = "0798698299";
+const MPESA_PAYMENT_NUMBER = "0798 811471";
 const HUMAN_EXPERT_WHATSAPP = "YOUR_WHATSAPP_NUMBER";
-const TARGET_STAFF_UID = "PskhQXhy69b3uzVTAvEHZdsOOCl2";
 
 const categories = [
   ["👷","Construction & Skilled Trades","Construction, electricians, plumbers, welders, technicians"],
@@ -721,7 +720,7 @@ const worldwidePortals = [
 /* KENYA / AFRICA */
 {name:"Public Service Commission of Kenya",country:"Kenya",region:"kenya",category:"Government",type:"official",badge:"🟢 VERIFIED GOVERNMENT SOURCE",badgeClass:"gov-badge",logo:favicon("psckjobs.go.ke"),url:"https://www.psckjobs.go.ke/",description:"Official Kenya Public Service Commission recruitment system."},
 {name:"Kenya Public Universities / Independent Offices",country:"Kenya",region:"kenya",category:"Government",type:"official",badge:"🟢 GOVERNMENT SOURCE",badgeClass:"gov-badge",logo:favicon("publicservice.go.ke"),url:"https://pscims.publicservice.go.ke/puio/",description:"Public universities and independent offices recruitment source."},
-{name:"Kenya Defence Forces",country:"Kenya",region:"kenya",category:"Military & Defence",type:"official",badge:"🟢 OFFICIAL SOURCE",badgeClass:"",logo:favicon("mod.go.ke"),url:"https://www.mod.go.ke/",description:"Official Ministry of Defence source. Check current KDF recruitment notices there."},
+{name:"Kenya Defence Forces",country:"Kenya",region:"military",category:"Military & Defence",type:"official",badge:"🟢 OFFICIAL SOURCE",badgeClass:"",logo:favicon("mod.go.ke"),url:"https://www.mod.go.ke/",description:"Official Ministry of Defence source. Check current KDF recruitment notices there."},
 {name:"National Police Service Kenya",country:"Kenya",region:"kenya",category:"Government",type:"official",badge:"🟢 OFFICIAL GOVERNMENT SOURCE",badgeClass:"gov-badge",logo:favicon("nationalpolice.go.ke"),url:"https://nationalpolice.go.ke/",description:"Official Kenya National Police Service source."},
 {name:"Kenya Airways Careers",country:"Kenya",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("kenya-airways.com"),url:"https://www.kenya-airways.com/en/about-us/careers/",description:"Official Kenya Airways careers."},
 {name:"UN Careers",country:"Kenya / Worldwide",region:"kenya",category:"International Organizations",type:"official",badge:"🟢 OFFICIAL UN SOURCE",badgeClass:"",logo:favicon("careers.un.org"),url:"https://careers.un.org/",description:"Official United Nations careers worldwide, including Nairobi opportunities."},
@@ -782,7 +781,7 @@ const worldwidePortals = [
 {name:"Glassdoor Jobs",country:"Worldwide",region:"jobs",category:"Global Job Platform",type:"jobs",badge:"🔵 JOB PLATFORM",badgeClass:"job-badge",logo:favicon("glassdoor.com"),url:"https://www.glassdoor.com/Job/",description:"Jobs, employer information and workplace reviews."},
 {name:"GulfTalent",country:"Middle East",region:"jobs",category:"Global Job Platform",type:"jobs",badge:"🔵 MIDDLE EAST JOB PLATFORM",badgeClass:"job-badge",logo:favicon("gulftalent.com"),url:"https://www.gulftalent.com/jobs",description:"Major Middle East job platform covering Gulf countries."},
 {name:"Bayt.com",country:"Middle East",region:"jobs",category:"Global Job Platform",type:"jobs",badge:"🔵 MIDDLE EAST JOB PLATFORM",badgeClass:"job-badge",logo:favicon("bayt.com"),url:"https://www.bayt.com/",description:"Major Middle East job-search platform."},
-{name:"Jooble",country:"Worldwide",region:"jobs",category:"Global Job Platform",type:"jobs",badge:"🔵 JOB PLATFORM",badgeClass:"jooble.org",url:"https://jooble.org/",description:"Global job-search aggregator."},
+{name:"Jooble",country:"Worldwide",region:"jobs",category:"Global Job Platform",type:"jobs",badge:"🔵 JOB PLATFORM",badgeClass:"job-badge",logo:favicon("jooble.org"),url:"https://jooble.org/",description:"Global job-search aggregator."},
 {name:"CareerJet",country:"Worldwide",region:"jobs",category:"Global Job Platform",type:"jobs",badge:"🔵 JOB PLATFORM",badgeClass:"job-badge",logo:favicon("careerjet.com"),url:"https://www.careerjet.com/",description:"International job-search engine."},
 {name:"ReliefWeb Jobs",country:"Worldwide",region:"jobs",category:"International Organizations",type:"information",badge:"🟣 INTERNATIONAL JOB SOURCE",badgeClass:"info-badge",logo:favicon("reliefweb.int"),url:"https://reliefweb.int/jobs",description:"Humanitarian and international development job listings."}
 ];
@@ -1003,171 +1002,151 @@ function validFile(file,allowed,maxMB){
   return true;
 }
 
-window.submitHumanRequest = async function() {
-  const messageEl = document.getElementById("humanMessage");
-  const submitBtn = document.getElementById("submitHumanBtn");
-  
-  const name = document.getElementById("hName").value.trim();
-  const email = document.getElementById("hEmail").value.trim();
-  const phone = document.getElementById("hPhone").value.trim();
-  const country = document.getElementById("hCountry").value.trim();
-  const role = document.getElementById("hRole").value.trim();
-  const experience = document.getElementById("hExperience").value.trim();
-  const message = document.getElementById("hMessage").value.trim();
-  const oldCV = document.getElementById("hOldCV").files[0];
-  const supporting = document.getElementById("hDocument").files[0];
-  const paymentReference = document.getElementById("paymentReference").value.trim();
-  const paymentConfirmed = document.getElementById("paymentConfirmed").checked;
+window.submitHumanRequest=async function(){
+  const messageEl=document.getElementById("humanMessage");
+  const name=document.getElementById("hName").value.trim();
+  const email=document.getElementById("hEmail").value.trim();
+  const phone=document.getElementById("hPhone").value.trim();
+  const country=document.getElementById("hCountry").value.trim();
+  const role=document.getElementById("hRole").value.trim();
+  const experience=document.getElementById("hExperience").value.trim();
+  const message=document.getElementById("hMessage").value.trim();
+  const oldCV=document.getElementById("hOldCV").files[0];
+  const supporting=document.getElementById("hDocument").files[0];
+  const paymentReference=document.getElementById("paymentReference").value.trim();
+  const paymentConfirmed=document.getElementById("paymentConfirmed").checked;
 
-  if (!name || !email || !phone) {
-    messageEl.innerHTML = '<div class="warning">Full name, email and phone/WhatsApp are required.</div>';
+  if(!name || !email || !phone){
+    messageEl.innerHTML='<div class="warning">Full name, email and phone/WhatsApp are required.</div>';
     return;
   }
 
-  if (!paymentReference || !paymentConfirmed) {
-    messageEl.innerHTML = '<div class="warning"><strong>Payment details required.</strong><br>Please pay via Paybill 247247 (Account: 0798698299), check the confirmation box, and enter your M-Pesa transaction code.</div>';
+  if(!paymentReference || !paymentConfirmed){
+    messageEl.innerHTML='<div class="warning"><strong>Payment required.</strong><br>Please complete the KSh '+HUMAN_CV_FEE.toLocaleString()+' payment and enter the M-Pesa transaction code before submitting your request.</div>';
     return;
   }
 
-  try {
-    submitBtn.disabled = true;
-    submitBtn.textContent = "Submitting Request...";
+  try{
+    validFile(oldCV,[".pdf",".doc",".docx"],10);
+    validFile(supporting,[".pdf",".doc",".docx",".jpg",".jpeg",".png"],10);
 
-    validFile(oldCV, [".pdf", ".doc", ".docx"], 10);
-    validFile(supporting, [".pdf", ".doc", ".docx", ".jpg", ".jpeg", ".png"], 10);
+    const user=await ensureSignedInUser();
+    let oldCVUrl="",oldCVName="",supportingUrl="",supportingName="";
 
-    const user = await ensureSignedInUser();
-    let oldCVUrl = "", oldCVName = "", supportingUrl = "", supportingName = "";
-
-    if (oldCV) {
-      oldCVName = oldCV.name;
-      const r = ref(storage, `cvFiles/${user.uid}/original/${Date.now()}_${safeFileName(oldCV.name)}`);
-      const snap = await uploadBytes(r, oldCV);
-      oldCVUrl = await getDownloadURL(snap.ref);
+    if(oldCV){
+      oldCVName=oldCV.name;
+      const r=ref(storage,`cvFiles/${user.uid}/original/${Date.now()}_${safeFileName(oldCV.name)}`);
+      const snap=await uploadBytes(r,oldCV);
+      oldCVUrl=await getDownloadURL(snap.ref);
     }
 
-    if (supporting) {
-      supportingName = supporting.name;
-      const r = ref(storage, `cvFiles/${user.uid}/supporting/${Date.now()}_${safeFileName(supporting.name)}`);
-      const snap = await uploadBytes(r, supporting);
-      supportingUrl = await getDownloadURL(snap.ref);
+    if(supporting){
+      supportingName=supporting.name;
+      const r=ref(storage,`cvFiles/${user.uid}/supporting/${Date.now()}_${safeFileName(supporting.name)}`);
+      const snap=await uploadBytes(r,supporting);
+      supportingUrl=await getDownloadURL(snap.ref);
     }
 
-    const docRef = await addDoc(collection(db, "humanCVRequests"), {
-      name, email, phone, country, targetRole: role, experience, message,
-      oldCVName, oldCVUrl, supportingName, supportingUrl,
-      paymentAmount: HUMAN_CV_FEE,
-      paymentMethod: "M-Pesa Paybill",
+    const docRef=await addDoc(collection(db,"humanCVRequests"),{
+      name,email,phone,country,targetRole:role,experience,message,
+      oldCVName,oldCVUrl,supportingName,supportingUrl,
+      paymentAmount:HUMAN_CV_FEE,
+      paymentMethod:"M-Pesa",
       paymentReference,
-      paymentStatus: "pending_verification",
-      userId: user.uid, 
-      status: "Paid - Awaiting Verification", 
-      createdAt: serverTimestamp()
+      paymentStatus:"pending_verification",
+      userId:user.uid,status:"Paid - Awaiting Verification",createdAt:serverTimestamp()
     });
 
-    await addDoc(collection(db, "staffNotifications"), {
-      type: "new_cv_request",
-      requestId: docRef.id,
-      title: "New Human CV Request (Paybill)",
-      message: `${name} submitted a KSh ${HUMAN_CV_FEE} request via Paybill 247247 (Ac: 0798698299). Ref: ${paymentReference}.`,
-      read: false,
-      createdAt: serverTimestamp()
+    await addDoc(collection(db,"staffNotifications"),{
+      type:"new_cv_request",
+      requestId:docRef.id,
+      title:"New Human CV Request",
+      message:`${name} submitted a KSh ${HUMAN_CV_FEE} Human CV Expert request. Payment reference: ${paymentReference}. Verify payment before starting the CV work.`,
+      read:false,
+      createdAt:serverTimestamp()
     });
 
-    await addDoc(collection(db, "userNotifications"), {
+    await addDoc(collection(db,"userNotifications"),{
       userId: user.uid,
       title: "CV Request Received",
-      message: `We have received your Human CV Expert request. Your Paybill transaction reference (${paymentReference}) is pending verification.`,
+      message: `We have received your Human CV Expert request for '${role || "General CV"}'. Your payment reference (${paymentReference}) is pending verification.`,
       createdAt: serverTimestamp(),
       read: false
     });
 
-    messageEl.innerHTML = '<div class="human-notice"><strong>Request submitted successfully!</strong><br><br>Your Paybill payment reference has been received. Customer Care will verify the transaction and assign your request to the Human CV Expert.</div>';
-    
-    document.getElementById("hOldCV").value = "";
-    document.getElementById("hDocument").value = "";
-    document.getElementById("paymentReference").value = "";
-    document.getElementById("paymentConfirmed").checked = false;
-
-  } catch (err) {
+    const connectButton = HUMAN_EXPERT_WHATSAPP !== "YOUR_WHATSAPP_NUMBER"
+      ? `<br><a class="btn btn-success" style="margin-top:12px" target="_blank" rel="noopener" href="https://wa.me/${HUMAN_EXPERT_WHATSAPP.replace(/\D/g,"")}">💬 Connect with Mustafa / Human CV Expert on WhatsApp</a>`
+      : "";
+    messageEl.innerHTML='<div class="human-notice"><strong>Request submitted successfully!</strong><br><br>Your KSh '+HUMAN_CV_FEE.toLocaleString()+' payment reference has been received for verification. Customer Care will verify the payment and assign your request to the Human CV Expert.'+connectButton+'</div>';
+    document.getElementById("hOldCV").value="";
+    document.getElementById("hDocument").value="";
+    document.getElementById("paymentReference").value="";
+    document.getElementById("paymentConfirmed").checked=false;
+  }catch(err){
     console.error(err);
-    messageEl.innerHTML = '<div class="error">' + escapeHtml(err.message || "Unable to submit request.") + '</div>';
-  } finally {
-    submitBtn.disabled = false;
-    submitBtn.textContent = "📤 Submit Paid Human CV Request";
+    messageEl.innerHTML='<div class="error">'+escapeHtml(err.message||"Unable to submit request.")+'</div>';
   }
 };
 
-window.staffLogin = async function(source){
-  const email = document.getElementById(source==="modal"?"staffEmail":"staffEmailInline").value.trim();
-  const password = document.getElementById(source==="modal"?"staffPassword":"staffPasswordInline").value;
-  const msg = document.getElementById(source==="modal"?"staffLoginMessage":"staffLoginMessageInline");
-  msg.style.display = "block";
+window.staffLogin=async function(source){
+  const email=document.getElementById(source==="modal"?"staffEmail":"staffEmailInline").value.trim();
+  const password=document.getElementById(source==="modal"?"staffPassword":"staffPasswordInline").value;
+  const msg=document.getElementById(source==="modal"?"staffLoginMessage":"staffLoginMessageInline");
+  msg.style.display="block";
 
   if(!email || !password){
-    msg.textContent = "Enter staff email and password.";
+    msg.textContent="Enter staff email and password.";
     return;
   }
 
-  try {
-    const cred = await signInWithEmailAndPassword(auth, email, password);
-    const staffRef = doc(db, "staffUsers", cred.user.uid);
-    let staffSnap = await getDoc(staffRef);
+  try{
+    const cred=await signInWithEmailAndPassword(auth,email,password);
+    const staffRef=doc(db,"staffUsers",cred.user.uid);
+    const staffSnap=await getDoc(staffRef);
 
-    // Automatically provision or activate the target UID if it matches your specific UID
-    if(cred.user.uid === TARGET_STAFF_UID || !staffSnap.exists() || staffSnap.data().active !== true) {
-      await setDoc(staffRef, {
-        email: email,
-        active: true,
-        role: "admin",
-        updatedAt: serverTimestamp()
-      }, { merge: true });
-      staffSnap = await getDoc(staffRef);
-    }
-
-    if(!staffSnap.exists() || staffSnap.data().active !== true){
+    if(!staffSnap.exists() || staffSnap.data().active!==true){
       await signOut(auth);
       throw new Error("This Firebase account is not authorized as active staff.");
     }
 
-    staffUser = cred.user;
-    document.getElementById("staffLoginInline").style.display = "none";
-    document.getElementById("staffDashboard").style.display = "block";
+    staffUser=cred.user;
+    document.getElementById("staffLoginInline").style.display="none";
+    document.getElementById("staffDashboard").style.display="block";
     closeModal("staffLoginModal");
-    msg.textContent = "";
-    msg.style.display = "none";
+    msg.textContent="";
+    msg.style.display="none";
     await loadStaffRequests();
     await loadNotifications();
     showToast("Staff login successful.");
-  } catch(err) {
+  }catch(err){
     console.error(err);
-    msg.textContent = "Login failed: " + (err.message || "Unknown error");
+    msg.textContent="Login failed: "+(err.message||"Unknown error");
   }
 };
 
-window.staffLogout = async function(){
+window.staffLogout=async function(){
   try{await signOut(auth)}catch(e){}
-  staffUser = null;
-  document.getElementById("staffDashboard").style.display = "none";
-  document.getElementById("staffLoginInline").style.display = "block";
+  staffUser=null;
+  document.getElementById("staffDashboard").style.display="none";
+  document.getElementById("staffLoginInline").style.display="block";
   showToast("Logged out successfully.");
 };
 
-window.showStaffSection = function(id){
+window.showStaffSection=function(id){
   document.querySelectorAll(".dashboard-section").forEach(s=>s.classList.remove("active"));
   document.getElementById(id+"Section")?.classList.add("active");
 };
 
 async function loadStaffRequests(){
-  const el = document.getElementById("requestsList");
+  const el=document.getElementById("requestsList");
   try{
-    const snap = await getDocs(query(collection(db,"humanCVRequests"),orderBy("createdAt","desc"),limit(100)));
-    document.getElementById("requestCount").textContent = snap.size ? `(${snap.size})` : "";
+    const snap=await getDocs(query(collection(db,"humanCVRequests"),orderBy("createdAt","desc"),limit(100)));
+    document.getElementById("requestCount").textContent=snap.size?`(${snap.size})`:"";
     if(snap.empty){el.innerHTML='<div class="empty">No Human CV requests yet.</div>';return;}
 
-    el.innerHTML = snap.docs.map(ds => {
-      const d = ds.data(), id = ds.id, status = (d.status || "New");
-      const statusClass = status.toLowerCase().includes("complete") ? "done" : status.toLowerCase().includes("progress") ? "progress" : "";
+    el.innerHTML=snap.docs.map(ds=>{
+      const d=ds.data(),id=ds.id,status=(d.status||"New");
+      const statusClass=status.toLowerCase().includes("complete")?"done":status.toLowerCase().includes("progress")?"progress":"";
       return `
       <div class="request-card">
         <div class="request-top">
@@ -1177,7 +1156,7 @@ async function loadStaffRequests(){
         </div>
         <p style="margin-top:10px">${escapeHtml(d.message||"No message provided.")}</p>
         <p class="small">Experience: ${escapeHtml(d.experience||"Not provided")}</p>
-        <div class="notice" style="margin:10px 0"><strong>Payment:</strong> KSh ${escapeHtml(d.paymentAmount||HUMAN_CV_FEE)} · ${escapeHtml(d.paymentMethod||"M-Pesa Paybill")} · Ref: ${escapeHtml(d.paymentReference||"Not provided")} · Status: ${escapeHtml(d.paymentStatus||"Not recorded")}</div>
+        <div class="notice" style="margin:10px 0"><strong>Payment:</strong> KSh ${escapeHtml(d.paymentAmount||HUMAN_CV_FEE)} · ${escapeHtml(d.paymentMethod||"M-Pesa")} · Ref: ${escapeHtml(d.paymentReference||"Not provided")} · Status: ${escapeHtml(d.paymentStatus||"Not recorded")}</div>
         <div class="staff-tools">
           ${d.oldCVUrl?`<a class="btn btn-light" href="${escapeHtml(d.oldCVUrl)}" target="_blank" rel="noopener">📎 Old CV</a>`:""}
           ${d.supportingUrl?`<a class="btn btn-light" href="${escapeHtml(d.supportingUrl)}" target="_blank" rel="noopener">📎 Supporting Doc</a>`:""}
@@ -1193,7 +1172,7 @@ async function loadStaffRequests(){
   }
 }
 
-window.verifyPayment = async function(id){
+window.verifyPayment=async function(id){
   try{
     if(!staffUser) throw new Error("Staff login required.");
     const reqDocRef = doc(db, "humanCVRequests", id);
@@ -1201,18 +1180,18 @@ window.verifyPayment = async function(id){
     const reqData = reqSnap.data();
 
     await updateDoc(reqDocRef,{
-      paymentStatus: "verified",
-      status: "In Progress",
-      paymentVerifiedAt: serverTimestamp(),
-      paymentVerifiedBy: staffUser.uid,
-      updatedAt: serverTimestamp(),
-      updatedBy: staffUser.uid
+      paymentStatus:"verified",
+      status:"In Progress",
+      paymentVerifiedAt:serverTimestamp(),
+      paymentVerifiedBy:staffUser.uid,
+      updatedAt:serverTimestamp(),
+      updatedBy:staffUser.uid
     });
     
     await addDoc(collection(db,"staffNotifications"),{
-      type: "payment_verified", requestId: id, title: "CV Payment Verified",
-      message: "KSh 1,000 payment verified. Human CV Expert can begin the request.",
-      read: false, createdAt: serverTimestamp()
+      type:"payment_verified",requestId:id,title:"CV Payment Verified",
+      message:"KSh 1,000 payment verified. Human CV Expert can begin the request.",
+      read:false,createdAt:serverTimestamp()
     });
 
     if(reqData && reqData.userId) {
@@ -1230,13 +1209,13 @@ window.verifyPayment = async function(id){
   }catch(err){showToast("Payment verification failed: "+err.message)}
 };
 
-window.changeRequestStatus = async function(id, status){
+window.changeRequestStatus=async function(id,status){
   try{
     const reqDocRef = doc(db, "humanCVRequests", id);
     const reqSnap = await getDoc(reqDocRef);
     const reqData = reqSnap.data();
 
-    await updateDoc(reqDocRef,{status, updatedAt: serverTimestamp(), updatedBy: auth.currentUser?.uid||""});
+    await updateDoc(reqDocRef,{status,updatedAt:serverTimestamp(),updatedBy:auth.currentUser?.uid||""});
     
     if(reqData && reqData.userId) {
       await addDoc(collection(db,"userNotifications"),{
@@ -1253,37 +1232,37 @@ window.changeRequestStatus = async function(id, status){
   }catch(err){showToast("Update failed: "+err.message)}
 };
 
-window.openCompletedUpload = function(requestId){
-  const input = document.createElement("input");
-  input.type = "file"; input.accept = ".pdf,.doc,.docx";
-  input.onchange = ()=>uploadCompletedCV(requestId, input.files[0]);
+window.openCompletedUpload=function(requestId){
+  const input=document.createElement("input");
+  input.type="file";input.accept=".pdf,.doc,.docx";
+  input.onchange=()=>uploadCompletedCV(requestId,input.files[0]);
   input.click();
 };
 
-async function uploadCompletedCV(requestId, file){
+async function uploadCompletedCV(requestId,file){
   try{
     if(!file) return;
-    validFile(file, [".pdf", ".doc", ".docx"], 15);
+    validFile(file,[".pdf",".doc",".docx"],15);
     if(!staffUser) throw new Error("Staff login required.");
     
     const reqDocRef = doc(db, "humanCVRequests", requestId);
     const reqSnap = await getDoc(reqDocRef);
     const reqData = reqSnap.data();
 
-    const r = ref(storage, `completedCVs/${requestId}/${Date.now()}_${safeFileName(file.name)}`);
-    const snap = await uploadBytes(r, file);
-    const url = await getDownloadURL(snap.ref);
+    const r=ref(storage,`completedCVs/${requestId}/${Date.now()}_${safeFileName(file.name)}`);
+    const snap=await uploadBytes(r,file);
+    const url=await getDownloadURL(snap.ref);
     
     await updateDoc(reqDocRef,{
-      completedCVUrl: url, completedCVName: file.name, status: "Completed",
-      completedAt: serverTimestamp(), updatedBy: staffUser.uid
+      completedCVUrl:url,completedCVName:file.name,status:"Completed",
+      completedAt:serverTimestamp(),updatedBy:staffUser.uid
     });
     
     await addDoc(collection(db,"staffNotifications"),{
-      type: "cv_completed", requestId,
-      title: "CV Completed",
-      message: "A completed CV was uploaded.",
-      read: false, createdAt: serverTimestamp()
+      type:"cv_completed",requestId,
+      title:"CV Completed",
+      message:"A completed CV was uploaded.",
+      read:false,createdAt:serverTimestamp()
     });
 
     if(reqData && reqData.userId) {
@@ -1302,16 +1281,16 @@ async function uploadCompletedCV(requestId, file){
 }
 
 async function loadNotifications(){
-  const el = document.getElementById("notificationList");
+  const el=document.getElementById("notificationList");
   try{
-    const snap = await getDocs(query(collection(db,"staffNotifications"),orderBy("createdAt","desc"),limit(50)));
+    const snap=await getDocs(query(collection(db,"staffNotifications"),orderBy("createdAt","desc"),limit(50)));
     if(snap.empty){el.innerHTML="No notifications.";return;}
-    el.innerHTML = snap.docs.map(d=>{
-      const n = d.data();
+    el.innerHTML=snap.docs.map(d=>{
+      const n=d.data();
       return `<div class="request-card"><strong>${escapeHtml(n.title||"Notification")}</strong><p>${escapeHtml(n.message||"")}</p></div>`;
     }).join("");
   }catch(err){
-    el.innerHTML = "Notifications unavailable. Check Firestore rules.";
+    el.innerHTML="Notifications unavailable. Check Firestore rules.";
   }
 }
 
@@ -1387,28 +1366,28 @@ async function loadUserDashboardData() {
   }
 }
 
-window.addNewPortal = async function(){
+window.addNewPortal=async function(){
   if(!staffUser){showToast("Staff login required.");return}
-  const name = document.getElementById("adminPortalName").value.trim();
-  const country = document.getElementById("adminPortalCountry").value.trim();
-  const region = document.getElementById("adminPortalRegion").value.trim().toLowerCase();
-  const category = document.getElementById("adminPortalCategory").value.trim();
-  const logo = document.getElementById("adminPortalLogo").value.trim();
-  const type = document.getElementById("adminPortalType").value;
-  const url = document.getElementById("adminPortalUrl").value.trim();
-  const description = document.getElementById("adminPortalDesc").value.trim();
+  const name=document.getElementById("adminPortalName").value.trim();
+  const country=document.getElementById("adminPortalCountry").value.trim();
+  const region=document.getElementById("adminPortalRegion").value.trim().toLowerCase();
+  const category=document.getElementById("adminPortalCategory").value.trim();
+  const logo=document.getElementById("adminPortalLogo").value.trim();
+  const type=document.getElementById("adminPortalType").value;
+  const url=document.getElementById("adminPortalUrl").value.trim();
+  const description=document.getElementById("adminPortalDesc").value.trim();
 
   if(!name||!url){showToast("Portal name and URL are required.");return}
   try{
     await addDoc(collection(db,"careerPortals"),{
-      name, country, region, category, logo, url, description, type,
-      verified: type==="official", createdAt: serverTimestamp(), createdBy: staffUser.uid
+      name,country,region,category,logo,url,description,type,
+      verified:type==="official",createdAt:serverTimestamp(),createdBy:staffUser.uid
     });
     worldwidePortals.push({
-      name, country, region: region||"jobs", category, type,
-      badge: type==="official"?"🟢 OFFICIAL SOURCE":type==="jobs"?"🔵 JOB PLATFORM":"🟣 INFORMATION SOURCE",
-      badgeClass: type==="official"?"":type==="jobs"?"job-badge":"info-badge",
-      logo: logo||favicon(new URL(url).hostname), url, description
+      name,country,region:region||"jobs",category,type,
+      badge:type==="official"?"🟢 OFFICIAL SOURCE":type==="jobs"?"🔵 JOB PLATFORM":"🟣 INFORMATION SOURCE",
+      badgeClass:type==="official"?"":type==="jobs"?"job-badge":"info-badge",
+      logo:logo||favicon(new URL(url).hostname),url,description
     });
     renderPortals(worldwidePortals);
     renderDedicated();
@@ -1417,14 +1396,14 @@ window.addNewPortal = async function(){
 };
 
 function safeFileName(name){return name.replace(/[^a-zA-Z0-9._-]/g,"_")}
-function escapeHtml(s){return String(s?="" ).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function escapeHtml(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
 function escapeAttr(s){return escapeHtml(s)}
 
 function showToast(msg){
-  const t = document.createElement("div"); t.className = "toast show"; t.textContent = msg;
-  document.body.appendChild(t); setTimeout(()=>t.remove(),3500);
+  const t=document.createElement("div");t.className="toast show";t.textContent=msg;
+  document.body.appendChild(t);setTimeout(()=>t.remove(),3500);
 }
-window.showToast = showToast;
+window.showToast=showToast;
 
 onAuthStateChanged(auth, async user => {
   const authNavBtn = document.getElementById("authNavBtn");
@@ -1453,7 +1432,7 @@ onAuthStateChanged(auth, async user => {
   }
 });
 
-document.getElementById("year").textContent = new Date().getFullYear();
+document.getElementById("year").textContent=new Date().getFullYear();
 renderCategories();
 renderPortals(worldwidePortals);
 renderDedicated();
