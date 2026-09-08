@@ -1347,6 +1347,38 @@ onAuthStateChanged(auth, async user => {
     userSignOutNavBtn.style.display = "none";
   }
 });
+// Ensure your upload function looks like this:
+async function staffDeliverCvFile(requestId, fileInput) {
+    try {
+        const file = fileInput.files[0];
+        if (!file) {
+            alert("Please choose a file first!");
+            return;
+        }
+
+        // 1. Reference to Firebase Storage
+        const storageRef = ref(storage, `completedCVs/${requestId}/${file.name}`);
+        
+        // 2. Upload file
+        const snapshot = await uploadBytes(storageRef, file);
+        
+        // 3. Get Download URL
+        const downloadUrl = await getDownloadURL(snapshot.ref);
+        
+        // 4. Update Firestore so the user dashboard renders it instantly
+        await updateDoc(doc(db, "humanCVRequests", requestId), {
+            status: "Completed",
+            fileUrl: downloadUrl,
+            fileName: file.name,
+            deliveredAt: new Date().toISOString()
+        });
+
+        alert("CV successfully delivered to user dashboard!");
+    } catch (error) {
+        console.error("Upload error:", error);
+        alert("Failed to upload: " + error.message);
+    }
+}
 
 document.getElementById("year").textContent=new Date().getFullYear();
 renderCategories();
