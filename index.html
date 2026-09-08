@@ -1152,7 +1152,7 @@ window.staffDeliverCvFile = async function(docId) {
     }
     
     const file = fileInput.files[0];
-    const storageRef = ref(storage, `expert_cvs/${docId}_${safeFileName(file.name)}`);
+    const storageRef = ref(storage, `completedCVs/${docId}/${safeFileName(file.name)}`);
     
     try {
         showToast("Uploading file to storage...");
@@ -1166,6 +1166,8 @@ window.staffDeliverCvFile = async function(docId) {
         await updateDoc(reqDocRef, {
             deliveredFileUrl: downloadUrl,
             deliveredFileName: file.name,
+            fileUrl: downloadUrl, // Support both keys for compatibility
+            fileName: file.name,
             status: "Completed",
             updatedAt: serverTimestamp()
         });
@@ -1254,13 +1256,16 @@ async function loadUserDashboardData() {
 
       reqSnap.forEach(ds => {
         const d = ds.data();
-        if (d.deliveredFileUrl) {
+        const fileLink = d.deliveredFileUrl || d.fileUrl;
+        const fileName = d.deliveredFileName || d.fileName || 'Your Final Expert CV.pdf';
+        
+        if (fileLink) {
           hasDeliveredFiles = true;
           filesHtml += `
             <div class="card bg-light border-success p-3 mb-2" style="background:#fff;border:1px solid #16a34a;border-radius:10px;padding:12px;margin-bottom:10px;">
-              <h6 class="font-weight-bold text-success mb-1" style="color:#16a34a;font-size:14px;">📄 ${escapeHtml(d.deliveredFileName || 'Your Final Expert CV.pdf')}</h6>
-              <p class="small text-muted mb-2">Target Role: ${escapeHtml(d.targetRole)}</p>
-              <a href="${escapeHtml(d.deliveredFileUrl)}" target="_blank" class="btn btn-success btn-sm font-weight-bold" style="width:100%;text-align:center;">
+              <h6 class="font-weight-bold text-success mb-1" style="color:#16a34a;font-size:14px;">📄 ${escapeHtml(fileName)}</h6>
+              <p class="small text-muted mb-2">Target Role: ${escapeHtml(d.targetRole || "General CV")}</p>
+              <a href="${escapeHtml(fileLink)}" target="_blank" class="btn btn-success btn-sm font-weight-bold" style="width:100%;text-align:center;">
                   📥 Download Final Expert CV
               </a>
             </div>
@@ -1347,38 +1352,6 @@ onAuthStateChanged(auth, async user => {
     userSignOutNavBtn.style.display = "none";
   }
 });
-// Ensure your upload function looks like this:
-async function staffDeliverCvFile(requestId, fileInput) {
-    try {
-        const file = fileInput.files[0];
-        if (!file) {
-            alert("Please choose a file first!");
-            return;
-        }
-
-        // 1. Reference to Firebase Storage
-        const storageRef = ref(storage, `completedCVs/${requestId}/${file.name}`);
-        
-        // 2. Upload file
-        const snapshot = await uploadBytes(storageRef, file);
-        
-        // 3. Get Download URL
-        const downloadUrl = await getDownloadURL(snapshot.ref);
-        
-        // 4. Update Firestore so the user dashboard renders it instantly
-        await updateDoc(doc(db, "humanCVRequests", requestId), {
-            status: "Completed",
-            fileUrl: downloadUrl,
-            fileName: file.name,
-            deliveredAt: new Date().toISOString()
-        });
-
-        alert("CV successfully delivered to user dashboard!");
-    } catch (error) {
-        console.error("Upload error:", error);
-        alert("Failed to upload: " + error.message);
-    }
-}
 
 document.getElementById("year").textContent=new Date().getFullYear();
 renderCategories();
