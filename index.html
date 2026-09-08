@@ -2612,12 +2612,7 @@ r==="middleeast"
 .includes(p.country)
 );
 
-return
-(!q||t.includes(q))
-&&
-rm
-&&
-(c==="all"||p.category===c);
+return (!q || t.includes(q)) && rm && (c === "all" || p.category === c);
 
 })
 
@@ -2738,14 +2733,6 @@ document.getElementById("cvRole").value;
 
 document.getElementById("hExperience").value=
 document.getElementById("cvExperience").value;
-
-
-/*
-Copy selected file into modal.
-Browsers do not allow assigning a File object directly
-to another file input, so we keep the original input
-and use it during submission.
-*/
 
 window.cvMainFile=
 document.getElementById("cvFile").files[0]||null;
@@ -2971,11 +2958,6 @@ completedFiles:[]
 );
 
 
-/*
-Upload the user's CV after creating the request.
-The request ID becomes part of the Storage path.
-*/
-
 if(file){
 
 const uploaded=await uploadUserFile(
@@ -3006,10 +2988,6 @@ originalFileUploadedAt:serverTimestamp()
 }
 
 
-/*
-Notify staff.
-*/
-
 await addDoc(
 collection(db,"staffNotifications"),
 {
@@ -3034,10 +3012,6 @@ createdAt:serverTimestamp()
 }
 );
 
-
-/*
-Notify user.
-*/
 
 await addDoc(
 collection(db,"userNotifications"),
@@ -3831,10 +3805,6 @@ updatedAt:serverTimestamp()
 );
 
 
-/*
-Notify the user.
-*/
-
 if(d.userId){
 
 await addDoc(
@@ -3934,8 +3904,6 @@ where("userId","==",u.uid)
 let html="";
 
 
-/* Notifications */
-
 html+=`
 
 <h3>
@@ -3977,8 +3945,6 @@ ${formatDate(x.data().createdAt)}
 
 }
 
-
-/* Requests */
 
 html+=`
 
