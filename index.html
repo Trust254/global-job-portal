@@ -1,1362 +1,829 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#155eef">
-<meta name="description" content="Mustafa Elevate - Worldwide verified career portals and real Human CV Expert support.">
-<title>Mustafa Elevate | Worldwide Careers & Human CV Experts</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV Expert Portal</title>
 
-<style>
-:root{
-  --primary:#155eef;
-  --primary-dark:#0d47c7;
-  --success:#16a34a;
-  --success-bg:#ecfdf3;
-  --danger:#dc2626;
-  --warning:#f59e0b;
-  --dark:#101828;
-  --text:#1d2939;
-  --muted:#667085;
-  --light:#f8fafc;
-  --border:#e4e7ec;
-  --white:#fff;
-  --shadow:0 10px 30px rgba(16,24,40,.08);
-  --radius:16px;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Inter,Arial,Helvetica,sans-serif;background:#fff;color:var(--text);line-height:1.55}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-a{color:inherit;text-decoration:none}
-img{max-width:100%}
-.container{width:min(1200px,92%);margin:auto}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-header{
-  position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.96);
-  backdrop-filter:blur(12px);border-bottom:1px solid var(--border)
-}
-.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:10px}
-.brand{font-size:18px;font-weight:900;color:var(--dark);white-space:nowrap}
-.brand span{color:var(--primary)}
-.navlinks{display:flex;align-items:center;gap:15px}
-.navlinks a{color:#344054;font-weight:800;font-size:12px}
-.navlinks a:hover{color:var(--primary)}
-.nav-actions{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
-.menu{display:none;border:0;background:none;font-size:26px}
+    body {
+      background: #f4f7fb;
+      color: #172033;
+    }
 
-.btn{
-  border:0;border-radius:8px;padding:8px 10px;font-weight:800;transition:.2s;
-  display:inline-flex;align-items:center;justify-content:center;gap:5px;font-size:11px;
-  white-space:nowrap
-}
-.btn:hover{transform:translateY(-1px)}
-.btn-primary{background:var(--primary);color:#fff}
-.btn-primary:hover{background:var(--primary-dark)}
-.btn-success{background:var(--success);color:#fff}
-.btn-danger{background:var(--danger);color:#fff}
-.btn-outline{background:#fff;color:var(--primary);border:1px solid #b2ccff}
-.btn-dark{background:var(--dark);color:#fff}
-.btn-light{background:#f2f4f7;color:var(--dark)}
-.full{grid-column:1/-1}
+    /* HEADER */
+    header {
+      background: #ffffff;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      border-bottom: 1px solid #e5e9f0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
 
-.hero{
-  background:radial-gradient(circle at 80% 20%,rgba(21,94,239,.15),transparent 35%),
-  linear-gradient(135deg,#f8fbff,#eef4ff);padding:78px 0 68px
-}
-.hero-grid{display:grid;grid-template-columns:1.18fr .82fr;gap:42px;align-items:center}
-.badge{
-  display:inline-flex;align-items:center;gap:7px;background:#e8f0ff;color:#174ea6;
-  border:1px solid #c9dbff;padding:7px 12px;border-radius:30px;font-weight:900;font-size:12px;margin-bottom:16px
-}
-.hero h1{font-size:50px;line-height:1.08;letter-spacing:-1.5px;color:var(--dark)}
-.hero h1 span{color:var(--primary)}
-.hero p{color:var(--muted);font-size:17px;margin:18px 0 25px;max-width:760px}
-.search-box{
-  display:grid;grid-template-columns:1fr 1fr auto;gap:9px;background:#fff;padding:12px;
-  border-radius:15px;box-shadow:var(--shadow);border:1px solid var(--border)
-}
-.field{
-  width:100%;border:1px solid #d0d5dd;border-radius:10px;padding:12px;background:#fff;outline:none
-}
-.field:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(21,94,239,.1)}
-textarea.field{resize:vertical}
-.quick{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-.quick button{
-  border:1px solid var(--border);background:#fff;border-radius:30px;padding:8px 12px;
-  font-weight:700;color:#344054
-}
-.hero-card{background:#fff;border:1px solid var(--border);border-radius:22px;padding:25px;box-shadow:var(--shadow)}
-.hero-card h3{margin-bottom:15px}
-.trust-list{display:grid;gap:13px}
-.trust-item{display:flex;gap:12px;align-items:flex-start;padding:13px;background:#f8fafc;border-radius:12px}
-.trust-icon{font-size:25px}
+    .logo {
+      font-size: 23px;
+      font-weight: 800;
+      color: #1769e0;
+    }
 
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:-25px;position:relative;z-index:2}
-.stat{background:#fff;border:1px solid var(--border);border-radius:15px;padding:20px;text-align:center;box-shadow:var(--shadow)}
-.stat strong{display:block;font-size:26px;color:var(--primary)}
+    .logo span {
+      color: #172033;
+    }
 
-section{padding:70px 0}
-.section-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:28px}
-.section-head h2{color:var(--dark);font-size:33px;line-height:1.15}
-.section-head p{color:var(--muted);margin-top:7px}
+    .user-area {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
 
-.filters{
-  display:grid;grid-template-columns:1.3fr 1fr 1fr auto;gap:10px;margin-bottom:20px;
-  padding:15px;background:#f8fafc;border:1px solid var(--border);border-radius:15px
-}
-.region-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:25px}
-.region-tab{
-  padding:10px 16px;border-radius:10px;border:1px solid var(--border);background:#fff;
-  font-weight:800;cursor:pointer;color:var(--text);transition:.2s
-}
-.region-tab.active,.region-tab:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #1769e0;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
 
-.portal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.portal-card{
-  border:1px solid var(--border);border-radius:18px;padding:20px;background:#fff;
-  box-shadow:0 5px 18px rgba(16,24,40,.04);display:flex;flex-direction:column;justify-content:space-between;
-  min-height:260px
-}
-.portal-head{display:flex;gap:12px;align-items:flex-start}
-.portal-head img{
-  width:52px;height:52px;object-fit:contain;padding:6px;border:1px solid var(--border);
-  border-radius:12px;background:#fff;flex:0 0 auto
-}
-.portal-card h3{font-size:17px;margin-bottom:4px}
-.portal-card p{color:var(--muted);margin:12px 0;font-size:14px}
-.verified-badge{
-  display:inline-flex;align-items:center;gap:5px;padding:4px 9px;background:var(--success-bg);
-  color:#067647;border-radius:20px;font-size:10px;font-weight:900;margin-bottom:8px;border:1px solid #abefc6
-}
-.gov-badge{background:#eff8ff;color:#175cd3;border-color:#b2ccff}
-.job-badge{background:#fff7ed;color:#c2410c;border-color:#fed7aa}
-.info-badge{background:#f5f3ff;color:#6d28d9;border-color:#ddd6fe}
-.portal-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:15px}
-.tag{display:inline-flex;padding:4px 8px;background:#f2f4f7;border-radius:15px;font-size:11px;font-weight:800}
-.empty{
-  padding:35px;text-align:center;border:1px dashed #cfd4dc;border-radius:16px;
-  color:var(--muted);grid-column:1/-1;background:#fafafa
-}
+    /* LAYOUT */
+    .layout {
+      display: flex;
+      min-height: calc(100vh - 70px);
+    }
 
-.category-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.category-card{
-  border:1px solid var(--border);background:#fff;border-radius:14px;padding:16px;
-  box-shadow:0 4px 14px rgba(16,24,40,.04);font-weight:800;text-align:left;width:100%
-}
-.category-card span{display:block;font-size:24px;margin-bottom:7px}
-.category-card small{display:block;color:var(--muted);font-weight:500;margin-top:4px}
+    /* SIDEBAR */
+    .sidebar {
+      width: 240px;
+      background: #111827;
+      padding: 25px 15px;
+      color: white;
+    }
 
-.cv-section{background:#f5f9ff}
-.cv-box{
-  background:#fff;border:1px solid #dbe7ff;border-radius:22px;padding:32px;
-  display:grid;grid-template-columns:1fr 1fr;gap:35px;box-shadow:var(--shadow)
-}
-.cv-list{display:grid;gap:12px;margin-top:20px}
-.check{color:var(--success);font-weight:900;margin-right:8px}
-.cv-form{background:#f8fafc;padding:22px;border-radius:16px;border:1px solid var(--border)}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.form-grid label{display:block;font-size:13px;font-weight:800;margin-top:4px}
-.human-notice{
-  margin-top:20px;padding:16px;border-radius:12px;background:var(--success-bg);
-  color:#067647;border:1px solid #abefc6
-}
-.payment-box{margin:15px 0;padding:18px;border:2px solid #dbe7ff;border-radius:14px;background:#f8fbff}
-.payment-price{font-size:28px;font-weight:900;color:var(--primary);margin:5px 0}
-.payment-step{display:flex;gap:10px;align-items:flex-start;margin:9px 0;font-size:14px}
-.payment-ref{margin-top:10px}
+    .sidebar h4 {
+      font-size: 12px;
+      color: #9ca3af;
+      text-transform: uppercase;
+      margin: 10px 15px;
+    }
 
-.notice{padding:13px;border-radius:10px;background:#eff8ff;color:#175cd3;font-size:14px;margin:12px 0}
-.warning{padding:13px;border-radius:10px;background:#fffaeb;color:#b54708;font-size:14px;margin:12px 0}
-.error{padding:13px;border-radius:10px;background:#fef2f2;color:#b42318;font-size:14px;margin:12px 0}
+    .nav-item {
+      padding: 13px 15px;
+      border-radius: 8px;
+      margin: 5px 0;
+      cursor: pointer;
+      color: #d1d5db;
+    }
 
-.modal{
-  position:fixed;inset:0;background:rgba(16,24,40,.65);display:none;align-items:center;
-  justify-content:center;padding:20px;z-index:3000
-}
-.modal.show{display:flex}
-.modal-card{
-  width:min(760px,100%);max-height:92vh;overflow:auto;background:#fff;border-radius:20px;
-  padding:26px;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.2)
-}
-.close{
-  position:absolute;top:10px;right:13px;width:38px;height:38px;border:0;
-  border-radius:50%;background:#f2f4f7;font-size:25px
-}
-.modal-sub{color:var(--muted);margin-bottom:18px}
+    .nav-item:hover,
+    .nav-item.active {
+      background: #1769e0;
+      color: white;
+    }
 
-.staff-panel{background:#101828;color:#fff}
-.staff-login{max-width:520px;margin:auto;background:#fff;color:var(--text);padding:25px;border-radius:18px}
-.staff-dashboard{display:none}
-.dashboard-grid{display:grid;grid-template-columns:230px 1fr;gap:20px}
-.sidebar{background:#fff;border-radius:15px;padding:15px;color:var(--text)}
-.sidebar button{
-  display:block;width:100%;border:0;background:#fff;padding:11px;text-align:left;
-  border-radius:9px;font-weight:800;margin-bottom:5px
-}
-.sidebar button:hover{background:#eef4ff;color:var(--primary)}
-.dashboard-content{background:#fff;color:var(--text);border-radius:15px;padding:20px}
-.dashboard-section{display:none}
-.dashboard-section.active{display:block}
-.request-card{
-  border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:12px;background:#fff
-}
-.request-top{display:flex;justify-content:space-between;gap:10px;align-items:start}
-.status{
-  padding:5px 9px;border-radius:20px;background:#eef4ff;color:#175cd3;
-  font-size:11px;font-weight:900;white-space:nowrap
-}
-.status.done{background:#ecfdf3;color:#067647}
-.status.progress{background:#fff7ed;color:#b54708}
-.staff-tools{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
-.small{font-size:12px;color:var(--muted)}
+    /* MAIN */
+    main {
+      flex: 1;
+      padding: 30px;
+      overflow-x: hidden;
+    }
 
-.toast{
-  position:fixed;right:18px;bottom:18px;background:#101828;color:#fff;padding:14px 18px;
-  border-radius:12px;box-shadow:var(--shadow);display:none;z-index:5000
-}
-.toast.show{display:block}
+    .page-title {
+      margin-bottom: 25px;
+    }
 
-footer{background:#101828;color:#cbd5e1;padding:45px 0 20px}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}
-.footer-brand{color:#fff;font-size:22px;font-weight:900;margin-bottom:10px}
-footer h4{color:#fff;margin-bottom:10px}
-footer a{display:block;margin:7px 0}
-.copyright{border-top:1px solid #344054;margin-top:30px;padding-top:18px;font-size:13px}
+    .page-title h1 {
+      font-size: 28px;
+      margin-bottom: 6px;
+    }
 
-@media(max-width:1050px){
-  .hero-grid,.cv-box{grid-template-columns:1fr}
-  .portal-grid{grid-template-columns:1fr 1fr}
-  .footer-grid{grid-template-columns:1fr 1fr}
-  .category-wrap{grid-template-columns:1fr 1fr}
-  .filters{grid-template-columns:1fr 1fr}
-}
-@media(max-width:760px){
-  .navlinks{display:none}
-  .menu{display:block}
-  .hero h1{font-size:38px}
-  .search-box{grid-template-columns:1fr}
-  .stats{grid-template-columns:1fr 1fr}
-  .portal-grid,.footer-grid,.category-wrap{grid-template-columns:1fr}
-  .form-grid,.filters{grid-template-columns:1fr}
-  .dashboard-grid{grid-template-columns:1fr}
-  .nav-actions .btn { font-size: 10px; padding: 6px 8px; }
-}
-</style>
+    .page-title p {
+      color: #6b7280;
+    }
+
+    /* FEATURED USERS */
+    .featured {
+      background: white;
+      border-radius: 15px;
+      padding: 22px;
+      margin-bottom: 25px;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.04);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .section-header h2 {
+      font-size: 19px;
+    }
+
+    .section-header span {
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    .user-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+    }
+
+    .profile-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      overflow: hidden;
+      background: white;
+      transition: .2s;
+    }
+
+    .profile-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,.08);
+    }
+
+    .profile-card img {
+      width: 100%;
+      height: 155px;
+      object-fit: cover;
+    }
+
+    .profile-info {
+      padding: 13px;
+    }
+
+    .profile-info h3 {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .profile-info p {
+      color: #6b7280;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .qualified {
+      display: inline-block;
+      background: #dcfce7;
+      color: #15803d;
+      padding: 5px 9px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    /* STATISTICS */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-bottom: 25px;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 3px 15px rgba(0,0,0,.04);
+    }
+
+    .stat-card small {
+      color: #6b7280;
+    }
+
+    .stat-card h2 {
+      font-size: 27px;
+      margin-top: 8px;
+    }
+
+    /* CONTENT GRID */
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1.4fr .8fr;
+      gap: 25px;
+    }
+
+    .panel {
+      background: white;
+      padding: 22px;
+      border-radius: 15px;
+      box-shadow: 0 3px 15px rgba(0,0,0,.04);
+      margin-bottom: 25px;
+    }
+
+    /* FORM */
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 7px;
+      margin-top: 15px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d9dee8;
+      border-radius: 8px;
+      outline: none;
+      font-size: 14px;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: #1769e0;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 8px;
+      padding: 12px 17px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 18px;
+    }
+
+    .btn-primary {
+      background: #1769e0;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #1258bf;
+    }
+
+    .btn-success {
+      background: #16a34a;
+      color: white;
+    }
+
+    .btn-danger {
+      background: #dc2626;
+      color: white;
+    }
+
+    /* REQUESTS */
+    .request {
+      padding: 16px 0;
+      border-bottom: 1px solid #edf0f4;
+    }
+
+    .request:last-child {
+      border-bottom: none;
+    }
+
+    .request-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .request h3 {
+      font-size: 15px;
+    }
+
+    .request p {
+      color: #6b7280;
+      font-size: 13px;
+      margin-top: 5px;
+    }
+
+    .status {
+      font-size: 11px;
+      padding: 5px 9px;
+      border-radius: 20px;
+      height: fit-content;
+      white-space: nowrap;
+    }
+
+    .pending {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .progress {
+      background: #dbeafe;
+      color: #1d4ed8;
+    }
+
+    .completed {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    /* UPLOAD */
+    .upload-box {
+      border: 2px dashed #cfd6e2;
+      border-radius: 10px;
+      padding: 25px;
+      text-align: center;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+
+    .upload-box:hover {
+      border-color: #1769e0;
+      background: #f8fbff;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1000px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      header {
+        padding: 0 15px;
+      }
+
+      .sidebar {
+        width: 70px;
+      }
+
+      .sidebar h4 {
+        display: none;
+      }
+
+      .nav-item {
+        text-align: center;
+        font-size: 0;
+      }
+
+      .nav-item::first-letter {
+        font-size: 18px;
+      }
+
+      main {
+        padding: 18px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
-<div class="container nav">
-<a href="#home" class="brand">Mustafa <span>Elevate</span></a>
+  <div class="logo">
+    CV<span>Expert</span>
+  </div>
 
-<nav class="navlinks">
-<a href="#directory">Career Directory</a>
-<a href="#categories">Job Categories</a>
-<a href="#kenya">Kenya</a>
-<a href="#middleeast">Middle East</a>
-<a href="#military">Military</a>
-<a href="#cruise">Cruise</a>
-<a href="#airlines">Airlines</a>
-<a href="#cv">Human CV Expert</a>
-</nav>
-
-<div class="nav-actions">
-<button id="signInNavBtn" class="btn btn-primary" onclick="openModal('signInModal')">👤 Sign In</button>
-<button id="registerNavBtn" class="btn btn-outline" onclick="openModal('registerModal')">📝 Register</button>
-<button id="userDashboardNavBtn" class="btn btn-success" style="display:none;" onclick="openModal('userDashboardModal')">📦 Dashboard <span id="userNotifBadge" style="background:#dc2626;color:#fff;border-radius:50%;padding:2px 5px;font-size:9px;display:none;">0</span></button>
-<button id="userSignOutNavBtn" class="btn btn-outline" style="display:none;" onclick="handleUserSignOut()">Sign Out</button>
-<button class="btn btn-outline" onclick="openModal('staffLoginModal')">Staff</button>
-<button class="btn btn-outline" onclick="openModal('humanModal')">👤 CV Expert</button>
-</div>
-
-<button class="menu" onclick="toggleMobileMenu()">☰</button>
-</div>
+  <div class="user-area">
+    <span>Human CV Expert</span>
+    <div class="avatar">CE</div>
+  </div>
 </header>
 
-<main>
+<div class="layout">
 
-<section class="hero" id="home">
-<div class="container hero-grid">
-<div>
-<div class="badge">🌍 WORLDWIDE VERIFIED CAREERS DIRECTORY</div>
-<h1>Official career portals.<br><span>Real Human CV Expert support.</span></h1>
-<p>
-Find official government and employer career portals, major job platforms, Middle East opportunities,
-airlines, cruise ships, military/defence recruitment and verified Kenya sources.
-<strong>No AI CV builder.</strong> Human experts handle CV review and preparation.
-</p>
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
 
-<div class="search-box">
-<input id="heroKeyword" class="field" placeholder="Search company, job, category, portal...">
-<input id="heroLocation" class="field" placeholder="Country / region e.g. Qatar, Kenya, USA">
-<button class="btn btn-primary" onclick="searchDirectory()">🔎 Search</button>
-</div>
+    <h4>Dashboard</h4>
 
-<div class="quick">
-<button onclick="quickFilter('usa')">🇺🇸 USA</button>
-<button onclick="quickFilter('canada')">🇨🇦 Canada</button>
-<button onclick="quickFilter('europe')">🇪🇺 Europe</button>
-<button onclick="quickFilter('kenya')">🇰🇪 Kenya</button>
-<button onclick="quickFilter('middleeast')">🌙 Middle East</button>
-<button onclick="quickFilter('military')">🪖 Military</button>
-<button onclick="quickFilter('cruise')">🚢 Cruise</button>
-<button onclick="quickFilter('airlines')">✈️ Airlines</button>
-</div>
-</div>
+    <div class="nav-item active">🏠 Dashboard</div>
+    <div class="nav-item">📄 CV Requests</div>
+    <div class="nav-item">👥 Qualified Users</div>
+    <div class="nav-item">📁 Documents</div>
 
-<div class="hero-card">
-<h3>Why Mustafa Elevate?</h3>
-<div class="trust-list">
-<div class="trust-item"><div class="trust-icon">🟢</div><div><strong>Source-labelled portals</strong><p>Official government/employer portals are separated from job boards and information sources.</p></div></div>
-<div class="trust-item"><div class="trust-icon">👤</div><div><strong>100% Human CV service</strong><p>Your CV is reviewed and prepared by real Customer Care and Human CV Expert staff.</p></div></div>
-<div class="trust-item"><div class="trust-icon">🌐</div><div><strong>Worldwide coverage</strong><p>USA, Canada, Europe, Africa, Kenya, Middle East, airlines, cruise and defence sources.</p></div></div>
-<div class="trust-item"><div class="trust-icon">🔒</div><div><strong>Secure workflow</strong><p>Requests and uploaded documents are securely managed within your dashboard workspace.</p></div></div>
-</div>
-<button class="btn btn-success" style="width:100%;margin-top:18px" onclick="openModal('humanModal')">Request Human CV Help</button>
-</div>
-</div>
-</section>
+    <h4>Management</h4>
 
-<div class="container">
-<div class="stats">
-<div class="stat"><strong id="statPortalsCount">0</strong> Career Sources</div>
-<div class="stat"><strong>🌍</strong> Worldwide</div>
-<div class="stat"><strong>👤</strong> Human Experts</div>
-<div class="stat"><strong>✓</strong> Source Labelled</div>
-</div>
-</div>
+    <div class="nav-item">👤 Users</div>
+    <div class="nav-item">⚙️ Settings</div>
 
-<section id="directory">
-<div class="container">
-<div class="section-head">
-<div><h2>Worldwide Career Directory</h2><p>Search and filter official portals, job platforms and career sources.</p></div>
-</div>
+  </aside>
 
-<div class="filters">
-<input id="directorySearch" class="field" placeholder="Search portal/company/category...">
-<select id="directoryRegion" class="field" onchange="applyDirectoryFilters()">
-<option value="all">All regions</option>
-<option value="usa">USA</option>
-<option value="canada">Canada</option>
-<option value="europe">Europe</option>
-<option value="africa">Africa</option>
-<option value="kenya">Kenya</option>
-<option value="middleeast">Middle East</option>
-<option value="asia">Asia-Pacific</option>
-<option value="military">Military & Defence</option>
-<option value="cruise">Cruise Ships</option>
-<option value="airlines">Airlines</option>
-<option value="jobs">Global Job Platforms</option>
-</select>
-<select id="directoryCategory" class="field" onchange="applyDirectoryFilters()">
-<option value="all">All job categories</option>
-</select>
-<button class="btn btn-light" onclick="clearDirectoryFilters()">Clear</button>
-</div>
+  <!-- MAIN CONTENT -->
+  <main>
 
-<div class="region-tabs">
-<button class="region-tab active" data-region="all" onclick="switchRegion('all',this)">All</button>
-<button class="region-tab" data-region="usa" onclick="switchRegion('usa',this)">🇺🇸 USA</button>
-<button class="region-tab" data-region="canada" onclick="switchRegion('canada',this)">🇨🇦 Canada</button>
-<button class="region-tab" data-region="europe" onclick="switchRegion('europe',this)">🇪🇺 Europe</button>
-<button class="region-tab" data-region="africa" onclick="switchRegion('africa',this)">🌍 Africa</button>
-<button class="region-tab" data-region="kenya" onclick="switchRegion('kenya',this)">🇰🇪 Kenya</button>
-<button class="region-tab" data-region="middleeast" onclick="switchRegion('middleeast',this)">🌙 Middle East</button>
-<button class="region-tab" data-region="military" onclick="switchRegion('military',this)">🪖 Military</button>
-<button class="region-tab" data-region="cruise" onclick="switchRegion('cruise',this)">🚢 Cruise</button>
-<button class="region-tab" data-region="airlines" onclick="switchRegion('airlines',this)">✈️ Airlines</button>
-<button class="region-tab" data-region="jobs" onclick="switchRegion('jobs',this)">💼 Job Platforms</button>
-</div>
+    <div class="page-title">
+      <h1>CV Expert Dashboard</h1>
+      <p>Manage candidate CV requests and certified professional profiles.</p>
+    </div>
 
-<div class="portal-grid" id="directoryGrid"></div>
-</div>
-</section>
 
-<section id="categories" style="background:#f8fafc">
-<div class="container">
-<div class="section-head"><div><h2>💼 Job Categories</h2><p>Use a category to find relevant career sources quickly.</p></div></div>
-<div class="category-wrap" id="categoryGrid"></div>
-</div>
-</section>
+    <!-- QUALIFIED USERS AT TOP -->
+    <section class="featured">
 
-<section id="kenya">
-<div class="container">
-<div class="section-head"><div><h2>🇰🇪 Kenya Verified Career Sources</h2><p>Government, public institutions, major employers and international organizations.</p></div></div>
-<div class="portal-grid" id="kenyaGrid"></div>
-</div>
-</section>
-
-<section id="middleeast" style="background:#f8fafc">
-<div class="container">
-<div class="section-head"><div><h2>🌙 Middle East Careers</h2><p>Qatar, UAE, Saudi Arabia, Kuwait, Bahrain and Oman career sources.</p></div></div>
-<div class="portal-grid" id="middleeastGrid"></div>
-</div>
-</section>
-
-<section id="military">
-<div class="container">
-<div class="section-head"><div><h2>🪖 Military & Defence Careers</h2><p>Official recruitment portals and defence career sources. Eligibility rules vary by country.</p></div></div>
-<div class="portal-grid" id="militaryGrid"></div>
-</div>
-</section>
-
-<section id="cruise" style="background:#f8fafc">
-<div class="container">
-<div class="section-head"><div><h2>🚢 Cruise Ship Careers</h2><p>Official cruise-line career sources for hospitality, marine, culinary, technical and guest-services roles.</p></div></div>
-<div class="portal-grid" id="cruiseGrid"></div>
-</div>
-</section>
-
-<section id="airlines">
-<div class="container">
-<div class="section-head"><div><h2>✈️ Worldwide Airline Careers</h2><p>Official airline recruitment portals for cabin crew, pilots, engineering, airport and ground operations.</p></div></div>
-<div class="portal-grid" id="airlinesGrid"></div>
-</div>
-</section>
-
-<section id="cv" class="cv-section">
-<div class="container">
-<div class="cv-box">
-<div>
-<div class="badge">👤 HUMAN CV EXPERT SERVICE</div>
-<h2 style="font-size:34px;line-height:1.15">Your CV is prepared by a real human expert.</h2>
-<p style="color:var(--muted);margin-top:12px">
-Submit your information cleanly. Customer Care will receive the request,
-review your career targets and assign the work to a Human CV Expert.
-</p>
-<div class="cv-list">
-<div><span class="check">✓</span> Human CV review and rewriting</div>
-<div><span class="check">✓</span> Target-job focused formatting</div>
-<div><span class="check">✓</span> Customer Care follow-up</div>
-<div><span class="check">✓</span> Final CV returned for direct download in your User Dashboard</div>
-</div>
-<div class="human-notice"><strong>Human-only service</strong><br>No automated AI resume builder is used in this workflow.</div>
-<button class="btn btn-success" style="margin-top:20px" onclick="openModal('humanModal')">👤 Request Human CV Expert</button>
-</div>
-
-<div class="cv-form">
-<h3>Start Your Human CV Request</h3>
-<p class="modal-sub">Fill in your details quickly and securely.</p>
-<div class="form-grid">
-<input id="cvName" class="field" placeholder="Full name *">
-<input id="cvEmail" class="field" type="email" placeholder="Email *">
-<input id="cvPhone" class="field" placeholder="Phone / WhatsApp *">
-<input id="cvCountry" class="field" placeholder="Country">
-<input id="cvRole" class="field full" placeholder="Target job / position / industry">
-<textarea id="cvExperience" class="field full" rows="4" placeholder="Brief work experience / education"></textarea>
-<button class="btn btn-success full" onclick="copyCVFormToModal()">Continue →</button>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<section class="staff-panel" id="staff">
-<div class="container">
-<div class="section-head">
-<div><h2 style="color:#fff">Customer Care / Human CV Expert Portal</h2><p style="color:#98a2b3">Authorized staff only. Review submissions, send completed files to users, and clear temporary records directly from your dashboard.</p></div>
-</div>
-
-<div id="staffLoginInline" class="staff-login">
-<h3>Secure Staff Login</h3>
-<p class="modal-sub">Use an authorized Firebase staff account.</p>
-<input id="staffEmailInline" class="field" type="email" placeholder="Staff email">
-<input id="staffPasswordInline" class="field" type="password" placeholder="Firebase password">
-<button class="btn btn-primary" style="width:100%;margin-top:8px" onclick="staffLogin('inline')">🔐 Secure Staff Login</button>
-<div id="staffLoginMessageInline" class="notice" style="display:none"></div>
-</div>
-
-<div id="staffDashboard" class="staff-dashboard">
-<div class="dashboard-grid">
-<div class="sidebar">
-<button onclick="showStaffSection('requests')">📥 CV Requests <span id="requestCount"></span></button>
-<button onclick="showStaffSection('portalsAdmin')">🌍 Manage Portals</button>
-<button onclick="showStaffSection('notifications')">🔔 Notifications</button>
-<button onclick="staffLogout()" class="btn-danger">🚪 Logout</button>
-</div>
-
-<div class="dashboard-content">
-<div id="requestsSection" class="dashboard-section active">
-<h3>Human CV Expert Portal - Received Files & Submissions</h3>
-<p class="modal-sub">Review incoming customer submissions, upload completed review documents directly to the user dashboard, and safely clear temporary records when finished.</p>
-<div id="requestsList">Loading requests...</div>
-</div>
-
-<div id="portalsAdminSection" class="dashboard-section">
-<h3>Add / Manage Career Portal</h3>
-<div class="notice">Only add a portal after checking that the destination belongs to the stated employer, government body or job platform.</div>
-<div class="form-grid">
-<input id="adminPortalName" class="field" placeholder="Portal / Company Name">
-<input id="adminPortalCountry" class="field" placeholder="Country / Region">
-<input id="adminPortalRegion" class="field" placeholder="Region key e.g. middleeast, kenya">
-<input id="adminPortalCategory" class="field" placeholder="Category e.g. Engineering">
-<input id="adminPortalLogo" class="field" placeholder="Logo / favicon URL">
-<select id="adminPortalType" class="field">
-<option value="official">Official employer/government</option>
-<option value="jobs">Job platform</option>
-<option value="information">Information source</option>
-</select>
-<input id="adminPortalUrl" class="field full" placeholder="Official careers/job URL">
-<textarea id="adminPortalDesc" class="field full" rows="3" placeholder="Description"></textarea>
-<button class="btn btn-success full" onclick="addNewPortal()">➕ Add Portal</button>
-</div>
-</div>
-
-<div id="notificationsSection" class="dashboard-section">
-<h3>Staff Notifications</h3>
-<div id="notificationList" class="notice">Notifications will appear here.</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-</main>
-
-<footer>
-<div class="container footer-grid">
-<div>
-<div class="footer-brand">Mustafa Elevate</div>
-<p>Worldwide career directory and real Human CV Expert support.</p>
-</div>
-<div><h4>Regions</h4><a href="#directory" onclick="quickFilter('usa')">USA</a><a href="#directory" onclick="quickFilter('canada')">Canada</a><a href="#directory" onclick="quickFilter('europe')">Europe</a><a href="#kenya">Kenya</a><a href="#middleeast">Middle East</a></div>
-<div><h4>Categories</h4><a href="#categories">Job Categories</a><a href="#military">Military</a><a href="#cruise">Cruise Ships</a><a href="#airlines">Airlines</a></div>
-<div><h4>Support</h4><a href="#cv">Human CV Expert</a><a href="#staff">Customer Care Center</a><a href="#" onclick="openModal('staffLoginModal');return false">Staff Login</a></div>
-</div>
-<div class="container copyright">© <span id="year"></span> Mustafa Elevate. All rights reserved. Always verify the final vacancy on the destination website.</div>
-</footer>
-
-<div class="modal" id="humanModal">
-<div class="modal-card">
-<button class="close" onclick="closeModal('humanModal')">×</button>
-<h2>👤 Human CV Expert Request</h2>
-<p class="modal-sub">A real human specialist will review your request. No AI CV generation.</p>
-<div class="notice"><strong>Smooth Submission:</strong> No complicated file upload required to submit. Fill out your details cleanly and submit!</div>
-<div class="form-grid">
-<input id="hName" class="field" placeholder="Full name *">
-<input id="hEmail" class="field" type="email" placeholder="Email *">
-<input id="hPhone" class="field" placeholder="Phone / WhatsApp *">
-<input id="hCountry" class="field" placeholder="Country">
-<input id="hRole" class="field full" placeholder="Target job / position">
-<textarea id="hExperience" class="field full" rows="3" placeholder="Experience / education"></textarea>
-<textarea id="hMessage" class="field full" rows="3" placeholder="Tell the Human CV Expert what you need"></textarea>
-
-<div class="payment-box full">
-  <strong>💳 Human CV Expert Service Fee</strong>
-  <div class="payment-price">KSh 1,000</div>
-  <div class="payment-step"><span>1️⃣</span><span>Payment must be completed before your Human CV request is submitted.</span></div>
-  <div class="payment-step"><span>2️⃣</span><span><strong>Payment Method: M-Pesa Paybill</strong><br>Go to Lipa na M-Pesa &gt; Paybill, Business Number: <strong>247247</strong>, Account Number: <strong>0798698299</strong>, Amount: <strong>KSh 1,000</strong>.</span></div>
-  <div class="payment-step"><span>3️⃣</span><span>Enter the M-Pesa transaction code below. Customer Care will verify the payment.</span></div>
-  <div class="notice" style="margin-top:12px"><strong>Why KSh 1,000?</strong><br>The KSh 1,000 fee covers professional human CV review and preparation by a real Human CV Expert. This is a human service — no AI-generated CV is used.</div>
-  <input id="paymentReference" class="field payment-ref" placeholder="M-Pesa transaction code / payment reference *">
-  <label style="display:flex;gap:8px;align-items:flex-start;margin-top:12px;font-size:13px;font-weight:800">
-    <input id="paymentConfirmed" type="checkbox" style="margin-top:4px">
-    <span>I confirm that I have paid the KSh 1,000 Human CV Expert service fee.</span>
-  </label>
-</div>
-
-<button class="btn btn-success full" onclick="submitHumanRequest()">📤 Submit Paid Human CV Request</button>
-</div>
-<div id="humanMessage"></div>
-</div>
-</div>
-
-<div class="modal" id="signInModal">
-<div class="modal-card">
-<button class="close" onclick="closeModal('signInModal')">×</button>
-<h2>👤 Account Sign In</h2>
-<p class="modal-sub">Sign in to your account to securely submit and track your CV requests.</p>
-
-<div class="form-grid">
-<input id="signInEmail" class="field full" type="email" placeholder="Email address *">
-<input id="signInPassword" class="field full" type="password" placeholder="Password *">
-
-<button class="btn btn-primary full" onclick="handleEmailSignIn()">🔐 Sign In</button>
-</div>
-
-<div id="signInMessage" style="margin-top:12px"></div>
-</div>
-</div>
-
-<div class="modal" id="registerModal">
-<div class="modal-card">
-<button class="close" onclick="closeModal('registerModal')">×</button>
-<h2>📝 Register New Account</h2>
-<p class="modal-sub">Create an account to save and track your CV requests and access secure portals.</p>
-
-<div class="form-grid">
-<input id="registerEmail" class="field full" type="email" placeholder="Email address *">
-<input id="registerPassword" class="field full" type="password" placeholder="Password (min 6 characters) *">
-
-<button class="btn btn-primary full" onclick="handleEmailRegister()">📝 Register Account</button>
-</div>
-
-<div id="registerMessage" style="margin-top:12px"></div>
-</div>
-</div>
-
-<div class="modal" id="userDashboardModal">
-<div class="modal-card" style="width:min(900px,100%);">
-<button class="close" onclick="closeModal('userDashboardModal')">×</button>
-<h2>📦 My User Dashboard</h2>
-<p class="modal-sub">View your requests, check status updates, and download your finalized expert CV files.</p>
-
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
-  <!-- Left Column: Notifications -->
-  <div style="background:#f8fafc;padding:15px;border-radius:12px;border:1px solid var(--border);">
-    <h3 style="font-size:16px;margin-bottom:10px;color:var(--dark);">🔔 Notifications & Status Updates</h3>
-    <div id="userNotificationsList" style="max-height:300px;overflow-y:auto;">Loading notifications...</div>
-  </div>
-  <!-- Right Column: Delivered Files -->
-  <div style="background:#ecfdf3;padding:15px;border-radius:12px;border:1px solid #abefc6;">
-    <h3 style="font-size:16px;margin-bottom:10px;color:#067647;">📁 Delivered Expert CV Files</h3>
-    <div id="userRequestsList" style="max-height:300px;overflow-y:auto;">Loading files...</div>
-  </div>
-</div>
-</div>
-</div>
-
-<div class="modal" id="staffLoginModal">
-<div class="modal-card">
-<button class="close" onclick="closeModal('staffLoginModal')">×</button>
-<h2>🔐 Secure Staff Login</h2>
-<p class="modal-sub">Customer Care & Human CV Expert staff only.</p>
-<input id="staffEmail" class="field" type="email" placeholder="Staff email">
-<input id="staffPassword" class="field" type="password" placeholder="Firebase password">
-<button class="btn btn-primary" style="width:100%;margin-top:10px" onclick="staffLogin('modal')">🔐 Login</button>
-<div id="staffLoginMessage" class="notice" style="display:none"></div>
-</div>
-</div>
-
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-import {
-  getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInAnonymously, signOut,
-  onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-import {
-  getFirestore, collection, addDoc, getDocs, getDoc, doc,
-  updateDoc, deleteDoc, serverTimestamp, query, orderBy, limit, where
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-import {
-  getStorage, ref, uploadBytes, getDownloadURL
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-storage.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyCFbbD5kYuCgi9TiXcBwo3f1X1pYu0vr08",
-  authDomain: "mustafa-elevet.firebaseapp.com",
-  projectId: "mustafa-elevet",
-  storageBucket: "mustafa-elevet.firebasestorage.app",
-  messagingSenderId: "402223404471",
-  appId: "1:402223404471:web:c37faabbe358d5e3ea0432",
-  measurementId: "G-35ZSF2MMLJ"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-const storage = getStorage(app);
-
-window.firebaseAuth = auth;
-window.firebaseDB = db;
-
-let staffUser = null;
-let currentRegion = "all";
-
-// HUMAN CV EXPERT PAYMENT SETTINGS
-const HUMAN_CV_FEE = 1000;
-const HUMAN_EXPERT_WHATSAPP = "YOUR_WHATSAPP_NUMBER";
-
-const categories = [
-  ["👷","Construction & Skilled Trades","Construction, electricians, plumbers, welders, technicians"],
-  ["⚙️","Engineering","Civil, mechanical, electrical, petroleum, chemical and industrial"],
-  ["💻","IT & Technology","Software, cybersecurity, cloud, data, networks and support"],
-  ["🏥","Healthcare","Nurses, doctors, caregivers, laboratory and medical support"],
-  ["🏨","Hospitality","Hotels, restaurants, housekeeping, chefs and guest services"],
-  ["✈️","Aviation","Cabin crew, pilots, airport, ground operations and aviation security"],
-  ["🚢","Maritime & Cruise","Deck, engine, hospitality, culinary and cruise operations"],
-  ["🚛","Driving & Logistics","Drivers, fleet, warehouse, supply chain and transport"],
-  ["🛡️","Security & Safety","Security, HSE, safety officers and emergency response"],
-  ["📚","Education","Teachers, lecturers, trainers and education support"],
-  ["💼","Business & Administration","HR, administration, management, customer service and sales"],
-  ["💰","Finance & Accounting","Accounting, banking, audit, insurance and finance"],
-  ["🛢️","Oil, Gas & Energy","Energy, drilling, geoscience, maintenance and utilities"],
-  ["🌾","Agriculture","Farming, agribusiness, food production and environmental work"],
-  ["🧹","Cleaning & Facilities","Cleaning, facilities, maintenance and support services"],
-  ["🪖","Military & Defence","Armed forces and defence career sources"],
-  ["⚓","Government & Public Service","Civil service, public agencies and government recruitment"],
-  ["🌐","International Organizations","UN and other international organization careers"]
-];
-
-function favicon(domain){
-  return "https://www.google.com/s2/favicons?domain=" + domain + "&sz=128";
-}
-
-const worldwidePortals = [
-{name:"USAJOBS",country:"USA",region:"usa",category:"Government",type:"official",badge:"🟢 VERIFIED GOVERNMENT SOURCE",badgeClass:"gov-badge",logo:favicon("usajobs.gov"),url:"https://www.usajobs.gov/",description:"Official U.S. federal government employment portal."},
-{name:"U.S. Army Careers",country:"USA",region:"military",category:"Military & Defence",type:"official",badge:"🟢 OFFICIAL SOURCE",badgeClass:"",logo:favicon("goarmy.com"),url:"https://www.goarmy.com/",description:"Official U.S. Army recruiting and careers."},
-{name:"Government of Canada Jobs",country:"Canada",region:"canada",category:"Government",type:"official",badge:"🟢 VERIFIED GOVERNMENT SOURCE",badgeClass:"gov-badge",logo:favicon("canada.ca"),url:"https://www.canada.ca/en/services/jobs/opportunities.html",description:"Official Government of Canada jobs and opportunities."},
-{name:"Canada Job Bank",country:"Canada",region:"canada",category:"Government",type:"official",badge:"🟢 GOVERNMENT JOB PLATFORM",badgeClass:"gov-badge",logo:favicon("jobbank.gc.ca"),url:"https://www.jobbank.gc.ca/",description:"Official Government of Canada Job Bank."},
-{name:"EURES",country:"Europe",region:"europe",category:"Government",type:"official",badge:"🟢 EU EMPLOYMENT NETWORK",badgeClass:"gov-badge",logo:favicon("eures.europa.eu"),url:"https://eures.europa.eu/",description:"Official European employment services network."},
-{name:"NHS Jobs",country:"United Kingdom",region:"europe",category:"Healthcare",type:"official",badge:"🟢 OFFICIAL PUBLIC SERVICE SOURCE",badgeClass:"gov-badge",logo:favicon("jobs.nhs.uk"),url:"https://www.jobs.nhs.uk/",description:"Official UK National Health Service recruitment portal."},
-{name:"Public Service Commission of Kenya",country:"Kenya",region:"kenya",category:"Government",type:"official",badge:"🟢 VERIFIED GOVERNMENT SOURCE",badgeClass:"gov-badge",logo:favicon("psckjobs.go.ke"),url:"https://www.psckjobs.go.ke/",description:"Official Kenya Public Service Commission recruitment system."},
-{name:"Qatar Airways Careers",country:"Qatar",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("qatarairways.com"),url:"https://careers.qatarairways.com/",description:"Official Qatar Airways careers and cabin crew recruitment."},
-{name:"QatarEnergy Careers",country:"Qatar",region:"middleeast",category:"Oil, Gas & Energy",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("qatarenergy.qa"),url:"https://www.qatarenergy.qa/en/Careers",description:"Official QatarEnergy careers source."},
-{name:"Emirates Group Careers",country:"UAE",region:"airlines",category:"Aviation",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("emiratesgroupcareers.com"),url:"https://www.emiratesgroupcareers.com/",description:"Official Emirates Group careers."},
-{name:"Saudi Aramco Careers",country:"Saudi Arabia",region:"middleeast",category:"Oil, Gas & Energy",type:"official",badge:"🟢 OFFICIAL EMPLOYER",badgeClass:"",logo:favicon("aramco.com"),url:"https://careers.aramco.com/",description:"Official Saudi Aramco careers."},
-{name:"LinkedIn Jobs",country:"Worldwide",region:"jobs",category:"Global Job Platform",type:"jobs",badge:"🔵 JOB PLATFORM",badgeClass:"job-badge",logo:favicon("linkedin.com"),url:"https://www.linkedin.com/jobs/",description:"Global professional network and job marketplace."},
-{name:"Indeed",country:"Worldwide",region:"jobs",category:"Global Job Platform",type:"jobs",badge:"🔵 JOB PLATFORM",badgeClass:"job-badge",logo:favicon("indeed.com"),url:"https://www.indeed.com/",description:"Large global job-search platform."},
-{name:"GulfTalent",country:"Middle East",region:"jobs",category:"Global Job Platform",type:"jobs",badge:"🔵 MIDDLE EAST JOB PLATFORM",badgeClass:"job-badge",logo:favicon("gulftalent.com"),url:"https://www.gulftalent.com/jobs",description:"Major Middle East job platform covering Gulf countries."}
-];
-
-worldwidePortals.forEach(p=>{
-  if(["Qatar","UAE","Saudi Arabia","Kuwait","Bahrain","Oman"].includes(p.country) && p.region!=="airlines" && p.region!=="military") p.middleEast=true;
-  if(p.region==="airlines" && ["Qatar","UAE","Saudi Arabia","Kuwait","Bahrain","Oman"].includes(p.country)) p.middleEast=true;
-});
-
-function renderCard(p){
-  return `
-  <div class="portal-card">
-    <div>
-      <div class="portal-head">
-        <img src="${escapeHtml(p.logo)}" alt="${escapeHtml(p.name)} logo"
-             onerror="this.onerror=null;this.src='${favicon("google.com")}';">
+      <div class="section-header">
         <div>
-          <h3>${escapeHtml(p.name)}</h3>
-          <span class="verified-badge ${p.badgeClass||''}">${escapeHtml(p.badge||"SOURCE")}</span>
+          <h2>⭐ Qualified Candidates</h2>
+          <span>Approved talent featured on the network</span>
         </div>
+
+        <button class="btn btn-primary" onclick="addQualifiedUser()">
+          + Add User
+        </button>
       </div>
-      <p>${escapeHtml(p.description)}</p>
-    </div>
-    <div>
-      <div class="portal-tags">
-        <span class="tag">📍 ${escapeHtml(p.country)}</span>
-        <span class="tag">💼 ${escapeHtml(p.category)}</span>
+
+      <div class="user-cards" id="qualifiedUsers">
+
+        <div class="profile-card">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e"
+               alt="User profile">
+
+          <div class="profile-info">
+            <h3>John Kamau</h3>
+            <p>Software Developer</p>
+            <span class="qualified">✓ QUALIFIED</span>
+          </div>
+        </div>
+
+
+        <div class="profile-card">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
+               alt="User profile">
+
+          <div class="profile-info">
+            <h3>Sarah Achieng</h3>
+            <p>Marketing Specialist</p>
+            <span class="qualified">✓ QUALIFIED</span>
+          </div>
+        </div>
+
+
+        <div class="profile-card">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d"
+               alt="User profile">
+
+          <div class="profile-info">
+            <h3>Brian Otieno</h3>
+            <p>Accountant</p>
+            <span class="qualified">✓ QUALIFIED</span>
+          </div>
+        </div>
+
+
+        <div class="profile-card">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb"
+               alt="User profile">
+
+          <div class="profile-info">
+            <h3>Mary Wanjiku</h3>
+            <p>Project Manager</p>
+            <span class="qualified">✓ QUALIFIED</span>
+          </div>
+        </div>
+
       </div>
-      <button class="btn btn-primary" onclick="checkAuthAndOpen('${escapeHtml(p.url)}')" style="width:100%">
-        ${p.type==="official" ? "Official Careers →" : "Open Source →"}
-      </button>
-    </div>
-  </div>`;
-}
+    </section>
 
-window.checkAuthAndOpen = function(url) {
-  const currentUser = auth.currentUser;
-  if (!currentUser || currentUser.isAnonymous) {
-    showToast("⚠️ Please sign in or register before applying for jobs.");
-    openModal('signInModal');
-  } else {
-    window.open(url, '_blank', 'noopener,noreferrer');
-  }
-};
 
-function renderPortals(list){
-  const grid=document.getElementById("directoryGrid");
-  grid.innerHTML=list.length ? list.map(renderCard).join("") :
-    `<div class="empty"><strong>No matching career sources found.</strong><br>Try another country, company, category or job platform.</div>`;
-  document.getElementById("statPortalsCount").textContent=worldwidePortals.length;
-}
+    <!-- STATISTICS -->
+    <section class="stats">
 
-function renderDedicated(){
-  document.getElementById("kenyaGrid").innerHTML=worldwidePortals.filter(p=>p.region==="kenya").map(renderCard).join("");
-  document.getElementById("middleeastGrid").innerHTML=worldwidePortals.filter(p=>p.middleEast || ["Qatar","UAE","Saudi Arabia","Kuwait","Bahrain","Oman"].includes(p.country)).map(renderCard).join("");
-  document.getElementById("militaryGrid").innerHTML=worldwidePortals.filter(p=>p.region==="military").map(renderCard).join("");
-  document.getElementById("cruiseGrid").innerHTML=worldwidePortals.filter(p=>p.region==="cruise").map(renderCard).join("");
-  document.getElementById("airlinesGrid").innerHTML=worldwidePortals.filter(p=>p.region==="airlines").map(renderCard).join("");
-}
+      <div class="stat-card">
+        <small>Total Requests</small>
+        <h2>132</h2>
+      </div>
 
-function renderCategories(){
-  document.getElementById("categoryGrid").innerHTML=categories.map(c=>`
-    <button class="category-card" onclick="filterCategory('${escapeAttr(c[1])}')">
-      <span>${c[0]}</span>${escapeHtml(c[1])}<small>${escapeHtml(c[2])}</small>
-    </button>
-  `).join("");
+      <div class="stat-card">
+        <small>Pending</small>
+        <h2>14</h2>
+      </div>
 
-  const select=document.getElementById("directoryCategory");
-  const vals=[...new Set(worldwidePortals.map(p=>p.category))].sort();
-  vals.forEach(v=>{
-    const opt=document.createElement("option");
-    opt.value=v;opt.textContent=v;select.appendChild(opt);
-  });
-}
+      <div class="stat-card">
+        <small>Completed</small>
+        <h2>102</h2>
+      </div>
 
-window.filterCategory=function(category){
-  document.getElementById("directoryCategory").value=category;
-  document.getElementById("directory").scrollIntoView({behavior:"smooth"});
-  applyDirectoryFilters();
-};
+      <div class="stat-card">
+        <small>Qualified Users</small>
+        <h2>45</h2>
+      </div>
 
-window.switchRegion=function(region,btn){
-  currentRegion=region;
-  document.getElementById("directoryRegion").value=region;
-  document.querySelectorAll(".region-tab").forEach(x=>x.classList.remove("active"));
-  if(btn) btn.classList.add("active");
-  else document.querySelector(`.region-tab[data-region="${region}"]`)?.classList.add("active");
-  applyDirectoryFilters();
-};
+    </section>
 
-window.quickFilter=function(region){
-  document.getElementById("directory").scrollIntoView({behavior:"smooth"});
-  switchRegion(region);
-};
 
-window.applyDirectoryFilters=function(){
-  const q=document.getElementById("directorySearch").value.trim().toLowerCase();
-  const region=document.getElementById("directoryRegion").value;
-  const cat=document.getElementById("directoryCategory").value;
+    <div class="content-grid">
 
-  const list=worldwidePortals.filter(p=>{
-    const text=[p.name,p.country,p.category,p.description,p.region].join(" ").toLowerCase();
-    const regionMatch=region==="all" || p.region===region ||
-      (region==="middleeast" && (p.middleEast || ["Qatar","UAE","Saudi Arabia","Kuwait","Bahrain","Oman"].includes(p.country)));
-    const catMatch=cat==="all" || p.category===cat;
-    return (!q || text.includes(q)) && regionMatch && catMatch;
-  });
-  renderPortals(list);
-};
+      <!-- CV REQUESTS -->
+      <section class="panel">
 
-window.searchDirectory=function(){
-  document.getElementById("directorySearch").value=document.getElementById("heroKeyword").value.trim();
-  const loc=document.getElementById("heroLocation").value.trim().toLowerCase();
-  document.getElementById("directoryRegion").value="all";
-  document.getElementById("directoryCategory").value="all";
-  let list=worldwidePortals;
-  if(loc) list=list.filter(p=>[p.country,p.region,p.name,p.description].join(" ").toLowerCase().includes(loc));
-  const q=document.getElementById("directorySearch").value.trim().toLowerCase();
-  if(q) list=list.filter(p=>[p.name,p.country,p.category,p.description,p.region].join(" ").toLowerCase().includes(q));
-  renderPortals(list);
-  document.getElementById("directory").scrollIntoView({behavior:"smooth"});
-};
-
-window.clearDirectoryFilters=function(){
-  document.getElementById("directorySearch").value="";
-  document.getElementById("directoryRegion").value="all";
-  document.getElementById("directoryCategory").value="all";
-  currentRegion="all";
-  document.querySelectorAll(".region-tab").forEach(x=>x.classList.remove("active"));
-  document.querySelector('.region-tab[data-region="all"]').classList.add("active");
-  renderPortals(worldwidePortals);
-};
-
-document.getElementById("directorySearch").addEventListener("input",applyDirectoryFilters);
-
-window.openModal=function(id){
-  document.getElementById(id)?.classList.add("show");
-  if(id === 'userDashboardModal') {
-    loadUserDashboardData();
-  }
-};
-window.closeModal=function(id){document.getElementById(id)?.classList.remove("show")};
-
-window.toggleMobileMenu=function(){
-  const nav=document.querySelector(".navlinks");
-  nav.style.display=nav.style.display==="flex"?"none":"flex";
-  nav.style.position="absolute";nav.style.top="72px";nav.style.left="0";nav.style.right="0";
-  nav.style.background="#fff";nav.style.padding="15px";nav.style.flexDirection="column";
-  nav.style.borderBottom="1px solid var(--border)";
-};
-
-window.copyCVFormToModal=function(){
-  document.getElementById("hName").value=document.getElementById("cvName").value;
-  document.getElementById("hEmail").value=document.getElementById("cvEmail").value;
-  document.getElementById("hPhone").value=document.getElementById("cvPhone").value;
-  document.getElementById("hCountry").value=document.getElementById("cvCountry").value;
-  document.getElementById("hRole").value=document.getElementById("cvRole").value;
-  document.getElementById("hExperience").value=document.getElementById("cvExperience").value;
-  openModal("humanModal");
-};
-
-window.handleEmailSignIn=async function(){
-  const email=document.getElementById("signInEmail").value.trim();
-  const password=document.getElementById("signInPassword").value;
-  const msgEl=document.getElementById("signInMessage");
-
-  if(!email || !password){
-    msgEl.innerHTML='<div class="warning">Email and password are required.</div>';
-    return;
-  }
-
-  try{
-    await signInWithEmailAndPassword(auth, email, password);
-    showToast("Signed in successfully!");
-    closeModal("signInModal");
-    document.getElementById("signInEmail").value="";
-    document.getElementById("signInPassword").value="";
-  }catch(err){
-    console.error(err);
-    msgEl.innerHTML='<div class="error">'+escapeHtml(err.message)+'</div>';
-  }
-};
-
-window.handleEmailRegister=async function(){
-  const email=document.getElementById("registerEmail").value.trim();
-  const password=document.getElementById("registerPassword").value;
-  const msgEl=document.getElementById("registerMessage");
-
-  if(!email || !password){
-    msgEl.innerHTML='<div class="warning">Email and password are required.</div>';
-    return;
-  }
-
-  try{
-    await createUserWithEmailAndPassword(auth, email, password);
-    showToast("Account created and signed in successfully!");
-    closeModal("registerModal");
-    document.getElementById("registerEmail").value="";
-    document.getElementById("registerPassword").value="";
-  }catch(err){
-    console.error(err);
-    msgEl.innerHTML='<div class="error">'+escapeHtml(err.message)+'</div>';
-  }
-};
-
-window.handleUserSignOut = async function() {
-  try {
-    await signOut(auth);
-    showToast("Signed out successfully.");
-  } catch(e) {
-    console.error(e);
-  }
-};
-
-async function ensureSignedInUser(){
-  if(auth.currentUser) return auth.currentUser;
-  const cred=await signInAnonymously(auth);
-  return cred.user;
-}
-
-window.submitHumanRequest=async function(){
-  const messageEl=document.getElementById("humanMessage");
-  const name=document.getElementById("hName").value.trim();
-  const email=document.getElementById("hEmail").value.trim();
-  const phone=document.getElementById("hPhone").value.trim();
-  const country=document.getElementById("hCountry").value.trim();
-  const role=document.getElementById("hRole").value.trim();
-  const experience=document.getElementById("hExperience").value.trim();
-  const message=document.getElementById("hMessage").value.trim();
-  const paymentReference=document.getElementById("paymentReference").value.trim();
-  const paymentConfirmed=document.getElementById("paymentConfirmed").checked;
-
-  if(!name || !email || !phone){
-    messageEl.innerHTML='<div class="warning">Full name, email and phone/WhatsApp are required.</div>';
-    return;
-  }
-
-  if(!paymentReference || !paymentConfirmed){
-    messageEl.innerHTML='<div class="warning"><strong>Payment required.</strong><br>Please complete the KSh '+HUMAN_CV_FEE.toLocaleString()+' payment via Paybill 247247 (Acc: 0798698299) and enter the M-Pesa transaction code before submitting your request.</div>';
-    return;
-  }
-
-  try{
-    const user=await ensureSignedInUser();
-
-    const docRef=await addDoc(collection(db,"humanCVRequests"),{
-      name,email,phone,country,targetRole:role,experience,message,
-      paymentAmount:HUMAN_CV_FEE,
-      paymentMethod:"M-Pesa Paybill",
-      paymentReference,
-      paymentStatus:"pending_verification",
-      userId:user.uid,status:"Paid - Awaiting Verification",createdAt:serverTimestamp(),
-      deliveredFileUrl: "",
-      deliveredFileName: ""
-    });
-
-    await addDoc(collection(db,"staffNotifications"),{
-      type:"new_cv_request",
-      requestId:docRef.id,
-      title:"New Human CV Request",
-      message:`${name} submitted a KSh ${HUMAN_CV_FEE} Human CV Expert request. Payment reference: ${paymentReference}. Verify payment before starting the CV work.`,
-      read:false,
-      createdAt:serverTimestamp()
-    });
-
-    await addDoc(collection(db,"userNotifications"),{
-      userId: user.uid,
-      title: "CV Request Received",
-      message: `We have received your Human CV Expert request for '${role || "General CV"}'. Your payment reference (${paymentReference}) is pending verification.`,
-      createdAt: serverTimestamp(),
-      read: false
-    });
-
-    const connectButton = HUMAN_EXPERT_WHATSAPP !== "YOUR_WHATSAPP_NUMBER"
-      ? `<br><a class="btn btn-success" style="margin-top:12px" target="_blank" rel="noopener" href="https://wa.me/${HUMAN_EXPERT_WHATSAPP.replace(/\D/g,"")}">💬 Connect with Mustafa / Human CV Expert on WhatsApp</a>`
-      : "";
-    messageEl.innerHTML='<div class="human-notice"><strong>Request submitted successfully!</strong><br><br>Your KSh '+HUMAN_CV_FEE.toLocaleString()+' payment reference has been received for verification. Customer Care will verify the payment and assign your request to the Human CV Expert.'+connectButton+'</div>';
-    document.getElementById("paymentReference").value="";
-    document.getElementById("paymentConfirmed").checked=false;
-  }catch(err){
-    console.error(err);
-    messageEl.innerHTML='<div class="error">'+escapeHtml(err.message||"Unable to submit request.")+'</div>';
-  }
-};
-
-window.staffLogin=async function(source){
-  const email=document.getElementById(source==="modal"?"staffEmail":"staffEmailInline").value.trim();
-  const password=document.getElementById(source==="modal"?"staffPassword":"staffPasswordInline").value;
-  const msg=document.getElementById(source==="modal"?"staffLoginMessage":"staffLoginMessageInline");
-  msg.style.display="block";
-
-  if(!email || !password){
-    msg.textContent="Enter staff email and password.";
-    return;
-  }
-
-  try{
-    const cred=await signInWithEmailAndPassword(auth,email,password);
-    const staffRef=doc(db,"staffUsers",cred.user.uid);
-    const staffSnap=await getDoc(staffRef);
-
-    if(!staffSnap.exists() || staffSnap.data().active!==true){
-      await signOut(auth);
-      throw new Error("This Firebase account is not authorized as active staff.");
-    }
-
-    staffUser=cred.user;
-    document.getElementById("staffLoginInline").style.display="none";
-    document.getElementById("staffDashboard").style.display="block";
-    closeModal("staffLoginModal");
-    msg.textContent="";
-    msg.style.display="none";
-    await loadStaffRequests();
-    await loadNotifications();
-    showToast("Staff login successful.");
-  }catch(err){
-    console.error(err);
-    msg.textContent="Login failed: "+(err.message||"Unknown error");
-  }
-};
-
-window.staffLogout=async function(){
-  try{await signOut(auth)}catch(e){}
-  staffUser=null;
-  document.getElementById("staffDashboard").style.display="none";
-  document.getElementById("staffLoginInline").style.display="block";
-  showToast("Logged out successfully.");
-};
-
-window.showStaffSection=function(id){
-  document.querySelectorAll(".dashboard-section").forEach(s=>s.classList.remove("active"));
-  document.getElementById(id+"Section")?.classList.add("active");
-};
-
-async function loadStaffRequests(){
-  const el=document.getElementById("requestsList");
-  try{
-    const snap=await getDocs(query(collection(db,"humanCVRequests"),orderBy("createdAt","desc"),limit(100)));
-    document.getElementById("requestCount").textContent=snap.size?`(${snap.size})`:"";
-    if(snap.empty){el.innerHTML='<div class="empty">No Human CV requests yet.</div>';return;}
-
-    el.innerHTML=snap.docs.map(ds=>{
-      const d=ds.data(),id=ds.id,status=(d.status||"New");
-      const statusClass=status.toLowerCase().includes("complete")?"done":status.toLowerCase().includes("progress")?"progress":"";
-      return `
-      <div class="request-card">
-        <div class="request-top">
-          <div><h4>${escapeHtml(d.name||"Unknown")} — ${escapeHtml(d.targetRole||"General CV")}</h4>
-          <div class="small">📧 ${escapeHtml(d.email||"")} &nbsp; 📱 ${escapeHtml(d.phone||"")} &nbsp; 📍 ${escapeHtml(d.country||"N/A")}</div></div>
-          <span class="status ${statusClass}">${escapeHtml(status)}</span>
-        </div>
-        <p style="margin-top:10px">${escapeHtml(d.message||"No message provided.")}</p>
-        <p class="small">Experience: ${escapeHtml(d.experience||"Not provided")}</p>
-        <div class="notice" style="margin:10px 0"><strong>Payment:</strong> KSh ${escapeHtml(d.paymentAmount||HUMAN_CV_FEE)} · Paybill 247247 (Acc: 0798698299) · Ref: ${escapeHtml(d.paymentReference||"Not provided")} · Status: ${escapeHtml(d.paymentStatus||"Not recorded")}</div>
-        
-        <div style="margin-top:12px;padding:12px;background:#f8fafc;border:1px solid var(--border);border-radius:10px;">
-            <label class="small font-weight-bold text-primary">Upload Completed Expert CV for User Dashboard:</label>
-            <input type="file" class="field" id="staffUploadFile_${id}" style="margin-top:5px;margin-bottom:8px;">
-            <button class="btn btn-primary btn-sm" onclick="staffDeliverCvFile('${id}')">Upload & Deliver to User Dashboard</button>
+        <div class="section-header">
+          <h2>CV Requests</h2>
+          <span>Latest pipeline submissions</span>
         </div>
 
-        ${d.deliveredFileUrl ? `<div style="margin:8px 0;padding:8px;background:#ecfdf3;border-radius:6px;font-size:12px;"><strong>Delivered File:</strong> <a href="${escapeHtml(d.deliveredFileUrl)}" target="_blank" rel="noopener">${escapeHtml(d.deliveredFileName || "View Completed CV")}</a></div>` : ''}
-        
-        <div class="staff-tools" style="margin-top:10px;">
-          ${d.paymentStatus==="pending_verification"?`<button class="btn btn-primary" onclick="verifyPayment('${id}')">✓ Verify Payment</button>`:""}
-          <button class="btn btn-outline" onclick="changeRequestStatus('${id}','In Progress')">In Progress</button>
-          <button class="btn btn-danger" onclick="deleteTempRequest('${id}')">🗑️ Delete Record</button>
-        </div>
-      </div>`;
-    }).join("");
-  }catch(err){
-    console.error(err);
-    el.innerHTML='<div class="error">Unable to load requests. Check Firestore rules and staff authorization.</div>';
-  }
-}
 
-window.verifyPayment=async function(id){
-  try{
-    if(!staffUser) throw new Error("Staff login required.");
-    const reqDocRef = doc(db, "humanCVRequests", id);
-    const reqSnap = await getDoc(reqDocRef);
-    const reqData = reqSnap.data();
+        <div class="request">
 
-    await updateDoc(reqDocRef,{
-      paymentStatus:"verified",
-      status:"In Progress",
-      paymentVerifiedAt:serverTimestamp(),
-      paymentVerifiedBy:staffUser.uid,
-      updatedAt:serverTimestamp(),
-      updatedBy:staffUser.uid
-    });
-    
-    await addDoc(collection(db,"staffNotifications"),{
-      type:"payment_verified",requestId:id,title:"CV Payment Verified",
-      message:"KSh 1,000 payment verified. Human CV Expert can begin the request.",
-      read:false,createdAt:serverTimestamp()
-    });
+          <div class="request-top">
 
-    if(reqData && reqData.userId) {
-      await addDoc(collection(db,"userNotifications"),{
-        userId: reqData.userId,
-        title: "Payment Verified & CV In Progress",
-        message: `Your payment for '${reqData.targetRole || "General CV"}' has been verified. Our Human CV Expert is now working on your documents.`,
-        createdAt: serverTimestamp(),
-        read: false
-      });
-    }
-
-    showToast("Payment verified. Human CV Expert can start the work.");
-    loadStaffRequests();
-  }catch(err){showToast("Payment verification failed: "+err.message)}
-};
-
-window.changeRequestStatus=async function(id,status){
-  try{
-    const reqDocRef = doc(db, "humanCVRequests", id);
-    const reqSnap = await getDoc(reqDocRef);
-    const reqData = reqSnap.data();
-
-    await updateDoc(reqDocRef,{status,updatedAt:serverTimestamp(),updatedBy:auth.currentUser?.uid||""});
-    
-    if(reqData && reqData.userId) {
-      await addDoc(collection(db,"userNotifications"),{
-        userId: reqData.userId,
-        title: "CV Request Status Update",
-        message: `Your CV request status for '${reqData.targetRole || "General CV"}' has been updated to: ${status}`,
-        createdAt: serverTimestamp(),
-        read: false
-      });
-    }
-
-    showToast("Request status updated.");
-    loadStaffRequests();
-  }catch(err){showToast("Update failed: "+err.message)}
-};
-
-window.staffDeliverCvFile = async function(docId) {
-    const fileInput = document.getElementById(`staffUploadFile_${docId}`);
-    if (!fileInput || fileInput.files.length === 0) {
-        alert("Please select a file to upload first.");
-        return;
-    }
-    
-    const file = fileInput.files[0];
-    const storageRef = ref(storage, `completedCVs/${docId}/${safeFileName(file.name)}`);
-    
-    try {
-        showToast("Uploading file to storage...");
-        const snapshot = await uploadBytes(storageRef, file);
-        const downloadUrl = await getDownloadURL(snapshot.ref);
-        
-        const reqDocRef = doc(db, "humanCVRequests", docId);
-        const reqSnap = await getDoc(reqDocRef);
-        const reqData = reqSnap.data();
-
-        await updateDoc(reqDocRef, {
-            deliveredFileUrl: downloadUrl,
-            deliveredFileName: file.name,
-            fileUrl: downloadUrl, 
-            fileName: file.name,
-            status: "Completed",
-            updatedAt: serverTimestamp()
-        });
-
-        if(reqData && reqData.userId) {
-          await addDoc(collection(db, "userNotifications"), {
-            userId: reqData.userId,
-            title: "🎉 Your Expert CV is Ready!",
-            message: `The Human CV Expert has completed and delivered your CV file for '${reqData.targetRole || "General CV"}'. Check your dashboard to download it.`,
-            createdAt: serverTimestamp(),
-            read: false
-          });
-        }
-        
-        showToast("File successfully delivered to user dashboard!");
-        loadStaffRequests();
-    } catch (error) {
-        console.error("Upload error details:", error);
-        alert("UPLOAD FAILED: " + error.message);
-    }
-};
-
-window.deleteTempRequest = async function(id) {
-  if(!confirm("Are you sure you want to delete this temporary request record from your expert portal?")) return;
-  try {
-    if(!staffUser) throw new Error("Staff login required.");
-    await deleteDoc(doc(db, "humanCVRequests", id));
-    showToast("Temporary request deleted successfully.");
-    loadStaffRequests();
-  } catch(err) {
-    showToast("Delete failed: " + err.message);
-  }
-};
-
-async function loadNotifications(){
-  const el=document.getElementById("notificationList");
-  try{
-    const snap=await getDocs(query(collection(db,"staffNotifications"),orderBy("createdAt","desc"),limit(50)));
-    if(snap.empty){el.innerHTML="No notifications.";return;}
-    el.innerHTML=snap.docs.map(d=>{
-      const n=d.data();
-      return `<div class="request-card"><strong>${escapeHtml(n.title||"Notification")}</strong><p>${escapeHtml(n.message||"")}</p></div>`;
-    }).join("");
-  }catch(err){
-    el.innerHTML="Notifications unavailable. Check Firestore rules.";
-  }
-}
-
-async function loadUserDashboardData() {
-  const user = auth.currentUser;
-  const notifEl = document.getElementById("userNotificationsList");
-  const filesContainer = document.getElementById("userRequestsList");
-
-  if (!user || user.isAnonymous) {
-    notifEl.innerHTML = '<div class="warning">Please sign in to view your notifications.</div>';
-    filesContainer.innerHTML = '<div class="warning">Please sign in to view your delivered CV files.</div>';
-    return;
-  }
-
-  try {
-    const notifQuery = query(collection(db, "userNotifications"), where("userId", "==", user.uid));
-    const notifSnap = await getDocs(notifQuery);
-    if(notifSnap.empty) {
-      notifEl.innerHTML = '<div class="small" style="padding:10px;">No new notifications yet.</div>';
-    } else {
-      notifEl.innerHTML = notifSnap.docs.map(d => {
-        const n = d.data();
-        return `<div class="request-card" style="padding:10px;margin-bottom:8px;">
-          <strong>${escapeHtml(n.title || "Update")}</strong>
-          <p style="font-size:13px;margin-top:4px;">${escapeHtml(n.message || "")}</p>
-        </div>`;
-      }).join("");
-    }
-  } catch(e) {
-    notifEl.innerHTML = '<div class="error">Could not load notifications.</div>';
-  }
-
-  try {
-    const reqQuery = query(collection(db, "humanCVRequests"), where("userId", "==", user.uid));
-    const reqSnap = await getDocs(reqQuery);
-    if(reqSnap.empty) {
-      filesContainer.innerHTML = '<div class="empty">You have not submitted any CV requests yet.</div>';
-    } else {
-      let hasDeliveredFiles = false;
-      let filesHtml = "";
-
-      reqSnap.forEach(ds => {
-        const d = ds.data();
-        const fileLink = d.deliveredFileUrl || d.fileUrl;
-        const fileName = d.deliveredFileName || d.fileName || 'Your Final Expert CV.pdf';
-        
-        if (fileLink) {
-          hasDeliveredFiles = true;
-          filesHtml += `
-            <div class="card bg-light border-success p-3 mb-2" style="background:#fff;border:1px solid #16a34a;border-radius:10px;padding:12px;margin-bottom:10px;">
-              <h6 class="font-weight-bold text-success mb-1" style="color:#16a34a;font-size:14px;">📄 ${escapeHtml(fileName)}</h6>
-              <p class="small text-muted mb-2">Target Role: ${escapeHtml(d.targetRole || "General CV")}</p>
-              <a href="${escapeHtml(fileLink)}" target="_blank" class="btn btn-success btn-sm font-weight-bold" style="width:100%;text-align:center;">
-                  📥 Download Final Expert CV
-              </a>
+            <div>
+              <h3>James Ochieng</h3>
+              <p>Professional CV — Software Engineering</p>
             </div>
-          `;
-        }
-      });
 
-      if (!hasDeliveredFiles) {
-        filesContainer.innerHTML = '<div class="small text-muted" style="padding:10px;">Your expert is currently working on your document. Your completed files will appear here instantly when ready for download.</div>';
-      } else {
-        filesContainer.innerHTML = filesHtml;
-      }
+            <span class="status pending">PENDING</span>
+
+          </div>
+
+          <button class="btn btn-primary"
+                  onclick="startRequest('James Ochieng')">
+            Accept Request
+          </button>
+
+        </div>
+
+
+        <div class="request">
+
+          <div class="request-top">
+
+            <div>
+              <h3>Linda Atieno</h3>
+              <p>Professional CV — Accounting & Finance</p>
+            </div>
+
+            <span class="status progress">IN PROGRESS</span>
+
+          </div>
+
+          <button class="btn btn-primary"
+                  onclick="openRequest('Linda Atieno')">
+            Open Request
+          </button>
+
+        </div>
+
+
+        <div class="request">
+
+          <div class="request-top">
+
+            <div>
+              <h3>David Onyango</h3>
+              <p>Professional CV — Business Management</p>
+            </div>
+
+            <span class="status completed">COMPLETED</span>
+
+          </div>
+
+          <button class="btn btn-success"
+                  onclick="sendCV('David Onyango')">
+            Send CV
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- CREATE CV -->
+      <section class="panel">
+
+        <div class="section-header">
+          <h2>Create CV</h2>
+        </div>
+
+        <label>Selected User</label>
+
+        <input
+          type="text"
+          id="selectedUser"
+          placeholder="Select a CV request"
+        />
+
+
+        <label>Professional Title</label>
+
+        <input
+          type="text"
+          placeholder="e.g. Full Stack Developer"
+        />
+
+
+        <label>Professional Summary</label>
+
+        <textarea
+          placeholder="Write the user's professional summary..."
+        ></textarea>
+
+
+        <label>CV Document</label>
+
+        <div class="upload-box"
+             onclick="document.getElementById('cvFile').click()">
+
+          📄 Click to upload completed CV document
+
+          <input
+            type="file"
+            id="cvFile"
+            accept=".pdf,.doc,.docx"
+            hidden
+            onchange="fileSelected()"
+          />
+
+        </div>
+
+        <button class="btn btn-success"
+                onclick="completeCV()">
+          ✓ Complete & Send CV
+        </button>
+
+      </section>
+
+    </div>
+
+
+    <!-- ADD QUALIFIED USER -->
+    <section class="panel">
+
+      <div class="section-header">
+        <div>
+          <h2>Add Qualified Candidate</h2>
+          <span>Feature a certified professional profile directly to the dashboard index.</span>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;">
+
+        <div>
+          <label>User Name</label>
+          <input
+            id="newUserName"
+            type="text"
+            placeholder="Full name"
+          />
+        </div>
+
+        <div>
+          <label>Profession</label>
+          <input
+            id="newUserProfession"
+            type="text"
+            placeholder="Profession"
+          />
+        </div>
+
+      </div>
+
+      <label>Profile Image</label>
+
+      <input
+        id="newUserImage"
+        type="file"
+        accept="image/*"
+      />
+
+      <button class="btn btn-primary"
+              onclick="addUserToDashboard()">
+        Add to Dashboard
+      </button>
+
+    </section>
+
+  </main>
+
+</div>
+
+
+<script>
+
+  /* ACCEPT REQUEST */
+
+  function startRequest(name) {
+    document.getElementById("selectedUser").value = name;
+    alert(
+      "CV request accepted for " +
+      name +
+      ". You can now build or review their tailored document package."
+    );
+  }
+
+
+  /* OPEN REQUEST */
+
+  function openRequest(name) {
+    document.getElementById("selectedUser").value = name;
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: "smooth"
+    });
+  }
+
+
+  /* SEND CV */
+
+  function sendCV(name) {
+    alert(
+      "The completed CV package for " +
+      name +
+      " has been processed and sent successfully."
+    );
+  }
+
+
+  /* FILE SELECTED */
+
+  function fileSelected() {
+    const file = document.getElementById("cvFile").files[0];
+    if (file) {
+      alert("Document attached: " + file.name);
     }
-  } catch(e) {
-    filesContainer.innerHTML = '<div class="error">Could not load delivered files.</div>';
   }
-}
 
-window.addNewPortal=async function(){
-  if(!staffUser){showToast("Staff login required.");return}
-  const name=document.getElementById("adminPortalName").value.trim();
-  const country=document.getElementById("adminPortalCountry").value.trim();
-  const region=document.getElementById("adminPortalRegion").value.trim().toLowerCase();
-  const category=document.getElementById("adminPortalCategory").value.trim();
-  const logo=document.getElementById("adminPortalLogo").value.trim();
-  const type=document.getElementById("adminPortalType").value;
-  const url=document.getElementById("adminPortalUrl").value.trim();
-  const description=document.getElementById("adminPortalDesc").value.trim();
 
-  if(!name||!url){showToast("Portal name and URL are required.");return}
-  try{
-    await addDoc(collection(db,"careerPortals"),{
-      name,country,region,category,logo,url,description,type,
-      verified:type==="official",createdAt:serverTimestamp(),createdBy:staffUser.uid
-    });
-    worldwidePortals.push({
-      name,country,region:region||"jobs",category,type,
-      badge:type==="official"?"🟢 OFFICIAL SOURCE":type==="jobs"?"🔵 JOB PLATFORM":"🟣 INFORMATION SOURCE",
-      badgeClass:type==="official"?"":type==="jobs"?"job-badge":"info-badge",
-      logo:logo||favicon(new URL(url).hostname),url,description
-    });
-    renderPortals(worldwidePortals);
-    renderDedicated();
-    showToast("Portal added successfully.");
-  }catch(err){showToast("Unable to add portal: "+err.message)}
-};
+  /* COMPLETE CV */
 
-function safeFileName(name){return name.replace(/[^a-zA-Z0-9._-]/g,"_")}
-function escapeHtml(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
-function escapeAttr(s){return escapeHtml(s)}
-
-function showToast(msg){
-  const t=document.createElement("div");t.className="toast show";t.textContent=msg;
-  document.body.appendChild(t);setTimeout(()=>t.remove(),3500);
-}
-window.showToast=showToast;
-
-onAuthStateChanged(auth, async user => {
-  const signInNavBtn = document.getElementById("signInNavBtn");
-  const registerNavBtn = document.getElementById("registerNavBtn");
-  const userDashboardNavBtn = document.getElementById("userDashboardNavBtn");
-  const userSignOutNavBtn = document.getElementById("userSignOutNavBtn");
-  const userNotifBadge = document.getElementById("userNotifBadge");
-
-  if(user && !user.isAnonymous){
-    signInNavBtn.style.display = "none";
-    registerNavBtn.style.display = "none";
-    userDashboardNavBtn.style.display = "inline-flex";
-    userSignOutNavBtn.style.display = "inline-flex";
-
-    try {
-      const snap = await getDocs(query(collection(db, "userNotifications"), where("userId", "==", user.uid)));
-      if(!snap.empty) {
-        userNotifBadge.textContent = snap.size;
-        userNotifBadge.style.display = "inline-block";
-      } else {
-        userNotifBadge.style.display = "none";
-      }
-    } catch(e) {}
-  } else {
-    signInNavBtn.style.display = "inline-flex";
-    registerNavBtn.style.display = "inline-flex";
-    userDashboardNavBtn.style.display = "none";
-    userSignOutNavBtn.style.display = "none";
+  function completeCV() {
+    const user = document.getElementById("selectedUser").value;
+    if (!user) {
+      alert("Please select a candidate request first.");
+      return;
+    }
+    alert(
+      "CV generation and review completed successfully for " +
+      user +
+      "!"
+    );
   }
-});
 
-document.getElementById("year").textContent=new Date().getFullYear();
-renderCategories();
-renderPortals(worldwidePortals);
-renderDedicated();
+
+  /* ADD QUALIFIED USER */
+
+  function addQualifiedUser() {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: "smooth"
+    });
+  }
+
+
+  /* ADD USER WITH IMAGE */
+
+  function addUserToDashboard() {
+    const name = document.getElementById("newUserName").value;
+    const profession = document.getElementById("newUserProfession").value;
+    const image = document.getElementById("newUserImage").files[0];
+
+    if (!name || !profession || !image) {
+      alert("Please complete the candidate name, profession, and upload an image.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const card = document.createElement("div");
+      card.className = "profile-card";
+      card.innerHTML = `
+        <img src="${e.target.result}" alt="${name}">
+        <div class="profile-info">
+          <h3>${name}</h3>
+          <p>${profession}</p>
+          <span class="qualified">✓ QUALIFIED</span>
+        </div>
+      `;
+      document.getElementById("qualifiedUsers").appendChild(card);
+
+      document.getElementById("newUserName").value = "";
+      document.getElementById("newUserProfession").value = "";
+      document.getElementById("newUserImage").value = "";
+
+      alert(name + " was successfully added to the qualified user showcase.");
+    };
+
+    reader.readAsDataURL(image);
+  }
+
 </script>
 
 </body>
